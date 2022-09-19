@@ -1,0 +1,29 @@
+#+title: README
+#+author: Clay Gomera
+#+description: README for my dotfiles repository
+
+* ABOUT
+This is just a personal repository where i store all my dotfiles, you're free clone them and edit them as you wish. Part of this work was based on other people's dotfiles (Distrotube for example), and it may contain scripts or binaries that they made or modify.
+
+** Sreenshots
+[[./screenshot1.png]]
+[[./screenshot2.png]]
+[[./screenshot3.png]]
+[[./screenshot4.png]]
+
+* GUIDE
+This guide is made for Arch Linux.
+
+** Dependencies
+This section will help you install every dependency.
+*** Fonts and theeming
+This repository already includes the mononoki Nerd Font, the gruvbox-dark-gtk theme, the gruvbox-dark-icons-gtk icon pack and the Simp1e-Gruvbox-Dark cursors. But if you preffer to use the AUR packages you can install them using paru like this (Keep in mind that the Simp1e-Gruvbox-Dark cursors aren't in the AUR):
+#begin_src sh
+paru -S gruvbox-dark-gtk gruvbox-dark-icons-gtk nerd-fonts-mononoki
+#+end_src
+
+*** Full dependency pack
+With this single command using paru you can install all dependencies:
+#+begin_src sh
+paru -S --needed picom-pijulius-git capnet-assist scrot feh fd rofi awesome-git betterlockscreen power-profiles-daemon pamixer dunst lxsession alacritty networkmanager bluez bluez-utils
+#+end_src

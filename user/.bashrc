@@ -140,7 +140,7 @@ alias \
 os=$(grep NAME /etc/os-release | head -1 | cut -d'=' -f2 | sed 's/["]//g')
 if [ "${os}" = "Arch Linux" ]; then
     alias \
-      pac-up="paru -Syyua" \
+      pac-up="paru -Syyu" \
       pac-get="paru -S" \
       pac-rmv="paru -Rcns" \
       pac-rmv-sec="paru -R" \
