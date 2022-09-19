@@ -41,7 +41,7 @@ theme.border_marked = "#9d0006"
 -- }}}
 
 -- {{{ Taglist
-theme.taglist_font          = "mononoki Nerd Font 14"
+theme.taglist_font          = "mononoki Nerd Font Mono 24"
 theme.taglist_fg_focus      = "#fb4934"
 theme.taglist_fg_occupied   = "#8ec07c"
 theme.taglist_fg_urgent     = "#504945"

@@ -53,12 +53,12 @@ ruled.client.connect_signal("request::rules", function()
                "Virt-manager"
                }
             },
-       properties = { tag = "" },
+       properties = { tag = "" },
     }
 -- TAG 2
     ruled.client.append_rule {
     rule = { class = "vifm" },
-       properties = { tag = "" },
+       properties = { tag = "" },
     }
 -- TAG 3
     ruled.client.append_rule {
@@ -71,12 +71,12 @@ ruled.client.connect_signal("request::rules", function()
                      "qutebrowser"
                  }
             },
-       properties = { tag = "" }
+       properties = { tag = "" }
     }
 -- TAG 4
     ruled.client.append_rule {
     rule = { class = "gomuks" },
-       properties = { tag = "" }
+       properties = { tag = "" }
     }
 -- TAG 5
     ruled.client.append_rule {
@@ -102,7 +102,7 @@ ruled.client.connect_signal("request::rules", function()
                "mpv"
                }
              },
-       properties = { tag = "" }
+       properties = { tag = "" }
     }
 -- TAG 7
     ruled.client.append_rule {
@@ -132,7 +132,7 @@ ruled.client.connect_signal("request::rules", function()
                    "libreoffice.*"
                  }
              },
-       properties = { tag = "" }
+       properties = { tag = "" }
     }
 -- TAG 9
     ruled.client.append_rule {

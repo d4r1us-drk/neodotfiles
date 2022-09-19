@@ -386,6 +386,9 @@ font:
   bold_italic:
     family: mononoki Nerd Font
     style: Bold Italic
+  mono:
+    family: mononoki Nerd Font
+    style: Mono
   size: 8
   offset:
     x: 0

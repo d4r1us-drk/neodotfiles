@@ -10,11 +10,11 @@ ROFI2="rofi -dmenu -l 1 -b -p"
 ROFI3="rofi -dmenu -l 6 -b -i -p"
 
 ## MAIN OPTIONS ##
-option1=" Turn on WiFi"
-option2=" Turn off WiFi"
+option1="  Turn on WiFi"
+option2="  Turn off WiFi"
 option3="睊 Disconnect WiFi"
 option4="直 Connect WiFi"
-option5="漣 Setup captive portal"
+option5=" Setup captive portal"
 option6=" Cancel"
 options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6"
 

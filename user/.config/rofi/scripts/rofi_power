@@ -6,11 +6,11 @@
 
 ## OPTIONS ##
 option1=" Logout"
-option2=" Reboot"
+option2=" Reboot"
 option3=" Power off"
 option4="鈴 Suspend"
-option5=" Lock"
-option6="漣 Change power profile"
+option5=" Lock"
+option6=" Change power profile"
 option7=" Cancel"
 
 ## OPTIONS ARRAY ##
