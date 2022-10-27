@@ -50,6 +50,7 @@ ruled.client.connect_signal("request::rules", function()
     rule_any = { class = {
                "Emacs",
                "Godot",
+               "neovim",
                "Virt-manager"
                }
             },
@@ -71,7 +72,7 @@ ruled.client.connect_signal("request::rules", function()
                      "qutebrowser"
                  }
             },
-       properties = { tag = "" }
+       properties = { tag = "" }
     }
 -- TAG 4
     ruled.client.append_rule {

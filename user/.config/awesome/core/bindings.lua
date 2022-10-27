@@ -284,7 +284,7 @@ awful.keyboard.append_global_keybindings({
         {description = "decrease brightness", group = "quick"}),
     -- Display configuration
     awful.key({}, "XF86Display", function () awful.spawn("arandr") end,
-        {description = "decrease brightness", group = "quick"}),
+        {description = "configure display", group = "quick"}),
     -- apps (Super + a followed by KEY)
     awful.key({ modkey }, "a", function()
       local grabber

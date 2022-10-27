@@ -186,8 +186,10 @@ alias \
 # adding flags
 alias \
   df="df -h" \
-  free="free -m" \
-  newsboat="newsboat -u ~/.config/newsboat/urls"
+  free="free -m"
+
+# newsboat
+[ -x "$(command -v newsboat)" ] && alias newsboat="newsboat -u ~/.config/newsboat/urls"
 
 # multimedia scripts
 alias \
@@ -250,8 +252,8 @@ alias \
   yta-vorbis="yt-dlp --extract-audio --audio-format vorbis" \
   yta-wav="yt-dlp --extract-audio --audio-format wav" \
   ytv-best="yt-dlp -f bestvideo+bestaudio" \
-  yt="ytfzf -f -t" \
-  ytm="ytfzf -m"
+  yt="ytfzf -ftsl" \
+  ytm="ytfzf -mtsl"
 
 # network and bluetooth
 alias \

@@ -2,12 +2,12 @@
 # Prints the current volume or 🔇 if muted.
 [ $(pamixer --get-mute) = true ] && echo "x" && exit
 vol="$(pamixer --get-volume)"
-if [ "$vol" -gt "70" ]; then
+if [ "$vol" -gt "50" ]; then
     icon=""
-elif [ "$vol" -gt "30" ]; then
+elif [ "$vol" -gt "10" ]; then
     icon=""
 elif [ "$vol" -gt "0" ]; then
-    icon="x"
+    icon=""
 else
         echo "x" && exit
 fi

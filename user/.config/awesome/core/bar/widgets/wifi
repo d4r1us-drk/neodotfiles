@@ -8,7 +8,7 @@ if [ "$constate" = "disconnected" ]; then
     echo "$state"
 elif [ "$constate" = "connected" ]; then
     state="直"
-    echo "$state" - "$currentwfi"
+    echo "$state $currentwfi"
 else
     state="直?"
     echo "$state"

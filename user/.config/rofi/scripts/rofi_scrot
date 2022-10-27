@@ -5,8 +5,8 @@
 #  - Dependencies: scrot, dmenu, notify-send
 
 ## CREATING SCREENSHOT FOLDER ##
-mkdir -p "$HOME/Pictures/Screenshots"
-cd "$HOME/Pictures/Screenshots" || exit 0
+mkdir -p "$HOME/pictures/screenshots"
+cd "$HOME/pictures/screenshots" || exit 0
 
 ## CHOICES ##
 cho1=" Entire screen"

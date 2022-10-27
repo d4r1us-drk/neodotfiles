@@ -1,6 +1,7 @@
 -- {{{ Imports
 local gears = require("gears")
 local dpi = require("beautiful.xresources").apply_dpi
+local beautiful = require("beautiful")
 -- }}}
 
 local themes_path = string.format("%s/.config/awesome/theme/", os.getenv("HOME"))
@@ -33,8 +34,22 @@ theme.bg_urgent  = "#a89984"
 -- }}}
 
 -- {{{ Borders
-theme.useless_gap   = dpi(5)
-theme.border_width  = dpi(3)
+-- No borders when rearranging only 1 non-floating or maximized client
+screen.connect_signal("arrange", function (s)
+    local max = s.selected_tag.layout.name == "max"
+    local only_one = #s.tiled_clients == 1 -- use tiled_clients so that other floating windows don't affect the count
+    -- but iterate over clients instead of tiled_clients as tiled_clients doesn't include maximized windows
+    for _, c in pairs(s.clients) do
+        if (max or only_one) and not c.floating or c.maximized then
+            c.border_width = 0
+        else
+            c.border_width = beautiful.border_width
+        end
+    end
+end)
+beautiful.gap_single_client = false
+theme.useless_gap   = dpi(1)
+theme.border_width  = dpi(1)
 theme.border_normal = "#504945"
 theme.border_focus  = "#9d0006"
 theme.border_marked = "#9d0006"
