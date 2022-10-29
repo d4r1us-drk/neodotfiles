@@ -1,6 +1,6 @@
 local wibox = require("wibox")
 local awful = require("awful")
-local theme = require("theme.gruvbox.theme")
+local theme = require("theme.theme")
 
 -- Keyboard layout widget
 mykeyboardlayout = awful.widget.keyboardlayout()
