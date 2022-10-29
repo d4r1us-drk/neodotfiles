@@ -1,3 +1,4 @@
+local beautiful = require("beautiful")
 -- No borders when rearranging only 1 non-floating or maximized client
 screen.connect_signal("arrange", function (s)
     local max = s.selected_tag.layout.name == "max"
