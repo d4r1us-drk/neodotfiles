@@ -16,7 +16,7 @@ This guide is made for Arch Linux.
 This section will help you install every dependency.
 *** Fonts and theming
 This repository already includes the mononoki Nerd Font, the gruvbox-dark-gtk theme, the gruvbox-dark-icons-gtk icon pack and the Simp1e-Gruvbox-Dark cursors. But if you preffer to use the AUR packages you can install them using paru like this (Keep in mind that the Simp1e-Gruvbox-Dark cursors aren't in the AUR):
-#begin_src sh
+#+begin_src sh
 paru -S gruvbox-dark-gtk gruvbox-dark-icons-gtk nerd-fonts-mononoki
 #+end_src
 
