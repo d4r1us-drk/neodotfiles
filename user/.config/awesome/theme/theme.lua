@@ -16,9 +16,9 @@ theme.font          = "mononoki Nerd Font 12"
 
 -- {{{ bar colors
 theme.bar_bg_one = "#427b58"
-theme.bar_bg_two = "#076678"
-theme.bar_bg_tre = "#b57614"
-theme.bar_bg_for = "#9d0006"
+theme.bar_bg_two = "#b57614"
+theme.bar_bg_tre = "#9d0006"
+theme.bar_bg_for = "#076678"
 theme.bar_bg_fiv = "#8f3f71"
 theme.bar_clock  = "#3c3836"
 --- }}}
@@ -35,7 +35,7 @@ theme.bg_urgent  = "#a89984"
 -- {{{ Borders
 beautiful.gap_single_client = false
 theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(0.5)
+theme.border_width  = dpi(1)
 theme.border_normal = "#504945"
 theme.border_focus  = "#9d0006"
 theme.border_marked = "#9d0006"

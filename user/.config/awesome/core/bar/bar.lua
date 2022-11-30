@@ -1,6 +1,8 @@
 local wibox = require("wibox")
+local gears = require("gears")
 local awful = require("awful")
 local theme = require("theme.theme")
+local separators = require("core.bar.widgets.separator")
 
 -- Keyboard layout widget
 mykeyboardlayout = awful.widget.keyboardlayout()
@@ -10,13 +12,13 @@ mytextclock = wibox.widget.textclock()
 
 screen.connect_signal("request::desktop_decoration", function(s)
 -- Tag names for each screen
-    awful.tag({ "",
+    awful.tag({ "",
                 "",
-                "",
-                "",
-                "",
+                "",
+                "",
+                "ﱘ",
                 "",
-                "",
+                "פֿ",
                 "",
                 ""
               }, s, awful.layout.layouts[1])
@@ -61,6 +63,18 @@ s.layout = awful.widget.watch(".config/awesome/core/bar/widgets/layout", 1)
         }
     }
 
+-- Separators
+local spr     = wibox.widget.textbox(" ")
+local spr_one_dl = separators.arrow_left(theme.bg_normal, theme.bar_bg_one)
+local spr_one_ld = separators.arrow_left(theme.bar_bg_one, theme.bar_bg_two)
+local spr_two_dl = separators.arrow_left(theme.bar_bg_two, theme.bar_bg_two)
+local spr_two_ld = separators.arrow_left(theme.bar_bg_two, theme.bar_bg_tre)
+local spr_tre_dl = separators.arrow_left(theme.bar_bg_tre, theme.bar_bg_tre)
+local spr_tre_ld = separators.arrow_left(theme.bar_bg_tre, theme.bar_bg_for)
+local spr_for_dl = separators.arrow_left(theme.bar_bg_for, theme.bar_bg_for)
+local spr_for_ld = separators.arrow_left(theme.bar_bg_for, theme.bar_bg_fiv)
+local spr_fiv_dl = separators.arrow_left(theme.bar_bg_fiv, theme.bar_bg_fiv)
+
 --  Wibox
     s.mywibox = awful.wibar {
         position = "top",
@@ -79,21 +93,31 @@ s.layout = awful.widget.watch(".config/awesome/core/bar/widgets/layout", 1)
             nil,
             { -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
-                wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_one),
+                -- Keyboar layout widget
+                wibox.container.background(spr_one_dl, theme.bar_bg_one),
+                wibox.container.background(spr, theme.bar_bg_one),
                 wibox.container.background(s.layout, theme.bar_bg_one),
-                wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_one),
-                wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_tre),
-                wibox.container.background(s.volume, theme.bar_bg_tre),
-                wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_tre),
-                wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_for),
-                wibox.container.background(s.brightness, theme.bar_bg_for),
-                wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_for),
-                wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_two),
-                wibox.container.background(s.battery, theme.bar_bg_two),
-                wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_two),
-                wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_fiv),
+                wibox.container.background(spr, theme.bar_bg_one),
+                wibox.container.background(spr_one_ld, theme.bar_bg_one),
+                -- Volume widget
+                wibox.container.background(spr_two_dl, theme.bar_bg_two),
+                wibox.container.background(s.volume, theme.bar_bg_two),
+                wibox.container.background(spr, theme.bar_bg_two),
+                spr_two_ld,
+                -- Brightness widget
+                wibox.container.background(spr_tre_dl, theme.bar_bg_tre),
+                wibox.container.background(s.brightness, theme.bar_bg_tre),
+                wibox.container.background(spr, theme.bar_bg_tre),
+                wibox.container.background(spr_tre_ld, theme.bar_bg_tre),
+                -- Battery widget
+                wibox.container.background(spr_for_dl, theme.bar_bg_for),
+                wibox.container.background(s.battery, theme.bar_bg_for),
+                wibox.container.background(spr, theme.bar_bg_for),
+                wibox.container.background(spr_for_ld, theme.bar_bg_for),
+                -- Wifi widget
+                wibox.container.background(spr_fiv_dl, theme.bar_bg_fiv),
                 wibox.container.background(s.wifi, theme.bar_bg_fiv),
-                wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_fiv),
+                wibox.container.background(spr, theme.bar_bg_fiv),
             },
           },
             {

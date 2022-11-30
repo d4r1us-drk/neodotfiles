@@ -297,6 +297,7 @@ awful.keyboard.append_global_keybindings({
             elseif key == "3" then awful.util.spawn(apps.browser)
             elseif key == "4" then awful.util.spawn(apps.chat)
             elseif key == "5" then awful.util.spawn(apps.music)
+            elseif key == "8" then awful.util.spawn(apps.office)
             elseif key == "9" then awful.util.spawn(apps.game)
             end
             awful.keygrabber.stop(grabber)
@@ -337,6 +338,24 @@ awful.keyboard.append_global_keybindings({
             elseif key == "s" then awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_scrot")
             elseif key == "z" then awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_emoji")
             elseif key == "w" then awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_wall")
+            end
+            awful.keygrabber.stop(grabber)
+            end
+          )
+        end,
+        {description = "followed by KEY", group = "dmenu scripts"}
+        ),
+    -- Terminal scripts (Super + t followed by KEY)
+    awful.key({ modkey }, "t", function()
+      local grabber
+      grabber =
+        awful.keygrabber.run(
+          function(_, key, event)
+            if event == "release" then return end
+            if     key == "m" then awful.spawn.with_shell("alacritty --title youm --class youm,youm -e ytfzf -mlst")
+            elseif key == "y" then awful.spawn.with_shell("alacritty --title ytfzf --class ytfzf,ytfzf -e ytfzf -flst")
+            elseif key == "a" then awful.spawn.with_shell("alacritty --title ani-cli --class ani-cli,ani-cli -e ani-cli -f")
+            elseif key == "f" then awful.spawn.with_shell("alacritty --title flix-cli --class flix-cli,flix-cli -e flix-cli")
             end
             awful.keygrabber.stop(grabber)
             end

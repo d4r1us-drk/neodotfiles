@@ -16,7 +16,7 @@ for battery in /sys/class/power_supply/BAT?*; do
 		"Full") status="" ;;
 		"Discharging") status="" ;;
 		"Charging") status="" ;;
-		"Not charging") status="" ;;
+		"Not charging") status="" ;;
 		"Unknown") status="" ;;
 		*) exit 1 ;;
 	esac

@@ -137,30 +137,13 @@ alias \
   l.='exa -a | egrep "^\."'
 
 # function to detect os and assign aliases to package managers
-os=$(grep NAME /etc/os-release | head -1 | cut -d'=' -f2 | sed 's/["]//g')
-if [ "${os}" = "Arch Linux" ]; then
-    alias \
-      pac-up="paru -Syyu" \
-      pac-get="paru -S" \
-      pac-rmv="paru -Rcns" \
-      pac-rmv-sec="paru -R" \
-      pac-qry="paru -Ss" \
-      pac-cln="paru -Scc"
-elif [ "${os}" = "Void Linux" ]; then
-    alias \
-      xb-up="sudo vpm update -Su && xcheckrestart" \
-      xb-get="sudo vpm install" \
-      xb-rmv="sudo vpm remove -R" \
-      xb-rmv-sec="sudo vpm remove" \
-      xb-qry="sudo vpm search" \
-      xb-cln="sudo vpm cleanup -o"
-elif [ "${os}" = "Fedora Linux" ]; then
-    alias \
-      dnf-up="sudo dnf update" \
-      dnf-get="sudo dnf install" \
-      dnf-rmv="sudo dnf remove" \
-      dnf-cln="sudo dnf autoremove"
-fi
+alias \
+  pac-up="paru -Syyu" \
+  pac-get="paru -S" \
+  pac-rmv="paru -Rcns" \
+  pac-rmv-sec="paru -R" \
+  pac-qry="paru -Ss" \
+  pac-cln="paru -Scc"
 
 # colorize grep output (good for log files)
 alias \
@@ -206,22 +189,10 @@ alias \
   music="cmus"
 
 # power management
-if [ "${os}" = "Arch Linux" ]; then
-    alias \
-      po="systemctl poweroff" \
-      sp="systemctl suspend" \
-      rb="systemctl reboot"
-elif [ "${os}" = "Void Linux" ]; then
-    alias \
-      po="loginctl poweroff" \
-      sp="loginctl suspend" \
-      rb="loginctl reboot"
-else
-    alias \
-      po="systemctl poweroff" \
-      sp="systemctl suspend" \
-      rb="systemctl reboot"
-fi
+alias \
+  po="systemctl poweroff" \
+  sp="systemctl suspend" \
+  rb="systemctl reboot"
 
 # file management
 alias \

@@ -358,7 +358,7 @@ env:
 
 ## Window settigns
 window:
-  opacity: 0.96
+  opacity: 0.90
   padding:
     x: 6
     y: 6

@@ -54,7 +54,7 @@ ruled.client.connect_signal("request::rules", function()
                "Virt-manager"
                }
             },
-       properties = { tag = "" },
+       properties = { tag = "" },
     }
 -- TAG 2
     ruled.client.append_rule {
@@ -66,30 +66,35 @@ ruled.client.connect_signal("request::rules", function()
       rule_any = { class = {
                      "Brave-browser",
                      "librewolf",
-                     "Firefox",
+                     "firefox",
                      "Chromium",
                      "Bitwarden",
                      "qutebrowser"
-                 }
+                }
             },
-       properties = { tag = "" }
+       properties = { tag = "" }
     }
 -- TAG 4
     ruled.client.append_rule {
-    rule = { class = "gomuks" },
-       properties = { tag = "" }
+    rule = { class = {
+               "gomuks",
+               "Element"
+               }
+           },
+       properties = { tag = "" }
     }
 -- TAG 5
     ruled.client.append_rule {
     rule_any = { class = {
                "cmus",
+               "youm",
                "Audacity",
                "Ardour",
                "Carla2",
                "Carla2-Control"
                }
             },
-       properties = { tag = "" }
+       properties = { tag = "ﱘ" }
     }
 -- TAG 6
     ruled.client.append_rule {
@@ -100,7 +105,10 @@ ruled.client.connect_signal("request::rules", function()
                "SimpleScreenRecorder",
                "Ghb",
                "obs",
-               "mpv"
+               "mpv",
+               "ani-cli",
+               "flix-cli",
+               "ytfzf"
                }
              },
        properties = { tag = "" }
@@ -117,21 +125,16 @@ ruled.client.connect_signal("request::rules", function()
                "Xournalpp",
                }
              },
-       properties = { tag = "" }
+       properties = { tag = "פֿ" }
     }
 -- TAG 8
     ruled.client.append_rule {
     rule_any = { class = {
                "DesktopEditors",
-               "libreoffice.*",
+               "Soffice",
+               "libreoffice-startcenter",
                "Joplin"
-               },
-                 instance = {
-                   "libreoffice.*"
-                 },
-                 name = {
-                   "libreoffice.*"
-                 }
+               }
              },
        properties = { tag = "" }
     }
