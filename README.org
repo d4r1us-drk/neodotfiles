@@ -17,6 +17,7 @@ This guide is made for Arch Linux.
 This section will help you install every dependency.
 *** Fonts and theming
 - Theme = https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme
+- Icon theme = Papirus Dark Indigo Folders https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 - Cursors = https://gitlab.com/cursors/simp1e
 - Fonts = mononoki nerd font from https://github.com/ryanoasis/nerd-fonts
 *** Full dependency pack
