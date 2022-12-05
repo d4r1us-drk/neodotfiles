@@ -2,7 +2,6 @@
 #+author: Clay Gomera
 #+description: README for my dotfiles repository
 This is just a personal repository where i store all my dotfiles, you're free clone them and edit them as you wish. Part of this work was based on other people's dotfiles (Distrotube for example), and it may contain scripts or binaries that they made or modify.
-
 ** Sreenshots
 [[./screenshot4.png]]
 [[./screenshot1.png]]
@@ -14,7 +13,6 @@ This is just a personal repository where i store all my dotfiles, you're free cl
 
 * GUIDE
 This guide is made for Arch Linux.
-
 ** Dependencies
 This section will help you install every dependency.
 *** Fonts and theming
@@ -24,5 +22,5 @@ Fonts = mononoki nerd font from https://github.com/ryanoasis/nerd-fonts
 *** Full dependency pack
 With this single command using paru you can install almost all dependencies excluding the tokyo night gtk theme:
 #+begin_src sh
-paru -S --needed picom-pijulius-git capnet-assist scrot feh fd rofi awesome-git betterlockscreen power-profiles-daemon python-gobject pamixer lxsession alacritty networkmanager bluez bluez-utils nerd-fonts-mononoki xcursor-simp1e-tokyo-night
+paru -S --needed picom-pijulius-git capnet-assist scrot feh fd rofi awesome-git betterlockscreen power-profiles-daemon python-gobject pamixer lxsession alacritty networkmanager bluez bluez-utils nerd-fonts-mononoki xcursor-simp1e-tokyo-night xfce4-power-manager
 #+end_src
