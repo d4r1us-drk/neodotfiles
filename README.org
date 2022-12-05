@@ -16,9 +16,9 @@ This guide is made for Arch Linux.
 ** Dependencies
 This section will help you install every dependency.
 *** Fonts and theming
-Theme = https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme
-Cursors = https://gitlab.com/cursors/simp1e
-Fonts = mononoki nerd font from https://github.com/ryanoasis/nerd-fonts
+- Theme = https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme
+- Cursors = https://gitlab.com/cursors/simp1e
+- Fonts = mononoki nerd font from https://github.com/ryanoasis/nerd-fonts
 *** Full dependency pack
 With this single command using paru you can install almost all dependencies excluding the tokyo night gtk theme:
 #+begin_src sh
