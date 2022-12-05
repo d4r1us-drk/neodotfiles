@@ -8,6 +8,9 @@ This is just a personal repository where i store all my dotfiles, you're free cl
 [[./screenshot2.png]]
 [[./screenshot3.png]]
 [[./screenshot4.png]]
+[[./screenshot5.png]]
+[[./screenshot6.png]]
+[[./screenshot7.png]]
 
 * GUIDE
 This guide is made for Arch Linux.
@@ -15,13 +18,11 @@ This guide is made for Arch Linux.
 ** Dependencies
 This section will help you install every dependency.
 *** Fonts and theming
-This repository already includes the mononoki Nerd Font, the gruvbox-dark-gtk theme, the gruvbox-dark-icons-gtk icon pack and the Simp1e-Gruvbox-Dark cursors. But if you preffer to use the AUR packages you can install them using paru like this (Keep in mind that the Simp1e-Gruvbox-Dark cursors aren't in the AUR):
-#+begin_src sh
-paru -S gruvbox-dark-gtk gruvbox-dark-icons-gtk nerd-fonts-mononoki
-#+end_src
-
+Theme = https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme
+Cursors = https://gitlab.com/cursors/simp1e
+Fonts = mononoki nerd font from https://github.com/ryanoasis/nerd-fonts
 *** Full dependency pack
-With this single command using paru you can install all dependencies:
+With this single command using paru you can install almost all dependencies excluding the tokyo night gtk theme:
 #+begin_src sh
-paru -S --needed picom-pijulius-git capnet-assist scrot feh fd rofi awesome-git betterlockscreen power-profiles-daemon pamixer dunst lxsession alacritty networkmanager bluez bluez-utils
+paru -S --needed picom-pijulius-git capnet-assist scrot feh fd rofi awesome-git betterlockscreen power-profiles-daemon python-gobject pamixer lxsession alacritty networkmanager bluez bluez-utils nerd-fonts-mononoki xcursor-simp1e-tokyo-night
 #+end_src

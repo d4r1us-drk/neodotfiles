@@ -1,0 +1,12 @@
+#!/bin/bash
+constate=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f3 | head -1)
+currentwfi=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f4 | head -1)
+
+if [ "$constate" = "disconnected" ]; then
+    echo "睊 "
+elif [ "$constate" = "connected" ]; then
+    echo "直  $currentwfi"
+else
+    notify-send " Airplane mode activated"
+    echo " "
+fi
