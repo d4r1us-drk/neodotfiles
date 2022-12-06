@@ -9,7 +9,6 @@ This is just a personal repository where i store all my dotfiles, you're free cl
 [[./screenshot3.png]]
 [[./screenshot5.png]]
 [[./screenshot6.png]]
-[[./screenshot7.png]]
 
 * GUIDE
 This guide is made for Arch Linux.
