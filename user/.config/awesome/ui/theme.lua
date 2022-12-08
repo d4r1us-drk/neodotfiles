@@ -20,7 +20,7 @@ theme.bar_bg_two = "#e0af68"
 theme.bar_bg_tre = "#9ece6a"
 theme.bar_bg_for = "#7aa2f7"
 theme.bar_bg_fiv = "#bb9af7"
-theme.bar_clock  = "#9aa5ce"
+theme.bar_clock  = "#41a6b5"
 --- }}}
 
 -- {{{ Colors

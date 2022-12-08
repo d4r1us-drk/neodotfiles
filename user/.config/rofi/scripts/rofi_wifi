@@ -5,17 +5,15 @@
 #  - Dependencies: rofi, NetworkManager
 
 ## ROFI VARIABLES ##
-ROFI1="rofi -dmenu -l 10 -b -i -p"
-ROFI2="rofi -dmenu -l 1 -b -p"
-ROFI3="rofi -dmenu -l 6 -b -i -p"
+ROFI="rofi -dmenu -p"
 
 ## MAIN OPTIONS ##
 option1="  Turn on WiFi"
 option2="  Turn off WiFi"
-option3="睊 Disconnect WiFi"
-option4="直 Connect WiFi"
-option5=" Setup captive portal"
-option6=" Cancel"
+option3="睊  Disconnect WiFi"
+option4="直  Connect WiFi"
+option5="  Setup captive portal"
+option6="  Cancel"
 options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6"
 
 wlan=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f1 | head -1)
@@ -45,12 +43,12 @@ disconnect() {
 connect() {
   notify-send "Scannig networks, please wait"
   sleep 1
-  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | $ROFI1 "Select Wifi  :" | cut -d' ' -f1)
+  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | $ROFI "Select Wifi  :" | cut -d' ' -f1)
   }
 
 ## SELECT PASSWORD FUNCTION ##
 password() {
-  pass=$(echo " " | $ROFI2 "Enter Password  :")
+  pass=$(echo " " | $ROFI "Enter Password  :")
   }
 
 ## MAIN CONNECTION COMMAND ##
@@ -71,7 +69,7 @@ check() {
 }
 
 ## MAIN ACTION COMMANDS ##
-cases=$(echo -e "$options" | $ROFI3 "What do you want to do?" )
+cases=$(echo -e "$options" | $ROFI "   Wifi Settings " )
 case "$cases" in
   $option1*)
     turnon;;

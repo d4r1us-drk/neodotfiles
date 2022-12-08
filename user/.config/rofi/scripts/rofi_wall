@@ -5,12 +5,12 @@
 #  - Dependencies: rofi, fd, feh
 
 ## MAIN VARIABLES AND COMMANDS ##
-walldir="Pictures/Wallpapers/" # wallpapers folder, change it to yours, make sure that it ends with a /
+walldir="Pictures/Wallpapers/Main/" # wallpapers folder, change it to yours, make sure that it ends with a /
 cd "$walldir" || exit
 
 ## SELECT PICTURE FUNCTION ##
 selectpic() {
-    wallpaper=$(fd -p "$walldir" | rofi -dmenu -l 10 -b -i -p "Select a wallpaper:")
+    wallpaper=$(fd -p "$walldir" | rofi -dmenu -p "Select a wallpaper:")
     if [ "$wallpaper" ]; then
         chosenwall=$wallpaper
     else
@@ -28,7 +28,7 @@ option5="Scale"
 options="$option1\n$option2\n$option3\n$option4\n$option5"
 
 ## MAIN ACTION ##
-action=$(echo -e "$options" | rofi -dmenu -l 10 -b -i -p "Chose the format:")
+action=$(echo -e "$options" | rofi -dmenu -p "Chose the format:")
 case "$action" in
     $option1*)
         feh --bg-fill "$chosenwall";;

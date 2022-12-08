@@ -5,11 +5,11 @@
 #  - Dependencies: rofi (Everything else can be changed)
 
 # Show list of options
-EDITOR="alacritty -e nvim"
+EDITOR="emacsclient -c -a emacs"
 cd "$HOME" || exit 0
 file=1
 while [ "$file" ]; do
-    file=$(fd -LHpd 1 | rofi -dmenu -b -l 10 -p "File to edit: $(basename $(pwd))")
+    file=$(fd -LHpd 1 | rofi -dmenu -p "File to edit: $(basename "$(pwd)")")
     if [ -e "$file" ]; then
         owd=$(pwd)
         if [ -d "$file" ]; then

@@ -4,7 +4,7 @@ local gears = require("gears")
 local awful = require("awful")
 local theme = require("ui.theme")
 -- Textclock widget
-mytextclock = wibox.widget.textclock()
+local mytextclock = wibox.widget.textclock()
 screen.connect_signal("request::desktop_decoration", function(s)
 -- Tag names for each screen
     awful.tag(
