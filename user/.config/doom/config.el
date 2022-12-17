@@ -176,7 +176,7 @@ List of keybindings (SPC h b b)")
 (setq delete-by-moving-to-trash t
       trash-directory "~/.local/share/Trash/files/")
 
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-tokyo-night)
 (map! :leader
       :desc "Load new theme" "h t" #'counsel-load-theme)
 
@@ -636,3 +636,6 @@ List of keybindings (SPC h b b)")
 (map! :leader
       :desc "Zap to char" "z" #'zap-to-char
       :desc "Zap up to char" "Z" #'zap-up-to-char)
+
+(setq mastodon-instance-url "https://fosstodon.org"
+   mastodon-active-user "d4r1us-drk")

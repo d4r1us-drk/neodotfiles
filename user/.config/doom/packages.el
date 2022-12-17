@@ -87,3 +87,4 @@
 (package! clippy)
 (package! minimap)
 (package! olivetti)
+(package! mastodon)

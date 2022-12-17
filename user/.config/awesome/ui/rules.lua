@@ -79,7 +79,8 @@ ruled.client.connect_signal(
           "firefox",
           "Chromium",
           "Bitwarden",
-          "qutebrowser"
+          "qutebrowser",
+          "toot"
         }
       },
       properties = { tag = "" }

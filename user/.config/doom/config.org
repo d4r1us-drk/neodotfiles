@@ -56,6 +56,7 @@
 - [[#splits][SPLITS]]
 - [[#winner-mode][WINNER MODE]]
 - [[#zap-to-char][ZAP TO CHAR]]
+- [[#mastodon][MASTODON]]
 
 * ABOUT THIS CONFIG
 This is my personal Doom Emacs config.  Doom Emacs is a distribution of Emacs that uses the "evil" keybindings (Vim keybindings) and includes a number of nice extensions and a bit of configuration out of the box.  I am maintaining this config not just for myself, but also for those that want to explore some of what is possible with Emacs.  I will add a lot of examples of plugins and settings, some of them I may not even use personally.  I do this because many people following me on YouTube look at my configs as "documentation". This config is a fork of DistroTube's config.
@@ -397,7 +398,7 @@ If peep-dired is enabled, you will get image previews as you go up/down with 'j'
 Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-tokyo-night)
 (map! :leader
       :desc "Load new theme" "h t" #'counsel-load-theme)
 #+END_SRC
@@ -1127,4 +1128,10 @@ Emacs provides a 'zap-to-char' command that kills from the current point to a ch
 (map! :leader
       :desc "Zap to char" "z" #'zap-to-char
       :desc "Zap up to char" "Z" #'zap-up-to-char)
+#+END_SRC
+
+* MASTODON
+#+BEGIN_SRC emacs-lisp
+(setq mastodon-instance-url "https://fosstodon.org"
+   mastodon-active-user "d4r1us-drk")
 #+END_SRC

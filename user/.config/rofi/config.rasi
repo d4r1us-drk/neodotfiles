@@ -73,7 +73,7 @@ listview {
 element {
     padding: 5px;
     background-color: @bg-col;
-    text-color: @fg-col  ;
+    text-color: @blue;
 }
 
 element-icon {
@@ -81,8 +81,8 @@ element-icon {
 }
 
 element selected {
-    background-color:  @selected-col ;
-    text-color: @fg-col2  ;
+    background-color:  @selected-col;
+    text-color: @fg-col2;
 }
 
 mode-switcher {
@@ -91,13 +91,13 @@ mode-switcher {
 
 button {
     padding: 10px;
-    background-color: @bg-col-light;
-    text-color: @grey;
+    background-color: @bg-col;
+    text-color: @inactive;
     vertical-align: 0.5;
     horizontal-align: 0.5;
 }
 
 button selected {
-  background-color: @bg-col;
-  text-color: @blue;
+  background-color: @selected-col;
+  text-color: @red;
 }

@@ -667,8 +667,6 @@ awful.keyboard.append_global_keybindings(
                 awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_power")
               elseif key == "i" then
                 awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_wifi")
-              elseif key == "b" then
-                awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_blue")
               elseif key == "s" then
                 awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_scrot")
               elseif key == "z" then
@@ -705,6 +703,8 @@ awful.keyboard.append_global_keybindings(
                 awful.spawn.with_shell("alacritty --title ani-cli --class ani-cli,ani-cli -e ani-cli -f")
               elseif key == "f" then
                 awful.spawn.with_shell("alacritty --title flix-cli --class flix-cli,flix-cli -e flix-cli")
+              elseif key == "t" then
+                awful.spawn.with_shell("alacritty --title toot --class toot,toot -e toot tui")
               end
               awful.keygrabber.stop(grabber)
             end
