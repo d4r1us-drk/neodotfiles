@@ -38,8 +38,8 @@ fi
 if [ -d "$HOME/Applications" ] ;
   then PATH="$HOME/Applications:$PATH"
 fi
-if [ -d "$HOME/.emacs.d/bin" ] ;
-  then PATH="$HOME/.emacs.d/bin:$PATH"
+if [ -d "$HOME/.config/emacs/bin" ] ;
+  then PATH="$HOME/.config/emacs/bin:$PATH"
 fi
 
 ### CHANGE TITLE OF TERMINALS ###
@@ -237,4 +237,4 @@ alias \
   blt="bluetoothctl"
 
 ### SETTING THE STARSHIP PROMPT ###
-eval "$(starship init bash)"
+export PS1="\[$(tput setaf 222)\]\u\[$(tput setaf 228)\]@\[$(tput setaf 196)\]\h \[$(tput setaf 121)\]\w \[$(tput sgr0)\]$ "

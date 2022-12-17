@@ -398,7 +398,7 @@ If peep-dired is enabled, you will get image previews as you go up/down with 'j'
 Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-tokyo-night)
+(setq doom-theme 'doom-gruvbox)
 (map! :leader
       :desc "Load new theme" "h t" #'counsel-load-theme)
 #+END_SRC
