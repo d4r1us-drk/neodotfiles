@@ -1,0 +1,12 @@
+#!/bin/sh
+##       ____             __                               ##
+##      / __ \_________ _/ /_____                          ##
+##     / / / / ___/ __ `/ //_/ _ \                         ##
+##    / /_/ / /  / /_/ / ,< /  __/  Clay Gomera (Drake)    ##
+##   /_____/_/   \__,_/_/|_|\___/   My custom dwm build    ##
+
+lxpolkit &
+dwmblocks &
+sh "$HOME"/.fehbg &
+unclutter --hide-on-touch &
+picom --no-fading-openclose --config "$HOME/.config/picom/picom.conf" &

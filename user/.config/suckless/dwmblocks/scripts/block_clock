@@ -1,0 +1,4 @@
+#!/bin/bash
+date="$(date +%d/%m/%Y)"
+clock="$(date +%R:%S)"
+echo " dte: $date - $clock "

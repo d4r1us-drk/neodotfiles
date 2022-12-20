@@ -1,0 +1,13 @@
+#!/bin/bash
+# Loop through all attached batteries and format the info
+currntpwr=$(powerprofilesctl get)
+if [ "${currntpwr}" = "performance" ]; then
+	pwr="perf"
+elif [ "${currntpwr}" = "balanced" ]; then
+	pwr="balc"
+elif [ "${currntpwr}" = "power-saver" ]; then
+	pwr="pwrs"
+fi
+battery="/sys/class/power_supply/BAT0"
+capacity=$(cat "$battery"/capacity)
+echo -e " bat: $capacity% - $pwr "

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+brt=$(xbacklight -get)
+echo " bri: ${brt%.*}% "
