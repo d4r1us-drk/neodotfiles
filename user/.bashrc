@@ -237,4 +237,4 @@ alias \
   blt="bluetoothctl"
 
 ### SETTING THE STARSHIP PROMPT ###
-export PS1="\[$(tput setaf 222)\]\u\[$(tput setaf 228)\]@\[$(tput setaf 196)\]\h \[$(tput setaf 121)\]\w \[$(tput sgr0)\]$ "
+eval "$(starship init bash)"

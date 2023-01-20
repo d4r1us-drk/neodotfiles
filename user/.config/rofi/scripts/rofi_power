@@ -47,7 +47,7 @@ case "$action" in
         elif [ "$currentpwr" = "balanced" ]; then
             currentpwr=" Balanced"
         fi
-        pwraction=$(echo -e "$pwrs" | rofi -dmenu -p " Select profile | Current profile: ${currentpwr} ")
+        pwraction=$(echo -e "$pwrs" | rofi -dmenu -p "  Power Profile Menu - Currently set to: ${currentpwr} ")
         case "$pwraction" in
             $pwr1*)
                 powerprofilesctl set performance && notify-send "Power profile switched to performance";;

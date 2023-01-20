@@ -39,4 +39,4 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:="$HOME/.config"}"
 export QT_QPA_PLATFORMTHEME=qt5ct                 # Qt theeming stuff
 
 # start window manager / desktop environment
-exec dwm
+exec awesome

@@ -5,8 +5,8 @@
 #  - Dependencies: scrot, dmenu, notify-send
 
 ## CREATING SCREENSHOT FOLDER ##
-mkdir -p "$HOME/pictures/screenshots"
-cd "$HOME/pictures/screenshots" || exit 0
+mkdir -p "$HOME/Pictures/Screenshots"
+cd "$HOME/Pictures/Screenshots" || exit 0
 
 ## CHOICES ##
 cho1=" Entire screen"
@@ -23,7 +23,7 @@ dels="$del1\n$del2\n$del3"
 
 ## DELAY FUNCTION ##
 delays() {
-    del=$(echo -e "$dels" | rofi -dmenu -p "Select: ");
+    del=$(echo -e "$dels" | rofi -dmenu -p "  Select Delay ");
         case $del in
             "$del1")
                 scrot -d 3 && notify-send "Screenshot saved";;
@@ -50,7 +50,7 @@ area() {
 }
 
 ## MAIN ACTION ##
-choice=$(echo -e "$chos" | rofi -dmenu -p "Select: ")
+choice=$(echo -e "$chos" | rofi -dmenu -p "   Sreenshot Menu ")
 case $choice in
     "$cho1")
         screen;;

@@ -91,6 +91,7 @@ ruled.client.connect_signal(
         class = {
           "gomuks",
           "Signal",
+          "Revolt",
           "Element"
         }
       },
