@@ -20,11 +20,11 @@ theme.bar_bg_two = "#d79921"
 theme.bar_bg_tre = "#98971a"
 theme.bar_bg_for = "#458588"
 theme.bar_bg_fiv = "#b16286"
-theme.bar_clock  = "#504945"
+theme.bar_clock  = "#928374"
 --- }}}
 
 -- {{{ Colors
-theme.fg_normal  = "#ebdbb2"
+theme.fg_normal  = "#282828"
 theme.fg_focus   = "#fbf1c7"
 theme.fg_urgent  = "#fb4934"
 theme.bg_normal  = "#1d2021"
