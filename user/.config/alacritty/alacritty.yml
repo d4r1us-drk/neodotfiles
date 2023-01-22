@@ -380,7 +380,7 @@ schemes:
       cyan:    '#54ced6'
       white:   '#282a2e'
 
-colors: *tokyo-night
+colors: *gruvbox-dark
 
 ## Set environment variables
 env:

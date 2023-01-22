@@ -16,7 +16,7 @@ configuration{
     dpi: 100;
 }
 
-@theme "tokyonight"
+@theme "gruvbox-dark"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;
@@ -43,7 +43,7 @@ inputbar {
 }
 
 prompt {
-    background-color: @blue;
+    background-color: @red;
     padding: 3px;
     text-color: @bg-col;
     border-radius: 3px;
@@ -73,7 +73,7 @@ listview {
 element {
     padding: 5px;
     background-color: @bg-col;
-    text-color: @blue;
+    text-color: @grey;
 }
 
 element-icon {

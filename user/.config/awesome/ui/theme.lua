@@ -15,65 +15,65 @@ theme.font  = "mononoki Nerd Font 13"
 --- }}}
 
 -- {{{ bar colors
-theme.bar_bg_one = "#f7768e"
-theme.bar_bg_two = "#e0af68"
-theme.bar_bg_tre = "#9ece6a"
-theme.bar_bg_for = "#7aa2f7"
-theme.bar_bg_fiv = "#bb9af7"
-theme.bar_clock  = "#41a6b5"
+theme.bar_bg_one = "#cc241d"
+theme.bar_bg_two = "#d79921"
+theme.bar_bg_tre = "#98971a"
+theme.bar_bg_for = "#458588"
+theme.bar_bg_fiv = "#b16286"
+theme.bar_clock  = "#504945"
 --- }}}
 
 -- {{{ Colors
-theme.fg_normal  = "#243b26"
-theme.fg_focus   = "#a9b1d6"
-theme.fg_urgent  = "#c0caf5"
-theme.bg_normal  = "#1a1b26"
-theme.bg_focus   = "#24283b"
-theme.bg_urgent  = "#24283b"
+theme.fg_normal  = "#ebdbb2"
+theme.fg_focus   = "#fbf1c7"
+theme.fg_urgent  = "#fb4934"
+theme.bg_normal  = "#1d2021"
+theme.bg_focus   = "#3c3836"
+theme.bg_urgent  = "#504945"
 -- }}}
 
 -- {{{ Borders
 beautiful.gap_single_client = false
 theme.useless_gap           = dpi(0)
 theme.border_width          = dpi(0.5)
-theme.border_normal         = "#363b58"
-theme.border_focus          = "#7aa2f7"
-theme.border_marked         = "#7aa2f7"
+theme.border_normal         = "#504945"
+theme.border_focus          = "#cc241d"
+theme.border_marked         = "#cc241d"
 -- }}}
 
 -- {{{ Taglist
 theme.taglist_font          = "mononoki Nerd Font Mono 28"
-theme.taglist_bg            = "#24283b"
-theme.taglist_fg_focus      = "#d5d6db"
-theme.taglist_fg_occupied   = "#9aa5ce"
-theme.taglist_fg_urgent     = "#f7758e"
-theme.taglist_fg_empty      = "#565f89"
+theme.taglist_bg            = "#3c3836"
+theme.taglist_fg_focus      = "#fb4934"
+theme.taglist_fg_occupied   = "#689d6a"
+theme.taglist_fg_urgent     = "#cc241d"
+theme.taglist_fg_empty      = "#928374"
 theme.taglist_spacing       = 5
 -- }}}
 
 -- {{{ Notifications
 theme.notification_font     = "mononoki Nerd Font 12"
-theme.notification_bg       = "#24283b"
-theme.notification_bg_alt   = "#414868"
-theme.notification_fg       = "#c0caf5"
-theme.notification_fg_alt   = "#1a1b26"
-theme.notification_critical = "#f7768e"
+theme.notification_bg       = "#1d2021"
+theme.notification_bg_alt   = "#282828"
+theme.notification_fg       = "#ebdbb2"
+theme.notification_fg_alt   = "#282828"
+theme.notification_critical = "#fb4934"
 theme.notification_shape    = gears.shape.rounded_rect
 -- }}}
 
 -- {{{ Hotkeys Popup
-theme.hotkeys_bg                = "#1a1b26"
-theme.hotkeys_fg                = "#a9b1d6"
-theme.hotkeys_modifiers_fg      = "#41a6b5"
-theme.hotkeys_label_bg          = "#e0af68"
-theme.hotkeys_label_fg          = "#1a1b26"
+theme.hotkeys_bg                = "#1d2021"
+theme.hotkeys_fg                = "#ebdbb2"
+theme.hotkeys_modifiers_fg      = "#458588"
+theme.hotkeys_label_bg          = "#d79921"
+theme.hotkeys_label_fg          = "#1d2021"
 theme.hotkeys_group_margin      = dpi(20)
 theme.hotkeys_description_font  = "mononoki Nerd Font 12"
 theme.hotkeys_font              = "mononoki Nerd Font 12"
 -- }}}
 
 -- {{{ Mouse finder
-theme.mouse_finder_color    = "#f7768e"
+theme.mouse_finder_color    = "#fb4934"
 theme.mouse_finder_radius   = dpi(5)
 theme.mouse_finder_timeout  = 10
 -- }}}
