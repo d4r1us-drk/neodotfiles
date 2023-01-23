@@ -398,7 +398,7 @@ If peep-dired is enabled, you will get image previews as you go up/down with 'j'
 Setting the theme to doom-one.  To try out new themes, I set a keybinding for counsel-load-theme with 'SPC h t'.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-tokyo-night)
+(setq doom-theme 'doom-gruvbox)
 (map! :leader
       :desc "Load new theme" "h t" #'counsel-load-theme)
 #+END_SRC
@@ -950,7 +950,7 @@ I have created an interactive function for each color scheme (M-x dt/org-colors-
     (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
 ;; Load our desired dt/org-colors-* theme on startup
-(dt/org-colors-gruvbox-dark)
+(dt/org-colors-tomorrow-night)
 
 #+end_src
 

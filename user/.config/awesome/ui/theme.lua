@@ -45,8 +45,8 @@ theme.border_marked         = "#cc241d"
 theme.taglist_font          = "mononoki Nerd Font Mono 28"
 theme.taglist_bg            = "#3c3836"
 theme.taglist_fg_focus      = "#fb4934"
-theme.taglist_fg_occupied   = "#689d6a"
-theme.taglist_fg_urgent     = "#cc241d"
+theme.taglist_fg_occupied   = "#bdae93"
+theme.taglist_fg_urgent     = "#fb4934"
 theme.taglist_fg_empty      = "#928374"
 theme.taglist_spacing       = 5
 -- }}}

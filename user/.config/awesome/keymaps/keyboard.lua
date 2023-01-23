@@ -696,15 +696,15 @@ awful.keyboard.append_global_keybindings(
                 return
               end
               if key == "m" then
-                awful.spawn.with_shell("alacritty --title youm --class youm,youm -e ytfzf -mlst")
+                awful.util.spawn(apps.youm)
               elseif key == "y" then
-                awful.spawn.with_shell("alacritty --title ytfzf --class ytfzf,ytfzf -e ytfzf -flst")
+                awful.util.spawn(apps.ytfzf)
               elseif key == "a" then
-                awful.spawn.with_shell("alacritty --title ani-cli --class ani-cli,ani-cli -e ani-cli -f")
+                awful.util.spawn(apps.ani)
               elseif key == "f" then
-                awful.spawn.with_shell("alacritty --title flix-cli --class flix-cli,flix-cli -e flix-cli")
+                awful.util.spawn(apps.flix)
               elseif key == "t" then
-                awful.spawn.with_shell("alacritty --title toot --class toot,toot -e toot tui")
+                awful.util.spawn(apps.tut)
               end
               awful.keygrabber.stop(grabber)
             end
