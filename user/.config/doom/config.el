@@ -639,3 +639,6 @@ List of keybindings (SPC h b b)")
 
 (setq mastodon-instance-url "https://fosstodon.org"
    mastodon-active-user "d4r1us-drk")
+
+(set-frame-parameter (selected-frame) 'alpha '(95 . 80))
+(add-to-list 'default-frame-alist '(alpha . (95 . 80)))

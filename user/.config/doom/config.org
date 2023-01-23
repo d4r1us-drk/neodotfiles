@@ -57,6 +57,7 @@
 - [[#winner-mode][WINNER MODE]]
 - [[#zap-to-char][ZAP TO CHAR]]
 - [[#mastodon][MASTODON]]
+- [[#transparency][TRANSPARENCY]]
 
 * ABOUT THIS CONFIG
 This is my personal Doom Emacs config.  Doom Emacs is a distribution of Emacs that uses the "evil" keybindings (Vim keybindings) and includes a number of nice extensions and a bit of configuration out of the box.  I am maintaining this config not just for myself, but also for those that want to explore some of what is possible with Emacs.  I will add a lot of examples of plugins and settings, some of them I may not even use personally.  I do this because many people following me on YouTube look at my configs as "documentation". This config is a fork of DistroTube's config.
@@ -1134,4 +1135,9 @@ Emacs provides a 'zap-to-char' command that kills from the current point to a ch
 #+BEGIN_SRC emacs-lisp
 (setq mastodon-instance-url "https://fosstodon.org"
    mastodon-active-user "d4r1us-drk")
+#+END_SRC
+* TRANSPARENCY
+#+BEGIN_SRC emacs-lisp
+(set-frame-parameter (selected-frame) 'alpha '(95 . 80))
+(add-to-list 'default-frame-alist '(alpha . (95 . 80)))
 #+END_SRC
