@@ -15,27 +15,27 @@ theme.font  = "mononoki Nerd Font 13"
 --- }}}
 
 -- {{{ bar colors
-theme.bar_bg_one = "#cc241d"
-theme.bar_bg_two = "#d79921"
-theme.bar_bg_tre = "#98971a"
-theme.bar_bg_for = "#458588"
-theme.bar_bg_fiv = "#b16286"
-theme.bar_clock  = "#928374"
+theme.bar_bg_one = "#427b58"
+theme.bar_bg_two = "#076678"
+theme.bar_bg_tre = "#b57614"
+theme.bar_bg_for = "#9d0006"
+theme.bar_bg_fiv = "#8f3f71"
+theme.bar_clock  = "#3c3836"
 --- }}}
 
 -- {{{ Colors
-theme.fg_normal  = "#282828"
-theme.fg_focus   = "#fbf1c7"
+theme.fg_normal  = "#ebdbb2"
+theme.fg_focus   = "#dfc4a1"
 theme.fg_urgent  = "#fb4934"
 theme.bg_normal  = "#1d2021"
 theme.bg_focus   = "#3c3836"
-theme.bg_urgent  = "#504945"
+theme.bg_urgent  = "#a89984"
 -- }}}
 
 -- {{{ Borders
 beautiful.gap_single_client = false
 theme.useless_gap           = dpi(0)
-theme.border_width          = dpi(0.5)
+theme.border_width          = dpi(1)
 theme.border_normal         = "#504945"
 theme.border_focus          = "#cc241d"
 theme.border_marked         = "#cc241d"
@@ -45,9 +45,9 @@ theme.border_marked         = "#cc241d"
 theme.taglist_font          = "mononoki Nerd Font Mono 28"
 theme.taglist_bg            = "#3c3836"
 theme.taglist_fg_focus      = "#fb4934"
-theme.taglist_fg_occupied   = "#bdae93"
-theme.taglist_fg_urgent     = "#fb4934"
-theme.taglist_fg_empty      = "#928374"
+theme.taglist_fg_occupied   = "#8ec07c"
+theme.taglist_fg_urgent     = "#504945"
+theme.taglist_fg_empty      = "#a89984"
 theme.taglist_spacing       = 5
 -- }}}
 
