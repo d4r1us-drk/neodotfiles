@@ -429,7 +429,7 @@ cursor:
   style: Underline
 
 shell:
-  program: /bin/bash
+  program: /bin/fish
 
 key_bindings:
     # (Windows, Linux, and BSD only)
