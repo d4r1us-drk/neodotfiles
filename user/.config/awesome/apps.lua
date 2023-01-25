@@ -3,7 +3,6 @@ local apps = {
   terminal = "alacritty",
   editor = "emacsclient -c -a emacs",
   music = "alacritty -t musik --class musik,musik -e cmus",
-  tut = "alacritty -t tut --class tut,tut -e tut",
   youm = "alacritty --title youm --class youm,youm -e ytfzf -mlst",
   ytfzf = "alacritty --title ytfzf --class ytfzf,ytfzf -e ytfzf -flst",
   ani = "alacritty --title ani-cli --class ani-cli,ani-cli -e ani-cli -f",

@@ -703,8 +703,6 @@ awful.keyboard.append_global_keybindings(
                 awful.util.spawn(apps.ani)
               elseif key == "f" then
                 awful.util.spawn(apps.flix)
-              elseif key == "t" then
-                awful.util.spawn(apps.tut)
               end
               awful.keygrabber.stop(grabber)
             end

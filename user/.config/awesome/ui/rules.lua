@@ -162,6 +162,16 @@ ruled.client.connect_signal(
       rule_any = {
         class = {
           "retroarch",
+          "airshipper",
+          "pyrogenesis",
+          "DarkPlaces",
+          "xonotic-sdl",
+          "supertuxkart",
+          "supertux2",
+          "wesnoth",
+          "Minetest",
+          "openttd",
+          "warzone2100",
           "steam"
         }
       },
