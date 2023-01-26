@@ -83,7 +83,7 @@ ruled.client.connect_signal(
           "tut"
         }
       },
-      properties = { tag = "" }
+      properties = { tag = "爵" }
     }
 -- TAG 4
     ruled.client.append_rule {

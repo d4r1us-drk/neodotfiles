@@ -11,7 +11,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
       {
         "", -- EDITOR
         "",  -- FILE MANAGER
-        "", -- WEB BROWSER
+        "爵", -- WEB BROWSER
         "",  -- CHAT
         "ﱘ",  -- MUSIC
         "", -- VIDEO
