@@ -22,7 +22,7 @@ static const char * text_color = "#d4c4a1";
 static const char * font_name = "mtx";
 
 /* Background image path, should be available to the user above */
-static const char* background_image = ".config/suckless/slock/lockscreen.png";
+static const char* background_image = ".config/suckless/slock/lockscreen.jpg";
 
 /* PAM service that's used for authentication */
 static const char* pam_service = "system-local-login";

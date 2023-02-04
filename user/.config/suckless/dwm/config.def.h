@@ -31,11 +31,11 @@ const char *spcmd4[] = {"alacritty", "-t", "spani", "--class", "spani,spani", "-
 const char *spcmd5[] = {"alacritty", "-t", "spytf", "--class", "spytf,spytf", "-e", "ytfzf", "-flst", NULL };
 const char *spcmd6[] = {"alacritty", "-t", "spamx", "--class", "spamx,spamx", "-e", "alsamixer", NULL };
 const char *spcmd7[] = {"alacritty", "-t", "sppmx", "--class", "sppmx,sppmx", "-e", "pulsemixer", NULL };
-const char *spcmd8[] = {"alacritty", "-t", "spcht", "--class", "spcht,spcht", "-e", "gomuks", NULL };
-const char *spcmd9[] = {"alacritty", "-t", "spmsc", "--class", "spmsc,spmsc", "-e", "cmus", NULL };
-const char *spcmd10[] = {"alacritty", "-t", "spflm", "--class", "spflm,spflm", "-e", "./.config/vifm/scripts/vifmrun", NULL };
-const char *spcmd11[] = {"alacritty", "-t", "sptot", "--class", "sptot,sptot", "-e", "toot", "tui", NULL };
-const char *spcmd12[] = {"alacritty", "-t", "spytm", "--class", "spytm,spytm", "-e", "ytfzf", "-mlst", NULL };
+const char *spcmd8[] = {"alacritty", "-t", "spmsc", "--class", "spmsc,spmsc", "-e", "cmus", NULL };
+const char *spcmd9[] = {"alacritty", "-t", "spflm", "--class", "spflm,spflm", "-e", "./.config/vifm/scripts/vifmrun", NULL };
+const char *spcmd10[] = {"alacritty", "-t", "sptot", "--class", "sptot,sptot", "-e", "tut", NULL };
+const char *spcmd11[] = {"alacritty", "-t", "spytm", "--class", "spytm,spytm", "-e", "ytfzf", "-mlst", NULL };
+const char *spcmd12[] = {"alacritty", "-t", "sprss", "--class", "sprss,sprss", "-e", "newsboat", "-u", "~/.config/newsboat/urls", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"sptrm",      spcmd1},
@@ -45,11 +45,11 @@ static Sp scratchpads[] = {
 	{"spytf",      spcmd5},
 	{"spamx",      spcmd6},
 	{"sppmx",      spcmd7},
-	{"spcht",      spcmd8},
-	{"spmsc",      spcmd9},
-	{"spflm",      spcmd10},
-	{"sptot",      spcmd11},
-	{"spytm",      spcmd12},
+	{"spmsc",      spcmd8},
+	{"spflm",      spcmd9},
+	{"sptot",      spcmd10},
+	{"spytm",      spcmd11},
+	{"sprss",      spcmd12},
 };
 
 /* tagging */
@@ -82,7 +82,7 @@ static const Rule rules[] = {
 	// test tag
 	{ "Virt-manager",                     NULL,                 NULL,              1,       0,           -1 },
 	// web tag
-	{ "librewolf",                        NULL,                 NULL,         1 << 2,       0,           -1 },
+	{ "LibreWolf",                        NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "firefox",                          NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "qutebrowser",                      NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "Chromium",                         NULL,                 NULL,         1 << 2,       0,           -1 },
@@ -100,6 +100,7 @@ static const Rule rules[] = {
 	{ "Cadence",                          NULL,                 NULL,         1 << 4,       0,           -1 },
 	// video tag
 	{ "kdenlive",                         NULL,                 NULL,         1 << 5,       0,           -1 },
+	{ "Pitivi",                           NULL,                 NULL,         1 << 5,       0,           -1 },
 	{ "Blender",                          NULL,                 NULL,         1 << 5,       0,           -1 },
 	{ "Natron",                           NULL,                 NULL,         1 << 5,       0,           -1 },
 	{ "SimpleScreenRecorder",             NULL,                 NULL,         1 << 5,       0,           -1 },
@@ -126,11 +127,11 @@ static const Rule rules[] = {
 	{ NULL,                            "spytf",                 NULL,       SPTAG(4),       1,           -1 },
 	{ NULL,                            "spamx",                 NULL,       SPTAG(5),       1,           -1 },
 	{ NULL,                            "sppmx",                 NULL,       SPTAG(6),       1,           -1 },
-	{ NULL,                            "spcht",                 NULL,       SPTAG(7),       1,           -1 },
-	{ NULL,                            "spmsc",                 NULL,       SPTAG(8),       1,           -1 },
-	{ NULL,                            "spflm",                 NULL,       SPTAG(9),       1,           -1 },
-	{ NULL,                            "sptot",                 NULL,       SPTAG(10),       1,           -1 },
-	{ NULL,                            "spytm",                 NULL,       SPTAG(11),       1,           -1 },
+	{ NULL,                            "spmsc",                 NULL,       SPTAG(7),       1,           -1 },
+	{ NULL,                            "spflm",                 NULL,       SPTAG(8),       1,           -1 },
+	{ NULL,                            "sptot",                 NULL,       SPTAG(9),       1,           -1 },
+	{ NULL,                            "spytm",                 NULL,       SPTAG(10),       1,           -1 },
+	{ NULL,                            "sprss",                 NULL,       SPTAG(11),       1,           -1 },
 };
 
 // layout(s)
@@ -165,12 +166,14 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray
 // terminal
 static const char *termcmd[]  = { "alacritty", NULL };
 
+#include "movestack.c"
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	// text editor
 	{ MODKEY,                       XK_e,                      spawn,          SHCMD("emacsclient -c -a 'emacs'")},
 	// web browser
-	{ MODKEY,                       XK_w,                      spawn,          SHCMD("qutebrowser")},
+	{ MODKEY,                       XK_w,                      spawn,          SHCMD("librewolf")},
 	// set keyboard layout to es
 	{ MODKEY|ControlMask,           XK_e,                      spawn,          SHCMD("setxkbmap -layout es")},
 	// set keyboard layout to us
@@ -214,6 +217,9 @@ static const Key keys[] = {
 	// increase and decrease master client size
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	// move windows on stack
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	// switch master window
 	{ MODKEY|ControlMask,           XK_Return, zoom,           {0} },
 	// switch to latest tag
@@ -249,11 +255,11 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_y,      togglescratch,  {.ui = 4 } },
 	{ MODKEY|ShiftMask,             XK_o,      togglescratch,  {.ui = 5 } },
 	{ MODKEY|ShiftMask,             XK_p,      togglescratch,  {.ui = 6 } },
-	{ MODKEY|ShiftMask,             XK_c,      togglescratch,  {.ui = 7 } },
-	{ MODKEY|ShiftMask,             XK_m,      togglescratch,  {.ui = 8 } },
-	{ MODKEY|ShiftMask,             XK_v,      togglescratch,  {.ui = 9 } },
-	{ MODKEY|ShiftMask,             XK_t,      togglescratch,  {.ui = 10 } },
-	{ MODKEY|ShiftMask,             XK_n,      togglescratch,  {.ui = 11 } },
+	{ MODKEY|ShiftMask,             XK_m,      togglescratch,  {.ui = 7 } },
+	{ MODKEY|ShiftMask,             XK_v,      togglescratch,  {.ui = 8 } },
+	{ MODKEY|ShiftMask,             XK_t,      togglescratch,  {.ui = 9 } },
+	{ MODKEY|ShiftMask,             XK_n,      togglescratch,  {.ui = 10 } },
+	{ MODKEY|ShiftMask,             XK_r,      togglescratch,  {.ui = 11 } },
 	// tag bindings
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
