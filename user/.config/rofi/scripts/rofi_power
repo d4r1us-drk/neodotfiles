@@ -26,7 +26,7 @@ pwr4=" Cancel"
 pwrs="$pwr1\n$pwr2\n$pwr3\n$pwr4"
 
 ## MAIN ACTION COMMAND ##
-action=$(echo -e "$options" | rofi -dmenu -p "  Power Options ")
+action=$(echo -e "$options" | rofi -dmenu -i -p "  Power Options ")
 case "$action" in
     $option1*)
         pkill X;;
@@ -47,7 +47,7 @@ case "$action" in
         elif [ "$currentpwr" = "balanced" ]; then
             currentpwr=" Balanced"
         fi
-        pwraction=$(echo -e "$pwrs" | rofi -dmenu -p "  Power Profile Menu - Currently set to: ${currentpwr} ")
+        pwraction=$(echo -e "$pwrs" | rofi -dmenu -i -p "  Power Profile Menu - Currently set to: ${currentpwr} ")
         case "$pwraction" in
             $pwr1*)
                 powerprofilesctl set performance && notify-send "Power profile switched to performance";;

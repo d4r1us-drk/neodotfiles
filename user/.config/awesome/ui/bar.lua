@@ -9,13 +9,13 @@ screen.connect_signal("request::desktop_decoration", function(s)
 -- Tag names for each screen
     awful.tag(
       {
-        "", -- EDITOR
+        "",  -- EDITOR
         "",  -- FILE MANAGER
-        "󰖟", -- WEB BROWSER
+        "󰖟",  -- WEB BROWSER
         "󰻞",  -- CHAT
         "󰲹",  -- MUSIC
-        "", -- VIDEO
-        "󰲶",  -- IMAGE/EDIT TOOLS
+        "",  -- VIDEO
+        "󰧰",  -- IMAGE/EDIT TOOLS
         "󰧮",  -- OFFICE
         "󰸶"   -- GAMES
       },

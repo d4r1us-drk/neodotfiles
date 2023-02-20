@@ -7,6 +7,7 @@ require("awful.autofocus")
 altkey = "Mod1"
 modkey = "Mod4"
 conkey = "Control"
+shikey = "Shift"
 
 --[[ Main keybinds ]]--
 awful.keyboard.append_global_keybindings(
@@ -24,7 +25,7 @@ awful.keyboard.append_global_keybindings(
     ),
     -- Reload awesome
     awful.key(
-      { modkey, "Control" },
+      { modkey, conkey },
       "r",
       awesome.restart,
       { description =
@@ -102,7 +103,7 @@ awful.keyboard.append_global_keybindings(
     },
     -- Toggle tags by numbers 1-9
     awful.key {
-        modifiers   = { modkey, "Control" },
+        modifiers   = { modkey, conkey },
         keygroup    = "numrow",
         description = "Quickly view contents in another tag with number keys from {1 to 9}",
         group       = "Tag keybinds",
@@ -116,7 +117,7 @@ awful.keyboard.append_global_keybindings(
     },
     -- Move focused window to tag by numbers 1-9
     awful.key {
-        modifiers = { modkey, "Shift" },
+        modifiers = { modkey, shikey },
         keygroup    = "numrow",
         description = "Move focused window to another tag with number keys from {1 to 9}",
         group       = "Tag keybinds",
@@ -131,7 +132,7 @@ awful.keyboard.append_global_keybindings(
     },
     -- Toggle focused window on tag by numbers 1-9
     awful.key {
-        modifiers   = { modkey, "Control", "Shift" },
+        modifiers   = { modkey, conkey, shikey },
         keygroup    = "numrow",
         description = "View focused window on more than one tag with number keys from {1 to 9}",
         group       = "Tag keybinds",
@@ -195,7 +196,7 @@ awful.keyboard.append_global_keybindings(
     ),
     -- Focus next screen
     awful.key(
-      { modkey, "Control" },
+      { modkey, conkey },
       "j",
       function ()
         awful.screen.focus_relative(1)
@@ -208,7 +209,7 @@ awful.keyboard.append_global_keybindings(
     ),
     -- Focus previous screen
     awful.key(
-      { modkey, "Control" },
+      { modkey, conkey },
       "k",
       function ()
         awful.screen.focus_relative(-1)
@@ -228,7 +229,7 @@ awful.keyboard.append_global_keybindings(
   {
     -- Swap with next window by index
     awful.key(
-      { modkey, "Shift" },
+      { modkey, shikey },
       "j",
       function ()
         awful.client.swap.byidx(1)
@@ -241,7 +242,7 @@ awful.keyboard.append_global_keybindings(
     ),
     -- Swap with previous window by index
     awful.key(
-      { modkey, "Shift" },
+      { modkey, shikey },
       "k",
       function ()
         awful.client.swap.byidx(-1)
@@ -280,7 +281,7 @@ awful.keyboard.append_global_keybindings(
     ),
     -- Increase the number of master window
     awful.key(
-      { modkey, "Shift" },
+      { modkey, shikey },
       "h",
       function ()
         awful.tag.incnmaster(1, nil, true)
@@ -293,7 +294,7 @@ awful.keyboard.append_global_keybindings(
     ),
     -- Decrease the number of master windows
     awful.key(
-      { modkey, "Shift" },
+      { modkey, shikey },
       "l",
       function ()
         awful.tag.incnmaster(-1, nil, true)
@@ -306,7 +307,7 @@ awful.keyboard.append_global_keybindings(
     ),
     -- Increase the number of columns
     awful.key(
-      { modkey, "Control" },
+      { modkey, conkey },
       "h",
       function ()
         awful.tag.incncol(1, nil, true)
@@ -319,7 +320,7 @@ awful.keyboard.append_global_keybindings(
     ),
     -- Decrease the number of columns
     awful.key(
-      { modkey, "Control" },
+      { modkey, conkey },
       "l",
       function ()
         awful.tag.incncol(-1, nil, true)
@@ -345,7 +346,7 @@ awful.keyboard.append_global_keybindings(
     ),
     -- Switch to previous layout
     awful.key(
-      { modkey, "Shift" },
+      { modkey, shikey },
       "space",
       function ()
         awful.layout.inc(-1)
@@ -425,7 +426,7 @@ client.connect_signal(
           ),
           -- Toggle floating mode on focused window
           awful.key(
-            { modkey, "Control" },
+            { modkey, conkey },
             "space",
             awful.client.floating.toggle,
             { description =
@@ -436,7 +437,7 @@ client.connect_signal(
           ),
           -- Move focused window to master
           awful.key(
-            { modkey, "Control" },
+            { modkey, conkey },
             "Return",
             function (c)
               c:swap(
@@ -581,7 +582,7 @@ awful.keyboard.append_global_keybindings(
         group = "Quick keybinds"
       }
     ),
-    -- apps (Super + a followed by KEY)
+    -- Apps (Super + a followed by KEY)
     awful.key(
       { modkey },
       "a",
@@ -594,19 +595,19 @@ awful.keyboard.append_global_keybindings(
                 return
               end
               if     key == "1" then
-                awful.util.spawn(apps.editor)
+                awful.util.spawn(apps.editor)  -- TAG 1
               elseif key == "2" then
-                awful.util.spawn(apps.file)
+                awful.util.spawn(apps.file)    -- TAG 2
               elseif key == "3" then
-                awful.util.spawn(apps.browser)
+                awful.util.spawn(apps.browser) -- TAG 3
               elseif key == "4" then
-                awful.util.spawn(apps.chat)
+                awful.util.spawn(apps.chat)    -- TAG 4
               elseif key == "5" then
-                awful.util.spawn(apps.music)
+                awful.util.spawn(apps.music)   -- TAG 5
               elseif key == "8" then
-                awful.util.spawn(apps.office)
+                awful.util.spawn(apps.office)  -- TAG 8
               elseif key == "9" then
-                awful.util.spawn(apps.game)
+                awful.util.spawn(apps.game)    -- TAG 9
               end
               awful.keygrabber.stop(grabber)
             end
@@ -645,7 +646,7 @@ awful.keyboard.append_global_keybindings(
           "Quick keybinds"
       }
     ),
-    -- Dmenu scripts (Super + p followed by KEY)
+    -- Runners (Super + p followed by KEY)
     awful.key(
       { modkey },
       "p",
@@ -658,21 +659,19 @@ awful.keyboard.append_global_keybindings(
                 return
               end
               if key == "d" then
-                awful.spawn.with_shell("rofi -show drun -show-icons")
+                awful.util.spawn(apps.drunner)
               elseif key == "r" then
-                awful.spawn.with_shell("rofi -show run")
-              elseif key == "e" then
-                awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_edit")
+                awful.util.spawn(apps.runner)
               elseif key == "q" then
-                awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_power")
+                awful.spawn.with_shell(apps.runner_power)
               elseif key == "i" then
-                awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_wifi")
+                awful.spawn.with_shell(apps.runner_wifi)
               elseif key == "s" then
-                awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_scrot")
+                awful.spawn.with_shell(apps.runner_scrot)
               elseif key == "z" then
-                awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_emoji")
+                awful.spawn.with_shell(apps.runner_emoji)
               elseif key == "w" then
-                awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_wall")
+                awful.spawn.with_shell(apps.runner_wall)
               end
               awful.keygrabber.stop(grabber)
             end
@@ -683,7 +682,7 @@ awful.keyboard.append_global_keybindings(
         group =
           "Quick keybinds" }
     ),
-    -- Terminal scripts (Super + t followed by KEY)
+    -- Multimedia scripts (Super + t followed by KEY)
     awful.key(
       { modkey },
       "t",
@@ -695,14 +694,18 @@ awful.keyboard.append_global_keybindings(
               if event == "release" then
                 return
               end
-              if key == "m" then
-                awful.util.spawn(apps.youm)
-              elseif key == "y" then
+              if key == "y" then
                 awful.util.spawn(apps.ytfzf)
+              elseif key == "y" then
+                awful.util.spawn(apps.ytfzf_music)
               elseif key == "a" then
-                awful.util.spawn(apps.ani)
+                awful.util.spawn(apps.ani_cli)
               elseif key == "f" then
-                awful.util.spawn(apps.flix)
+                awful.util.spawn(apps.flix_cli)
+              elseif key == "t" then
+                awful.util.spawn(apps.tut)
+              elseif key == "n" then
+                awful.util.spawn(apps.newsboat)
               end
               awful.keygrabber.stop(grabber)
             end

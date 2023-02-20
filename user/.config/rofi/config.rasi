@@ -1,6 +1,6 @@
 configuration{
     modi: "run,drun,window";
-    lines: 5;
+    lines: 10;
     font: "mononoki Nerd Font 14";
     show-icons: true;
     terminal: "alacritty";
@@ -10,8 +10,8 @@ configuration{
     hide-scrollbar: true;
     display-drun: "  Apps ";
     display-run: "  Run ";
-    display-window: " 﩯 Window";
-    display-Network: " 󰤨 Network";
+    display-window: " 﩯 Window ";
+    display-Network: " 󰤨  Network ";
     sidebar-mode: true;
     dpi: 100;
 }
@@ -24,8 +24,8 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 380px;
-    width: 850;
+    height: 380;
+    width: 1000;
     border: 3px;
     border-color: @border-col;
     background-color: @bg-col;
@@ -64,9 +64,9 @@ entry {
 
 listview {
     border: 0px 0px 0px;
-    padding: 6px 0px 0px;
-    margin: 10px 0px 0px 20px;
-    columns: 2;
+    padding: 2px 2px 2px;
+    margin: 10px 20px 0px 20px;
+    columns: 1;
     background-color: @bg-col;
 }
 
@@ -77,7 +77,7 @@ element {
 }
 
 element-icon {
-    size: 25px;
+    size: 28px;
 }
 
 element selected {

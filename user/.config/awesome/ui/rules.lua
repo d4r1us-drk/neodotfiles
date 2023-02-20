@@ -52,6 +52,7 @@ ruled.client.connect_signal(
       rule_any = {
         class = {
                "Emacs",
+               "neovide",
                "lvim",
                "Godot",
                "neovim",
@@ -82,7 +83,8 @@ ruled.client.connect_signal(
           "Chromium",
           "Bitwarden",
           "qutebrowser",
-          "tut"
+          "tut",
+          "newsboat"
         }
       },
       properties = { tag = "󰖟" }
@@ -104,8 +106,7 @@ ruled.client.connect_signal(
       rule_any = {
         class = {
           "cmus",
-          "musik",
-          "youm",
+          "ytfzf_music",
           "Audacity",
           "Ardour",
           "Carla2",
@@ -145,7 +146,7 @@ ruled.client.connect_signal(
           "Xournalpp",
         }
       },
-      properties = { tag = "󰲶" }
+      properties = { tag = "󰧰" }
     }
 -- TAG 8
     ruled.client.append_rule {
