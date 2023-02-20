@@ -3,9 +3,9 @@ constate=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f3 | head -
 currentwfi=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f4 | head -1)
 
 if [ "$constate" = "disconnected" ]; then
-    echo "睊  "
+    echo "󰤮  "
 elif [ "$constate" = "connected" ]; then
-    echo "直 $currentwfi"
+    echo "󰤥 $currentwfi"
 else
-    echo "睊  "
+    echo "󰤮  "
 fi

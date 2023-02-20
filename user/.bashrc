@@ -17,7 +17,7 @@ export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
 [[ $- != *i* ]] && return
 
 # use neovim for vim if present.
-[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+[ -x "$(command -v lvim)" ] && alias vim="lvim" vimdiff="lvim -d"
 
 # use $XINITRC variable if file exists.
 [ -f "$XINITRC" ] && alias startx="startx $XINITRC"
@@ -130,11 +130,11 @@ alias \
 
 # Changing "ls" to "exa"
 alias \
-  ls="exa -al --color=always --group-directories-first" \
-  la="exa -a --color=always --group-directories-first" \
-  ll="exa -l --color=always --group-directories-first" \
-  lt="exa -aT --color=always --group-directories-first" \
-  l.='exa -a | egrep "^\."'
+  ls="exa -al --icons --color=always --group-directories-first" \
+  la="exa -a --icons --color=always --group-directories-first" \
+  ll="exa -l --icons --color=always --group-directories-first" \
+  lt="exa -aT --icons --color=always --group-directories-first" \
+  l.='exa -a | grep -E "^\."'
 
 # function to detect os and assign aliases to package managers
 alias \

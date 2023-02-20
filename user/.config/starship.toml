@@ -16,18 +16,18 @@ success_symbol = "[](bold green)"
 
 [directory]
 truncation_length = 5
-home_symbol = "🏠"
-format = "[$path](bold cyan) "
+home_symbol = " "
+format = "[$path](bold italic yellow) "
 
 [hostname]
 ssh_only = false
 disabled = false
-style = "bold italic #87A752"
+style = "italic #87A752"
 
 [package]
 disabled = true
 
 [username]
 show_always = true
-style_user = "bold blue"
+style_user = "bold red"
 format =  "[$user]($style)[ in ](white)"

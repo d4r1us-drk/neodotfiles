@@ -1,3 +1,3 @@
 #!/bin/bash
 layout=$(setxkbmap -query | grep -oP 'layout:\s*\K\w+');
-echo " $layout" | tr '[:lower:]' '[:upper:]';
+echo "󰥻 $layout" | tr '[:lower:]' '[:upper:]';

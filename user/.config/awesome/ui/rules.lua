@@ -52,12 +52,13 @@ ruled.client.connect_signal(
       rule_any = {
         class = {
                "Emacs",
+               "lvim",
                "Godot",
                "neovim",
                "Virt-manager"
                }
       },
-      properties = { tag = "" },
+      properties = { tag = "" },
     }
 -- TAG 2
     ruled.client.append_rule {
@@ -68,7 +69,7 @@ ruled.client.connect_signal(
           "nemo"
         }
       },
-      properties = { tag = "" },
+      properties = { tag = "" },
     }
 -- TAG 3
     ruled.client.append_rule {
@@ -77,13 +78,14 @@ ruled.client.connect_signal(
           "Brave-browser",
           "librewolf",
           "firefox",
+          "Luakit",
           "Chromium",
           "Bitwarden",
           "qutebrowser",
           "tut"
         }
       },
-      properties = { tag = "爵" }
+      properties = { tag = "󰖟" }
     }
 -- TAG 4
     ruled.client.append_rule {
@@ -95,7 +97,7 @@ ruled.client.connect_signal(
           "Element"
         }
       },
-      properties = { tag = "" }
+      properties = { tag = "󰻞" }
     }
 -- TAG 5
     ruled.client.append_rule {
@@ -110,7 +112,7 @@ ruled.client.connect_signal(
           "Carla2-Control"
         }
       },
-      properties = { tag = "ﱘ" }
+      properties = { tag = "󰲹" }
     }
 -- TAG 6
     ruled.client.append_rule {
@@ -128,7 +130,7 @@ ruled.client.connect_signal(
           "ytfzf"
         }
       },
-      properties = { tag = "" }
+      properties = { tag = "" }
     }
 -- TAG 7
     ruled.client.append_rule {
@@ -143,7 +145,7 @@ ruled.client.connect_signal(
           "Xournalpp",
         }
       },
-      properties = { tag = "פֿ" }
+      properties = { tag = "󰲶" }
     }
 -- TAG 8
     ruled.client.append_rule {
@@ -155,7 +157,7 @@ ruled.client.connect_signal(
           "Joplin"
         }
       },
-      properties = { tag = "" }
+      properties = { tag = "󰧮" }
     }
 -- TAG 9
     ruled.client.append_rule {
@@ -175,7 +177,7 @@ ruled.client.connect_signal(
           "steam"
         }
       },
-      properties = { tag = "" }
+      properties = { tag = "󰸶" }
     }
 --}}}
   end

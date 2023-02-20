@@ -9,13 +9,13 @@
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive and fish becomes very slow.
 set -e fish_user_paths
-set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.emacs.d/bin $HOME/Applications /var/lib/flatpak/exports/bin/ $fish_user_paths
+set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.config/emacs/bin $HOME/Applications /var/lib/flatpak/exports/bin/ $fish_user_paths
 
 ### EXPORT ###
-set fish_greeting                                 # Supresses fish's intro message
-set TERM "xterm-256color"                         # Sets the terminal type
-set EDITOR "emacsclient -t -a ''"                 # $EDITOR use Emacs in terminal
-set VISUAL "emacsclient -c -a emacs"              # $VISUAL use Emacs in GUI mode
+set fish_greeting                                                # Supresses fish's intro message
+set TERM "xterm-256color"                                        # Sets the terminal type
+set EDITOR "lvim"                                                # $EDITOR use lvim in terminal
+set VISUAL "neovide --neovim-bin ./.local/bin/lvim"              # $VISUAL use neovide for lvim in GUI mode
 
 ### SET BAT AS MANPAGER
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -126,10 +126,8 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # vim and emacs
-alias vim='nvim'
-alias vimdiff='nvim -d'
-alias em='/usr/bin/emacs -nw'
-alias emacs="emacsclient -c -a 'emacs'"
+alias vim='lvim'
+alias vimdiff='lvim -d'
 
 # newsboat
 alias newsboat='newsboat -u ~/.config/newsboat/urls'
@@ -151,6 +149,9 @@ alias pac-rmv='paru -Rcns'                                                    # 
 alias pac-rmv-sec='paru -R'                                                   # remove a program (secure way)
 alias pac-qry='paru -Ss'                                                      # search for a program
 alias pac-cln='paru -Scc && paru -Rns (pacman -Qtdq)'                         # clean cache & remove orphaned packages
+
+# neofetch is f***** slow
+alias neofetch="pfetch"
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
