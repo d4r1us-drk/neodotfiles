@@ -3,6 +3,7 @@ configuration{
     lines: 10;
     font: "mononoki Nerd Font 14";
     show-icons: true;
+    icon-theme: "gruvbox-dark-icons-gtk";
     terminal: "alacritty";
     drun-display-format: "{icon} {name}";
     location: 0;

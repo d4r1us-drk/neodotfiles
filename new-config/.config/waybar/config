@@ -2,7 +2,7 @@
     "position": "top",
     "height": 28,
     //"width": 1280,
-    "spacing": 10,
+    "spacing": 0,
 
     // Choose the order of the modules
     "modules-left": ["wlr/workspaces"],
