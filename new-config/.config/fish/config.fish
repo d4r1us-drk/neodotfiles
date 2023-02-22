@@ -14,8 +14,8 @@ set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.config/emacs/bin $HOM
 ### EXPORT ###
 set fish_greeting                                                # Supresses fish's intro message
 set TERM "xterm-256color"                                        # Sets the terminal type
-set EDITOR "lvim"                                                # $EDITOR use lvim in terminal
-set VISUAL "neovide --neovim-bin ./.local/bin/lvim"              # $VISUAL use neovide for lvim in GUI mode
+set EDITOR "./.local/bin/lvim"                                   # $EDITOR use lvim in terminal
+set VISUAL "wezterm start --class editor ./.local/bin/lvim"      # $VISUAL open wezterm with lvim
 
 ### SET BAT AS MANPAGER
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"

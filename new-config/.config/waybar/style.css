@@ -1,10 +1,14 @@
 * {
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    margin-right: 2.5px;
+    margin-left: 2.5px;
     font-family: mononoki Nerd Font, mononoki Nerd Font Mono;
     font-size: 18px;
 }
 
 window#waybar {
-    background-color: rgba(29, 32, 33, 0.90);
+    background-color: rgba(29, 32, 33, 0.9);
     color: #ebdbb2;
     transition-property: background-color;
     transition-duration: .5s;
@@ -44,12 +48,12 @@ button:hover {
 }
 
 #workspaces button.active {
-    background-color: rgba(204, 36, 29, 0.5);
+    background-color: rgba(204, 36, 29, 0.3);
     color: #ebdbb2;
 }
 
 #workspaces button:hover {
-    background: rgba(29, 32, 33, 1);
+    background: #9d0006;
 }
 
 #workspaces button.focused {
@@ -71,6 +75,7 @@ button:hover {
 #backlight,
 #network,
 #pulseaudio,
+#language,
 #mode,
 #idle_inhibitor {
     padding: 0 10px;
@@ -93,18 +98,21 @@ button:hover {
 }
 
 #clock {
-    background-color: #8f3f71;
-    color: #ebdbb2
+    background-color: #3c3836;
+    color: #ebdbb2;
+    border-radius: 15px;
 }
 
 #battery {
     background-color: #79740e;
     color: #ebdbb2;
+    border-radius: 6px;
 }
 
 #battery.charging, #battery.plugged {
     color: #ebdbb2;
     background-color: #689d6a;
+    border-radius: 6px;
 }
 
 @keyframes blink {
@@ -122,6 +130,7 @@ button:hover {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    border-radius: 6px;
 }
 
 label:focus {
@@ -130,40 +139,47 @@ label:focus {
 
 #backlight {
     background-color: #b57614;
+    color: #ebdbb2;
+    border-radius: 6px;
 }
 
 #network {
     background-color: #9d0006;
-    color: #ebdbb2
+    color: #ebdbb2;
+    border-radius: 6px;
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    background-color: #cc241d;
+    border-radius: 6px;
 }
 
 #pulseaudio {
     background-color: #458588;
     color: #ebdbb2;
+    border-radius: 6px;
 }
 
 #pulseaudio.muted {
     background-color: #90b1b1;
     color: #2a5c45;
+    border-radius: 6px;
 }
 
 #idle_inhibitor {
     background-color: #d65d0e;
+    color: #ebdbb2;
+    border-radius: 6px;
 }
 
 #idle_inhibitor.activated {
     background-color: #fe8019;
-    color: #2d3436;
+    color: #3c3836;
+    border-radius: 6px;
 }
 
 #language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
+    background-color: #8f3f71;
+    color: #ebdbb2;
+    border-radius: 6px;
 }

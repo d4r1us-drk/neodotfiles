@@ -1,76 +1,87 @@
 {
-    "position": "top",
-    "height": 28,
-    //"width": 1280,
-    "spacing": 0,
+  "position": "top",
+  "height": 26,
+  "spacing": 3,
 
-    // Choose the order of the modules
-    "modules-left": ["wlr/workspaces"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "backlight", "battery", "network", "clock"],
+  // Choose the order of the modules
+  "modules-left": ["wlr/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["idle_inhibitor", "hyprland/language", "pulseaudio", "backlight", "battery", "network"],
 
-    "wlr/workspaces": {
-        "on-click": "activate",
-        "sort-by-number": true,
-        "on-scroll-up": "hyprctl dispatch workspace e+1",
-        "on-scroll-down": "hyprctl dispatch workspace e-1"
-    },
+  "wlr/workspaces": {
+      "on-click": "activate",
+      "sort-by-number": true,
+      "on-scroll-up": "hyprctl dispatch workspace e+1",
+      "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
 
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
+  "hyprland/language": {
+    "format": "{}  ",
+    "format-en": "US",
+    "format-es": "ES",
+    "keyboard-name": "at-translated-set-2-keyboard",
+    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "⏽",
+      "deactivated": "󰤄"
+    }
+  },
+
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "󰥔 {:%H:%M}",
+    "format-alt": " {:%Y-%m-%d}"
+  },
+
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": ["󱠃", "󱠃", "󱠃", "󱠃", "󱠃", "󱠂", "󱠂", "󱠂", "󱠂"]
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
     },
-    "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% 󱐋",
+    "format-plugged": "{capacity}% 󰚥",
+    "format-alt": "{time} {icon}",
+    "format-critical": "{capacity}% {icon}",
+    "format-warning": "{capacity}% {icon}",
+    "format-icons": [" ", " ", " ", " ", " "]
+  },
+
+  "pulseaudio": {
+    "scroll-step": 1, // %, can be a float
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": "󰖁 {icon} {format_source}",
+    "format-muted": "󰖁 {format_source}",
+    "format-source": "{volume}% 󰍬",
+    "format-source-muted": "󰍭",
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "󱡏",
+      "headset": "󰋎",
+      "phone": "󰏲",
+      "portable": "󰏲",
+      "car": "󰄋",
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["󰃞 ", "󰃞 ", "󰃞 ", "󰃟 ", "󰃟 ", "󰃟 ", "󰃠 ", "󰃠 ", "󰃠 "]
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󱐋",
-        "format-plugged": "{capacity}% 󰚥",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "]
-    },
-    "pulseaudio": {
-        "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "󰖁 {icon} {format_source}",
-        "format-muted": "󰖁 {format_source}",
-        "format-source": "{volume}% 󰍬",
-        "format-source-muted": "󰍭",
-        "format-icons": {
-            "headphone": "󰋋",
-            "hands-free": "󱡏",
-            "headset": "󰋎",
-            "phone": "󰏲",
-            "portable": "󰏲",
-            "car": "󰄋",
-            "default": ["󰕿", "󰖀", "󰕾"]
-        },
-        "on-click": "wezterm start -- pulsemixer"
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) 󱚻 ",
-        "format-ethernet": "{ipaddr}/{cidr} 󰈀 ",
-        "format-disconnected": "Disconnected 󱛅 ",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
+    "on-click": "wezterm start -- pulsemixer"
+  },
+
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "{essid} ({signalStrength}%) 󱚻 ",
+    "format-ethernet": "{ipaddr}/{cidr} 󰈀 ",
+    "format-disconnected": "Disconnected 󱛅 ",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
 }
 

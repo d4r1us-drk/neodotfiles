@@ -8,6 +8,12 @@ export HYPRLAND_LOG_WLR=1
 # Tell XWayland to use a cursor theme
 export XCURSOR_THEME=Simp1e-Gruvbox-Dark
 
+# GTK shit
+gsettings set org.gnome.desktop.interface gtk-theme 'gruvbox-dark-gtk'
+gsettings set org.gnome.desktop.interface icon-theme 'gruvbox-dark-icons-gtk'
+gsettings set org.gnome.desktop.interface cursor-theme 'Simp1e-Gruvbox-Dark'
+gsettings set org.gnome.desktop.interface font-name 'mononoki Nerd Font'
+
 # Set a cursor size
 export XCURSOR_SIZE=16
 
@@ -17,5 +23,18 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
+export MOZ_ENABLE_WAYLAND=1
+export GDK_BACKEND=wayland
+export WM=Hyprland
+export SDL_VIDEODRIVER=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export XKB_DEFAULT_LAYOUT="us"
+export EDITOR="$HOME/.local/bin/lvim"
+export VISUAL="wezterm start --class editor -- $HOME/.local/bin/lvim"
+export BROWSER="firefox"
+export VIEWER="zathura"
 
 exec Hyprland
