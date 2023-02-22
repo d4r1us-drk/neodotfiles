@@ -4,8 +4,8 @@
 #  - Description: A simple wifi rofi script
 #  - Dependencies: rofi, NetworkManager
 
-## WOFI VARIABLES ##
-WOFI="wofi --dmenu -p"
+## ROFI VARIABLES ##
+ROFI="rofi -dmenu -i -p"
 
 ## MAIN OPTIONS ##
 option1="  Turn on WiFi"
@@ -43,12 +43,12 @@ disconnect() {
 connect() {
   notify-send "Scannig networks, please wait"
   sleep 1
-  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | $WOFI "Select Wifi  :" | cut -d' ' -f1)
+  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | $ROFI " Select a Wifi Network   " | cut -d' ' -f1)
   }
 
 ## SELECT PASSWORD FUNCTION ##
 password() {
-  pass=$(echo " " | $WOFI --password "Enter Password  :")
+  pass=$(echo " " | $ROFI " Enter Password   " --password)
   }
 
 ## MAIN CONNECTION COMMAND ##
@@ -69,7 +69,7 @@ check() {
 }
 
 ## MAIN ACTION COMMANDS ##
-cases=$(echo -e "$options" | $WOFI "  Wifi Settings" )
+cases=$(echo -e "$options" | $ROFI "   Wifi Settings " )
 case "$cases" in
   $option1*)
     turnon;;

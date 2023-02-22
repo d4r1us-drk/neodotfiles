@@ -19,6 +19,7 @@ crtf() {
 }
 
 cstf() {
+  countdown
   dt=$(date '+%d-%m-%Y %H:%M:%S')
   grim "$screenshot_directory/$dt.png"
   notify-send "Screenshot" "Screenshot saved to $screenshot_directory"
@@ -39,10 +40,10 @@ rvstf() {
 }
 
 get_options() {
-  echo "  Capture Region"
-  echo "  Capture Screen"
-  echo "  Record Region"
-  echo "  Record Screen"
+  echo "  Capture Region"
+  echo "  Capture Screen"
+  echo "󰕩  Record Region"
+  echo "󰕧  Record Screen"
 }
 
 check_deps() {
@@ -56,13 +57,13 @@ main() {
   # check dependencies
   check_deps slurp
   check_deps grim
-  check_deps wofi
+  check_deps rofi
   check_deps wf-recorder
 
   if [[ $1 == '--help' ]] || [[ $1 = '-h' ]]
   then
-    echo ### wofi-screenshot
-    echo USAGE: wofi-screenshot [OPTION]
+    echo ### rofi-screenshot
+    echo USAGE: rofi-screenshot [OPTION]
     echo \(no option\)
     echo "    show the screenshot menu"
     echo -s, --stop
@@ -79,7 +80,7 @@ main() {
   fi
 
   # Get choice from rofi
-  choice=$( (get_options) | wofi --dmenu -p "Screenshot" )
+  choice=$( (get_options) | rofi -dmenu -p " 󰄀 Screenshot " )
 
   # If user has not picked anything, exit
   if [[ -z "${choice// }" ]]; then
@@ -88,16 +89,16 @@ main() {
 
   # run the selected command
   case $choice in
-    '  Capture Region')
+    '  Capture Region')
       crtf
       ;;
-    '  Capture Screen')
+    '  Capture Screen')
       cstf
       ;;
-    '  Record Region')
+    '󰕩  Record Region')
       rvrtf
       ;;
-    '  Record Screen')
+    '󰕧  Record Screen')
       rvstf
       ;;
   esac

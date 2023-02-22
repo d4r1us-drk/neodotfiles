@@ -1,6 +1,6 @@
 * {
     font-family: mononoki Nerd Font, mononoki Nerd Font Mono;
-    font-size: 13px;
+    font-size: 18px;
 }
 
 window#waybar {
@@ -133,7 +133,8 @@ label:focus {
 }
 
 #network {
-    background-color: #076678;
+    background-color: #9d0006;
+    color: #ebdbb2
 }
 
 #network.disconnected {

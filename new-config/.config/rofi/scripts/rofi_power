@@ -26,7 +26,7 @@ pwr4=" Cancel"
 pwrs="$pwr1\n$pwr2\n$pwr3\n$pwr4"
 
 ## MAIN ACTION COMMAND ##
-action=$(echo -e "$options" | wofi --dmenu -p "   Power Options ")
+action=$(echo -e "$options" | rofi -dmenu -p "   Power Options ")
 case "$action" in
     $option1*)
         pkill Hyprland;;
@@ -35,9 +35,11 @@ case "$action" in
     $option3*)
         systemctl poweroff || loginctl poweroff;;
     $option4*)
-        betterlockscreen --suspend;;
+        swaylock &
+        sleep 0.1
+        systemctl suspend;;
     $option5*)
-        betterlockscreen -l;;
+        swaylock;;
     $option6*)
         currentpwr=$(powerprofilesctl get)
         if [ "$currentpwr" = "performance" ]; then
@@ -47,7 +49,7 @@ case "$action" in
         elif [ "$currentpwr" = "balanced" ]; then
             currentpwr=" Balanced"
         fi
-        pwraction=$(echo -e "$pwrs" | wofi --dmenu -p "   Power Profile Menu - Currently set to: ${currentpwr} ")
+        pwraction=$(echo -e "$pwrs" | rofi -dmenu -p "   Power Profile Menu - Currently set to: ${currentpwr} ")
         case "$pwraction" in
             $pwr1*)
                 powerprofilesctl set performance && notify-send "Power profile switched to performance";;

@@ -1,12 +1,12 @@
 {
     "position": "top",
-    "height": 22,
+    "height": 28,
     //"width": 1280,
     "spacing": 10,
 
     // Choose the order of the modules
     "modules-left": ["wlr/workspaces"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "backlight", "battery", "clock"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "backlight", "battery", "network", "clock"],
 
     "wlr/workspaces": {
         "on-click": "activate",
@@ -63,7 +63,14 @@
             "car": "󰄋",
             "default": ["󰕿", "󰖀", "󰕾"]
         },
-        "on-click": "qpwgraph"
+        "on-click": "wezterm start -- pulsemixer"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) 󱚻 ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀 ",
+        "format-disconnected": "Disconnected 󱛅 ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
 }
 

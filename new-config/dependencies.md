@@ -1,5 +1,5 @@
 # Dependencies
-- wofi
+- rofi-lboon-wayland-git
 - nwg-look
 - waybar
 - hyprpaper

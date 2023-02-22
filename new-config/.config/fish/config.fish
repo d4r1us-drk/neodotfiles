@@ -148,7 +148,7 @@ alias pac-get='yay -S'                                                       # i
 alias pac-rmv='yay -Rcns'                                                    # remove a program
 alias pac-rmv-sec='yay -R'                                                   # remove a program (secure way)
 alias pac-qry='yay -Ss'                                                      # search for a program
-alias pac-cln='yay -Scc && paru -Rns (pacman -Qtdq)'                         # clean cache & remove orphaned packages
+alias pac-cln='yay -Scc && yay -Rns (pacman -Qtdq)'                         # clean cache & remove orphaned packages
 
 # neofetch is f***** slow
 alias neofetch="pfetch"
