@@ -1,0 +1,34 @@
+# Dependencies
+- wofi
+- nwg-look
+- waybar
+- hyprpaper
+- dunst
+- xdg-desktop-portal & xdg-desktop-portal-wlr
+- polkit-gnome
+- qt5-wayland & qt6-wayland
+- swaylock
+- slurp
+- grim
+- wl-clipboard
+- wf-recorder
+- wezterm
+- hyprland
+- cmus
+- flix-cli
+- tut
+- ani-cli
+- ytfzf
+- mpv
+- newsboat
+- pulsemixer
+- alsamixer
+- vifm
+- lunarvim
+- power-profiles-daemon
+- gruvbox-dark-gtk
+- gruvbox-dark-icons-gtk
+- simp1e-cursors-gruvbox-dark
+- pipewire, pipewire-v4l2, pipewire-alsa pipewire-pulse, pipewire-jack, pipewire-audio & wireplumber
+- imv
+- wdisplays
