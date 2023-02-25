@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Screenshot directory
 screenshot_directory="$HOME/Pictures/Screenshots"
+mkdir -p $screenshot_directory
 
 countdown() {
   notify-send "Screenshot" "Executing in 3 seconds" -t 1000
