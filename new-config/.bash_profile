@@ -9,8 +9,7 @@
 ### STARTING XSESSION
 if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]
 then
-  #startx -- vt1 -keeptty &>/dev/null
-  sh "./.local/bin/hyprland_session"
+  sh $HOME/.winitrc
   logout
 fi
 
@@ -21,4 +20,4 @@ export XDG_CACHE_HOME="${XDG_CACHE_HOME:="$HOME/.cache"}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:="$HOME/.config"}"
 
 ### BASHRC
-source "$HOME"/.bashrc                            # Load the bashrc
+source "$HOME"/.bashrc                                           # Load the bashrc

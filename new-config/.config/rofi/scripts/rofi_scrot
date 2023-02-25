@@ -3,12 +3,12 @@
 screenshot_directory="$HOME/Pictures/Screenshots"
 
 countdown() {
-  notify-send "Screenshot" "Recording in 3 seconds" -t 1000
+  notify-send "Screenshot" "Executing in 3 seconds" -t 1000
   sleep 1
-  notify-send "Screenshot" "Recording in 2 seconds" -t 1000
+  notify-send "Screenshot" "Executing in 2 seconds" -t 1000
   sleep 1
-  notify-send "Screenshot" "Recording in 1 seconds" -t 1000
-  sleep 1
+  notify-send "Screenshot" "Executing in 1 seconds" -t 1000
+  sleep 2
 }
 
 crtf() {

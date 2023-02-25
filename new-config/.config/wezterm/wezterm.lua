@@ -29,5 +29,5 @@ return {
   exit_behavior = "Close",
   window_close_confirmation = 'NeverPrompt',
   tab_bar_at_bottom = false,
-  window_background_opacity = 0.8,
+  window_background_opacity = 0.9,
 }

@@ -4,7 +4,7 @@
     margin-right: 2.5px;
     margin-left: 2.5px;
     font-family: mononoki Nerd Font, mononoki Nerd Font Mono;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 window#waybar {
@@ -45,24 +45,30 @@ button:hover {
     padding: 0 5px;
     background-color: transparent;
     color: #ebdbb2;
+    border-radius: 5px;
 }
 
 #workspaces button.active {
-    background-color: rgba(204, 36, 29, 0.3);
-    color: #ebdbb2;
+    background-color: rgba(102, 92, 84, 0.5);
+    color: #8ec07c;
+    border-radius: 5px;
 }
 
 #workspaces button:hover {
-    background: #9d0006;
+    background: #7c6f64;
+    color: #8ec07c;
+    border-radius: 5px;
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
+    background-color: #7c6f64;
     box-shadow: inset 0 -3px #ebdbb2;
+    border-radius: 5px;
 }
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
+    border-radius: 5px;
 }
 
 #mode {
@@ -71,6 +77,7 @@ button:hover {
 }
 
 #clock,
+#custom-powerprofiles,
 #battery,
 #backlight,
 #network,
@@ -98,7 +105,7 @@ button:hover {
 }
 
 #clock {
-    background-color: #3c3836;
+    background-color: #504945;
     color: #ebdbb2;
     border-radius: 15px;
 }
@@ -110,8 +117,8 @@ button:hover {
 }
 
 #battery.charging, #battery.plugged {
+    background-color: #98971a;
     color: #ebdbb2;
-    background-color: #689d6a;
     border-radius: 6px;
 }
 
@@ -150,36 +157,43 @@ label:focus {
 }
 
 #network.disconnected {
-    background-color: #cc241d;
+    background-color: #9d0006;
+    color: #ebdbb2;
     border-radius: 6px;
 }
 
 #pulseaudio {
-    background-color: #458588;
+    background-color: #076678;
     color: #ebdbb2;
     border-radius: 6px;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    background-color: #076678;
+    color: #ebdbb2;
     border-radius: 6px;
 }
 
 #idle_inhibitor {
-    background-color: #d65d0e;
+    background-color: #af3a03;
     color: #ebdbb2;
     border-radius: 6px;
 }
 
 #idle_inhibitor.activated {
-    background-color: #fe8019;
-    color: #3c3836;
+    background-color: #d55d09;
+    color: #ebdbb2;
     border-radius: 6px;
 }
 
 #language {
     background-color: #8f3f71;
+    color: #ebdbb2;
+    border-radius: 6px;
+}
+
+#custom-powerprofiles {
+    background-color: #427b58;
     color: #ebdbb2;
     border-radius: 6px;
 }

@@ -1,12 +1,12 @@
 {
   "position": "top",
-  "height": 26,
+  "height": 22,
   "spacing": 3,
 
   // Choose the order of the modules
   "modules-left": ["wlr/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["idle_inhibitor", "hyprland/language", "pulseaudio", "backlight", "battery", "network"],
+  "modules-right": ["idle_inhibitor", "hyprland/language", "pulseaudio", "backlight", "battery", "custom/powerprofiles", "network"],
 
   "wlr/workspaces": {
       "on-click": "activate",
@@ -51,9 +51,15 @@
     "format-charging": "{capacity}% 󱐋",
     "format-plugged": "{capacity}% 󰚥",
     "format-alt": "{time} {icon}",
-    "format-critical": "{capacity}% {icon}",
-    "format-warning": "{capacity}% {icon}",
+    "format-critical": "{capacity}% {icon} ",
+    "format-warning": "{capacity}% {icon} ",
     "format-icons": [" ", " ", " ", " ", " "]
+  },
+
+  "custom/powerprofiles": {
+    "exec": "bash $HOME/.config/waybar/power-profiles",
+    "restart-interval": 5,
+    "format": "{}",
   },
 
   "pulseaudio": {
@@ -78,7 +84,7 @@
 
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{essid} ({signalStrength}%) 󱚻 ",
+    "format-wifi": "{essid} 󱚻 ",
     "format-ethernet": "{ipaddr}/{cidr} 󰈀 ",
     "format-disconnected": "Disconnected 󱛅 ",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"

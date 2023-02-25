@@ -3,6 +3,10 @@
 # ***This script was made by Clay Gomera (Drake)***
 #  - Description: A simple power menu rofi script
 #  - Dependencies: rofi, power-profiles-daemon
+#
+
+## CURRENT WALLPAPER FOR LOCKSCREEN ##
+currwall=$(tail --l 1 "$HOME/.wbg" | awk '{print $5}')
 
 ## OPTIONS ##
 option1="  Logout"
@@ -35,11 +39,11 @@ case "$action" in
     $option3*)
         systemctl poweroff || loginctl poweroff;;
     $option4*)
-        swaylock &
+        swaylock -i "$currwall" &
         sleep 0.1
         systemctl suspend;;
     $option5*)
-        swaylock;;
+        swaylock -i "$currwall";;
     $option6*)
         currentpwr=$(powerprofilesctl get)
         if [ "$currentpwr" = "performance" ]; then
