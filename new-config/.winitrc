@@ -27,13 +27,13 @@ export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_TYPE=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 export MOZ_ENABLE_WAYLAND=1
-export GDK_BACKEND=wayland
+#export GDK_BACKEND=wayland
 export WM=Hyprland
 export SDL_VIDEODRIVER=wayland
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export XKB_DEFAULT_LAYOUT="us"
-export EDITOR="$HOME/.local/bin/lvim"
-export VISUAL="wezterm start --class editor -- $HOME/.local/bin/lvim"
+export EDITOR="emacsclient -t -a ''"              # $EDITOR use Emacs in terminal
+export VISUAL="emacsclient -c -a emacs"           # $VISUAL use Emacs in GUI mode
 export BROWSER="firefox"
 export VIEWER="zathura"
 

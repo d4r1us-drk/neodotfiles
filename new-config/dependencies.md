@@ -1,8 +1,9 @@
 # Dependencies
+- mononoki Nerd Font
 - rofi-lboon-wayland-git
 - nwg-look
 - waybar
-- hyprpaper
+- swaybg
 - dunst
 - xdg-desktop-portal & xdg-desktop-portal-wlr
 - polkit-gnome
@@ -14,6 +15,7 @@
 - wf-recorder
 - wezterm
 - hyprland
+- hyprpicker-git
 - cmus
 - flix-cli
 - tut
@@ -29,6 +31,16 @@
 - gruvbox-dark-gtk
 - gruvbox-dark-icons-gtk
 - simp1e-cursors-gruvbox-dark
-- pipewire, pipewire-v4l2, pipewire-alsa pipewire-pulse, pipewire-jack, pipewire-audio & wireplumber
+- pipewire
+- pipewire-v4l2
+- pipewire-alsa
+- pipewire-pulse
+- pipewire-jack
+- pipewire-audio
+- wireplumber
 - imv
 - wdisplays
+- bluez
+- bluez-utils
+- btop
+- htop

@@ -14,8 +14,8 @@ set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.config/emacs/bin $HOM
 ### EXPORT ###
 set fish_greeting                                                # Supresses fish's intro message
 set TERM "xterm-256color"                                        # Sets the terminal type
-set EDITOR "./.local/bin/lvim"                                   # $EDITOR use lvim in terminal
-set VISUAL "wezterm start --class editor ./.local/bin/lvim"      # $VISUAL open wezterm with lvim
+set EDITOR "emacsclient -t -a ''"                                # $EDITOR use Emacs in terminal
+set VISUAL "emacsclient -c -a emacs"                             # $VISUAL use Emacs in GUI mode
 
 ### SET BAT AS MANPAGER
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -126,8 +126,7 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # vim and emacs
-alias vim='lvim'
-alias vimdiff='lvim -d'
+alias vim="emacsclient -t -a ''"
 
 # newsboat
 alias newsboat='newsboat -u ~/.config/newsboat/urls'
@@ -159,15 +158,14 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # file management
+alias fm="vifm"
+alias file="vifm"
+alias flm="vifm"
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -vI'
 alias mkd='mkdir -pv'
 alias mkdir='mkdir -pv'
-alias fm='./.config/vifm/scripts/vifmrun'
-alias vifm='./.config/vifm/scripts/vifmrun'
-alias file='./.config/vifm/scripts/vifmrun'
-alias flm='./.config/vifm/scripts/vifmrun'
 
 # audio
 alias mx='pulsemixer'

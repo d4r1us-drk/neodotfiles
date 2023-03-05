@@ -8,6 +8,11 @@
 ### EXPORT ###
 export TERM="xterm-256color"                      # getting proper colors
 export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
+export EDITOR="emacsclient -t -a ''"              # $EDITOR use Emacs in terminal
+export VISUAL="emacsclient -c -a emacs"           # $VISUAL use Emacs in GUI mode
+
+### "bat" as manpager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
@@ -16,8 +21,8 @@ export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# use neovim for vim if present.
-[ -x "$(command -v lvim)" ] && alias vim="lvim" vimdiff="lvim -d"
+# use emacs for vim if present.
+[ -x "$(command -v emacs)" ] && alias vim="emacsclient -t -a ''"
 
 # use $XINITRC variable if file exists.
 [ -f "$XINITRC" ] && alias startx="startx $XINITRC"
@@ -171,9 +176,6 @@ alias \
   df="df -h" \
   free="free -m"
 
-# newsboat
-[ -x "$(command -v newsboat)" ] && alias newsboat="newsboat -u ~/.config/newsboat/urls"
-
 # multimedia scripts
 alias \
   fli="flix-cli" \
@@ -196,10 +198,9 @@ alias \
 
 # file management
 alias \
-  fm="$HOME/.config/vifm/scripts/vifmrun" \
-  file="$HOME/.config/vifm/scripts/vifmrun" \
-  flm="$HOME/.config/vifm/scripts/vifmrun" \
-  vifm="$HOME/.config/vifm/scripts/vifmrun" \
+  fm="vifm" \
+  file="vifm" \
+  flm="vifm" \
   rm="rm -vI" \
   mv="mv -iv" \
   cp="cp -iv" \
