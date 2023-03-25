@@ -1,7 +1,6 @@
 # Dependencies
 - mononoki Nerd Font
 - rofi-lboon-wayland-git
-- nwg-look
 - waybar
 - swaybg
 - dunst
@@ -44,3 +43,4 @@
 - bluez-utils
 - btop
 - htop
+- brightnessctl
