@@ -1,10 +1,11 @@
 # Dependencies
-- mononoki Nerd Font
+- mononoki nerd Font
 - rofi-lboon-wayland-git
 - waybar
 - swaybg
 - dunst
-- xdg-desktop-portal & xdg-desktop-portal-wlr
+- xdg-desktop-portal
+- xdg-desktop-portal-wlr
 - polkit-gnome
 - qt5-wayland & qt6-wayland
 - swaylock
@@ -25,7 +26,7 @@
 - pulsemixer
 - alsamixer
 - vifm
-- lunarvim
+- doom emacs
 - power-profiles-daemon
 - gruvbox-dark-gtk
 - gruvbox-dark-icons-gtk
