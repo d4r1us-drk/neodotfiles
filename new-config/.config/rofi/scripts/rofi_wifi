@@ -48,7 +48,7 @@ connect() {
 
 ## SELECT PASSWORD FUNCTION ##
 password() {
-  pass=$(echo " " | $ROFI " Enter Password   " --password)
+  pass=$(echo " " | $ROFI " Enter Password   " -password)
   }
 
 ## MAIN CONNECTION COMMAND ##

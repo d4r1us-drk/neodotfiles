@@ -170,7 +170,7 @@ lvim.builtin.treesitter.highlight.enable = true
 lvim.plugins = {
     {"lunarvim/colorschemes"},
     {"iamcco/markdown-preview.nvim"},
-    {"ellisonleao/gruvbox.nvim"},
+    {"morhetz/gruvbox"},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

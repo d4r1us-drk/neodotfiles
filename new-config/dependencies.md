@@ -45,3 +45,4 @@
 - btop
 - htop
 - brightnessctl
+- cliphist
