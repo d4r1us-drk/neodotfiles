@@ -2,52 +2,52 @@
 
 # ***This script was made by Clay Gomera (Drake)***
 #  - Description: A simple wallpaper changer script
-#  - Dependencies: rofi, fd, feh
+#  - Dependencies: rofi, fd, swaybg
 
-## MAIN VARIABLES AND COMMANDS ##
-walldir="$HOME/Pictures/Wallpapers" # wallpapers folder, change it to yours, make sure that it ends with a /
-cd "$walldir" || exit
+## MENU PROMPT ##
+menu="rofi -dmenu -i -p"
 
-## SELECT PICTURE FUNCTION ##
-selectpic() {
-    wallpaper=$(fd -p "$walldir" | rofi -dmenu -i -p " 󰋩 Wallpaper Selector ")
-    if [ "$wallpaper" ]; then
-        chosenwall=$wallpaper
-    else
-        exit 0
-    fi
-}
-selectpic
+## WALLPAPER DIRECTORY ##
+walldir="$HOME/Pictures/Wallpapers" # wallpapers folder, change it to yours
 
 ## WALLPAPER SETTING OPTIONS ##
 option1="󰉦 Fill"
 option2="󱇃 Center"
 option3="󰝤 Tile"
 option4="󰻵 Fit"
-options="$option1\n$option2\n$option3\n$option4\n$option5"
+options="$option1\n$option2\n$option3\n$option4"
+
+## SELECT PICTURE ##
+cd "$walldir" || exit 1
+wallpaper=$(fd -p "$walldir" | $menu " 󰋩 Wallpaper Selector ")
+if [ "$wallpaper" ]; then
+    chosenwall=$wallpaper
+else
+    exit 0
+fi
 
 ## MAIN ACTION ##
-action=$(echo -e "$options" | rofi -dmenu -i -p " 󱇣 Chose the format ")
+action=$(echo -e "$options" | $menu " 󱇣 Chose the format ")
 case "$action" in
     $option1*)
         pkill swaybg
         swaybg -m fill -i "$chosenwall" &
-        echo -e "#!/bin/sh\nswaybg -m fill -i" $walldir/$chosenwall > "$HOME/.wbg"
+        echo -e "#!/bin/sh\nswaybg -m fill -i $walldir/$chosenwall" > "$HOME/.wbg"
         chmod +x "$HOME/.wbg";;
     $option2*)
         pkill swaybg
         swaybg -m center -i "$chosenwall" &
-        echo -e "#!/bin/sh\nswaybg -m center -i" $walldir/$chosenwall > "$HOME/.wbg"
+        echo -e "#!/bin/sh\nswaybg -m center -i $walldir/$chosenwall" > "$HOME/.wbg"
         chmod +x "$HOME/.wbg";;
     $option3*)
         pkill swaybg
         swaybg -m tile -i "$chosenwall" &
-        echo -e "#!/bin/sh\nswaybg -m tile -i" $walldir/$chosenwall > "$HOME/.wbg"
+        echo -e "#!/bin/sh\nswaybg -m tile -i $walldir/$chosenwall" > "$HOME/.wbg"
         chmod +x "$HOME/.wbg";;
     $option4*)
         pkill swaybg
         swaybg -m fit -i "$chosenwall" &
-        echo -e "#!/bin/sh\nswaybg -m fit -i" $walldir/$chosenwall > "$HOME/.wbg"
+        echo -e "#!/bin/sh\nswaybg -m fit -i $walldir/$chosenwall" > "$HOME/.wbg"
         chmod +x "$HOME/.wbg";;
 esac
 exit 0

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Screenshot directory
 screenshot_directory="$HOME/Pictures/Screenshots"
-mkdir -p $screenshot_directory
+mkdir -p "$screenshot_directory"
 
 countdown() {
   notify-send "Screenshot" "Executing in 3 seconds" -t 1000
@@ -48,7 +48,7 @@ get_options() {
 }
 
 check_deps() {
-  if ! hash $1 2>/dev/null; then
+  if ! hash "$1" 2>/dev/null; then
     echo "Error: This script requires $1"
     exit 1
   fi
@@ -108,8 +108,8 @@ main() {
   set -e
 }
 
-main $1 &
+main "$1" &
 
 exit 0
 
-!/bin/bash
+! /bin/bash

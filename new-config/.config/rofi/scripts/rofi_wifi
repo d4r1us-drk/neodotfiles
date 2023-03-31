@@ -2,10 +2,10 @@
 
 # ***This script was made by Clay Gomera (Drake)***
 #  - Description: A simple wifi rofi script
-#  - Dependencies: rofi, NetworkManager
+#  - Dependencies: rofi, NetworkManager, io.elementary.capnet-assist
 
-## ROFI VARIABLES ##
-ROFI="rofi -dmenu -i -p"
+## MENU PROMPT ##
+menu="rofi -dmenu -i -p"
 
 ## MAIN OPTIONS ##
 option1="  Turn on WiFi"
@@ -16,7 +16,9 @@ option5="  Setup captive portal"
 option6="  Cancel"
 options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6"
 
+## GRAB WIFI INTERFACE ##
 wlan=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f1 | head -1)
+
 ## TURN OFF WIFI FUNCTION ##
 turnoff() {
   nmcli radio wifi off
@@ -43,18 +45,18 @@ disconnect() {
 connect() {
   notify-send "Scannig networks, please wait"
   sleep 1
-  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | $ROFI " Select a Wifi Network   " | cut -d' ' -f1)
-  }
+  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | $menu " Select a Wifi Network   " | cut -d' ' -f1)
+}
 
 ## SELECT PASSWORD FUNCTION ##
 password() {
-  pass=$(echo " " | $ROFI " Enter Password   " -password)
-  }
+  pass=$(echo " " | $menu " Enter Password   " -password)
+}
 
 ## MAIN CONNECTION COMMAND ##
 action() {
   nmcli device wifi connect "$bssid" password "$pass" || nmcli device wifi connect "$bssid"
-  }
+}
 
 ## CHECKING IF WIFI IS WORKING
 check() {
@@ -69,7 +71,7 @@ check() {
 }
 
 ## MAIN ACTION COMMANDS ##
-cases=$(echo -e "$options" | $ROFI "   Wifi Settings " )
+cases=$(echo -e "$options" | $menu "   Wifi Settings " )
 case "$cases" in
   $option1*)
     turnon;;

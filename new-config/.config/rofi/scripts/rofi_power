@@ -2,8 +2,11 @@
 
 # ***This script was made by Clay Gomera (Drake)***
 #  - Description: A simple power menu rofi script
-#  - Dependencies: rofi, power-profiles-daemon
+#  - Dependencies: rofi, power-profiles-daemon, swaylock
 #
+
+## MENU PROMPT ##
+menu="rofi -dmenu -i -p"
 
 ## CURRENT WALLPAPER FOR LOCKSCREEN ##
 currwall=$(tail --l 1 "$HOME/.wbg" | awk '{print $5}')
@@ -16,8 +19,6 @@ option4="鈴  Suspend"
 option5="  Lock"
 option6="  Change power profile"
 option7="  Cancel"
-
-## OPTIONS ARRAY ##
 options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6\n$option7"
 
 ## POWER PROFILE OPTIONS ##
@@ -25,12 +26,10 @@ pwr1=" Performance"
 pwr2=" Balanced"
 pwr3=" Power Saver"
 pwr4=" Cancel"
-
-## POWER PROFILES ARRAY ##
 pwrs="$pwr1\n$pwr2\n$pwr3\n$pwr4"
 
 ## MAIN ACTION COMMAND ##
-action=$(echo -e "$options" | rofi -dmenu -i -p "   Power Options ")
+action=$(echo -e "$options" | $menu "   Power Options ")
 case "$action" in
     $option1*)
         pkill Hyprland;;
@@ -53,7 +52,7 @@ case "$action" in
         elif [ "$currentpwr" = "balanced" ]; then
             currentpwr=" Balanced"
         fi
-        pwraction=$(echo -e "$pwrs" | rofi -dmenu -i -p "   Power Profile Menu - Currently set to: ${currentpwr} ")
+        pwraction=$(echo -e "$pwrs" | $menu "   Power Profile Menu - Currently set to: ${currentpwr} ")
         case "$pwraction" in
             $pwr1*)
                 powerprofilesctl set performance && notify-send "Power profile switched to performance";;
