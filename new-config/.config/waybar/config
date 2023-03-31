@@ -9,10 +9,26 @@
   "modules-right": ["idle_inhibitor", "hyprland/language", "pulseaudio", "backlight", "battery", "custom/powerprofiles", "network"],
 
   "wlr/workspaces": {
-      "on-click": "activate",
-      "sort-by-number": true,
-      "on-scroll-up": "hyprctl dispatch workspace e+1",
-      "on-scroll-down": "hyprctl dispatch workspace e-1"
+    "on-click": "activate",
+    "sort-by-number": true,
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+      "format": "{icon}",
+    "format-icons": {
+       "1": "\udb80\udd8b",
+       "2": "\udb80\ude4b",
+       "3": "\udb83\udc8b",
+       "4": "\udb82\udf79",
+       "5": "\udb81\udf5a",
+       "6": "\udb82\ude1c",
+       "7": "\udb80\udee9",
+       "8": "\udb80\ude19",
+       "9": "\udb80\ude96",
+       "10": "\udb80\udf7b",
+       "urgent": "",
+       "focused": "",
+       "default": ""
+    }
   },
 
   "hyprland/language": {

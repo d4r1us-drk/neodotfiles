@@ -5,5 +5,5 @@ export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-"/home/drk/.config/lvim"}"
 export LUNARVIM_CACHE_DIR="${LUNARVIM_CACHE_DIR:-"/home/drk/.cache/lvim"}"
 
 export LUNARVIM_BASE_DIR="${LUNARVIM_BASE_DIR:-"/home/drk/.local/share/lunarvim/lvim"}"
-sleep 0.1
-exec -a lvim nvim -u "$LUNARVIM_BASE_DIR/init.lua" "$@"
+
+sleep 0.1 && exec -a lvim nvim -u "$LUNARVIM_BASE_DIR/init.lua" "$@"

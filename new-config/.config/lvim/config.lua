@@ -10,6 +10,10 @@ an executable
 
 -- general
 vim.opt.guifont = { "mononoki Nerd Font", ":h7" }
+vim.g.vimspector_enable_mappings = 'HUMAN'
+vim.g.vimspector_enable_mappings_for_mode = {
+  ['<leader><leader>'] = { 'n', 'v' },
+}
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = false
 lvim.colorscheme = "gruvbox"
@@ -170,7 +174,8 @@ lvim.builtin.treesitter.highlight.enable = true
 lvim.plugins = {
     {"lunarvim/colorschemes"},
     {"iamcco/markdown-preview.nvim"},
-    {"morhetz/gruvbox"},
+    {"ellisonleao/gruvbox.nvim"},
+    {"puremourning/vimspector"},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
