@@ -46,7 +46,7 @@ button:hover {
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 3px;
     background-color: transparent;
     color: #ebdbb2;
     border-radius: 5px;
@@ -89,9 +89,9 @@ button:hover {
 #language,
 #mode,
 #idle_inhibitor {
-    font-family: mononoki Nerd Font;
+    font-family: Symbols Nerd Font Mono, mononoki Nerd Font;
     font-size: 16px;
-    padding: 0 10px;
+    padding: 0 8px;
     color: #ffffff;
 }
 

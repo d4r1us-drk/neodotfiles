@@ -1,32 +1,31 @@
 # Dependencies
-- mononoki nerd Font
+- ttf-mononoki-nerd
 - rofi-lboon-wayland-git
 - waybar
 - swaybg
 - dunst
 - xdg-desktop-portal
-- xdg-desktop-portal-wlr
+- xdg-desktop-portal-hyprland
 - polkit-gnome
-- qt5-wayland & qt6-wayland
+- qt5-wayland
+- qt6-wayland
 - swaylock
 - slurp
 - grim
 - wl-clipboard
 - wf-recorder
 - wezterm
-- hyprland
+- hyprland-bin
 - hyprpicker-git
 - cmus
-- flix-cli
-- tut
-- ani-cli
-- ytfzf
+- tut-bin
+- ani-cli-git
+- ytfzf-git
 - mpv
 - newsboat
 - pulsemixer
 - alsamixer
 - vifm
-- doom emacs
 - power-profiles-daemon
 - gruvbox-dark-gtk
 - gruvbox-dark-icons-gtk
@@ -46,3 +45,8 @@
 - htop
 - brightnessctl
 - cliphist
+- ttf-nerd-fonts-symbols-2048-em
+
+# not managed by the package manager
+- lunarvim
+- flix-cli
