@@ -9,6 +9,8 @@ an executable
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
 -- general
+vim.opt.spell = false
+vim.o.shell = '/usr/bin/fish'
 vim.opt.guifont = { "mononoki Nerd Font", ":h7" }
 vim.g.vimspector_enable_mappings = 'HUMAN'
 vim.g.vimspector_enable_mappings_for_mode = {
@@ -17,7 +19,7 @@ vim.g.vimspector_enable_mappings_for_mode = {
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = false
 lvim.colorscheme = "gruvbox"
-lvim.transparent_window = true
+lvim.transparent_window = false
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -173,9 +175,16 @@ lvim.builtin.treesitter.highlight.enable = true
 -- Additional Plugins
 lvim.plugins = {
     {"lunarvim/colorschemes"},
-    {"iamcco/markdown-preview.nvim"},
     {"ellisonleao/gruvbox.nvim"},
     {"puremourning/vimspector"},
+    {
+      "iamcco/markdown-preview.nvim",
+      run = "cd app && npm install",
+      ft = "markdown",
+      config = function()
+        vim.g.mkdp_auto_start = 1
+      end,
+    },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -191,3 +200,5 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+--
+vim.cmd('autocmd FileType markdown setlocal nospell')

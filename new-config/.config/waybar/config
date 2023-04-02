@@ -15,19 +15,19 @@
     "on-scroll-down": "hyprctl dispatch workspace e-1",
       "format": "{icon}",
     "format-icons": {
-       "1": "\udb80\udd8b",
-       "2": "\udb80\ude4b",
-       "3": "\udb83\udc8b",
-       "4": "\udb82\udf79",
-       "5": "\udb81\udf5a",
-       "6": "\udb82\ude1c",
-       "7": "\udb80\udee9",
-       "8": "\udb80\ude19",
-       "9": "\udb80\ude96",
-       "10": "\udb80\udf7b",
-       "urgent": "\udb80\udc26",
-       "focused": "\udb83\udeff",
-       "default": "\udb80\udc94"
+       "1": "\uf484",
+       "2": "\ue613",
+       "3": "\ue795",
+       "4": "\uf075",
+       "5": "\uf001",
+       "6": "\uf03d",
+       "7": "\ue22b",
+       "8": "\uf15c",
+       "9": "\uf795",
+       "10": "\ue20f",
+       "urgent": "\uf12a",
+       "focused": "\uf192",
+       "default": "\uf10c"
     }
   },
 

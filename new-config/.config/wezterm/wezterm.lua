@@ -8,7 +8,7 @@ return {
     weight = 'Medium'
   },
   color_scheme = 'Gruvbox dark, hard (base16)',
-  default_prog = { '/usr/bin/bash' },
+  default_prog = { '/usr/bin/fish' },
   default_cursor_style = "BlinkingUnderline",
   font_size = 12,
   check_for_updates = false,

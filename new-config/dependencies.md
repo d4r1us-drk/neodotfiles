@@ -1,7 +1,7 @@
 # Dependencies
 - ttf-mononoki-nerd
 - rofi-lboon-wayland-git
-- waybar
+- waybar-hyprland-git
 - swaybg
 - dunst
 - xdg-desktop-portal
@@ -15,7 +15,7 @@
 - wl-clipboard
 - wf-recorder
 - wezterm
-- hyprland-bin
+- hyprland-git
 - hyprpicker-git
 - cmus
 - tut-bin
@@ -29,7 +29,7 @@
 - power-profiles-daemon
 - gruvbox-dark-gtk
 - gruvbox-dark-icons-gtk
-- simp1e-cursors-gruvbox-dark
+- xcursor-simp1e-gruvbox-dark
 - pipewire
 - pipewire-v4l2
 - pipewire-alsa
@@ -46,7 +46,9 @@
 - brightnessctl
 - cliphist
 - ttf-nerd-fonts-symbols-2048-em
+- goneovim-bin
 
 # not managed by the package manager
 - lunarvim
 - flix-cli
+- geek-life
