@@ -5,7 +5,7 @@
 # If you want you can set this to $EDITOR to use your environment variable or
 # vim if you want to specify the program directly.
 # default="TUT_USE_INTERNAL"
-editor="~/.local/bin/lvim"
+editor="/home/drk/.local/bin/lvim"
 
 # You need to press yes in a confirmation dialog before favoriting, boosting,
 # etc.
