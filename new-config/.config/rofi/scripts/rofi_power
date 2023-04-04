@@ -66,4 +66,3 @@ case "$action" in
     $option7*)
         exit 0
 esac
-

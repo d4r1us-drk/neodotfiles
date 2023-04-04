@@ -141,16 +141,13 @@ alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias l.='exa -a | egrep "^\."'
 
-# pacman and yay
-alias pac-up='yay -Syu && yay -Sua'                   # update the system
-alias pac-get='yay -S'                                # install a program
-alias pac-rmv='yay -Rcns'                             # remove a program
-alias pac-rmv-sec='yay -R'                            # remove a program (secure way)
-alias pac-qry='yay -Ss'                               # search for a program
-alias pac-cln='yay -Scc && yay -Rns (pacman -Qtdq)'   # clean cache & remove orphaned packages
-
-# neofetch is f***** slow
-alias neofetch="pfetch"
+# package management
+alias pac-up='paru -Syu'
+alias pac-get='paru -S'
+alias pac-rmv='paru -Rcns'
+alias pac-rmv-sec='paru -R'
+alias pac-qry='paru -Ss'
+alias pac-cln='paru -Scc && paru -Rns (pacman -Qtdq)'
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'

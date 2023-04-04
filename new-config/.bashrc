@@ -140,12 +140,12 @@ alias \
 
 # function to detect os and assign aliases to package managers
 alias \
-  pac-up="yay -Syyu" \
-  pac-get="yay -S" \
-  pac-rmv="yay -Rcns" \
-  pac-rmv-sec="yay -R" \
-  pac-qry="yay -Ss" \
-  pac-cln="yay -Scc"
+  pac-up="paru -Syu" \
+  pac-get="paru -S" \
+  pac-rmv="paru -Rcns" \
+  pac-rmv-sec="paru -R" \
+  pac-qry="paru -Ss" \
+  pac-cln="paru -Scc"
 
 # colorize grep output (good for log files)
 alias \
