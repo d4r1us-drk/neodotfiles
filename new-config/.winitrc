@@ -34,7 +34,7 @@ export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export XKB_DEFAULT_LAYOUT="us"
 export EDITOR="$HOME/.local/bin/lvim"                                    # $EDITOR use lunarvim in terminal
 export VISUAL="wezterm start --class editor -- $HOME/.local/bin/lvim"    # $VISUAL use lunarvim in new terminal window
-export BROWSER="qutebrowser"
+export BROWSER="firefox"
 export VIEWER="zathura"
 
 exec Hyprland

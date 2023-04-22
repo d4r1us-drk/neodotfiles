@@ -1,7 +1,7 @@
 # Dependencies
 - ttf-mononoki-nerd
 - rofi-lboon-wayland-git
-- waybar-hyprland-git
+- waybar-hyprland
 - swaybg
 - dunst
 - xdg-desktop-portal
@@ -17,7 +17,7 @@
 - wezterm
 - hyprland-git
 - hyprpicker-git
-- cmus
+- musikcube
 - tut-bin
 - ani-cli-git
 - ytfzf-git
@@ -45,8 +45,9 @@
 - htop
 - brightnessctl
 - cliphist
-- ttf-nerd-fonts-symbols-2048-em
+- ttf-nerd-fonts-symbols-2048-em-mono
 - goneovim-bin
+- gomuks
 
 # not managed by the package manager
 - lunarvim
