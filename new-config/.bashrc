@@ -6,10 +6,10 @@
 ##
 
 ### EXPORT ###
-export TERM="xterm-256color"                                           # getting proper colors
-export HISTCONTROL=ignoredups:erasedups                                # no duplicate entries
-export EDITOR="$HOME/.local/bin/lvim"                                  # $EDITOR use Lunarvim in terminal
-export VISUAL="wezterm start --class editor -- $HOME/.local/bin/lvim"  # $VISUAL use Lunarvim in new wezterm window
+export TERM="xterm-256color"                      # getting proper colors
+export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
+export EDITOR="$HOME/.local/bin/lvim"
+export VISUAL="wezterm start --class editor -- $HOME/.local/bin/lvim"
 
 ### "bat" as manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -21,8 +21,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# use lunarvim for vim if present.
-[ -x "$(command -v ~/.local/bin/lvim)" ] && alias vim="lvim"
+# use neovim for vim if present.
+[ -x "$(command -v $HOME/.local/bin/lvim)" ] && alias vim="lvim"
 
 ### SET VI MODE ###
 # Comment this line out to enable default emacs-like bindings

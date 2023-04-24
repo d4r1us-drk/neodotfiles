@@ -2,11 +2,12 @@
   "position": "top",
   "height": 22,
   "spacing": 3,
+  "layer": "top",
 
   // Choose the order of the modules
   "modules-left": ["wlr/workspaces"],
-  "modules-center": ["clock"],
-  "modules-right": ["idle_inhibitor", "hyprland/language", "pulseaudio", "backlight", "battery", "custom/powerprofiles", "network"],
+  //  "modules-center": ["clock"],
+  "modules-right": ["idle_inhibitor", "hyprland/language", "pulseaudio", "backlight", "battery", "custom/powerprofiles", "network", "clock"],
 
   "wlr/workspaces": {
     "on-click": "activate",
@@ -15,10 +16,10 @@
     "on-scroll-down": "hyprctl dispatch workspace e-1",
       "format": "{icon}",
     "format-icons": {
-       "1": "\uf484",
-       "2": "\ue613",
+       "1": "\uf0ac",
+       "2": "\uf752",
        "3": "\ue795",
-       "4": "\uf868",
+       "4": "\uf687",
        "5": "\uf001",
        "6": "\uf03d",
        "7": "\ue22b",

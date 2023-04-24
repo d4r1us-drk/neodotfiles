@@ -465,7 +465,7 @@ posts=false
 # theme="none" and then you can create your own theme below.
 # 
 # default="default"
-theme="default"
+theme="none"
 
 # The xrdb prefix used for colors in .Xresources.
 # default="guess"

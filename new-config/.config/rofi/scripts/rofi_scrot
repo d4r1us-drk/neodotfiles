@@ -15,28 +15,28 @@ countdown() {
 crtf() {
   notify-send "Screenshot" "Select a region to capture"
   dt=$(date '+%d-%m-%Y %H:%M:%S')
-  grim -g "$(slurp)" "$screenshot_directory/$dt.png"
+  grim -g "$(slurp)" "$screenshot_directory/$dt.jpg"
   notify-send "Screenshot" "Region saved to $screenshot_directory"
 }
 
 cstf() {
   countdown
   dt=$(date '+%d-%m-%Y %H:%M:%S')
-  grim "$screenshot_directory/$dt.png"
+  grim "$screenshot_directory/$dt.jpg"
   notify-send "Screenshot" "Screenshot saved to $screenshot_directory"
 }
 
 rvrtf() {
   notify-send "Screenshot" "Select a region to record"
   dt=$(date '+%d-%m-%Y %H:%M:%S')
-  wf-recorder -g "$(slurp)" rec "$screenshot_directory/$dt.mp4"
+  wf-recorder --codec=h264_vaapi -d /dev/dri/renderD128 -g "$(slurp)" rec "$screenshot_directory/$dt.mp4"
   notify-send "Screenshot" "Recording saved to $screenshot_directory"
 }
 
 rvstf() {
   countdown
   dt=$(date '+%d-%m-%Y %H:%M:%S')
-  wf-recorder -f "$screenshot_directory/$dt.mp4"
+  wf-recorder --codec=h264_vaapi -d /dev/dri/renderD128 -f "$screenshot_directory/$dt.mp4"
   notify-send "Screenshot" "Recording saved to $screenshot_directory"
 }
 

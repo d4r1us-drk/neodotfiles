@@ -12,10 +12,10 @@ set -e fish_user_paths
 set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.config/emacs/bin $HOME/Applications /var/lib/flatpak/exports/bin/ $fish_user_paths
 
 ### EXPORT ###
-set fish_greeting                                                           # Supresses fish's intro message
-set TERM "xterm-256color"                                                   # Sets the terminal type
-set EDITOR "$HOME/.local/bin/lvim"                                          # $EDITOR use Emacs in terminal
-set VISUAL "wezterm start --class text_editor -- $HOME/.local/bin/lvim"     # $VISUAL use Emacs in GUI mode
+set fish_greeting                                 # Supresses fish's intro message
+set TERM "xterm-256color"                         # Sets the terminal type
+set EDITOR "$HOME/.local/bin/lvim"
+set VISUAL "wezterm start --class editor -- $HOME/.local/bin/lvim"
 
 ### SET BAT AS MANPAGER
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -125,7 +125,7 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# vim and emacs
+# neovim as vim
 alias vim="$HOME/.local/bin/lvim"
 
 # newsboat

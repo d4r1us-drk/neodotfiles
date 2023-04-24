@@ -6,12 +6,12 @@ cd ~
 export HYPRLAND_LOG_WLR=1
 
 # Tell XWayland to use a cursor theme
-export XCURSOR_THEME=Simp1e-Gruvbox-Dark
+export XCURSOR_THEME=Simp1e-Tokyo-Night
 
 # GTK shit
-gsettings set org.gnome.desktop.interface gtk-theme 'gruvbox-dark-gtk'
-gsettings set org.gnome.desktop.interface icon-theme 'gruvbox-dark-icons-gtk'
-gsettings set org.gnome.desktop.interface cursor-theme 'Simp1e-Gruvbox-Dark'
+gsettings set org.gnome.desktop.interface gtk-theme 'Tokyonight-Dark-BL'
+gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+gsettings set org.gnome.desktop.interface cursor-theme 'Simp1e-Tokyo-Night'
 gsettings set org.gnome.desktop.interface font-name 'Cantarell'
 
 # Set a cursor size

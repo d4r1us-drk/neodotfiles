@@ -17,7 +17,7 @@ configuration{
     dpi: 100;
 }
 
-@theme "gruvbox-dark"
+@theme "tokyonight"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;

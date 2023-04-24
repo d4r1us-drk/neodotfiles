@@ -2,7 +2,7 @@
 - ttf-mononoki-nerd
 - rofi-lboon-wayland-git
 - waybar-hyprland
-- swaybg
+- swww-git
 - dunst
 - xdg-desktop-portal
 - xdg-desktop-portal-hyprland
@@ -27,9 +27,7 @@
 - alsamixer
 - vifm
 - power-profiles-daemon
-- gruvbox-dark-gtk
-- gruvbox-dark-icons-gtk
-- xcursor-simp1e-gruvbox-dark
+- xcursor-simp1e-tokyo-night
 - pipewire
 - pipewire-v4l2
 - pipewire-alsa
