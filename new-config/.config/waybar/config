@@ -1,6 +1,6 @@
 {
   "position": "top",
-  "height": 22,
+  "height": 41,
   "spacing": 3,
   "layer": "top",
 
@@ -36,8 +36,6 @@
     "format": "{} \udb80\udf0c",
     "format-en": "US",
     "format-es": "ES",
-    "keyboard-name": "at-translated-set-2-keyboard",
-    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
   },
 
   "idle_inhibitor": {

@@ -7,9 +7,7 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.relativenumber = true
 vim.cmd('autocmd FileType markdown setlocal nospell')
-vim.g.vimtex_view_method = "zathura"
-vim.maplocalleader = ","
-vim.syntax = true
+vim.opt.wrap = true -- wrap lines
 
 -- general
 vim.opt.spell = false

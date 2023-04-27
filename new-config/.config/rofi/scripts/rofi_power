@@ -31,19 +31,19 @@ pwrs="$pwr1\n$pwr2\n$pwr3\n$pwr4"
 ## MAIN ACTION COMMAND ##
 action=$(echo -e "$options" | $menu "   Power Options ")
 case "$action" in
-    $option1*)
+    $option1)
         pkill Hyprland;;
-    $option2*)
+    $option2)
         systemctl reboot || loginctl reboot;;
-    $option3*)
+    $option3)
         systemctl poweroff || loginctl poweroff;;
-    $option4*)
+    $option4)
         swaylock -i "$currwall" &
         sleep 0.1
         systemctl suspend;;
-    $option5*)
+    $option5)
         swaylock -i "$currwall";;
-    $option6*)
+    $option6)
         currentpwr=$(powerprofilesctl get)
         if [ "$currentpwr" = "performance" ]; then
             currentpwr=" Performance"
@@ -63,6 +63,6 @@ case "$action" in
             $pwr4*)
                 exit 0
         esac;;
-    $option7*)
+    $option7)
         exit 0
 esac

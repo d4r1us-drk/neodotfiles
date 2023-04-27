@@ -134,6 +134,9 @@ alias newsboat='newsboat -u ~/.config/newsboat/urls'
 # bat as cat
 alias cat='bat'
 
+# pfetch as neofetch
+alias neofetch='pfetch'
+
 # Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
 alias la='exa -a --color=always --group-directories-first'  # all files and dirs
