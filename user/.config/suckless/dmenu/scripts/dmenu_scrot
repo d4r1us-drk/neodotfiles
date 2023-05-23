@@ -21,9 +21,13 @@ del2="5 sec delay"
 del3="10 sec delay"
 dels="$del1\n$del2\n$del3"
 
-## DELAY FUNCTION ##
-delays() {
-    del=$(echo -e "$dels" | dmenu -i -fn "mononoki Nerd Font-10" -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "Select: ");
+## MAIN ACTION ##
+choice=$(echo -e "$chos" | dmenu -i -fn "mononoki Nerd Font-10" -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "Select: ")
+case $choice in
+    $cho1)
+        scrot && notify-send "screenshot saved";;
+    $cho2)
+        del=$(echo -e "$dels" | dmenu -i -fn "mononoki Nerd Font-10" -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "Select: ");
         case $del in
             $del1)
                 scrot -d 3 && notify-send "screenshot saved";;
@@ -31,33 +35,9 @@ delays() {
                 scrot -d 5 && notify-send "screenshot saved";;
             $del3)
                 scrot -d 10 && notify-send "screenshot saved"
-        esac
-}
-
-## ENTIRE SCREEN FUNCTION ##
-screen() {
-        scrot && notify-send "screenshot saved"
-}
-
-## FOCUSED WINDOW FUNCTION
-window() {
-        scrot -u -b && notify-send "screenshot saved."
-}
-
-## SELECTED AREA FUNCTION ##
-area() {
+        esac;;
+    $cho3)
+        scrot -u -b && notify-send "screenshot saved.";;
+    $cho4)
         scrot -s && notify-send "screenshot saved."
-}
-
-## MAIN ACTION ##
-choice=$(echo -e "$chos" | dmenu -i -fn "mononoki Nerd Font-10" -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "Select: ")
-case $choice in
-    $cho1*)
-        screen;;
-    $cho2*)
-        delays;;
-    $cho3*)
-        window;;
-    $cho4*)
-        area
 esac

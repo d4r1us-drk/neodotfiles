@@ -8,17 +8,20 @@ libxinerama
 xbacklight        # brightness control
 pamixer           # volume control
 arandr            # display config
-alacritty         # terminal
+st                # terminal
 dmenu             # run launcher
 dwmblocks         # status bar scripts
 slock             # lockscreen
 herbe             # notifications
-neovim & neovide  # text editor
+emacs             # text editor
 
 # scratchpads
+musikcube         # music player
 ani-cli           # watch anime
 flix-cli          # watch movies
 ytfzf             # watch/listen to youtube
 vifm              # file manager
-gomuks            # matrix client
-toot              # tui mastodon client
+tut               # tui mastodon client
+btop              # process viewer
+pulsemixer        # audio mixer 1
+alsamixer         # audio mixer 2

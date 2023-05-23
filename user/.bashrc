@@ -8,6 +8,11 @@
 ### EXPORT ###
 export TERM="xterm-256color"                      # getting proper colors
 export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
+export EDITOR="emacsclient -t -a ''"              # $EDITOR use Emacs in terminal
+export VISUAL="emacsclient -c -a emacs"           # $VISUAL use Emacs in GUI mode
+
+### "bat" as manpager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
@@ -17,10 +22,7 @@ export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
 [[ $- != *i* ]] && return
 
 # use neovim for vim if present.
-[ -x "$(command -v lvim)" ] && alias vim="lvim" vimdiff="lvim -d"
-
-# use $XINITRC variable if file exists.
-[ -f "$XINITRC" ] && alias startx="startx $XINITRC"
+[ -x "$(command -v nvim)" ] && alias vim="nvim"
 
 ### SET VI MODE ###
 # Comment this line out to enable default emacs-like bindings
@@ -37,9 +39,6 @@ if [ -d "$HOME/.local/bin" ] ;
 fi
 if [ -d "$HOME/Applications" ] ;
   then PATH="$HOME/Applications:$PATH"
-fi
-if [ -d "$HOME/.config/emacs/bin" ] ;
-  then PATH="$HOME/.config/emacs/bin:$PATH"
 fi
 
 ### CHANGE TITLE OF TERMINALS ###
@@ -128,17 +127,20 @@ alias \
 # bat as cat
 [ -x "$(command -v bat)" ] && alias cat="bat"
 
+# pfetch as neofetch
+[ -x "$(command -v pfetch)" ] && alias neofetch="pfetch"
+
 # Changing "ls" to "exa"
 alias \
-  ls="exa -al --icons --color=always --group-directories-first" \
-  la="exa -a --icons --color=always --group-directories-first" \
-  ll="exa -l --icons --color=always --group-directories-first" \
-  lt="exa -aT --icons --color=always --group-directories-first" \
+  ls="exa -al --color=always --group-directories-first" \
+  la="exa -a --color=always --group-directories-first" \
+  ll="exa -l --color=always --group-directories-first" \
+  lt="exa -aT --color=always --group-directories-first" \
   l.='exa -a | grep -E "^\."'
 
 # function to detect os and assign aliases to package managers
 alias \
-  pac-up="paru -Syyu" \
+  pac-up="paru -Syu" \
   pac-get="paru -S" \
   pac-rmv="paru -Rcns" \
   pac-rmv-sec="paru -R" \
@@ -153,26 +155,23 @@ alias \
 
 # git
 alias \
-  addup="git add -u" \
-  addall="git add ." \
-  branch="git branch" \
-  checkout="git checkout" \
-  clone="git clone" \
-  commit="git commit -m" \
-  fetch="git fetch" \
-  pull="git pull origin" \
-  push="git push origin" \
-  stat="git status" \
-  tag="git tag" \
-  newtag="git tag -a"
+  git-adu="git add -u" \
+  git-adl="git add ." \
+  git-brn="git branch" \
+  git-chk="git checkout" \
+  git-cln="git clone" \
+  git-cmt="git commit -m" \
+  git-fth="git fetch" \
+  git-pll="git pull origin" \
+  git-psh="git push origin" \
+  git-sts="git status" \
+  git-tag="git tag" \
+  git-ntg="git tag -a"
 
 # adding flags
 alias \
   df="df -h" \
   free="free -m"
-
-# newsboat
-[ -x "$(command -v newsboat)" ] && alias newsboat="newsboat -u ~/.config/newsboat/urls"
 
 # multimedia scripts
 alias \
@@ -196,10 +195,9 @@ alias \
 
 # file management
 alias \
-  fm="$HOME/.config/vifm/scripts/vifmrun" \
-  file="$HOME/.config/vifm/scripts/vifmrun" \
-  flm="$HOME/.config/vifm/scripts/vifmrun" \
-  vifm="$HOME/.config/vifm/scripts/vifmrun" \
+  fm="vifm" \
+  file="vifm" \
+  flm="vifm" \
   rm="rm -vI" \
   mv="mv -iv" \
   cp="cp -iv" \

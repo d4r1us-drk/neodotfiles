@@ -80,7 +80,7 @@ case "$cases" in
     action;
     check;;
   $option5*)
-    io.elementary.capnet-assist;;
+    firefox http://networkcheck.kde.org;;
   $option6*)
     exit 0
 esac

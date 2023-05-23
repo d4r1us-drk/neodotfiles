@@ -80,26 +80,6 @@
 (use-package! calfw)
 (use-package! calfw-org)
 
-(setq centaur-tabs-set-bar 'over
-      centaur-tabs-set-icons t
-      centaur-tabs-gray-out-icons 'buffer
-      centaur-tabs-height 24
-      centaur-tabs-set-modified-marker t
-      centaur-tabs-style "bar"
-      centaur-tabs-modified-marker "•")
-(map! :leader
-      :desc "Toggle tabs globally" "t c" #'centaur-tabs-mode
-      :desc "Toggle tabs local display" "t C" #'centaur-tabs-local-mode)
-(evil-define-key 'normal centaur-tabs-mode-map (kbd "g <right>") 'centaur-tabs-forward        ; default Doom binding is 'g t'
-                                               (kbd "g <left>")  'centaur-tabs-backward       ; default Doom binding is 'g T'
-                                               (kbd "g <down>")  'centaur-tabs-forward-group
-                                               (kbd "g <up>")    'centaur-tabs-backward-group)
-
-(map! :leader
-      (:prefix ("c h" . "Help info from Clippy")
-       :desc "Clippy describes function under point" "f" #'clippy-describe-function
-       :desc "Clippy describes variable under point" "v" #'clippy-describe-variable))
-
 (use-package dashboard
   :init      ;; tweak dashboard config before loading it
   (setq dashboard-set-heading-icons t)
@@ -180,72 +160,8 @@ List of keybindings (SPC h b b)")
 (map! :leader
       :desc "Load new theme" "h t" #'counsel-load-theme)
 
-(use-package! elfeed-goodies)
-(elfeed-goodies/setup)
-(setq elfeed-goodies/entry-pane-size 0.5)
-(add-hook 'elfeed-show-mode-hook 'visual-line-mode)
-(evil-define-key 'normal elfeed-show-mode-map
-  (kbd "J") 'elfeed-goodies/split-show-next
-  (kbd "K") 'elfeed-goodies/split-show-prev)
-(evil-define-key 'normal elfeed-search-mode-map
-  (kbd "J") 'elfeed-goodies/split-show-next
-  (kbd "K") 'elfeed-goodies/split-show-prev)
-(setq elfeed-feeds (quote
-                    (("https://www.reddit.com/r/linux.rss" reddit linux)
-                     ("https://www.reddit.com/r/commandline.rss" reddit commandline)
-                     ("https://www.reddit.com/r/distrotube.rss" reddit distrotube)
-                     ("https://www.reddit.com/r/emacs.rss" reddit emacs)
-                     ("https://www.gamingonlinux.com/article_rss.php" gaming linux)
-                     ("https://hackaday.com/blog/feed/" hackaday linux)
-                     ("https://opensource.com/feed" opensource linux)
-                     ("https://linux.softpedia.com/backend.xml" softpedia linux)
-                     ("https://itsfoss.com/feed/" itsfoss linux)
-                     ("https://www.zdnet.com/topic/linux/rss.xml" zdnet linux)
-                     ("https://www.phoronix.com/rss.php" phoronix linux)
-                     ("http://feeds.feedburner.com/d0od" omgubuntu linux)
-                     ("https://www.computerworld.com/index.rss" computerworld linux)
-                     ("https://www.networkworld.com/category/linux/index.rss" networkworld linux)
-                     ("https://www.techrepublic.com/rssfeeds/topic/open-source/" techrepublic linux)
-                     ("https://betanews.com/feed" betanews linux)
-                     ("http://lxer.com/module/newswire/headlines.rss" lxer linux)
-                     ("https://archlinux.org/feeds/news/" arch linux)
-                     ("https://distrowatch.com/news/dwd.xml" distrowatch linux))))
-
-(emms-all)
-(emms-default-players)
-(emms-mode-line 1)
-(emms-playing-time 1)
-(setq emms-source-file-default-directory "~/Music/"
-      emms-playlist-buffer-name "*Music*"
-      emms-info-asynchronously t
-      emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
-(map! :leader
-      (:prefix ("a" . "EMMS audio player")
-       :desc "Go to emms playlist" "a" #'emms-playlist-mode-go
-       :desc "Emms pause track" "x" #'emms-pause
-       :desc "Emms stop track" "s" #'emms-stop
-       :desc "Emms play previous track" "p" #'emms-previous
-       :desc "Emms play next track" "n" #'emms-next))
-
 (use-package emojify
   :hook (after-init . global-emojify-mode))
-
-(map! :leader
-      (:prefix ("e". "evaluate/ERC/EWW")
-       :desc "Launch ERC with TLS connection" "E" #'erc-tls))
-
-(setq erc-prompt (lambda () (concat "[" (buffer-name) "]"))
-      erc-server "irc.libera.chat"
-      erc-nick "distrotube"
-      erc-user-full-name "Derek Taylor"
-      erc-track-shorten-start 24
-      erc-autojoin-channels-alist '(("irc.libera.chat" "#archlinux" "#linux" "#emacs"))
-      erc-kill-buffer-on-part t
-      erc-fill-column 100
-      erc-fill-function 'erc-fill-static
-      erc-fill-static-center 20
-      ;; erc-auto-query 'bury
-      )
 
 (map! :leader
       (:prefix ("e". "evaluate/EWW")
@@ -272,6 +188,16 @@ List of keybindings (SPC h b b)")
 (custom-set-faces!
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
+
+(setq imenu-list-focus-after-activation t)
+
+(map! :leader
+      (:prefix ("s" . "Search")
+       :desc "Menu to jump to places in buffer" "i" #'counsel-imenu))
+
+(map! :leader
+      (:prefix ("t" . "Toggle")
+       :desc "Toggle imenu shown in a sidebar" "i" #'imenu-list-smart-toggle))
 
 (defun dt/insert-todays-date (prefix)
   (interactive "P")
@@ -577,8 +503,6 @@ List of keybindings (SPC h b b)")
   :config
   (setq org-auto-tangle-default t))
 
-(use-package! password-store)
-
 (map! :leader
       :desc "Switch to perspective NAME" "DEL" #'persp-switch
       :desc "Switch to buffer in perspective" "," #'persp-switch-to-buffer
@@ -605,7 +529,7 @@ List of keybindings (SPC h b b)")
        :desc "Increment register" "+" #'increment-register
        :desc "Point to register" "SPC" #'point-to-register))
 
-(setq shell-file-name "/bin/fish"
+(setq shell-file-name "/bin/bash"
       vterm-max-scrollback 5000)
 (setq eshell-rc-script "~/.config/doom/eshell/profile"
       eshell-aliases-file "~/.config/doom/eshell/aliases"
@@ -637,8 +561,5 @@ List of keybindings (SPC h b b)")
       :desc "Zap to char" "z" #'zap-to-char
       :desc "Zap up to char" "Z" #'zap-up-to-char)
 
-(setq mastodon-instance-url "https://fosstodon.org"
-   mastodon-active-user "d4r1us-drk")
-
-(set-frame-parameter (selected-frame) 'alpha '(95 . 80))
-(add-to-list 'default-frame-alist '(alpha . (95 . 80)))
+(set-frame-parameter (selected-frame) 'alpha '(98 . 80))
+(add-to-list 'default-frame-alist '(alpha . (98 . 80)))

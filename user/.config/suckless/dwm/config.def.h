@@ -1,13 +1,12 @@
-/* See LICENSE file for copyright and license details. */
-/* appearance */
+// appearance
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 1;        /* vertical padding for statusbar */
-static const char *fonts[]          = {"mononoki Nerd Font Mono:size=10"};
-static const char dmenufont[]       = "mononoki Nerd Font Mono:size=10";
+static const char *fonts[]          = {"Symbols Nerd Font Mono:size=12", "mononoki Nerd Font:size=10"};
+static const char dmenufont[]       = {"mononoki Nerd Font:size=10"};
 static const char col_gray1[]       = "#1d2021";
 static const char col_gray2[]       = "#32302f";
 static const char col_gray3[]       = "#d5c4a1";
@@ -19,23 +18,24 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
-// SCRATCHPADS
+// scratchpads
 typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"alacritty", "-t", "sptrm", "--class", "sptrm,sptrm", NULL };
-const char *spcmd2[] = {"alacritty", "-t", "sptop", "--class", "sptop,sptop", "-e", "btop", NULL };
-const char *spcmd3[] = {"alacritty", "-t", "spfli", "--class", "spfli,spfli", "-e", "flix-cli", NULL };
-const char *spcmd4[] = {"alacritty", "-t", "spani", "--class", "spani,spani", "-e", "ani-cli", NULL };
-const char *spcmd5[] = {"alacritty", "-t", "spytf", "--class", "spytf,spytf", "-e", "ytfzf", "-flst", NULL };
-const char *spcmd6[] = {"alacritty", "-t", "spamx", "--class", "spamx,spamx", "-e", "alsamixer", NULL };
-const char *spcmd7[] = {"alacritty", "-t", "sppmx", "--class", "sppmx,sppmx", "-e", "pulsemixer", NULL };
-const char *spcmd8[] = {"alacritty", "-t", "spmsc", "--class", "spmsc,spmsc", "-e", "cmus", NULL };
-const char *spcmd9[] = {"alacritty", "-t", "spflm", "--class", "spflm,spflm", "-e", "./.config/vifm/scripts/vifmrun", NULL };
-const char *spcmd10[] = {"alacritty", "-t", "sptot", "--class", "sptot,sptot", "-e", "tut", NULL };
-const char *spcmd11[] = {"alacritty", "-t", "spytm", "--class", "spytm,spytm", "-e", "ytfzf", "-mlst", NULL };
-const char *spcmd12[] = {"alacritty", "-t", "sprss", "--class", "sprss,sprss", "-e", "newsboat", "-u", "~/.config/newsboat/urls", NULL };
+const char *spcmd1[] = {"st", "-n", "sptrm", "-g", "140x35", NULL };
+const char *spcmd2[] = {"st", "-n", "sptop", "-g", "140x35", "-e", "btop", NULL };
+const char *spcmd3[] = {"st", "-n", "spfli", "-g", "140x35", "-e", "flix-cli", NULL };
+const char *spcmd4[] = {"st", "-n", "spani", "-g", "140x35", "-e", "ani-cli", NULL };
+const char *spcmd5[] = {"st", "-n", "spytf", "-g", "140x35", "-e", "ytfzf", "-flst", NULL };
+const char *spcmd6[] = {"st", "-n", "spamx", "-g", "140x35", "-e", "alsamixer", NULL };
+const char *spcmd7[] = {"st", "-n", "sppmx", "-g", "140x35", "-e", "pulsemixer", NULL };
+const char *spcmd8[] = {"st", "-n", "spmsc", "-g", "140x35", "-e", "cmus", NULL };
+const char *spcmd9[] = {"st", "-n", "spflm", "-g", "140x35", "-e", ".config/vifm/scripts/vifmrun", NULL };
+const char *spcmd10[] = {"st", "-n", "sptot", "-g", "140x35", "-e", "tut", NULL };
+const char *spcmd11[] = {"st", "-n", "spytm", "-g", "140x35", "-e", "ytfzf", "-mlst", NULL };
+const char *spcmd12[] = {"st", "-n", "sprss", "-g", "140x35", "-e", "newsboat", NULL };
+const char *spcmd13[] = {"st", "-n", "spgkk", "-g", "140x35", "-e", "geek-life", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"sptrm",      spcmd1},
@@ -50,22 +50,23 @@ static Sp scratchpads[] = {
 	{"sptot",      spcmd10},
 	{"spytm",      spcmd11},
 	{"sprss",      spcmd12},
+	{"spgkk",      spcmd13},
 };
 
 /* tagging */
 static const char *tags[] = {
-        "cde", // EDITOR
-        "tst",  // FILE MANAGER
-        "web", // WEB BROWSER
-        "aud",  // CHAT
-        "tls",  // MUSIC
-        "vid", // VIDEO
-        "gfx",  // IMAGE/EDIT TOOLS
-        "off",  // OFFICE
-        "gme"   // GAMES
+        "", // EDITOR
+        "󰙨",  // FILE MANAGER
+        "󰖟",  // WEB BROWSER
+        "󰭹",  // CHAT
+        "󱡭",  // AUDIO TOOLS
+        "󰕧",  // VIDEO
+        "󰏘",  // IMAGE/EDIT TOOLS
+        "󰈙",  // OFFICE
+        "󰊖"   // GAMES
 };
 
-// RULES
+// rules
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -88,12 +89,13 @@ static const Rule rules[] = {
 	{ "Chromium",                         NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "Brave-browser",                    NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "Bitwarden",                        NULL,                 NULL,         1 << 2,       0,           -1 },
-	// audio tag
-	{ "Audacity",                         NULL,                 NULL,         1 << 3,       0,           -1 },
-	{ "Ardour",                           NULL,                 NULL,         1 << 3,       0,           -1 },
-	{ "Carla2",                           NULL,                 NULL,         1 << 3,       0,           -1 },
-	{ "Carla2-Control",                   NULL,                 NULL,         1 << 3,       0,           -1 },
+	// chat tag
+	{ "Signal",                           NULL,                 NULL,         1 << 3,       0,           -1 },
 	// audio tools tag
+	{ "Audacity",                         NULL,                 NULL,         1 << 4,       0,           -1 },
+	{ "Ardour",                           NULL,                 NULL,         1 << 4,       0,           -1 },
+	{ "Carla2",                           NULL,                 NULL,         1 << 4,       0,           -1 },
+	{ "Carla2-Control",                   NULL,                 NULL,         1 << 4,       0,           -1 },
 	{ "QjackCtl",                         NULL,                 NULL,         1 << 4,       1,           -1 },
 	{ "lsp-plugins",                      NULL,                 NULL,         1 << 4,       1,           -1 },
 	{ "qpwgraph",                         NULL,                 NULL,         1 << 4,       0,           -1 },
@@ -106,6 +108,7 @@ static const Rule rules[] = {
 	{ "SimpleScreenRecorder",             NULL,                 NULL,         1 << 5,       0,           -1 },
 	{ "Ghb",                              NULL,                 NULL,         1 << 5,       0,           -1 },
 	{ "obs",                              NULL,                 NULL,         1 << 5,       0,           -1 },
+	{ "mpv",                              NULL,                 NULL,         1 << 5,       0,           -1 },
 	// graphics/extra tools tag
 	{ "Gimp-2.10",                        NULL,                 NULL,         1 << 6,       0,           -1 },
 	{ "krita",                            NULL,                 NULL,         1 << 6,       0,           -1 },
@@ -115,6 +118,12 @@ static const Rule rules[] = {
 	{ "DesktopEditors",                   NULL,                 NULL,         1 << 7,       0,           -1 },
 	{ "Soffice",                          "soffice",            NULL,         1 << 7,       0,           -1 },
 	{ "libreoffice-startcenter",          NULL,                 NULL,         1 << 7,       0,           -1 },
+	{ "libreoffice-calc",                 NULL,                 NULL,         1 << 7,       0,           -1 },
+	{ "libreoffice-writer",               NULL,                 NULL,         1 << 7,       0,           -1 },
+	{ "libreoffice-impress",              NULL,                 NULL,         1 << 7,       0,           -1 },
+	{ "libreoffice-base",                 NULL,                 NULL,         1 << 7,       0,           -1 },
+	{ "libreoffice-draw",                 NULL,                 NULL,         1 << 7,       0,           -1 },
+	{ "libreoffice-math",                 NULL,                 NULL,         1 << 7,       0,           -1 },
 	{ "Joplin",                           NULL,                 NULL,         1 << 7,       0,           -1 },
 	// games tag
 	{ "retroarch",                        NULL,                 NULL,         1 << 8,       0,           -1 },
@@ -132,6 +141,7 @@ static const Rule rules[] = {
 	{ NULL,                            "sptot",                 NULL,       SPTAG(9),       1,           -1 },
 	{ NULL,                            "spytm",                 NULL,       SPTAG(10),       1,           -1 },
 	{ NULL,                            "sprss",                 NULL,       SPTAG(11),       1,           -1 },
+	{ NULL,                            "spgkk",                 NULL,       SPTAG(12),       1,           -1 },
 };
 
 // layout(s)
@@ -149,7 +159,7 @@ static const Layout layouts[] = {
 	{ "|||",      tcl },
 };
 
-//key definitions
+// key definitions
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -164,7 +174,7 @@ static const Layout layouts[] = {
 // dmenu
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 // terminal
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 #include "movestack.c"
 
@@ -173,7 +183,9 @@ static const Key keys[] = {
 	// text editor
 	{ MODKEY,                       XK_e,                      spawn,          SHCMD("emacsclient -c -a 'emacs'")},
 	// web browser
-	{ MODKEY,                       XK_w,                      spawn,          SHCMD("librewolf")},
+	{ MODKEY,                       XK_w,                      spawn,          SHCMD("firefox")},
+	// chat
+	{ MODKEY,                       XK_s,                      spawn,          SHCMD("signal-desktop")},
 	// set keyboard layout to es
 	{ MODKEY|ControlMask,           XK_e,                      spawn,          SHCMD("setxkbmap -layout es")},
 	// set keyboard layout to us
@@ -193,17 +205,19 @@ static const Key keys[] = {
 	// decrease brightness
 	{ 0,                            XF86XK_Display,            spawn,          SHCMD("arandr")},
 	// launcher
-	{ MODKEY|ControlMask,           XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = dmenucmd } },
 	// desktop launcher
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_drun") },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_drun") },
 	// wifi config
-	{ MODKEY|Mod1Mask,              XK_i,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_wifi") },
+	{ MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_wifi") },
 	// screenshots
-	{ MODKEY|Mod1Mask,              XK_s,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_scrot") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_scrot") },
 	// screenshots
-	{ MODKEY|Mod1Mask,              XK_w,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_wall") },
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_wall") },
 	// edit
-	{ MODKEY|Mod1Mask,              XK_e,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_edit") },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_edit") },
+	// bluetooth
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_blue") },
 	// terminal
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	// toogle the bar
@@ -248,18 +262,19 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	// scratchpads
-	{ MODKEY|ShiftMask,             XK_Return,      togglescratch,  {.ui = 0 } },
-	{ MODKEY|ShiftMask,             XK_b,      togglescratch,  {.ui = 1 } },
-	{ MODKEY|ShiftMask,             XK_f,      togglescratch,  {.ui = 2 } },
-	{ MODKEY|ShiftMask,             XK_a,      togglescratch,  {.ui = 3 } },
-	{ MODKEY|ShiftMask,             XK_y,      togglescratch,  {.ui = 4 } },
-	{ MODKEY|ShiftMask,             XK_o,      togglescratch,  {.ui = 5 } },
-	{ MODKEY|ShiftMask,             XK_p,      togglescratch,  {.ui = 6 } },
-	{ MODKEY|ShiftMask,             XK_m,      togglescratch,  {.ui = 7 } },
-	{ MODKEY|ShiftMask,             XK_v,      togglescratch,  {.ui = 8 } },
-	{ MODKEY|ShiftMask,             XK_t,      togglescratch,  {.ui = 9 } },
-	{ MODKEY|ShiftMask,             XK_n,      togglescratch,  {.ui = 10 } },
-	{ MODKEY|ShiftMask,             XK_r,      togglescratch,  {.ui = 11 } },
+	{ MODKEY|Mod1Mask,             XK_Return,      togglescratch,  {.ui = 0 } },
+	{ MODKEY|Mod1Mask,             XK_b,           togglescratch,  {.ui = 1 } },
+	{ MODKEY|Mod1Mask,             XK_f,           togglescratch,  {.ui = 2 } },
+	{ MODKEY|Mod1Mask,             XK_a,           togglescratch,  {.ui = 3 } },
+	{ MODKEY|Mod1Mask,             XK_y,           togglescratch,  {.ui = 4 } },
+	{ MODKEY|Mod1Mask,             XK_o,           togglescratch,  {.ui = 5 } },
+	{ MODKEY|Mod1Mask,             XK_p,           togglescratch,  {.ui = 6 } },
+	{ MODKEY|Mod1Mask,             XK_m,           togglescratch,  {.ui = 7 } },
+	{ MODKEY|Mod1Mask,             XK_v,           togglescratch,  {.ui = 8 } },
+	{ MODKEY|Mod1Mask,             XK_t,           togglescratch,  {.ui = 9 } },
+	{ MODKEY|Mod1Mask,             XK_n,           togglescratch,  {.ui = 10 } },
+	{ MODKEY|Mod1Mask,             XK_r,           togglescratch,  {.ui = 11 } },
+	{ MODKEY|Mod1Mask,             XK_g,           togglescratch,  {.ui = 12 } },
 	// tag bindings
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)

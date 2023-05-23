@@ -14,8 +14,8 @@ then
 fi
 
 ### ENVIRONMENT VARIABLES
-export EDITOR="lvim"                                             # $EDITOR use lunarvim in terminal
-export VISUAL="neovide --neovim-bin ./.local/bin/lvim"           # $VISUAL use neovide for lunarvim in GUI
+export EDITOR="emacsclient -t -a ''"              # $EDITOR use Emacs in terminal
+export VISUAL="emacsclient -c -a emacs"           # $VISUAL use Emacs in GUI mode
 export XDG_DATA_HOME="${XDG_DATA_HOME:="$HOME/.local/share"}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:="$HOME/.cache"}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:="$HOME/.config"}"
