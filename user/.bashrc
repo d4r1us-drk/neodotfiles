@@ -21,8 +21,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# use neovim for vim if present.
-[ -x "$(command -v nvim)" ] && alias vim="nvim"
+# use emacs for vim if present.
+[ -x "$(command -v emacs)" ] && alias vim="emacsclient -t -a ''"
 
 ### SET VI MODE ###
 # Comment this line out to enable default emacs-like bindings
@@ -183,9 +183,9 @@ alias \
 alias \
   mx="pulsemixer" \
   amx="alsamixer" \
-  mk="cmus" \
-  ms="cmus" \
-  music="cmus"
+  mk="musikcube" \
+  ms="musikcube" \
+  music="musikcube"
 
 # power management
 alias \

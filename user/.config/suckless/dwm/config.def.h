@@ -183,7 +183,7 @@ static const Key keys[] = {
 	// text editor
 	{ MODKEY,                       XK_e,                      spawn,          SHCMD("emacsclient -c -a 'emacs'")},
 	// web browser
-	{ MODKEY,                       XK_w,                      spawn,          SHCMD("firefox")},
+	{ MODKEY,                       XK_w,                      spawn,          SHCMD("qutebrowser")},
 	// chat
 	{ MODKEY,                       XK_s,                      spawn,          SHCMD("signal-desktop")},
 	// set keyboard layout to es
