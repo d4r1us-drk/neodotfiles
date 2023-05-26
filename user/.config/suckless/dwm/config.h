@@ -81,7 +81,7 @@ static const Rule rules[] = {
 	{ "neovim",                           NULL,                 NULL,              1,       0,           -1 },
 	{ "neovide",                          NULL,                 NULL,              1,       0,           -1 },
 	// test tag
-	{ "Virt-manager",                     NULL,                 NULL,              1,       0,           -1 },
+	{ "Virt-manager",                     NULL,                 NULL,         1 << 1,       0,           -1 },
 	// web tag
 	{ "LibreWolf",                        NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "firefox",                          NULL,                 NULL,         1 << 2,       0,           -1 },

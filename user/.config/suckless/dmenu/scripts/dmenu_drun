@@ -6,7 +6,6 @@
 
 prompt="-p launch:"
 colors="-nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7"
-font="-fn 'mononoki Nerd Font-10'"
 
-DMENU="dmenu -i -l 10 $font $colors $prompt"
+DMENU="dmenu -i -l 10 $colors $prompt"
 j4-dmenu-desktop --dmenu "$DMENU" --no-generic

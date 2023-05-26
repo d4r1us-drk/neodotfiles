@@ -26,7 +26,7 @@ pwr4="cancel"
 pwrs="$pwr1\n$pwr2\n$pwr3\n$pwr4"
 
 ## MAIN ACTION COMMAND ##
-action=$(echo -e "$options" | dmenu -i -fn "mononoki Nerd Font-10" -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "power options:")
+action=$(echo -e "$options" | dmenu -i -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "power options:")
 case "$action" in
     $option1*)
         pkill X;;
