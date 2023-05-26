@@ -1,12 +1,12 @@
-// appearance
+/* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 1;        /* vertical padding for statusbar */
-static const char *fonts[]          = {"Symbols Nerd Font Mono:size=12", "mononoki Nerd Font:size=10"};
-static const char dmenufont[]       = {"mononoki Nerd Font:size=10"};
+static const int vertpadbar         = 8;        /* vertical padding for statusbar */
+static const char *fonts[]          = {"Symbols Nerd Font Mono:size=12", "mononoki Nerd Font:size=12"};
+static const char dmenufont[]       = {"mononoki Nerd Font:size=12"};
 static const char col_gray1[]       = "#1d2021";
 static const char col_gray2[]       = "#32302f";
 static const char col_gray3[]       = "#d5c4a1";
@@ -18,7 +18,7 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
-// scratchpads
+/* scratchpads */
 typedef struct {
 	const char *name;
 	const void *cmd;
@@ -55,8 +55,8 @@ static Sp scratchpads[] = {
 
 /* tagging */
 static const char *tags[] = {
-        "", // EDITOR
-        "󰙨",  // FILE MANAGER
+        "",  // EDITOR
+        "󰙨",  // TESTING
         "󰖟",  // WEB BROWSER
         "󰭹",  // CHAT
         "󱡭",  // AUDIO TOOLS
@@ -89,6 +89,7 @@ static const Rule rules[] = {
 	{ "Chromium",                         NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "Brave-browser",                    NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "Bitwarden",                        NULL,                 NULL,         1 << 2,       0,           -1 },
+	{ "newsboat",                         NULL,                 NULL,         1 << 2,       0,           -1 },
 	// chat tag
 	{ "Signal",                           NULL,                 NULL,         1 << 3,       0,           -1 },
 	// audio tools tag
@@ -171,97 +172,131 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-// dmenu
+  // dmenu
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-// terminal
+  // terminal
 static const char *termcmd[]  = { "st", NULL };
 
 #include "movestack.c"
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	// text editor
-	{ MODKEY,                       XK_e,                      spawn,          SHCMD("emacsclient -c -a 'emacs'")},
-	// web browser
-	{ MODKEY,                       XK_w,                      spawn,          SHCMD("qutebrowser")},
-	// chat
-	{ MODKEY,                       XK_s,                      spawn,          SHCMD("signal-desktop")},
-	// set keyboard layout to es
-	{ MODKEY|ControlMask,           XK_e,                      spawn,          SHCMD("setxkbmap -layout es")},
-	// set keyboard layout to us
-	{ MODKEY|ControlMask,           XK_u,                      spawn,          SHCMD("setxkbmap -layout us")},
-	// increase volume
-	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD("pamixer -i 5")},
-	// decrease volume
-	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          SHCMD("pamixer -d 5")},
-	// mute volume
-	{ 0,                            XF86XK_AudioMute,          spawn,          SHCMD("pamixer -t")},
-	// mute microphone
-	{ 0,                            XF86XK_AudioMicMute,       spawn,          SHCMD("pamixer --default-source -t")},
-	// increase brightness
-	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          SHCMD("xbacklight -inc 10")},
-	// decrease brightness
-	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          SHCMD("xbacklight -dec 10")},
-	// decrease brightness
-	{ 0,                            XF86XK_Display,            spawn,          SHCMD("arandr")},
-	// launcher
-	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = dmenucmd } },
-	// desktop launcher
-	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_drun") },
-	// wifi config
-	{ MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_wifi") },
-	// screenshots
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_scrot") },
-	// screenshots
-	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_wall") },
-	// edit
-	{ MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_edit") },
-	// bluetooth
-	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_blue") },
-	// terminal
+
+  /* main apps*/
+	  // terminal
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	// toogle the bar
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	// window focusing
+	  // text editor
+	{ MODKEY,                       XK_e,                      spawn,          SHCMD("st -n neovim -c neovim -e $HOME/.local/bin/lvim")},
+	  // web browser
+	{ MODKEY,                       XK_w,                      spawn,          SHCMD("qutebrowser")},
+	  // chat
+	{ MODKEY,                       XK_s,                      spawn,          SHCMD("flatpak run org.signal.Signal")},
+
+  /* keyboard layout */
+	  // set keyboard layout to es
+	{ MODKEY|ControlMask,           XK_e,                      spawn,          SHCMD("setxkbmap -layout es")},
+	  // set keyboard layout to us
+	{ MODKEY|ControlMask,           XK_u,                      spawn,          SHCMD("setxkbmap -layout us")},
+
+  /* XF86 Keys */
+	  // increase volume
+	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD("pamixer -i 5")},
+	  // decrease volume
+	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          SHCMD("pamixer -d 5")},
+	  // mute volume
+	{ 0,                            XF86XK_AudioMute,          spawn,          SHCMD("pamixer -t")},
+	  // mute microphone
+	{ 0,                            XF86XK_AudioMicMute,       spawn,          SHCMD("pamixer --default-source -t")},
+	  // increase brightness
+	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          SHCMD("xbacklight -inc 10")},
+	  // decrease brightness
+	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          SHCMD("xbacklight -dec 10")},
+	  // display settings
+	{ 0,                            XF86XK_Display,            spawn,          SHCMD("arandr")},
+	  // play/pause
+	{ 0,                            XF86XK_AudioPause,         spawn,          SHCMD("playerctl play-pause")},
+	  // play/pause
+	{ 0,                            XF86XK_AudioPlay,          spawn,          SHCMD("playerctl play-pause")},
+	  // next
+	{ 0,                            XF86XK_AudioNext,          spawn,          SHCMD("playerctl next")},
+	  // previous
+	{ 0,                            XF86XK_AudioPrev,          spawn,          SHCMD("playerctl previous")},
+	  // stop
+	{ 0,                            XF86XK_AudioStop,          spawn,          SHCMD("playerctl stop")},
+	  // news
+	{ 0,                            XF86XK_News,               spawn,          SHCMD("st -n newsboat -c newsboat -e newsboat")},
+
+  /* dmenu */
+	  // launcher
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = dmenucmd } },
+	  // desktop launcher
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_drun") },
+	  // wifi config
+	{ MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_wifi") },
+	  // screenshots
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_scrot") },
+	  // wallpapers
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_wall") },
+	  // edit
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_edit") },
+	  // bluetooth
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_blue") },
+    // power manager
+	{ MODKEY|ShiftMask,             XK_q,      spawn,           SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_power")},
+
+  /* window management */
+	  // window focusing
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	// increase and decrease master clients count
+	  // increase and decrease master clients count
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	// increase and decrease master client size
+	  // increase and decrease master client size
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	// move windows on stack
+	  // move windows on stack
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-	// switch master window
+	  // switch master window
 	{ MODKEY|ControlMask,           XK_Return, zoom,           {0} },
-	// switch to latest tag
+	  // switch to latest tag
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	// close focused client
+	  // close focused client
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	// switch to tiling layout
+	  // switch to tiling layout
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	// switch to floating layout
+	  // switch to floating layout
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	// switch to monocle layout
+	  // switch to monocle layout
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	// switch to three-column layout
+	  // switch to three-column layout
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[3]} },
-	// switch to latest layout
+	  // switch to latest layout
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	// toggle floating mode on focused window
+	  // toggle floating mode on focused window
 	{ MODKEY|ControlMask,           XK_space,  togglefloating, {0} },
-	// view all opened clients on current tag
+	  // view all opened clients on current tag
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	// focus next or previous screen
+	  // focus next or previous screen
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	// move focused client to next or previous screen
+	  // move focused client to next or previous screen
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	// scratchpads
+
+	/* tags */
+	TAGKEYS(                        XK_1,                      0)
+	TAGKEYS(                        XK_2,                      1)
+	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(                        XK_4,                      3)
+	TAGKEYS(                        XK_5,                      4)
+	TAGKEYS(                        XK_6,                      5)
+	TAGKEYS(                        XK_7,                      6)
+	TAGKEYS(                        XK_8,                      7)
+	TAGKEYS(                        XK_9,                      8)
+
+	/* scratchpads */
 	{ MODKEY|Mod1Mask,             XK_Return,      togglescratch,  {.ui = 0 } },
 	{ MODKEY|Mod1Mask,             XK_b,           togglescratch,  {.ui = 1 } },
 	{ MODKEY|Mod1Mask,             XK_f,           togglescratch,  {.ui = 2 } },
@@ -275,20 +310,13 @@ static const Key keys[] = {
 	{ MODKEY|Mod1Mask,             XK_n,           togglescratch,  {.ui = 10 } },
 	{ MODKEY|Mod1Mask,             XK_r,           togglescratch,  {.ui = 11 } },
 	{ MODKEY|Mod1Mask,             XK_g,           togglescratch,  {.ui = 12 } },
-	// tag bindings
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	// logout
+
+	/* misc */
+    // logout
 	//{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ShiftMask,             XK_q,      spawn,           SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_power")},
-	// restart dwm
+	  // toogle the bar
+	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	  // restart dwm
 	{ MODKEY|ControlMask,           XK_r,      quit,           {1} },
 };
 

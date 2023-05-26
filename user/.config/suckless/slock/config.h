@@ -13,10 +13,10 @@ static const char *colorname[NUMCOLS] = {
 static const int failonclear = 1;
 
 /* default message */
-static const char * message = "This device is locked\neven if you manage to unlock it\nyou wont know how to use it";
+static const char * message = "";
 
 /* text color */
-static const char * text_color = "#d4c4a1";
+static const char * text_color = "#1d2021";
 
 /* text size (must be a valid size) */
 static const char * font_name = "mtx";

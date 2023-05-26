@@ -5,9 +5,6 @@ CC ?= cc
 
 all: herbe
 
-config.h: config.def.h
-	cp config.def.h config.h
-
 herbe: herbe.c config.h
 	$(CC) herbe.c $(CFLAGS) -o herbe
 

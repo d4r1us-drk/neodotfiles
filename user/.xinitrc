@@ -31,12 +31,9 @@ fi
 
 ### ENVIRONMENT VARIABLES
 export MOZ_USE_XINPUT2=1
-export EDITOR="emacsclient -t -a ''"              # $EDITOR use Emacs in terminal
-export VISUAL="emacsclient -c -a emacs"           # $VISUAL use Emacs in GUI mode
 export XDG_DATA_HOME="${XDG_DATA_HOME:="$HOME/.local/share"}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:="$HOME/.cache"}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:="$HOME/.config"}"
-export QT_QPA_PLATFORMTHEME=qt5ct                 # Qt theeming stuff
 
 # start window manager / desktop environment
 exec dwm

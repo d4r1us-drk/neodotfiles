@@ -1,4 +1,10 @@
-#!/usr/bin/env bash
-
+#!/bin/bash
 brt=$(xbacklight -get)
-echo " bri: ${brt%.*}% "
+if [ "$brt" = "100.000000" ]; then
+    icon="󰃠"
+elif [ "$brt" \> "50%.*" ]; then
+    icon="󰃟"
+elif [ "$brt" \< "49%.*" ]; then
+    icon="󰃞"
+fi
+echo " $icon ${brt%.*}% "

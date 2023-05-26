@@ -41,17 +41,17 @@ connect() {
   notify-send "Scannig networks, please wait"
   sleep 1
   bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -i -l 10 -fn "mononoki Nerd Font-10" -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "select wifi:" | cut -d' ' -f1)
-  }
+}
 
 ## SELECT PASSWORD FUNCTION ##
 password() {
   pass=$(echo " " | dmenu -P -i -fn "mononoki Nerd Font-10" -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "enter password:")
-  }
+}
 
 ## MAIN CONNECTION COMMAND ##
 action() {
   nmcli device wifi connect "$bssid" password "$pass" || nmcli device wifi connect "$bssid"
-  }
+}
 
 ## CHECKING IF WIFI IS WORKING
 check() {
@@ -80,7 +80,7 @@ case "$cases" in
     action;
     check;;
   $option5*)
-    firefox http://networkcheck.kde.org;;
+    qutebrowser http://networkcheck.kde.org;;
   $option6*)
     exit 0
 esac

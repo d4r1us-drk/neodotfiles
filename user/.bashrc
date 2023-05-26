@@ -8,8 +8,7 @@
 ### EXPORT ###
 export TERM="xterm-256color"                      # getting proper colors
 export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
-export EDITOR="emacsclient -t -a ''"              # $EDITOR use Emacs in terminal
-export VISUAL="emacsclient -c -a emacs"           # $VISUAL use Emacs in GUI mode
+export EDITOR="$HOME/.local/bin/lvim"             # $EDITOR use lunarvim
 
 ### "bat" as manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -21,8 +20,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# use emacs for vim if present.
-[ -x "$(command -v emacs)" ] && alias vim="emacsclient -t -a ''"
+# use lunarvim for vim if present.
+[ -x "$(command -v ~/.local/bin/lvim)" ] && alias vim="~/.local/bin/lvim"
 
 ### SET VI MODE ###
 # Comment this line out to enable default emacs-like bindings
@@ -132,11 +131,11 @@ alias \
 
 # Changing "ls" to "exa"
 alias \
-  ls="exa -al --color=always --group-directories-first" \
-  la="exa -a --color=always --group-directories-first" \
-  ll="exa -l --color=always --group-directories-first" \
-  lt="exa -aT --color=always --group-directories-first" \
-  l.='exa -a | grep -E "^\."'
+  ls="exa --icons -al --color=always --group-directories-first" \
+  la="exa --icons -a --color=always --group-directories-first" \
+  ll="exa --icons -l --color=always --group-directories-first" \
+  lt="exa --icons -aT --color=always --group-directories-first" \
+  l.='exa --icons -a | grep -E "^\."'
 
 # function to detect os and assign aliases to package managers
 alias \
@@ -145,7 +144,7 @@ alias \
   pac-rmv="paru -Rcns" \
   pac-rmv-sec="paru -R" \
   pac-qry="paru -Ss" \
-  pac-cln="paru -Scc"
+  pac-cln="paru -Scc && paru -Rns $(pacman -Qtdq)"
 
 # colorize grep output (good for log files)
 alias \
