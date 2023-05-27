@@ -80,7 +80,7 @@ case "$cases" in
     action;
     check;;
   $option5*)
-    qutebrowser http://networkcheck.kde.org;;
+    $BROWSER http://networkcheck.kde.org;;
   $option6*)
     exit 0
 esac

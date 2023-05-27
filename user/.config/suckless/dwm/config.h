@@ -4,7 +4,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 8;        /* vertical padding for statusbar */
+static const int vertpadbar         = 4;        /* vertical padding for statusbar */
 static const char *fonts[]          = {"Symbols Nerd Font Mono:size=12", "mononoki Nerd Font:size=12"};
 static const char dmenufont[]       = {"mononoki Nerd Font:size=12"};
 static const char col_gray1[]       = "#1d2021";
@@ -12,10 +12,17 @@ static const char col_gray2[]       = "#32302f";
 static const char col_gray3[]       = "#d5c4a1";
 static const char col_gray4[]       = "#fbf1c7";
 static const char col_cyan[]        = "#cc241d";
+static const unsigned int baralpha = 0xd0;
+static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+};
+static const unsigned int alphas[][3]      = {
+    /*               fg      bg        border*/
+    [SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+	  [SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
 /* scratchpads */
@@ -188,29 +195,29 @@ static const Key keys[] = {
 	  // text editor
 	{ MODKEY,                       XK_e,                      spawn,          SHCMD("st -n neovim -c neovim -e $HOME/.local/bin/lvim")},
 	  // web browser
-	{ MODKEY,                       XK_w,                      spawn,          SHCMD("qutebrowser")},
+	{ MODKEY,                       XK_w,                      spawn,          SHCMD("brave")},
 	  // chat
 	{ MODKEY,                       XK_s,                      spawn,          SHCMD("flatpak run org.signal.Signal")},
 
   /* keyboard layout */
 	  // set keyboard layout to es
-	{ MODKEY|ControlMask,           XK_e,                      spawn,          SHCMD("setxkbmap -layout es")},
+	{ MODKEY|ControlMask,           XK_e,                      spawn,          SHCMD("setxkbmap -layout es && pkill -RTMIN+10 dwmblocks")},
 	  // set keyboard layout to us
-	{ MODKEY|ControlMask,           XK_u,                      spawn,          SHCMD("setxkbmap -layout us")},
+	{ MODKEY|ControlMask,           XK_u,                      spawn,          SHCMD("setxkbmap -layout us && pkill -RTMIN+10 dwmblocks")},
 
   /* XF86 Keys */
 	  // increase volume
-	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD("pamixer -i 5")},
+	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD("pamixer -i 5 && pkill -RTMIN+10 dwmblocks")},
 	  // decrease volume
-	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          SHCMD("pamixer -d 5")},
+	{ 0,                            XF86XK_AudioLowerVolume,   spawn,          SHCMD("pamixer -d 5 && pkill -RTMIN+10 dwmblocks")},
 	  // mute volume
-	{ 0,                            XF86XK_AudioMute,          spawn,          SHCMD("pamixer -t")},
+	{ 0,                            XF86XK_AudioMute,          spawn,          SHCMD("pamixer -t && pkill -RTMIN+10 dwmblocks")},
 	  // mute microphone
-	{ 0,                            XF86XK_AudioMicMute,       spawn,          SHCMD("pamixer --default-source -t")},
+	{ 0,                            XF86XK_AudioMicMute,       spawn,          SHCMD("pamixer --default-source -t && pkill -RTMIN+10 dwmblocks")},
 	  // increase brightness
-	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          SHCMD("xbacklight -inc 10")},
+	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          SHCMD("xbacklight -inc 10 && pkill -RTMIN+10 dwmblocks")},
 	  // decrease brightness
-	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          SHCMD("xbacklight -dec 10")},
+	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          SHCMD("xbacklight -dec 10 && pkill -RTMIN+10 dwmblocks")},
 	  // display settings
 	{ 0,                            XF86XK_Display,            spawn,          SHCMD("arandr")},
 	  // play/pause

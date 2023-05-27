@@ -1,4 +1,20 @@
 #!/bin/bash
 date="$(date +%d/%m/%y)"
-clock="$(date +%R)"
-echo " 󰸗 $date | 󰥔 $clock "
+hour="$(date +%I)"
+clock_icon=""
+case $hour in
+  "01") clock_icon="󱐿";;
+  "02") clock_icon="󱑀";;
+  "03") clock_icon="󱑁";;
+  "04") clock_icon="󱑂";;
+  "05") clock_icon="󱑃";;
+  "06") clock_icon="󱑄";;
+  "07") clock_icon="󱑅";;
+  "08") clock_icon="󱑆";;
+  "09") clock_icon="󱑇";;
+  "10") clock_icon="󱑈";;
+  "11") clock_icon="󱑉";;
+  "12") clock_icon="󱑊";;
+esac
+clock="$(date +%I:%M%p | sed 's/^0//')"
+echo " $clock_icon $clock | 󰸗 $date "
