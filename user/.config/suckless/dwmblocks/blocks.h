@@ -11,7 +11,7 @@ static const Block blocks[] = {
 
 	{"", "$HOME/.config/suckless/dwmblocks/scripts/block_clock",            60,                      1},
 
-	{"", "$HOME/.config/suckless/dwmblocks/scripts/block_wifi",             5,                       4},
+	{"", "$HOME/.config/suckless/dwmblocks/scripts/block_wifi",             20,                       1},
 };
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.

@@ -39,10 +39,9 @@ const char *spcmd6[] = {"st", "-n", "spamx", "-g", "140x35", "-e", "alsamixer", 
 const char *spcmd7[] = {"st", "-n", "sppmx", "-g", "140x35", "-e", "pulsemixer", NULL };
 const char *spcmd8[] = {"st", "-n", "spmsc", "-g", "140x35", "-e", "musikcube", NULL };
 const char *spcmd9[] = {"st", "-n", "spflm", "-g", "140x35", "-e", ".config/vifm/scripts/vifmrun", NULL };
-const char *spcmd10[] = {"st", "-n", "sptot", "-g", "140x35", "-e", "tut", NULL };
-const char *spcmd11[] = {"st", "-n", "spytm", "-g", "140x35", "-e", "ytfzf", "-mlst", NULL };
-const char *spcmd12[] = {"st", "-n", "sprss", "-g", "140x35", "-e", "newsboat", NULL };
-const char *spcmd13[] = {"st", "-n", "spgkk", "-g", "140x35", "-e", "geek-life", NULL };
+const char *spcmd10[] = {"st", "-n", "spytm", "-g", "140x35", "-e", "ytfzf", "-mlst", NULL };
+const char *spcmd11[] = {"st", "-n", "sprss", "-g", "140x35", "-e", "newsboat", NULL };
+const char *spcmd12[] = {"st", "-n", "spgkk", "-g", "140x35", "-e", "geek-life", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"sptrm",      spcmd1},
@@ -54,10 +53,9 @@ static Sp scratchpads[] = {
 	{"sppmx",      spcmd7},
 	{"spmsc",      spcmd8},
 	{"spflm",      spcmd9},
-	{"sptot",      spcmd10},
-	{"spytm",      spcmd11},
-	{"sprss",      spcmd12},
-	{"spgkk",      spcmd13},
+	{"spytm",      spcmd10},
+	{"sprss",      spcmd11},
+	{"spgkk",      spcmd12},
 };
 
 /* tagging */
@@ -146,10 +144,9 @@ static const Rule rules[] = {
 	{ NULL,                            "sppmx",                 NULL,       SPTAG(6),       1,           -1 },
 	{ NULL,                            "spmsc",                 NULL,       SPTAG(7),       1,           -1 },
 	{ NULL,                            "spflm",                 NULL,       SPTAG(8),       1,           -1 },
-	{ NULL,                            "sptot",                 NULL,       SPTAG(9),       1,           -1 },
-	{ NULL,                            "spytm",                 NULL,       SPTAG(10),       1,           -1 },
-	{ NULL,                            "sprss",                 NULL,       SPTAG(11),       1,           -1 },
-	{ NULL,                            "spgkk",                 NULL,       SPTAG(12),       1,           -1 },
+	{ NULL,                            "spytm",                 NULL,       SPTAG(9),       1,           -1 },
+	{ NULL,                            "sprss",                 NULL,       SPTAG(10),       1,           -1 },
+	{ NULL,                            "spgkk",                 NULL,       SPTAG(11),       1,           -1 },
 };
 
 // layout(s)
@@ -313,10 +310,9 @@ static const Key keys[] = {
 	{ MODKEY|Mod1Mask,             XK_p,           togglescratch,  {.ui = 6 } },
 	{ MODKEY|Mod1Mask,             XK_m,           togglescratch,  {.ui = 7 } },
 	{ MODKEY|Mod1Mask,             XK_v,           togglescratch,  {.ui = 8 } },
-	{ MODKEY|Mod1Mask,             XK_t,           togglescratch,  {.ui = 9 } },
-	{ MODKEY|Mod1Mask,             XK_n,           togglescratch,  {.ui = 10 } },
-	{ MODKEY|Mod1Mask,             XK_r,           togglescratch,  {.ui = 11 } },
-	{ MODKEY|Mod1Mask,             XK_g,           togglescratch,  {.ui = 12 } },
+	{ MODKEY|Mod1Mask,             XK_n,           togglescratch,  {.ui = 9 } },
+	{ MODKEY|Mod1Mask,             XK_r,           togglescratch,  {.ui = 10 } },
+	{ MODKEY|Mod1Mask,             XK_g,           togglescratch,  {.ui = 11 } },
 
 	/* misc */
     // logout

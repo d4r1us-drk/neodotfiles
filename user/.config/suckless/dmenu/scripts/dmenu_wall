@@ -10,7 +10,7 @@ cd "$walldir" || exit
 
 ## SELECT PICTURE FUNCTION ##
 selectpic() {
-    wallpaper=$(fd -p "$walldir" | dmenu -i -l 10 -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "select a wallpaper:")
+    wallpaper=$(fd -p "$walldir" | dmenu -i -l 10 -p "select a wallpaper:")
     if [ "$wallpaper" ]; then
         chosenwall=$wallpaper
     else
@@ -28,7 +28,7 @@ option5="scale"
 options="$option1\n$option2\n$option3\n$option4\n$option5"
 
 ## MAIN ACTION ##
-action=$(echo -e "$options" | dmenu -i -l 5 -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "chose the format:")
+action=$(echo -e "$options" | dmenu -i -l 5 -p "chose the format:")
 case "$action" in
     $option1*)
         feh --bg-fill "$chosenwall";;

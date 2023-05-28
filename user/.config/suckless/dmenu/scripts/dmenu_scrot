@@ -22,12 +22,12 @@ del3="10 sec delay"
 dels="$del1\n$del2\n$del3"
 
 ## MAIN ACTION ##
-choice=$(echo -e "$chos" | dmenu -i -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "Select: ")
+choice=$(echo -e "$chos" | dmenu -i -p "Select: ")
 case $choice in
     $cho1)
         scrot && notify-send "screenshot saved";;
     $cho2)
-        del=$(echo -e "$dels" | dmenu -i -fn "mononoki Nerd Font-10" -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "Select: ");
+        del=$(echo -e "$dels" | dmenu -i -p "Select: ");
         case $del in
             $del1)
                 scrot -d 3 && notify-send "screenshot saved";;

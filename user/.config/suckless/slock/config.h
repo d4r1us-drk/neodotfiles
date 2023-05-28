@@ -19,7 +19,7 @@ static const char * message = "";
 static const char * text_color = "#1d2021";
 
 /* text size (must be a valid size) */
-static const char * font_name = "mtx";
+static const char * font_name = "6x13";
 
 /* Background image path, should be available to the user above */
 static const char* background_image = ".config/suckless/slock/lockscreen.jpg";

@@ -40,12 +40,12 @@ disconnect() {
 connect() {
   notify-send "Scannig networks, please wait"
   sleep 1
-  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -i -l 10 -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "select wifi:" | cut -d' ' -f1)
+  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -i -fn "mononoki Nerd Font-12" -l 10 -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "select wifi:" | cut -d' ' -f1)
 }
 
 ## SELECT PASSWORD FUNCTION ##
 password() {
-  pass=$(echo " " | dmenu -P -i -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "enter password:")
+  pass=$(echo " " | dmenu -P -i -p "enter password:")
 }
 
 ## MAIN CONNECTION COMMAND ##
@@ -66,7 +66,7 @@ check() {
 }
 
 ## MAIN ACTION COMMANDS ##
-cases=$(echo -e "$options" | dmenu -i -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "wifi options:" )
+cases=$(echo -e "$options" | dmenu -i -p "wifi options:" )
 case "$cases" in
   $option1*)
     turnon;;

@@ -9,7 +9,7 @@ EDITOR="emacsclient -c -a emacs"
 cd "$HOME" || exit 0
 file=1
 while [ "$file" ]; do
-    file=$(fd -LHpd 1 | dmenu -i -l 10 -fn "mononoki Nerd Font-10" -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "file to edit: $(basename "$(pwd)")")
+    file=$(fd -LHpd 1 | dmenu -i -l 10 -p "file to edit: $(basename "$(pwd)")")
     if [ -e "$file" ]; then
         owd=$(pwd)
         if [ -d "$file" ]; then
