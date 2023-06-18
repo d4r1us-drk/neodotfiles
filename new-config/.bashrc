@@ -138,14 +138,14 @@ alias \
   lt="exa -aT --icons --color=always --group-directories-first" \
   l.='exa -a | grep -E "^\."'
 
-# function to detect os and assign aliases to package managers
+# pacman
 alias \
   pac-up="paru -Syu" \
   pac-get="paru -S" \
   pac-rmv="paru -Rcns" \
   pac-rmv-sec="paru -R" \
   pac-qry="paru -Ss" \
-  pac-cln="paru -Scc"
+  pac-cln="paru -Scc && paru -Rns $(pacman -Qtdq)"
 
 # colorize grep output (good for log files)
 alias \

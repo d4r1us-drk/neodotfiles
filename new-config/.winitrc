@@ -5,19 +5,15 @@ cd ~
 # Log WLR errors and logs to the hyprland log. Recommended
 export HYPRLAND_LOG_WLR=1
 
-# Tell XWayland to use a cursor theme
-export XCURSOR_THEME=Simp1e-Tokyo-Night
-
 # GTK shit
-gsettings set org.gnome.desktop.interface gtk-theme 'Tokyonight-Dark-BL'
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-gsettings set org.gnome.desktop.interface cursor-theme 'Simp1e-Tokyo-Night'
-gsettings set org.gnome.desktop.interface font-name 'Cantarell'
-
-# Set a cursor size
+gsettings set org.gnome.desktop.interface gtk-theme 'gruvbox-dark-gtk'
+gsettings set org.gnome.desktop.interface icon-theme 'gruvbox-dark-icons-gtk'
+gsettings set org.gnome.desktop.interface cursor-theme 'Simp1e-Gruvbox-Dark'
+gsettings set org.gnome.desktop.interface font-name 'Cantarell 10'
+export XCURSOR_THEME=Simp1e-Gruvbox-Dark
 export XCURSOR_SIZE=16
 
-# Example IME Support: fcitx
+# session settings
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -32,6 +28,18 @@ export WM=Hyprland
 export SDL_VIDEODRIVER=wayland
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export XKB_DEFAULT_LAYOUT="us"
+
+# clean home
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export W3M_DIR="$XDG_DATA_HOME/w3m"
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export WGETRC="$HOME/.config/wget/wgetrc"
+export INPUTRC="$HOME/.config/inputrc"
+export GNUPGHOME="$HOME/.local/share/gnupg"
+
+# default apps
 export EDITOR="$HOME/.local/bin/lvim"                                    # $EDITOR use lunarvim in terminal
 export VISUAL="wezterm start --class editor -- $HOME/.local/bin/lvim"    # $VISUAL use lunarvim in new terminal window
 export BROWSER="firefox"

@@ -5,6 +5,7 @@
 - swww-git
 - dunst
 - xdg-desktop-portal
+- xdg-desktop-portal-gtk
 - xdg-desktop-portal-hyprland
 - polkit-gnome
 - qt5-wayland
@@ -17,7 +18,7 @@
 - wezterm
 - hyprland-git
 - hyprpicker-git
-- musikcube
+- cmus
 - tut-bin
 - ani-cli-git
 - ytfzf-git
@@ -27,7 +28,9 @@
 - alsamixer
 - vifm
 - power-profiles-daemon
-- xcursor-simp1e-tokyo-night
+- gruvbox-dark-gtk
+- gruvbox-dark-icons-gtk
+- xcursor-simp1e-gruvbox-dark
 - pipewire
 - pipewire-v4l2
 - pipewire-alsa
@@ -43,11 +46,8 @@
 - htop
 - brightnessctl
 - cliphist
-- ttf-nerd-fonts-symbols-2048-em-mono
-- goneovim-bin
-- gomuks
+- ttf-nerd-fonts-symbols-mono
 
 # not managed by the package manager
 - lunarvim
 - flix-cli
-- geek-life

@@ -10,10 +10,10 @@ menu="rofi -dmenu -i -p"
 ## MAIN OPTIONS ##
 option1="  Turn on WiFi"
 option2="  Turn off WiFi"
-option3="睊  Disconnect WiFi"
-option4="直  Connect WiFi"
-option5="  Setup captive portal"
-option6="  Cancel"
+option3="󱛅  Disconnect WiFi"
+option4="󱛃  Connect WiFi"
+option5="󱛆  Setup captive portal"
+option6="  Exit"
 options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6"
 
 ## GRAB WIFI INTERFACE ##
@@ -50,7 +50,7 @@ connect() {
 
 ## SELECT PASSWORD FUNCTION ##
 password() {
-  pass=$(echo " " | $menu " Enter Password   " -password)
+  pass=$(echo " " | $menu " Enter Password  " -password)
 }
 
 ## MAIN CONNECTION COMMAND ##

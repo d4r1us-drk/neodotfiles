@@ -7,7 +7,7 @@ return {
     family = 'mononoki Nerd Font',
     weight = 'Medium'
   },
-  color_scheme = 'Tokyo Night (Gogh)',
+  color_scheme = 'Gruvbox dark, hard (base16)',
   default_prog = { '/usr/bin/fish' },
   default_cursor_style = "BlinkingUnderline",
   font_size = 12,

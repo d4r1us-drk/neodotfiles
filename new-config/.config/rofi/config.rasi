@@ -9,15 +9,15 @@ configuration{
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-drun: "  Apps ";
+    display-drun: " 󰀻 Apps ";
     display-run: "  Run ";
-    display-window: " 﩯 Window ";
+    display-window: " 󰖯 Window ";
     display-Network: " 󰤨  Network ";
     sidebar-mode: true;
     dpi: 100;
 }
 
-@theme "tokyonight"
+@theme "gruvbox-dark"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;

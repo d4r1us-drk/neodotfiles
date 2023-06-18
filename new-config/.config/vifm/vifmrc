@@ -65,7 +65,7 @@ set norunexec
 " Selected color scheme
 " The following line will cause issues if using vifm.vim with regular vim.
 " Either use neovim or comment out the following line.
-colorscheme tokyonight
+colorscheme gruvbox-dark
 
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
