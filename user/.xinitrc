@@ -31,12 +31,23 @@ fi
 
 ### ENVIRONMENT VARIABLES
 export MOZ_USE_XINPUT2=1
-export EDITOR="lvim"                                             # $EDITOR use lunarvim in terminal
-export VISUAL="neovide --neovim-bin ./.local/bin/lvim"           # $VISUAL use neovide for lunarvim in GUI
-export XDG_DATA_HOME="${XDG_DATA_HOME:="$HOME/.local/share"}"
-export XDG_CACHE_HOME="${XDG_CACHE_HOME:="$HOME/.cache"}"
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:="$HOME/.config"}"
-export QT_QPA_PLATFORMTHEME=qt5ct                 # Qt theeming stuff
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+# clean home
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export W3M_DIR="$XDG_DATA_HOME/w3m"
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export WGETRC="$HOME/.config/wget/wgetrc"
+export INPUTRC="$HOME/.config/inputrc"
+export GNUPGHOME="$HOME/.local/share/gnupg"
+
+# default apps
+export EDITOR="$HOME/.local/bin/lvim"                                    # $EDITOR use lunarvim in terminal
+export VISUAL="wezterm start --class editor -- $HOME/.local/bin/lvim"    # $VISUAL use lunarvim in new terminal window
+export BROWSER="firefox"
+export VIEWER="zathura"
 
 # start window manager / desktop environment
 exec awesome

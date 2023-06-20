@@ -12,10 +12,10 @@ set -e fish_user_paths
 set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.config/emacs/bin $HOME/Applications /var/lib/flatpak/exports/bin/ $fish_user_paths
 
 ### EXPORT ###
-set fish_greeting                                                # Supresses fish's intro message
-set TERM "xterm-256color"                                        # Sets the terminal type
-set EDITOR "lvim"                                                # $EDITOR use lvim in terminal
-set VISUAL "neovide --neovim-bin ./.local/bin/lvim"              # $VISUAL use neovide for lvim in GUI mode
+set fish_greeting                                 # Supresses fish's intro message
+set TERM "xterm-256color"                         # Sets the terminal type
+set EDITOR "$HOME/.local/bin/lvim"
+set VISUAL "wezterm start --class editor -- $HOME/.local/bin/lvim"
 
 ### SET BAT AS MANPAGER
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -125,15 +125,17 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# vim and emacs
-alias vim='lvim'
-alias vimdiff='lvim -d'
+# neovim as vim
+alias vim="$HOME/.local/bin/lvim"
 
 # newsboat
 alias newsboat='newsboat -u ~/.config/newsboat/urls'
 
 # bat as cat
 alias cat='bat'
+
+# pfetch as neofetch
+alias neofetch='pfetch'
 
 # Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
@@ -142,16 +144,13 @@ alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias l.='exa -a | egrep "^\."'
 
-# pacman and yay
-alias pac-up='paru'                                                           # update the system
-alias pac-get='paru -S'                                                       # install a program
-alias pac-rmv='paru -Rcns'                                                    # remove a program
-alias pac-rmv-sec='paru -R'                                                   # remove a program (secure way)
-alias pac-qry='paru -Ss'                                                      # search for a program
-alias pac-cln='paru -Scc && paru -Rns (pacman -Qtdq)'                         # clean cache & remove orphaned packages
-
-# neofetch is f***** slow
-alias neofetch="pfetch"
+# package management
+alias pac-up='paru -Syu'
+alias pac-get='paru -S'
+alias pac-rmv='paru -Rcns'
+alias pac-rmv-sec='paru -R'
+alias pac-qry='paru -Ss'
+alias pac-cln='paru -Scc && paru -Rns (pacman -Qtdq)'
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
@@ -159,15 +158,14 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # file management
+alias fm="vifm"
+alias file="vifm"
+alias flm="vifm"
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -vI'
 alias mkd='mkdir -pv'
 alias mkdir='mkdir -pv'
-alias fm='./.config/vifm/scripts/vifmrun'
-alias vifm='./.config/vifm/scripts/vifmrun'
-alias file='./.config/vifm/scripts/vifmrun'
-alias flm='./.config/vifm/scripts/vifmrun'
 
 # audio
 alias mx='pulsemixer'

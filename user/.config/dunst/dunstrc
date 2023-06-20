@@ -163,7 +163,7 @@
     dmenu = /usr/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/qutebrowser
+    browser = /usr/bin/firefox
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
@@ -356,3 +356,4 @@
 #    set_stack_tag = "volume"
 #
 # vim: ft=cfg
+
