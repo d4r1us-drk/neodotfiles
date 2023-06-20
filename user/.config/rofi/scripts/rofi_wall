@@ -10,12 +10,12 @@ cd "$walldir" || exit
 
 ## SELECT PICTURE FUNCTION ##
 selectpic() {
-    wallpaper=$(fd -p "$walldir" | rofi -dmenu -i -p "Select a wallpaper:")
-    if [ "$wallpaper" ]; then
-        chosenwall=$wallpaper
-    else
-        exit 0
-    fi
+  wallpaper=$(fd -p "$walldir" | rofi -dmenu -i -p " 󰋩 Select a wallpaper ")
+  if [ "$wallpaper" ]; then
+    chosenwall=$wallpaper
+  else
+    exit 0
+  fi
 }
 selectpic
 
@@ -28,17 +28,17 @@ option5="Scale"
 options="$option1\n$option2\n$option3\n$option4\n$option5"
 
 ## MAIN ACTION ##
-action=$(echo -e "$options" | rofi -dmenu -i -p "Chose the format:")
+action=$(echo -e "$options" | rofi -dmenu -i -p "  Chose the format ")
 case "$action" in
-    $option1*)
-        feh --bg-fill "$chosenwall";;
-    $option2*)
-        feh --bg-center "$chosenwall";;
-    $option3*)
-        feh --bg-tile "$chosenwall";;
-    $option4*)
-        feh --bg-max "$chosenwall";;
-    $option5*)
-        feh --bg-scale "$chosenwall";;
+  $option1*)
+    feh --bg-fill "$chosenwall";;
+  $option2*)
+    feh --bg-center "$chosenwall";;
+  $option3*)
+    feh --bg-tile "$chosenwall";;
+  $option4*)
+    feh --bg-max "$chosenwall";;
+  $option5*)
+    feh --bg-scale "$chosenwall";;
 esac
 exit 0

@@ -90,7 +90,7 @@ if [ -n "$cases" ]; then
         exit 0;
       fi;;
     $option5)
-      io.elementary.capnet-assist;;
+      "$BROWSER" http://networkcheck.kde.org;;
     $option6)
       exit 0;
   esac

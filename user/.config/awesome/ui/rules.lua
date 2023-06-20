@@ -8,7 +8,7 @@ ruled.client.connect_signal(
     -- All clients will match this rule.
     ruled.client.append_rule {
       id         = "global",
-      rule       = { },
+      rule       = {},
       properties = {
         focus     = awful.client.focus.filter,
         raise     = true,
@@ -20,10 +20,10 @@ ruled.client.connect_signal(
 
     -- Floating clients.
     ruled.client.append_rule {
-      id       = "floating",
-      rule_any = {
+      id         = "floating",
+      rule_any   = {
         hinstance = { "copyq", "pinentry" },
-        class    = {
+        class     = {
           "Galculator",
           "Blueman-manager",
           "Gpick",
@@ -35,33 +35,34 @@ ruled.client.connect_signal(
         },
         -- Note that the name property shown in xprop might be set slightly after creation of the client
         -- and the name shown there might not match defined rules here.
-        name    = {
-          "Event Tester",  -- xev.
+        name      = {
+          "Event Tester", -- xev.
         },
-        role    = {
-          "AlarmWindow",    -- Thunderbird's calendar.
-          "ConfigManager",  -- Thunderbird's about:config.
-          "pop-up",         -- e.g. Google Chrome's (detached) Developer Tools.
+        role      = {
+          "AlarmWindow",   -- Thunderbird's calendar.
+          "ConfigManager", -- Thunderbird's about:config.
+          "pop-up",        -- e.g. Google Chrome's (detached) Developer Tools.
         }
       },
       properties = { floating = true }
     }
 
--- TAG 1
+    -- TAG 1
     ruled.client.append_rule {
       rule_any = {
         class = {
-               "Emacs",
-               "neovide",
-               "lvim",
-               "Godot",
-               "neovim",
-               "Virt-manager"
-               }
+          "Emacs",
+          "neovide",
+          "lvim",
+          "Godot",
+          "neovim",
+          "Virt-manager"
+        }
       },
-      properties = { tag = "" },
+      properties = { tag = "󰅩" },
     }
--- TAG 2
+
+    -- TAG 2
     ruled.client.append_rule {
       rule_any = {
         class = {
@@ -70,9 +71,10 @@ ruled.client.connect_signal(
           "nemo"
         }
       },
-      properties = { tag = "" },
+      properties = { tag = "󰉖" },
     }
--- TAG 3
+
+    -- TAG 3
     ruled.client.append_rule {
       rule_any = {
         class = {
@@ -89,7 +91,8 @@ ruled.client.connect_signal(
       },
       properties = { tag = "󰖟" }
     }
--- TAG 4
+
+    -- TAG 4
     ruled.client.append_rule {
       rule_any = {
         class = {
@@ -101,12 +104,13 @@ ruled.client.connect_signal(
       },
       properties = { tag = "󰻞" }
     }
--- TAG 5
+
+    -- TAG 5
     ruled.client.append_rule {
       rule_any = {
         class = {
           "cmus",
-          "ytfzf_music",
+          "musytfzf",
           "Audacity",
           "Ardour",
           "Carla2",
@@ -115,7 +119,8 @@ ruled.client.connect_signal(
       },
       properties = { tag = "󰲹" }
     }
--- TAG 6
+
+    -- TAG 6
     ruled.client.append_rule {
       rule_any = {
         class = {
@@ -128,12 +133,13 @@ ruled.client.connect_signal(
           "mpv",
           "ani-cli",
           "flix-cli",
-          "ytfzf"
+          "vidytfzf"
         }
       },
-      properties = { tag = "" }
+      properties = { tag = "󰯜" }
     }
--- TAG 7
+
+    -- TAG 7
     ruled.client.append_rule {
       rule_any = {
         class = {
@@ -146,21 +152,24 @@ ruled.client.connect_signal(
           "Xournalpp",
         }
       },
-      properties = { tag = "󰧰" }
+      properties = { tag = "󱇤" }
     }
--- TAG 8
+
+    -- TAG 8
     ruled.client.append_rule {
       rule_any = {
         class = {
           "DesktopEditors",
           "Soffice",
+          "Notesnook",
           "libreoffice-startcenter",
           "Joplin"
         }
       },
       properties = { tag = "󰧮" }
     }
--- TAG 9
+
+    -- TAG 9
     ruled.client.append_rule {
       rule_any = {
         class = {
@@ -180,6 +189,6 @@ ruled.client.connect_signal(
       },
       properties = { tag = "󰸶" }
     }
---}}}
+    --}}}
   end
 )

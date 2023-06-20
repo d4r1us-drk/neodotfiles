@@ -32,17 +32,17 @@ pwrs="$pwr1\n$pwr2\n$pwr3\n$pwr4"
 action=$(echo -e "$options" | $menu "   Power Options ")
 case "$action" in
     $option1)
-        pkill Hyprland;;
+        pkill X;;
     $option2)
         systemctl reboot || loginctl reboot;;
     $option3)
         systemctl poweroff || loginctl poweroff;;
     $option4)
-        swaylock -i "$currwall" &
+        betterlockscreen -l &
         sleep 0.1
         systemctl suspend;;
     $option5)
-        swaylock -i "$currwall";;
+        betterlockscreen -l;;
     $option6)
         currentpwr=$(powerprofilesctl get)
         if [ "$currentpwr" = "performance" ]; then

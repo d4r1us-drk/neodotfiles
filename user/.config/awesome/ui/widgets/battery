@@ -8,21 +8,95 @@ elif [ "${currntpwr}" = "balanced" ]; then
 elif [ "${currntpwr}" = "power-saver" ]; then
 	pwr=" - 󰾆 PowerSaver"
 fi
+
 for battery in /sys/class/power_supply/BAT?*; do
 	# If non-first battery, print a space separator.
 	[ -n "${capacity+x}" ] && printf " "
+
 	# Sets up the status and capacity
 	case "$(cat "$battery/status" 2>&1)" in
-		"Full") status="󱊣" ;;
-		"Discharging") status="󱊢" ;;
-		"Charging") status="󱊥" ;;
-		"Not charging") status="󱊥" ;;
-		"Unknown") status="󰂎" ;;
+		"Full") 
+			status=" 󰁹" 
+			;;
+		"Discharging") 
+			# Calculates the percentage of remaining charge
+			percentage="$(cat "$battery/capacity" 2>&1)"
+			# Updates the status icon based on the battery percentage
+			if [ "$percentage" -le 20 ]
+			then
+				status="󰁻"
+			elif [ "$percentage" -le 30 ]
+			then
+				status="󰁼"
+			elif [ "$percentage" -le 40 ]
+			then
+				status="󰁽"
+			elif [ "$percentage" -le 50 ]
+			then
+				status="󰁾"
+			elif [ "$percentage" -le 60 ]
+			then
+				status="󰁿"
+			elif [ "$percentage" -le 70 ]
+			then
+				status="󰂀"
+			elif [ "$percentage" -le 80 ]
+			then
+				status="󰂁"
+			elif [ "$percentage" -le 90 ]
+			then
+				status="󰂂"
+      else
+        status="󰁹"
+			fi
+			;;
+		"Charging") 
+			# Calculates the percentage of remaining charge
+			percentage="$(cat "$battery/capacity" 2>&1)"
+			# Updates the status icon based on the battery percentage while charging
+			if [ "$percentage" -le 10 ]
+			then
+				status="󰢜"
+			elif [ "$percentage" -le 20 ]
+			then
+				status="󰂆"
+			elif [ "$percentage" -le 30 ]
+			then
+				status="󰂇"
+			elif [ "$percentage" -le 40 ]
+			then
+				status="󰂈"
+			elif [ "$percentage" -le 50 ]
+			then
+				status="󰢝"
+			elif [ "$percentage" -le 60 ]
+			then
+				status="󰂉"
+			elif [ "$percentage" -le 70 ]
+			then
+				status="󰢞"
+			elif [ "$percentage" -le 80 ]
+			then
+				status="󰂊"
+			elif [ "$percentage" -le 90 ]
+			then
+				status="󰂋"
+			else
+				status="󰂅"
+			fi
+			;;
+		"Not charging") 
+			status="󰂃" 
+			;;
+		"Unknown") 
+			status="󰂃" 
+			;;
 		*) exit 1 ;;
 	esac
-	capacity="$(cat "$battery/capacity" 2>&1)"
+
 	# Will make a warn variable if discharging and low
-	[ "$status" = "󰂎" ] && [ "$capacity" -le 100 ] && warn=""
+	[ "$status" = "󰁺" ] && [ "$percentage" -le 10 ] && warn="󱈸"
+
 	# Prints the info
-	printf "%s%s%d%%%s" "$status" "$warn " "$capacity" "$pwr"; unset warn
+	printf "%s%s%d%%%s" "$status" "$warn " "$percentage" "$pwr"; unset warn
 done && printf "\\n"
