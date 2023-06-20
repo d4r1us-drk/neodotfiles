@@ -48,3 +48,4 @@ highlight article ":.*\\(image\\)$" blue default
 highlight article ":.*\\(embedded flash\\)$" magenta default
 
 browser w3m
+macro v set browser "mpv %u" ; open-in-browser ; set browser "elinks %u"

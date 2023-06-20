@@ -1,63 +1,93 @@
 #!/usr/bin/env bash
 
 # ***This script was made by Clay Gomera (Drake)***
-#  - Description: A simple screenshot dmenu script
-#  - Dependencies: scrot, dmenu, notify-send
+#  - Description: A simple screenshot menu rofi script
+#  - Dependencies: rofi, grim, slurp, wf-recorder
+#
 
-## CREATING SCREENSHOT FOLDER ##
-mkdir -p "$HOME/Pictures/Screenshots"
-cd "$HOME/Pictures/Screenshots" || exit 0
+# screenshot directory
+scrdir="$HOME/Pictures/Screenshots"
+mkdir -p "$scrdir"
+cd "$scrdir" || exit 1
+filename=$(date "+%d-%m-%Y_%H:%M:%S")
 
-## CHOICES ##
-cho1=" Entire screen"
-cho2=" Entire screen with delay"
-cho3=" Focused window"
-cho4=" Select area"
-chos="$cho1\n$cho2\n$cho3\n$cho4"
+# options array
+option1="  Capture the screen"
+option2="  Capture region"
+option3="󰕧  Record the screen"
+option4="󰕩  Record region"
+option5="󰕧  Record the screen and audio"
+option6="Exit"
+options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6"
 
-## DELAY OPTIONS ##
-del1=" 3 sec delay"
-del2=" 5 sec delay"
-del3=" 10 sec delay"
-dels="$del1\n$del2\n$del3"
-
-## DELAY FUNCTION ##
-delays() {
-    del=$(echo -e "$dels" | rofi -dmenu -i -p "  Select Delay ");
-        case $del in
-            "$del1")
-                scrot -d 3 && notify-send "Screenshot saved";;
-            "$del2")
-                scrot -d 5 && notify-send "Screenshot saved";;
-            "$del3")
-                scrot -d 10 && notify-send  "Screenshot saved"
-        esac
+# countdown function
+countdown() {
+  notify-send "Screenshot" "Executing in 3 seconds" -t 1000
+  sleep 1
+  notify-send "Screenshot" "Executing in 2 seconds" -t 1000
+  sleep 1
+  notify-send "Screenshot" "Executing in 1 seconds" -t 1000
+  sleep 2
 }
 
-## ENTIRE SCREEN FUNCTION ##
-screen() {
-        scrot && notify-send "Screenshot saved"
-}
+# show the help output with --help or -h arguments 
+if [[ $1 == '--help' ]] || [[ $1 = '-h' ]]
+  then
+  echo ### rofi-screenshot
+  echo USAGE: rofi-screenshot [OPTION]
+  echo \(no option\)
+  echo "    show the screenshot menu"
+  echo -s, --stop
+  echo "    stop recording"
+  echo -h, --help
+  echo "    this screen"
+  exit 1
+fi
 
-## FOCUSED WINDOW FUNCTION
-window() {
-        scrot -u -b && notify-send "Screenshot saved."
-}
+# stop recording with -s or --stop arguments
+if [[ $1 = '--stop' ]] || [[ $1 = '-s' ]]
+ then
+   killall -s SIGINT wf-recorder
+   exit 1
+fi
 
-## SELECTED AREA FUNCTION ##
-area() {
-        scrot -s && notify-send "Screenshot saved."
-}
-
-## MAIN ACTION ##
-choice=$(echo -e "$chos" | rofi -dmenu -i -p "   Sreenshot Menu ")
+# run the selected command
+choice=$(echo -e "$options" | rofi -dmenu -p " 󰄀 Screenshot " )
 case $choice in
-    "$cho1")
-        screen;;
-    "$cho2")
-        delays;;
-    "$cho3")
-        window;;
-    "$cho4")
-        area
+  $option1)
+    countdown
+    grim "$filename.jpg"
+    notify-send "Screenshot" "Screenshot saved to $scrdir"
+    ;;
+  $option2)
+    notify-send "Screenshot" "Select a region to capture"
+    grim -g "$(slurp)" "$filename.jpg"
+    notify-send "Screenshot" "Region saved to $scrdir"
+    ;;
+  $option3)
+    countdown
+    wf-recorder --codec=h264_vaapi -d /dev/dri/renderD128 -f "$filename.mp4"
+    notify-send "Screenshot" "Recording saved to $scrdir"
+    ;;
+  $option4)
+    notify-send "Screenshot" "Select a region to record"
+    wf-recorder --codec=h264_vaapi -d /dev/dri/renderD128 -g "$(slurp)" -f "$filename.mp4"
+    notify-send "Screenshot" "Recording saved to $scrdir"
+    ;;
+  $option5)
+    devices=$(pactl list sources | grep "Name" | awk '{print $2}')
+    chosendevice=$(echo -e "$devices" | rofi -dmenu -p " Select audio input ")
+    if [ "$chosendevice" ]; then
+      device="$chosendevice"
+      countdown
+      wf-recorder --audio="$device" --codec=h264_vaapi -d /dev/dri/renderD128 -f "$filename.mp4"
+    else
+      notify-send "Please select an audio input device"
+      exit 1
+    fi
+    notify-send "Screenshot" "Recording saved to $scrdir"
+    ;;
+  $option6)
+    exit 0
+    ;;
 esac

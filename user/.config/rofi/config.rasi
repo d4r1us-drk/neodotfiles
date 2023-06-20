@@ -3,14 +3,15 @@ configuration{
     lines: 10;
     font: "mononoki Nerd Font 14";
     show-icons: true;
+    icon-theme: "gruvbox-dark-icons-gtk";
     terminal: "alacritty";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-drun: "  Apps ";
+    display-drun: " 󰀻 Apps ";
     display-run: "  Run ";
-    display-window: " 﩯 Window ";
+    display-window: " 󰖯 Window ";
     display-Network: " 󰤨  Network ";
     sidebar-mode: true;
     dpi: 100;

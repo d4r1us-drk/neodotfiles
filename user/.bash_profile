@@ -9,16 +9,22 @@
 ### STARTING XSESSION
 if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]
 then
-  startx -- vt1 -keeptty &>/dev/null
+  sh $HOME/.winitrc
   logout
 fi
 
 ### ENVIRONMENT VARIABLES
 export EDITOR="lvim"                                             # $EDITOR use lunarvim in terminal
-export VISUAL="neovide --neovim-bin ./.local/bin/lvim"           # $VISUAL use neovide for lunarvim in GUI
-export XDG_DATA_HOME="${XDG_DATA_HOME:="$HOME/.local/share"}"
-export XDG_CACHE_HOME="${XDG_CACHE_HOME:="$HOME/.cache"}"
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:="$HOME/.config"}"
+
+# clean home
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export W3M_DIR="$XDG_DATA_HOME/w3m"
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export WGETRC="$HOME/.config/wget/wgetrc"
+export INPUTRC="$HOME/.config/inputrc"
+export GNUPGHOME="$HOME/.local/share/gnupg"
 
 ### BASHRC
-source "$HOME"/.bashrc                            # Load the bashrc
+source "$HOME"/.bashrc                                           # Load the bashrc
