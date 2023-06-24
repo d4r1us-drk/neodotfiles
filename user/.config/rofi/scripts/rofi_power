@@ -8,9 +8,6 @@
 ## MENU PROMPT ##
 menu="rofi -dmenu -i -p"
 
-## CURRENT WALLPAPER FOR LOCKSCREEN ##
-currwall=$(tail --l 1 "$HOME/.wbg" | awk '{print $3}')
-
 ## OPTIONS ##
 option1="  Logout"
 option2="  Reboot"

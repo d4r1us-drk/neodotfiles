@@ -5,7 +5,7 @@
 #  - Dependencies: rofi, fd, feh
 
 ## MAIN VARIABLES AND COMMANDS ##
-walldir="Pictures/Wallpapers" # wallpapers folder, change it to yours, make sure that it ends with a /
+walldir="$HOME/Media/Pictures/Wallpapers"
 cd "$walldir" || exit
 
 ## SELECT PICTURE FUNCTION ##

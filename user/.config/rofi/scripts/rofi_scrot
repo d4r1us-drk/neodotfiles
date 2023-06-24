@@ -2,11 +2,11 @@
 
 # ***This script was made by Clay Gomera (Drake)***
 #  - Description: A simple screenshot dmenu script
-#  - Dependencies: scrot, dmenu, notify-send
+#  - Dependencies: escrotum, dmenu, notify-send
 
 ## CREATING SCREENSHOT FOLDER ##
-mkdir -p "$HOME/Pictures/Screenshots"
-cd "$HOME/Pictures/Screenshots" || exit 0
+mkdir -p "$HOME/Media/Pictures/Screenshots"
+cd "$HOME/Media/Pictures/Screenshots" || exit 0
 
 ## CHOICES ##
 cho1="󱣴 Entire screen"
@@ -21,9 +21,13 @@ del2="󱑂 5 sec delay"
 del3="󱑇 10 sec delay"
 dels="$del1\n$del2\n$del3"
 
-## DELAY FUNCTION ##
-delays() {
-  del=$(echo -e "$dels" | rofi -dmenu -i -p "  Select Delay ");
+## MAIN ACTION ##
+choice=$(echo -e "$chos" | rofi -dmenu -i -p "   Sreenshot Menu ")
+case $choice in
+  "$cho1")
+    escrotum && notify-send "Screenshot saved";;
+  "$cho2")
+    del=$(echo -e "$dels" | rofi -dmenu -i -p "  Select Delay ");
     case $del in
       "$del1")
         escrotum -d 3 -C && notify-send "Screenshot saved";;
@@ -31,28 +35,9 @@ delays() {
         escrotum -d 5 -C && notify-send "Screenshot saved";;
       "$del3")
         escrotum -d 10 -C && notify-send  "Screenshot saved"
-    esac
-}
-
-## ENTIRE SCREEN FUNCTION ##
-screen() {
-  escrotum && notify-send "Screenshot saved"
-}
-
-## SELECTED AREA FUNCTION ##
-selectw() {
-  escrotum -s && notify-send "Screenshot saved."
-}
-
-## MAIN ACTION ##
-choice=$(echo -e "$chos" | rofi -dmenu -i -p "   Sreenshot Menu ")
-case $choice in
-  "$cho1")
-    screen;;
-  "$cho2")
-    delays;;
+    esac ;;
   "$cho3")
-    selectw;;
+    escrotum -s && notify-send "Screenshot saved.";;
   "$cho4")
     exit 0
 esac
