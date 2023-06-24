@@ -37,7 +37,7 @@ const char *spcmd4[] = {"st", "-n", "spani", "-g", "140x35", "-e", "ani-cli", NU
 const char *spcmd5[] = {"st", "-n", "spytf", "-g", "140x35", "-e", "ytfzf", "-flst", NULL };
 const char *spcmd6[] = {"st", "-n", "spamx", "-g", "140x35", "-e", "alsamixer", NULL };
 const char *spcmd7[] = {"st", "-n", "sppmx", "-g", "140x35", "-e", "pulsemixer", NULL };
-const char *spcmd8[] = {"st", "-n", "spmsc", "-g", "140x35", "-e", "musikcube", NULL };
+const char *spcmd8[] = {"st", "-n", "spmsc", "-g", "140x35", "-e", "cmus", NULL };
 const char *spcmd9[] = {"st", "-n", "spflm", "-g", "140x35", "-e", ".config/vifm/scripts/vifmrun", NULL };
 const char *spcmd10[] = {"st", "-n", "spytm", "-g", "140x35", "-e", "ytfzf", "-mlst", NULL };
 const char *spcmd11[] = {"st", "-n", "sprss", "-g", "140x35", "-e", "newsboat", NULL };
@@ -190,11 +190,11 @@ static const Key keys[] = {
 	  // terminal
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	  // text editor
-	{ MODKEY,                       XK_e,                      spawn,          SHCMD("st -n neovim -c neovim -e $HOME/.local/bin/lvim")},
+	{ MODKEY,                       XK_e,                      spawn,          SHCMD("emacsclient -c -a 'emacs'")},
 	  // web browser
-	{ MODKEY,                       XK_w,                      spawn,          SHCMD("brave")},
+	{ MODKEY,                       XK_w,                      spawn,          SHCMD("firefox")},
 	  // chat
-	{ MODKEY,                       XK_s,                      spawn,          SHCMD("flatpak run org.signal.Signal")},
+	{ MODKEY,                       XK_s,                      spawn,          SHCMD("org.signal.Signal")},
 
   /* keyboard layout */
 	  // set keyboard layout to es
