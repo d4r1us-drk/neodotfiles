@@ -49,4 +49,4 @@ export BROWSER="firefox"
 export VIEWER="zathura"
 
 # start window manager / desktop environment
-dbus-launch awesome
+exec awesome

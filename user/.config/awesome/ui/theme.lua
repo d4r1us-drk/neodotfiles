@@ -11,7 +11,7 @@ local theme                    = {}
 -- }}}
 
 -- {{{ theme font
-theme.font                     = "mononoki Nerd Font 12.5"
+theme.font                     = "mononoki Nerd Font 12"
 --- }}}
 
 -- {{{ bar colors
@@ -42,7 +42,7 @@ theme.border_marked            = "#cc241d"
 -- }}}
 
 -- {{{ Taglist
-theme.taglist_font             = "Symbols Nerd Font Mono 15"
+theme.taglist_font             = "Symbols Nerd Font Mono 14"
 theme.taglist_bg               = "#3c3836"
 theme.taglist_fg_focus         = "#fb4934"
 theme.taglist_fg_occupied      = "#8ec07c"
