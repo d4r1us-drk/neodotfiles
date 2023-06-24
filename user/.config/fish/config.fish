@@ -14,8 +14,8 @@ set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.config/emacs/bin $HOM
 ### EXPORT ###
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
-set EDITOR "$HOME/.local/bin/lvim"
-set VISUAL "wezterm start --class editor -- $HOME/.local/bin/lvim"
+set EDITOR "emacsclient -t -a ''"
+set VISUAL "emacsclient -c -a 'emacs'"
 
 ### SET BAT AS MANPAGER
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -125,8 +125,8 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# neovim as vim
-alias vim="$HOME/.local/bin/lvim"
+# emacs as vim
+alias vim="emacsclient -t -a ''"
 
 # newsboat
 alias newsboat='newsboat -u ~/.config/newsboat/urls'

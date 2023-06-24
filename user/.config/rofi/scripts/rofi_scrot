@@ -11,10 +11,9 @@ cd "$HOME/Pictures/Screenshots" || exit 0
 ## CHOICES ##
 cho1="󱣴 Entire screen"
 cho2="󱎫 Entire screen with delay"
-cho3=" Focused window"
-cho4="󱕻 Select area"
-cho5="󱎘 Exit"
-chos="$cho1\n$cho2\n$cho3\n$cho4\n$cho5"
+cho3="󱕻 Select window or area"
+cho4="󱎘 Exit"
+chos="$cho1\n$cho2\n$cho3\n$cho4"
 
 ## DELAY OPTIONS ##
 del1="󱑀 3 sec delay"
@@ -27,27 +26,22 @@ delays() {
   del=$(echo -e "$dels" | rofi -dmenu -i -p "  Select Delay ");
     case $del in
       "$del1")
-        scrot -d 3 && notify-send "Screenshot saved";;
+        escrotum -d 3 -C && notify-send "Screenshot saved";;
       "$del2")
-        scrot -d 5 && notify-send "Screenshot saved";;
+        escrotum -d 5 -C && notify-send "Screenshot saved";;
       "$del3")
-        scrot -d 10 && notify-send  "Screenshot saved"
+        escrotum -d 10 -C && notify-send  "Screenshot saved"
     esac
 }
 
 ## ENTIRE SCREEN FUNCTION ##
 screen() {
-  scrot && notify-send "Screenshot saved"
-}
-
-## FOCUSED WINDOW FUNCTION
-window() {
-  scrot -u -b && notify-send "Screenshot saved."
+  escrotum && notify-send "Screenshot saved"
 }
 
 ## SELECTED AREA FUNCTION ##
-area() {
-  scrot -s && notify-send "Screenshot saved."
+selectw() {
+  escrotum -s && notify-send "Screenshot saved."
 }
 
 ## MAIN ACTION ##
@@ -58,9 +52,7 @@ case $choice in
   "$cho2")
     delays;;
   "$cho3")
-    window;;
+    selectw;;
   "$cho4")
-    area;;
-  "$cho5")
     exit 0
 esac

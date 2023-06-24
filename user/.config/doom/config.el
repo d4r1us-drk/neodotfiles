@@ -563,3 +563,5 @@ List of keybindings (SPC h b b)")
 
 (set-frame-parameter (selected-frame) 'alpha '(98 . 80))
 (add-to-list 'default-frame-alist '(alpha . (98 . 80)))
+
+(add-hook 'prog-mode-hook #'lsp)

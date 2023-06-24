@@ -1,12 +1,12 @@
--- Imports
+-- imports
 local beautiful = require("beautiful")
-beautiful.init(string.format("%s/.config/awesome/ui/theme.lua", os.getenv("HOME"))) -- Selected theme
-require("helpers") -- Some aditional code for handling
-require("apps") -- Selected apps & scripts
-require("ui.layouts") -- Predifined tiling layouts
-require("ui.bar") -- The bar on the top
-require("ui.notif") -- The notification manager
-require("keymaps.keyboard") -- Keyboard shortcuts
-require("keymaps.mouse") -- Mouse shortcuts
-require("ui.rules") -- Window manager rules
-require("autostart") -- Startup applications
+beautiful.init(string.format("%s/.config/awesome/ui/theme.lua", os.getenv("HOME"))) -- selected theme
+require("helpers")                                                                  -- some aditional code for handling
+require("apps")                                                                     -- selected apps & scripts
+require("ui.layouts")                                                               -- predifined tiling layouts
+require("ui.bar")                                                                   -- the bar on the top
+require("ui.notif")                                                                 -- the notification manager
+require("keymaps.keyboard")                                                         -- keyboard shortcuts
+require("keymaps.mouse")                                                            -- mouse shortcuts
+require("ui.rules")                                                                 -- window manager rules
+require("autostart")                                                                -- startup applications

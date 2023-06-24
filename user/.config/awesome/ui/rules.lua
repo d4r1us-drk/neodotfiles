@@ -25,6 +25,7 @@ ruled.client.connect_signal(
         hinstance = { "copyq", "pinentry" },
         class     = {
           "Galculator",
+          "Qalculate-gtk",
           "Blueman-manager",
           "Gpick",
           "Kruler",
@@ -56,6 +57,8 @@ ruled.client.connect_signal(
           "lvim",
           "Godot",
           "neovim",
+          "htop",
+          "btop",
           "Virt-manager"
         }
       },
@@ -114,7 +117,9 @@ ruled.client.connect_signal(
           "Audacity",
           "Ardour",
           "Carla2",
-          "Carla2-Control"
+          "Carla2-Control",
+          "alsamixer",
+          "pulsemixer"
         }
       },
       properties = { tag = "󰲹" }

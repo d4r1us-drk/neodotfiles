@@ -12,7 +12,6 @@ sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # merge in defaults and keymaps
-
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
 fi
@@ -29,9 +28,9 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-### ENVIRONMENT VARIABLES
+# environment variables
 export MOZ_USE_XINPUT2=1
-export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_STYLE_OVERRIDE=kvantum
 
 # clean home
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -44,10 +43,10 @@ export INPUTRC="$HOME/.config/inputrc"
 export GNUPGHOME="$HOME/.local/share/gnupg"
 
 # default apps
-export EDITOR="$HOME/.local/bin/lvim"                                    # $EDITOR use lunarvim in terminal
-export VISUAL="wezterm start --class editor -- $HOME/.local/bin/lvim"    # $VISUAL use lunarvim in new terminal window
+export EDITOR="emacsclient -t -a ''"
+export VISUAL="emacsclient -c -a 'emacs'"
 export BROWSER="firefox"
 export VIEWER="zathura"
 
 # start window manager / desktop environment
-exec awesome
+dbus-launch awesome

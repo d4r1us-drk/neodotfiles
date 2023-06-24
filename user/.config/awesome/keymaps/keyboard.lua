@@ -763,6 +763,14 @@ awful.keyboard.append_global_keybindings(
                   awful.util.spawn(apps.flix_cli)
                 elseif key == "r" then
                   awful.util.spawn(apps.newsboat)
+                elseif key == "b" then
+                  awful.util.spawn(apps.btop)
+                elseif key == "h" then
+                  awful.util.spawn(apps.htop)
+                elseif key == "p" then
+                  awful.util.spawn(apps.pulsemixer)
+                elseif key == "o" then
+                  awful.util.spawn(apps.alsamixer)
                 end
                 awful.keygrabber.stop(grabber)
               end

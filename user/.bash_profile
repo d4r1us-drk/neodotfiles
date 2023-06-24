@@ -13,8 +13,9 @@ then
   logout
 fi
 
-### ENVIRONMENT VARIABLES
-export EDITOR="lvim"                                             # $EDITOR use lunarvim in terminal
+# environment variables
+export EDITOR="emacsclient -t -a ''"
+export VISUAL="emacsclient -c -a 'emacs'"
 
 # clean home
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -26,5 +27,5 @@ export WGETRC="$HOME/.config/wget/wgetrc"
 export INPUTRC="$HOME/.config/inputrc"
 export GNUPGHOME="$HOME/.local/share/gnupg"
 
-### BASHRC
-source "$HOME"/.bashrc                            # Load the bashrc
+# bashrc
+source "$HOME"/.bashrc

@@ -1,7 +1,7 @@
 configuration{
     modi: "run,drun,window";
     lines: 10;
-    font: "mononoki Nerd Font 14";
+    font: "mononoki Nerd Font 13";
     show-icons: true;
     icon-theme: "gruvbox-dark-icons-gtk";
     terminal: "alacritty";

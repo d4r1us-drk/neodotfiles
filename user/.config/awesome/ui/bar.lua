@@ -3,6 +3,12 @@ local wibox = require("wibox")
 local gears = require("gears")
 local awful = require("awful")
 local theme = require("ui.theme")
+local battery = require("ui.widgets.battery")
+local brightness = require("ui.widgets.brightness")
+local layout = require("ui.widgets.layout")
+local wifi = require("ui.widgets.wifi")
+local volume = require("ui.widgets.volume")
+
 -- Textclock widget
 local mytextclock = wibox.widget.textclock()
 screen.connect_signal("request::desktop_decoration", function(s)
@@ -17,7 +23,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
       "󰯜", -- VIDEO
       "󱇤", -- IMAGE/EDIT TOOLS
       "󰧮", -- OFFICE
-      "󰸶" -- GAMES
+      "󰸶", -- GAMES
     },
     s,
     awful.layout.layouts[1]
@@ -67,7 +73,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
   s.mytaglist = {
     widget = wibox.container.background,
     bg = theme.taglist_bg,
-    shape = gears.shape.rounded_rect,
+    shape = gears.shape.octogon,
     awful.widget.taglist {
       screen  = s,
       filter  = awful.widget.taglist.filter.all,
@@ -120,59 +126,27 @@ screen.connect_signal("request::desktop_decoration", function(s)
     }
   }
 
-  -- Prepare custom widgets
-  -- Volume widget
-  s.volume =
-      awful.widget.watch(
-        ".config/awesome/ui/widgets/volume",
-        2 -- Update time in seconds
-      )
-  -- Battery widget
-  s.battery =
-      awful.widget.watch(
-        ".config/awesome/ui/widgets/battery",
-        60 -- update time in seconds
-      )
-  -- Wifi widget
-  s.wifi =
-      awful.widget.watch(
-        ".config/awesome/ui/widgets/wifi",
-        30 -- Update time in seconds
-      )
-  -- Brightness widget
-  s.brightness =
-      awful.widget.watch(
-        ".config/awesome/ui/widgets/brightness",
-        5 -- Update time in seconds
-      )
-  -- Keyboard layout widget
-  s.layout =
-      awful.widget.watch(
-        ".config/awesome/ui/widgets/layout",
-        2 -- Update time in seconds
-      )
-
   -- Prepare custom widgets container
   local custom_widget_container = {
     -- Keyboard layout widget
     wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_one),
-    wibox.container.background(s.layout, theme.bar_bg_one),
+    wibox.container.background(layout, theme.bar_bg_one),
     wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_one),
     -- Volume widget
     wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_two),
-    wibox.container.background(s.volume, theme.bar_bg_two),
+    wibox.container.background(volume, theme.bar_bg_two),
     wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_two),
     -- Brightness widget
     wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_tre),
-    wibox.container.background(s.brightness, theme.bar_bg_tre),
+    wibox.container.background(brightness, theme.bar_bg_tre),
     wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_tre),
     -- Battery widget
     wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_for),
-    wibox.container.background(s.battery, theme.bar_bg_for),
+    wibox.container.background(battery, theme.bar_bg_for),
     wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_for),
     -- Wifi widget
     wibox.container.background(wibox.widget.textbox(" "), theme.bar_bg_fiv),
-    wibox.container.background(s.wifi, theme.bar_bg_fiv),
+    wibox.container.background(wifi, theme.bar_bg_fiv),
     layout = wibox.layout.fixed.horizontal,
   }
 
@@ -180,14 +154,14 @@ screen.connect_signal("request::desktop_decoration", function(s)
   local right_widgets = {
     custom_widget_container,
     widget = wibox.container.background,
-    shape = gears.shape.rounded_rect,
+    shape = gears.shape.octogon,
   }
 
   --  Wibar
   s.mywibox = awful.wibar {
     position     = "top",
     height       = (30),
-    border_width = (8),
+    border_width = (6),
     border_color = theme.bg_normal,
     screen       = s,
     widget       = {
@@ -213,7 +187,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
       {
         -- [[ Center widgets ]]
         -- Clock widget
-        wibox.container.background(mytextclock, theme.bar_clock, gears.shape.rounded_rect),
+        wibox.container.background(mytextclock, theme.bar_clock, gears.shape.octogon),
         valign = "center",
         halign = "center",
         layout = wibox.container.place,

@@ -1,21 +1,17 @@
 local awful = require("awful")
--- Session manager
+-- session manager
 awful.util.spawn_with_shell(
-  "lxpolkit &"
+  "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
 )
--- Wallpapers manager
+-- set wallpaper
 awful.util.spawn_with_shell(
   "$HOME/.fehbg &"
 )
--- Automatically hide the cursor
+-- automatically hide the cursor
 awful.util.spawn_with_shell(
   "unclutter --hide-on-touch &"
 )
--- Compositor
+-- compositor
 awful.util.spawn_with_shell(
   "picom --experimental-backends --config ~/.config/picom/picom.conf &"
-)
--- Power manager
-awful.util.spawn_with_shell(
-  "xfce4-power-manager &"
 )
