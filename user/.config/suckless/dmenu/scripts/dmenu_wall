@@ -2,43 +2,43 @@
 
 # ***This script was made by Clay Gomera (Drake)***
 #  - Description: A simple wallpaper changer script
-#  - Dependencies: dmenu, fd, feh
+#  - Dependencies: rofi, fd, feh
 
 ## MAIN VARIABLES AND COMMANDS ##
-walldir="Pictures/Wallpapers"
+walldir="$HOME/Media/Pictures/Wallpapers"
 cd "$walldir" || exit
 
 ## SELECT PICTURE FUNCTION ##
 selectpic() {
-    wallpaper=$(fd -p "$walldir" | dmenu -i -l 10 -p "select a wallpaper:")
-    if [ "$wallpaper" ]; then
-        chosenwall=$wallpaper
-    else
-        exit 0
-    fi
+  wallpaper=$(fd -p "$walldir" | dmenu -i -p " 󰋩 Select a wallpaper ")
+  if [ "$wallpaper" ]; then
+    chosenwall=$wallpaper
+  else
+    exit 0
+  fi
 }
 selectpic
 
 ## WALLPAPER SETTING OPTIONS ##
-option1="fill"
-option2="center"
-option3="tile"
-option4="max"
-option5="scale"
+option1="Fill"
+option2="Center"
+option3="Tile"
+option4="Max"
+option5="Scale"
 options="$option1\n$option2\n$option3\n$option4\n$option5"
 
 ## MAIN ACTION ##
-action=$(echo -e "$options" | dmenu -i -l 5 -p "chose the format:")
+action=$(echo -e "$options" | dmenu -i -p "  Chose the format ")
 case "$action" in
-    $option1*)
-        feh --bg-fill "$chosenwall";;
-    $option2*)
-        feh --bg-center "$chosenwall";;
-    $option3*)
-        feh --bg-tile "$chosenwall";;
-    $option4*)
-        feh --bg-max "$chosenwall";;
-    $option5*)
-        feh --bg-scale "$chosenwall";;
+  $option1*)
+    feh --bg-fill "$chosenwall";;
+  $option2*)
+    feh --bg-center "$chosenwall";;
+  $option3*)
+    feh --bg-tile "$chosenwall";;
+  $option4*)
+    feh --bg-max "$chosenwall";;
+  $option5*)
+    feh --bg-scale "$chosenwall";;
 esac
 exit 0

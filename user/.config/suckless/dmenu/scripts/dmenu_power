@@ -5,28 +5,24 @@
 #  - Dependencies: dmenu, power-profiles-daemon
 
 ## OPTIONS ##
-option1="logout"
-option2="reboot"
-option3="power off"
-option4="suspend"
-option5="lock"
-option6="change power profile"
-option7="cancel"
-
-## OPTIONS ARRAY ##
+option1="  Logout"
+option2="  Reboot"
+option3="  Power off"
+option4="󰒲  Suspend"
+option5="  Lock"
+option6="  Change power profile"
+option7="  Cancel"
 options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6\n$option7"
 
 ## POWER PROFILE OPTIONS ##
-pwr1="performance"
-pwr2="balanced"
-pwr3="powersaver"
-pwr4="cancel"
-
-## POWER PROFILES ARRAY ##
+pwr1="󰓅 Performance"
+pwr2="󰾅 Balanced"
+pwr3="󰾆 Power Saver"
+pwr4=" Cancel"
 pwrs="$pwr1\n$pwr2\n$pwr3\n$pwr4"
 
 ## MAIN ACTION COMMAND ##
-action=$(echo -e "$options" | dmenu -i -p "power options:")
+action=$(echo -e "$options" | dmenu -i -p "  Power Options")
 case "$action" in
     $option1*)
         pkill X;;
@@ -40,14 +36,21 @@ case "$action" in
         slock;;
     $option6*)
         currentpwr=$(powerprofilesctl get)
-        pwraction=$(echo -e "$pwrs" | dmenu -i -p "current profile is: ${currentpwr} | select profile:")
+        if [ "$currentpwr" = "performance" ]; then
+            currentpwr="$pwr1"
+        elif [ "$currentpwr" = "balanced" ]; then
+            currentpwr="$pwr2"
+        elif [ "$currentpwr" = "power-saver" ]; then
+            currentpwr="$pwr3"
+        fi
+        pwraction=$(echo -e "$pwrs" | dmenu -i -p "  Power Profile Menu - Currently set to: ${currentpwr}")
         case "$pwraction" in
             $pwr1*)
-                powerprofilesctl set performance && notify-send "power profile switched to performance";;
+                powerprofilesctl set performance && notify-send "Power profile switched to performance";;
             $pwr2*)
-                powerprofilesctl set balanced && notify-send "power profile switched to balanced";;
+                powerprofilesctl set balanced && notify-send "Power profile switched to balanced";;
             $pwr3*)
-                powerprofilesctl set power-saver && notify-send "power profile switched to power saver";;
+                powerprofilesctl set power-saver && notify-send "Power profile switched to power saver";;
             $pwr4*)
                 exit 0
         esac;;

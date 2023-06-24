@@ -5,18 +5,17 @@
 #  - Dependencies: dmenu (Everything else can be changed)
 
 # Show list of options
-EDITOR="emacsclient -c -a emacs"
 cd "$HOME" || exit 0
 file=1
 while [ "$file" ]; do
-    file=$(fd -LHpd 1 | dmenu -i -l 10 -p "file to edit: $(basename "$(pwd)")")
+    file=$(fd -LHpd 1 | dmenu -i -l 10 -p "󰈙 Open file in text editor $(basename "$(pwd)")")
     if [ -e "$file" ]; then
         owd=$(pwd)
         if [ -d "$file" ]; then
             cd "$file" || exit 0
         else [ -f "$file" ]
             if [ "$file" ]; then
-                $EDITOR "$owd/$file" &
+                $VISUAL "$owd/$file" &
                 exit 0
             else
                 exit 0

@@ -5,12 +5,12 @@
 #  - Dependencies: dmenu, NetworkManager
 
 ## MAIN OPTIONS ##
-option1="turn on wifi"
-option2="turn off wifi"
-option3="disconnect wifi"
-option4="connect wifi"
-option5="setup captive portal"
-option6="exit"
+option1="  Turn on WiFi"
+option2="  Turn off WiFi"
+option3="󱛅  Disconnect WiFi"
+option4="󱛃  Connect WiFi"
+option5="󱛆  Setup captive portal"
+option6="  Exit"
 options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6"
 
 wlan=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f1 | head -1)
@@ -40,12 +40,12 @@ disconnect() {
 connect() {
   notify-send "Scannig networks, please wait"
   sleep 1
-  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -i -fn "mononoki Nerd Font-12" -l 10 -nb \#1d2021 -nf \#fbf1c7 -sb \#cc241d -sf \#fbf1c7 -p "select wifi:" | cut -d' ' -f1)
+  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -i -p "Select a Wifi Network  " | cut -d' ' -f1)
 }
 
 ## SELECT PASSWORD FUNCTION ##
 password() {
-  pass=$(echo " " | dmenu -P -i -p "enter password:")
+  pass=$(echo " " | dmenu -P -i -p "Enter Password ")
 }
 
 ## MAIN CONNECTION COMMAND ##
@@ -66,7 +66,7 @@ check() {
 }
 
 ## MAIN ACTION COMMANDS ##
-cases=$(echo -e "$options" | dmenu -i -p "wifi options:" )
+cases=$(echo -e "$options" | dmenu -i -p "  Wifi Settings" )
 case "$cases" in
   $option1*)
     turnon;;
@@ -76,9 +76,13 @@ case "$cases" in
     disconnect;;
   $option4*)
     connect;
-    password;
-    action;
-    check;;
+      if [ -n "$bssid" ]; then
+        password;
+        action;
+        check;
+      else
+        exit 0;
+      fi;;
   $option5*)
     $BROWSER http://networkcheck.kde.org;;
   $option6*)
