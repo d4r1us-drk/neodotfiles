@@ -6,13 +6,12 @@
 ##   /_____/_/   \__,_/_/|_|\___/   My custom xinitrc
 ##
 
-userresources=$HOME/.config/Xresources
-usermodmap=$HOME/.config/Xmodmap
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # merge in defaults and keymaps
-
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
 fi
@@ -29,20 +28,26 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-### ENVIRONMENT VARIABLES
-export BROWSER="brave"
-export TERMINAL="st"
-export EDITOR="$HOME/.local/bin/lvim"
-
+# environment variables
 export MOZ_USE_XINPUT2=1
+export QT_STYLE_OVERRIDE=kvantum
+
+# clean home
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
+export W3M_DIR="$XDG_DATA_HOME/w3m"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export WGETRC="$HOME/.config/wget/wgetrc"
 export INPUTRC="$HOME/.config/inputrc"
 export GNUPGHOME="$HOME/.local/share/gnupg"
 export LESSHISTFILE="-"
+
+# default apps
+export EDITOR="emacsclient -t -a ''"
+export VISUAL="emacsclient -c -a 'emacs'"
+export BROWSER="firefox"
+export VIEWER="zathura"
 
 # start window manager / desktop environment
 exec dwm

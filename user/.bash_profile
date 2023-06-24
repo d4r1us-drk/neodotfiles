@@ -1,4 +1,4 @@
-#!/bin/bash
+	#!/bin/bash
 ##       ____             __
 ##      / __ \_________ _/ /_____
 ##     / / / / ___/ __ `/ //_/ _ \
@@ -26,6 +26,7 @@ export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export WGETRC="$HOME/.config/wget/wgetrc"
 export INPUTRC="$HOME/.config/inputrc"
 export GNUPGHOME="$HOME/.local/share/gnupg"
+export LESSHISTFILE="-"
 
 # bashrc
 source "$HOME"/.bashrc

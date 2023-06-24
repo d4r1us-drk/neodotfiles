@@ -19,8 +19,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# use lunarvim for vim if present.
-[ -x "$(command -v ~/.local/bin/lvim)" ] && alias vim="~/.local/bin/lvim"
+# use emasc for vim if present.
+[ -x "$(command -v emacs)" ] && alias vim="emacsclient -t -a ''"
 
 ### SET VI MODE ###
 # Comment this line out to enable default emacs-like bindings

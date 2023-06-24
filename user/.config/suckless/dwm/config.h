@@ -60,7 +60,7 @@ static Sp scratchpads[] = {
 
 /* tagging */
 static const char *tags[] = {
-        "",  // EDITOR
+        "",  // EDITOR
         "󰙨",  // TESTING
         "󰖟",  // WEB BROWSER
         "󰭹",  // CHAT
@@ -194,7 +194,7 @@ static const Key keys[] = {
 	  // web browser
 	{ MODKEY,                       XK_w,                      spawn,          SHCMD("firefox")},
 	  // chat
-	{ MODKEY,                       XK_s,                      spawn,          SHCMD("org.signal.Signal")},
+	{ MODKEY,                       XK_s,                      spawn,          SHCMD("signal-desktop")},
 
   /* keyboard layout */
 	  // set keyboard layout to es
