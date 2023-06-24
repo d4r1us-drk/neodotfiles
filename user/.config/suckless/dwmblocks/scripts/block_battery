@@ -86,10 +86,10 @@ for battery in /sys/class/power_supply/BAT?*; do
 			fi
 			;;
 		"Not charging") 
-			status=" 󰂃" 
+			echo " 󰂃 " && exit 0 
 			;;
 		"Unknown") 
-			status=" 󰂃" 
+			echo " 󰂃 " && exit 0 
 			;;
 		*) exit 1 ;;
 	esac
