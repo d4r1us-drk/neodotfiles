@@ -40,7 +40,7 @@ disconnect() {
 connect() {
   notify-send "Scannig networks, please wait"
   sleep 1
-  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -i -p "Select a Wifi Network  " | cut -d' ' -f1)
+  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -i -l 10 -p "Select a Wifi Network  " | cut -d' ' -f1)
 }
 
 ## SELECT PASSWORD FUNCTION ##
