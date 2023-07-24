@@ -21,4 +21,5 @@ fi
 
 swww img "$chosenwall"
 echo -e "#!/bin/sh\nswww img $walldir/$chosenwall" > "$HOME/.wbg"
+chmod +x "$HOME/.wbg"
 exit 0

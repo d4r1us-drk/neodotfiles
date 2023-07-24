@@ -21,7 +21,7 @@ export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
 export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_TYPE=wayland
-export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_STYLE_OVERRIDE=kvantum
 export MOZ_ENABLE_WAYLAND=1
 export GDK_BACKEND=wayland
 export WM=Hyprland
@@ -38,11 +38,12 @@ export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export WGETRC="$HOME/.config/wget/wgetrc"
 export INPUTRC="$HOME/.config/inputrc"
 export GNUPGHOME="$HOME/.local/share/gnupg"
+export LESSHISTFILE=-
 
 # default apps
 export EDITOR="$HOME/.local/bin/lvim"                                    # $EDITOR use lunarvim in terminal
 export VISUAL="wezterm start --class editor -- $HOME/.local/bin/lvim"    # $VISUAL use lunarvim in new terminal window
-export BROWSER="firefox"
+export BROWSER="librewolf"
 export VIEWER="zathura"
 
 exec Hyprland

@@ -13,7 +13,7 @@
 " Since emacs is a GUI app and not a terminal app like vim, append the command
 " with an ampersand (&).
 
-set vicmd=~/.local/bin/lvim
+set vicmd=nvim
 
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
@@ -172,8 +172,8 @@ command! reload :write | restart
 " You can also add %CLEAR if you want to clear screen before running FUSE
 " program.
 
-" Pdf
-filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
+" Pdf and cbz
+filextype *.cbz,*.pdf zathura %c %i &, apvlv %c, xpdf %c
 fileviewer *.pdf
         \ pdftotext -nopgbrk %c -
 
