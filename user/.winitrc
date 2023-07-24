@@ -41,8 +41,8 @@ export GNUPGHOME="$HOME/.local/share/gnupg"
 export LESSHISTFILE=-
 
 # default apps
-export EDITOR="$HOME/.local/bin/lvim"                                    # $EDITOR use lunarvim in terminal
-export VISUAL="wezterm start --class editor -- $HOME/.local/bin/lvim"    # $VISUAL use lunarvim in new terminal window
+export EDITOR="emacsclient -t -a ''"
+export VISUAL="emacsclient -c -a 'emacs'"
 export BROWSER="librewolf"
 export VIEWER="zathura"
 

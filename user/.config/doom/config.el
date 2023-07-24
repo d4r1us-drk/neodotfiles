@@ -560,6 +560,3 @@ List of keybindings (SPC h b b)")
 (map! :leader
       :desc "Zap to char" "z" #'zap-to-char
       :desc "Zap up to char" "Z" #'zap-up-to-char)
-
-(set-frame-parameter (selected-frame) 'alpha '(98 . 80))
-(add-to-list 'default-frame-alist '(alpha . (98 . 80)))

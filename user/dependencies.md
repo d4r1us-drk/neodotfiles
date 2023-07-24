@@ -1,5 +1,6 @@
 # Dependencies
 - ttf-mononoki-nerd
+- ttf-nerd-fonts-symbols-mono
 - rofi-lboon-wayland-git
 - waybar-hyprland
 - swww-git
@@ -46,8 +47,8 @@
 - htop
 - brightnessctl
 - cliphist
-- ttf-nerd-fonts-symbols-mono
+- emacs
 
 # not managed by the package manager
-- lunarvim
+- doom emacs
 - flix-cli
