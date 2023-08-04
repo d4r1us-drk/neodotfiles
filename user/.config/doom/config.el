@@ -295,8 +295,8 @@ List of keybindings (SPC h b b)")
 (map! :leader
       :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
-  (setq org-directory "~/nc/Org/"
-        org-agenda-files '("~/nc/Org/agenda.org")
+  (setq org-directory "~/Documents/Notes"
+        org-agenda-files '("~/Documents/Agenda/agenda.org")
         org-default-notes-file (expand-file-name "notes.org" org-directory)
         org-ellipsis " ▼ "
         org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
@@ -315,12 +315,43 @@ List of keybindings (SPC h b b)")
              "TODO(t)"           ; A task that is ready to be tackled
              "BLOG(b)"           ; Blog writing assignments
              "GYM(g)"            ; Things to accomplish at the gym
+             "GAME(j)"            ; Things to accomplish at the gym
              "PROJ(p)"           ; A project that contains other tasks
              "VIDEO(v)"          ; Video assignments
              "WAIT(w)"           ; Something is holding up this task
              "|"                 ; The pipe necessary to separate "active" states and "inactive" states
              "DONE(d)"           ; Task has been completed
              "CANCELLED(c)" )))) ; Task has been cancelled
+   (setq org-agenda-custom-commands
+         '(("p" "Priority view"
+            ((tags "PRIORITY=\"A\""
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "High priority unfinished tasks:")))
+            (tags "PRIORITY=\"B\""
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "Medium priority unfinished tasks:")))
+            (tags "PRIORITY=\"C\""
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "Low priority unfinished tasks:")))))
+         ("i" "INTEC view"
+            ((tags "tareas"
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "Tareas por hacer:")))
+            (tags "estudios"
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "Estudios por realizar:")))
+            (tags "examen"
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "Examenes pendientes:")))))
+         ))
+
+   (setq
+    org-agenda-block-separator 985827
+    org-fancy-priorities-list '("󰈼" "󰈻" "󰈽")
+    org-priority-faces
+        '((?A :foreground "#fb4934" :weight bold)
+          (?B :foreground "#fabd2f" :weight bold)
+          (?C :foreground "#83a598" :weight bold)))
 
 (defun dt/org-colors-doom-one ()
   "Enable Doom One colors for Org headers."
@@ -560,8 +591,3 @@ List of keybindings (SPC h b b)")
 (map! :leader
       :desc "Zap to char" "z" #'zap-to-char
       :desc "Zap up to char" "Z" #'zap-up-to-char)
-
-(set-frame-parameter (selected-frame) 'alpha '(98 . 80))
-(add-to-list 'default-frame-alist '(alpha . (98 . 80)))
-
-(add-hook 'prog-mode-hook #'lsp)

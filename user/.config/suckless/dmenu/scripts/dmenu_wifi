@@ -67,24 +67,29 @@ check() {
 
 ## MAIN ACTION COMMANDS ##
 cases=$(echo -e "$options" | dmenu -i -p "  Wifi Settings" )
-case "$cases" in
-  $option1*)
-    turnon;;
-  $option2*)
-    turnoff;;
-  $option3*)
-    disconnect;;
-  $option4*)
-    connect;
+if [ -n "$cases" ]; then
+  case "$cases" in
+    $option1)
+      turnon;;
+    $option2)
+      turnoff;;
+    $option3)
+      disconnect;;
+    $option4)
+      connect;
       if [ -n "$bssid" ]; then
         password;
         action;
+        sleep 5;
         check;
       else
         exit 0;
       fi;;
-  $option5*)
-    $BROWSER http://networkcheck.kde.org;;
-  $option6*)
-    exit 0
-esac
+    $option5)
+      "$BROWSER" http://networkcheck.kde.org;;
+    $option6)
+      exit 0;
+  esac
+else
+  exit 0;
+fi
