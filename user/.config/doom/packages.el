@@ -88,3 +88,4 @@
 (package! sharper)
 (package! csproj-mode)
 (package! dap-mode)
+(package! vimrc-mode)

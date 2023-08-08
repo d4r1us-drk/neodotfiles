@@ -31,6 +31,8 @@ fi
 # environment variables
 export MOZ_USE_XINPUT2=1
 export QT_STYLE_OVERRIDE=kvantum
+export MEDIA_DIR="$HOME/Media"
+export TEMP_DIR="$HOME/Temporal"
 
 # clean home
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -46,8 +48,8 @@ export LESSHISTFILE="-"
 # default apps
 export EDITOR="emacsclient -t -a ''"
 export VISUAL="emacsclient -c -a 'emacs'"
-export BROWSER="firefox"
+export BROWSER="librewolf"
 export VIEWER="zathura"
 
 # start window manager / desktop environment
-exec dwm
+dbus-launch --exit-with-session dwm

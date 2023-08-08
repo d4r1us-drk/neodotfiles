@@ -1,66 +1,133 @@
 #!/usr/bin/env bash
 
 # ***This script was made by Clay Gomera (Drake)***
-#  - Description: A simple screenshot dmenu script
-#  - Dependencies: escrotum, dmenu, notify-send
+#  - Description: A simple screenshot/screencast dmenu script
+#  - Dependencies: maim, splop, ffmpeg, dmenu, libnotify
 
-## CREATING SCREENSHOT FOLDER ##
-mkdir -p "$HOME/Media/Pictures/Screenshots"
-cd "$HOME/Media/Pictures/Screenshots" || exit 0
+## Screenshots Folder ##
+mkdir -p "$MEDIA_DIR/Pictures/Screenshots"
+cd "$MEDIA_DIR/Pictures/Screenshots" || exit 0
 
-## CHOICES ##
-cho1="󱣴 Entire screen"
-cho2="󱣴 Entire screen (Copy to clipboard)"
-cho3="󱎫 Entire screen with delay"
-cho4="󱎫 Entire screen with delay (Copy to clipboard)"
-cho5="󱕻 Select area"
-cho6="󱕻 Select area (Copy to clipboard)"
-cho7="󰖯 Active window"
-cho8="󰖯 Active window (Copy to clipboard)"
-cho9="󱎘 Exit"
-chos="$cho1\n$cho2\n$cho3\n$cho4\n$cho5\n$cho6\n$cho7\n$cho8\n$cho9"
+## Main menu choices ##
+mcho1="Take an screenshot"
+mcho2="Record the screen"
+mchos="$mcho1\n$mcho2"
 
-## DELAY OPTIONS ##
+## Screenshot menu choices ##
+scho1="󱣴 Entire screen"
+scho2="󱎫 Entire screen with delay"
+scho3="󱕻 Select area"
+scho4="󰖯 Active window"
+scho5="󱎘 Exit"
+schos="$scho1\n$scho2\n$scho3\n$scho4\n$scho5"
+
+## Screenshot submenu ##
+sscho1="Copy to clipboard"
+sscho2="Save to Media/Pictures/Screenshots"
+sschos="$sscho1\n$sscho2"
+
+## Screenshot delay choices ##
 del1="󱑀 3 sec delay"
 del2="󱑂 5 sec delay"
 del3="󱑇 10 sec delay"
 dels="$del1\n$del2\n$del3"
 
-## MAIN ACTION ##
-choice=$(echo -e "$chos" | dmenu -i -l 9 -p "  Sreenshot Menu")
-case $choice in
-  "$cho1")
-    maim -f jpg $(date +%s).jpg && notify-send "Screenshot saved";;
-  "$cho2")
-    maim | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard";;
-  "$cho3")
-    del=$(echo -e "$dels" | dmenu -i -p " Select Delay");
+fsschos() {
+  sschoice=$(echo -e "$sschos" | dmenu -i -l 2 -p "  What do you want to do with this screenshot?")
+}
+
+fdel() {
+  del=$(echo -e "$dels" | dmenu -i -p " Select Delay")
+}
+
+shot_screen() {
+  fsschos
+  if [ "$sschoice" = "$sscho1" ]; then
+    maim | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard"
+  elif [ "$sschoice" = "$sscho2" ]; then
+    maim -f jpg $(date +%s).jpg && notify-send "Screenshot saved"
+  else
+    exit 0
+  fi
+}
+
+shot_screen_delay() {
+  fsschos
+  if [ "$sschoice" = "$sscho1" ]; then
+    fdel
     case $del in
       "$del1")
-        sleep 3 && maim -f jpg $(date +%s).jpg && notify-send "Screenshot saved";;
+        sleep 3 && maim | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard"
+        ;;
       "$del2")
-        sleep 5 && maim -f jpg $(date +%s).jpg && notify-send "Screenshot saved";;
-      "$del3")
-        sleep 10 && maim -f jpg $(date +%s).jpg && notify-send  "Screenshot saved"
-    esac ;;
-  "$cho4")
-    del=$(echo -e "$dels" | dmenu -i -p " Select Delay");
-    case $del in
-      "$del1")
-        sleep 3 && maim | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard";;
-      "$del2")
-        sleep 5 && maim | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard";;
+        sleep 5 && maim | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard"
+        ;;
       "$del3")
         sleep 10 && maim | xclip -selection clipboard -t image/png && notify-send  "Screenshot saved to clipboard"
-    esac ;;
-  "$cho5")
-    maim -s -f jpg $(date +%s).jpg && notify-send "Screenshot saved";;
-  "$cho6")
-    maim -s | xclip -selection clipboard -t image/png && notify-send "Screenshot saved";;
-  "$cho7")
-    maim -i $(xdotool getactivewindow) -f jpg $(date +%s).jpg && notify-send "Screenshot saved";;
-  "$cho8")
-    maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png && notify-send "Screenshot saved";;
-  "$cho9")
+    esac
+  elif [ "$sschoice" = "$sscho2" ]; then
+    fdel
+    case $del in
+      "$del1")
+        sleep 3 && maim -f jpg $(date +%s).jpg && notify-send "Screenshot saved"
+        ;;
+      "$del2")
+        sleep 5 && maim -f jpg $(date +%s).jpg && notify-send "Screenshot saved"
+        ;;
+      "$del3")
+        sleep 10 && maim -f jpg $(date +%s).jpg && notify-send  "Screenshot saved"
+    esac
+  else
     exit 0
+  fi
+}
+
+shot_area() {
+  fsschos
+  if [ "$sschoice" = "$sscho1" ]; then
+    maim -s | xclip -selection clipboard -t image/png && notify-send "Screenshot saved"
+  elif [ "$sschoice" = "$sscho2" ]; then
+    maim -s -f jpg $(date +%s).jpg && notify-send "Screenshot saved"
+  else
+    exit 0
+  fi
+}
+
+shot_window() {
+  fsschos
+  if [ "$sschoice" = "$sscho1" ]; then
+    maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png && notify-send "Screenshot saved"
+  elif [ "$sschoice" = "$sscho2" ]; then
+    maim -i $(xdotool getactivewindow) -f jpg $(date +%s).jpg && notify-send "Screenshot saved"
+  else
+    exit 0
+  fi
+}
+
+## Main action ##
+mchoice=$(echo -e "$mchos" | dmenu -i -l 2 -p "  Screen Capture Menu")
+case $mchoice in
+  "$mcho1")
+    schoice=$(echo -e "$schos" | dmenu -i -l 9 -p "  Sreenshot Menu")
+    case $schoice in
+      "$scho1")
+        shot_screen
+        ;;
+      "$scho2")
+        shot_screen_delay
+        ;;
+      "$scho3")
+        shot_area
+        ;;
+      "$scho4")
+        shot_window
+        ;;
+      "$scho5")
+        exit 0
+    esac
+    ;;
+  "$mcho2")
+    notify-send "It worked"
+    exit 0
+    ;;
 esac

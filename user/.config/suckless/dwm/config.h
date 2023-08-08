@@ -42,6 +42,7 @@ const char *spcmd9[] = {"st", "-n", "spflm", "-g", "140x35", "-e", ".config/vifm
 const char *spcmd10[] = {"st", "-n", "spytm", "-g", "140x35", "-e", "ytfzf", "-mlst", NULL };
 const char *spcmd11[] = {"st", "-n", "sprss", "-g", "140x35", "-e", "newsboat", NULL };
 const char *spcmd12[] = {"st", "-n", "spgkk", "-g", "140x35", "-e", "geek-life", NULL };
+const char *spcmd13[] = {"st", "-n", "sptut", "-g", "140x35", "-e", "tut", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"sptrm",      spcmd1},
@@ -56,6 +57,7 @@ static Sp scratchpads[] = {
 	{"spytm",      spcmd10},
 	{"sprss",      spcmd11},
 	{"spgkk",      spcmd12},
+	{"sptut",      spcmd13},
 };
 
 /* tagging */
@@ -89,6 +91,7 @@ static const Rule rules[] = {
 	{ "Virt-manager",                     NULL,                 NULL,         1 << 1,       0,           -1 },
 	// web tag
 	{ "LibreWolf",                        NULL,                 NULL,         1 << 2,       0,           -1 },
+	{ "librewolf-default",                NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "firefox",                          NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "qutebrowser",                      NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "Chromium",                         NULL,                 NULL,         1 << 2,       0,           -1 },
@@ -147,6 +150,7 @@ static const Rule rules[] = {
 	{ NULL,                            "spytm",                 NULL,       SPTAG(9),       1,           -1 },
 	{ NULL,                            "sprss",                 NULL,       SPTAG(10),       1,           -1 },
 	{ NULL,                            "spgkk",                 NULL,       SPTAG(11),       1,           -1 },
+	{ NULL,                            "sptut",                 NULL,       SPTAG(12),       1,           -1 },
 };
 
 // layout(s)
@@ -192,7 +196,7 @@ static const Key keys[] = {
 	  // text editor
 	{ MODKEY,                       XK_e,                      spawn,          SHCMD("emacsclient -c -a 'emacs'")},
 	  // web browser
-	{ MODKEY,                       XK_w,                      spawn,          SHCMD("firefox")},
+	{ MODKEY,                       XK_w,                      spawn,          SHCMD("librewolf")},
 	  // chat
 	{ MODKEY,                       XK_s,                      spawn,          SHCMD("signal-desktop")},
 
@@ -212,9 +216,9 @@ static const Key keys[] = {
 	  // mute microphone
 	{ 0,                            XF86XK_AudioMicMute,       spawn,          SHCMD("pamixer --default-source -t && pkill -RTMIN+10 dwmblocks")},
 	  // increase brightness
-	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          SHCMD("xbacklight -inc 10 && pkill -RTMIN+10 dwmblocks")},
+	{ 0,                            XF86XK_MonBrightnessUp,    spawn,          SHCMD("brightnessctl s 5%+ && pkill -RTMIN+10 dwmblocks")},
 	  // decrease brightness
-	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          SHCMD("xbacklight -dec 10 && pkill -RTMIN+10 dwmblocks")},
+	{ 0,                            XF86XK_MonBrightnessDown,  spawn,          SHCMD("brightnessctl s 5%- && pkill -RTMIN+10 dwmblocks")},
 	  // display settings
 	{ 0,                            XF86XK_Display,            spawn,          SHCMD("arandr")},
 	  // play/pause
@@ -313,6 +317,7 @@ static const Key keys[] = {
 	{ MODKEY|Mod1Mask,             XK_n,           togglescratch,  {.ui = 9 } },
 	{ MODKEY|Mod1Mask,             XK_r,           togglescratch,  {.ui = 10 } },
 	{ MODKEY|Mod1Mask,             XK_g,           togglescratch,  {.ui = 11 } },
+	{ MODKEY|Mod1Mask,             XK_t,           togglescratch,  {.ui = 12 } },
 
 	/* misc */
     // logout

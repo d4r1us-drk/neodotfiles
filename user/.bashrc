@@ -181,9 +181,9 @@ alias \
 alias \
   mx="pulsemixer" \
   amx="alsamixer" \
-  mk="musikcube" \
-  ms="musikcube" \
-  music="musikcube"
+  mk="cmus" \
+  ms="cmus" \
+  music="cmus"
 
 # power management
 alias \

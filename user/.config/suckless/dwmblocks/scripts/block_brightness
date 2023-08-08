@@ -1,5 +1,5 @@
 #!/bin/bash
-brt=$(xbacklight -get)
+brt=$(brightnessctl -m | cut -d, -f4 | tr -d %)
 if [ "${brt%.*}" -eq 100 ]; then
     icon="󰛨"
 elif [ "${brt%.*}" -ge 90 ]; then

@@ -5,12 +5,12 @@
 #  - Dependencies: rofi, fd, feh
 
 ## MAIN VARIABLES AND COMMANDS ##
-walldir="$HOME/Media/Pictures/Wallpapers"
+walldir="$MEDIA_DIR/Pictures/Wallpapers"
 cd "$walldir" || exit
 
 ## SELECT PICTURE FUNCTION ##
 selectpic() {
-  wallpaper=$(fd -p "$walldir" | dmenu -i -p " 󰋩 Select a wallpaper ")
+  wallpaper=$(fdfind -p "$walldir" | dmenu -i -p " 󰋩 Select a wallpaper ")
   if [ "$wallpaper" ]; then
     chosenwall=$wallpaper
   else
