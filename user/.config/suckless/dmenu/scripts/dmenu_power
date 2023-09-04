@@ -2,9 +2,11 @@
 
 # ***This script was made by Clay Gomera (Drake)***
 #  - Description: A simple power menu dmenu script
-#  - Dependencies: dmenu, power-profiles-daemon
+#  - Dependencies: dmenu, power-profiles-daemon, slock
 
-## OPTIONS ##
+#######################
+## Main menu options ##
+#######################
 option1="  Logout"
 option2="  Reboot"
 option3="  Power off"
@@ -14,46 +16,59 @@ option6="  Change power profile"
 option7="  Cancel"
 options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6\n$option7"
 
-## POWER PROFILE OPTIONS ##
+############################
+## Power profiles submenu ##
+############################
 pwr1="󰓅 Performance"
 pwr2="󰾅 Balanced"
 pwr3="󰾆 Power Saver"
 pwr4=" Cancel"
 pwrs="$pwr1\n$pwr2\n$pwr3\n$pwr4"
 
-## MAIN ACTION COMMAND ##
-action=$(echo -e "$options" | dmenu -i -p "  Power Options")
+##########
+## main ##
+##########
+action=$(echo -e "$options" | dmenu -i -p "  Power Options"); # main menu prompt
 case "$action" in
-    $option1*)
-        pkill X;;
-    $option2*)
-        systemctl reboot;;
-    $option3*)
-        systemctl poweroff;;
-    $option4*)
-        slock systemctl suspend;;
-    $option5*)
-        slock;;
-    $option6*)
-        currentpwr=$(powerprofilesctl get)
-        if [ "$currentpwr" = "performance" ]; then
+    "$option1")
+        pkill X; # killing X will result in a logout
+        ;;
+    "$option2")
+        systemctl reboot || loginctl reboot;
+        ;;
+    "$option3")
+        systemctl poweroff || loginctl poweroff;
+        ;;
+    "$option4")
+        slock systemctl suspend || slock loginctl suspend;
+        ;;
+    "$option5")
+        slock;
+        ;;
+    "$option6")
+        currentpwr=$(powerprofilesctl get); # this variable will store the current power profile
+        if [ "$currentpwr" = "performance" ]; then # this if statement is used for the power profiles prompt
             currentpwr="$pwr1"
         elif [ "$currentpwr" = "balanced" ]; then
             currentpwr="$pwr2"
         elif [ "$currentpwr" = "power-saver" ]; then
             currentpwr="$pwr3"
         fi
-        pwraction=$(echo -e "$pwrs" | dmenu -i -p "  Power Profile Menu - Currently set to: ${currentpwr}")
+        pwraction=$(echo -e "$pwrs" | dmenu -i -p "  Power Profile Menu - Currently set to: ${currentpwr}"); # power profiles submenu prompt
         case "$pwraction" in
-            $pwr1*)
-                powerprofilesctl set performance && notify-send "Power profile switched to performance";;
-            $pwr2*)
-                powerprofilesctl set balanced && notify-send "Power profile switched to balanced";;
-            $pwr3*)
-                powerprofilesctl set power-saver && notify-send "Power profile switched to power saver";;
-            $pwr4*)
+            "$pwr1")
+                powerprofilesctl set performance && notify-send "Power profile switched to performance";
+                ;;
+            "$pwr2")
+                powerprofilesctl set balanced && notify-send "Power profile switched to balanced";
+                ;;
+            "$pwr3")
+                powerprofilesctl set power-saver && notify-send "Power profile switched to power saver";
+                ;;
+            "$pwr4")
                 exit 0
-        esac;;
-    $option7*)
+        esac
+        ;;
+    "$option7")
         exit 0
 esac

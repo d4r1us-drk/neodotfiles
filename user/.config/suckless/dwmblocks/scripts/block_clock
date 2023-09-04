@@ -1,8 +1,14 @@
-#!/bin/bash
-date="$(date +%d/%m/%y)"
+#!/usr/bin/env bash
+
+# ***This script was made by Clay Gomera (Drake)***
+#  - Description: A dwmblocks script to print the date and time
+#  - Dependencies: dwm, dwmblocks, date
+
+# this variable will store the current hour of the clock
 hour="$(date +%I)"
-clock_icon=""
-case $hour in
+
+# for every hour, the clock icon will change
+case "$hour" in
   "01") clock_icon="󱐿";;
   "02") clock_icon="󱑀";;
   "03") clock_icon="󱑁";;
@@ -16,5 +22,10 @@ case $hour in
   "11") clock_icon="󱑉";;
   "12") clock_icon="󱑊";;
 esac
+
+# this variable will store the clock in the desired format
 clock="$(date +%I:%M%p | sed 's/^0//')"
-echo " $clock_icon $clock | 󰸗 $date "
+# this variable will store the date in the desired format
+ddate="$(date +%d/%m/%y)"
+
+echo " $clock_icon $clock | 󰸗 $ddate " # print the clock icon, the current time and then date

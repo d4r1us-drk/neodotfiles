@@ -1,4 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# ***This script was made by Clay Gomera (Drake)***
+#  - Description: A dwmblocks script to print the current brightness level
+#  - Dependencies: dwm, dwmblocks, power-profiles-daemon
+
+# this variable will store the current brightness level percentage
 brt=$(brightnessctl -m | cut -d, -f4 | tr -d %)
 if [ "${brt%.*}" -eq 100 ]; then
     icon="󰛨"
@@ -21,4 +27,4 @@ elif [ "${brt%.*}" -ge 20 ]; then
 else
     icon="󱩎"
 fi
-echo " $icon ${brt%.*}% "
+echo " $icon ${brt%.*}% " # print the icon and brightness level

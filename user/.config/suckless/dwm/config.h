@@ -62,15 +62,15 @@ static Sp scratchpads[] = {
 
 /* tagging */
 static const char *tags[] = {
-        "",  // EDITOR
-        "󰙨",  // TESTING
-        "󰖟",  // WEB BROWSER
-        "󰭹",  // CHAT
-        "󱡭",  // AUDIO TOOLS
-        "󰕧",  // VIDEO
-        "󰏘",  // IMAGE/EDIT TOOLS
-        "󰈙",  // OFFICE
-        "󰊖"   // GAMES
+  "",  // EDITOR
+  "󰙨",  // TESTING
+  "󰖟",  // WEB BROWSER
+  "󰭹",  // CHAT
+  "󱡭",  // AUDIO TOOLS
+  "󰕧",  // VIDEO
+  "󰏘",  // IMAGE/EDIT TOOLS
+  "󰈙",  // OFFICE
+  "󰊖"   // GAMES
 };
 
 // rules
@@ -89,6 +89,7 @@ static const Rule rules[] = {
 	{ "neovide",                          NULL,                 NULL,              1,       0,           -1 },
 	// test tag
 	{ "Virt-manager",                     NULL,                 NULL,         1 << 1,       0,           -1 },
+	{ "Gnome-boxes",                     NULL,                 NULL,         1 << 1,       0,           -1 },
 	// web tag
 	{ "LibreWolf",                        NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "librewolf-default",                NULL,                 NULL,         1 << 2,       0,           -1 },
@@ -109,6 +110,7 @@ static const Rule rules[] = {
 	{ "lsp-plugins",                      NULL,                 NULL,         1 << 4,       1,           -1 },
 	{ "qpwgraph",                         NULL,                 NULL,         1 << 4,       0,           -1 },
 	{ "Cadence",                          NULL,                 NULL,         1 << 4,       0,           -1 },
+	{ "easyeffects",                      NULL,                 NULL,         1 << 4,       0,           -1 },
 	// video tag
 	{ "kdenlive",                         NULL,                 NULL,         1 << 5,       0,           -1 },
 	{ "Pitivi",                           NULL,                 NULL,         1 << 5,       0,           -1 },
@@ -194,9 +196,9 @@ static const Key keys[] = {
 	  // terminal
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	  // text editor
-	{ MODKEY,                       XK_e,                      spawn,          SHCMD("emacsclient -c -a 'emacs'")},
+	{ MODKEY,                       XK_e,                      spawn,          SHCMD("neovide --neovim-bin ~/.local/bin/lvim")},
 	  // web browser
-	{ MODKEY,                       XK_w,                      spawn,          SHCMD("librewolf")},
+	{ MODKEY,                       XK_w,                      spawn,          SHCMD("firefox")},
 	  // chat
 	{ MODKEY,                       XK_s,                      spawn,          SHCMD("signal-desktop")},
 
@@ -242,7 +244,7 @@ static const Key keys[] = {
 	  // wifi config
 	{ MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_wifi") },
 	  // screenshots
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_scrot") },
+	{ MODKEY,                       XK_Print,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_scrot") },
 	  // wallpapers
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD("$HOME/.config/suckless/dmenu/scripts/dmenu_wall") },
 	  // edit

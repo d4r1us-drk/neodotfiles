@@ -4,7 +4,9 @@
 #  - Description: A simple wifi dmenu script
 #  - Dependencies: dmenu, NetworkManager
 
-## MAIN OPTIONS ##
+#######################
+## Main manu options ##
+#######################
 option1="  Turn on WiFi"
 option2="  Turn off WiFi"
 option3="󱛅  Disconnect WiFi"
@@ -13,47 +15,106 @@ option5="󱛆  Setup captive portal"
 option6="  Exit"
 options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6"
 
+#####
+## This variable will grab the wireless
+## interface name
+#####
 wlan=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f1 | head -1)
-## TURN OFF WIFI FUNCTION ##
+
+#####
+## This function uses nmcli to turn
+## off wifi and then sends a
+## notification
+#####
+## param: none
+## return: void
+#####
 turnoff() {
   nmcli radio wifi off
   notify-send "WiFi has been turned off"
 }
 
-## TURN ON WIFI FUNCTION ##
+#####
+## This function uses nmcli to turn
+## on wifi and then sends a
+## notification
+#####
+## param: none
+## return: void
+#####
 turnon() {
   nmcli radio wifi on
   notify-send "WiFi has been turned on"
 }
 
-## DISCONNECT WIFI FUNCTION ##
+#####
+## This function uses nmcli and the
+## $wlan variable to disconnect
+## from the wifi network and
+## then sends a notification
+#####
+## param: none
+## return: void
+#####
 disconnect() {
   nmcli device disconnect "$wlan"
-  sleep 1
-  constate=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f3 | head -1)
-  if [ "$constate" = "disconnected" ]; then
-    notify-send "WiFi has been disconnected"
-  fi
+  notify-send "WiFi has been disconnected"
 }
 
-## CONNECT FUNCTION ##
+#####
+## This function uses nmcli to first scan
+## for available networks and then the
+## $bssid variable will store the SSID
+## of the network that the user chooses
+#####
+## param: none
+## return: string
+#####
 connect() {
-  notify-send "Scannig networks, please wait"
+  notify-send "Scannig WiFi networks, please wait"
+  nmcli dev wifi rescan
   sleep 1
   bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -i -l 10 -p "Select a Wifi Network  " | cut -d' ' -f1)
 }
 
-## SELECT PASSWORD FUNCTION ##
+#####
+## This function will store the WiFi
+## password in the $pass variable
+#####
+## param: none
+## return: string
+#####
 password() {
+  # TODO Create a condition to check if the chosen network is open or not, that
+  # way this will be skipped of it's open
+  # TODO What if the network is already saved? The user doesn't need to type the
+  # password again
   pass=$(echo " " | dmenu -P -i -p "Enter Password ")
 }
 
-## MAIN CONNECTION COMMAND ##
+#####
+## This function will actually connect
+## to the chosen WiFi network using the
+## $bssid and $pass variables
+#####
+## param: none
+## return: void
+#####
 action() {
+  # TODO Create a condition to check if the chosen network is open or not (check
+  # password funcion)
+  # TODO What if the network is already saved? The user doesn't need to type the
+  # password again
   nmcli device wifi connect "$bssid" password "$pass" || nmcli device wifi connect "$bssid"
 }
 
-## CHECKING IF WIFI IS WORKING
+#####
+## This function will check if the
+## connection works
+#####
+## param: none
+## return: void
+#####
 check() {
   notify-send "Checking if connection was successful"
   sleep 1
@@ -65,31 +126,29 @@ check() {
   fi
 }
 
-## MAIN ACTION COMMANDS ##
-cases=$(echo -e "$options" | dmenu -i -p "  Wifi Settings" )
-if [ -n "$cases" ]; then
-  case "$cases" in
-    $option1)
-      turnon;;
-    $option2)
-      turnoff;;
-    $option3)
-      disconnect;;
-    $option4)
-      connect;
-      if [ -n "$bssid" ]; then
-        password;
-        action;
-        sleep 5;
-        check;
-      else
-        exit 0;
-      fi;;
-    $option5)
-      "$BROWSER" http://networkcheck.kde.org;;
-    $option6)
-      exit 0;
-  esac
-else
-  exit 0;
-fi
+##########
+## main ##
+##########
+cases=$(echo -e "$options" | dmenu -l 6 -i -p "  Wifi Settings" ) # main menu prompt
+case "$cases" in
+  "$option1")
+    turnon;;
+  "$option2")
+    turnoff;;
+  "$option3")
+    disconnect;;
+  "$option4")
+    connect;
+    if [ -n "$bssid" ]; then # if the user chooses a network
+      password;
+      action;
+      sleep 5;
+      check;
+    else
+      exit 0; # if not, exit the script
+    fi;;
+  "$option5")
+    "$BROWSER" http://networkcheck.kde.org;; # $BROWSER reffers to a global variable set in .xinitrc/.bash_profile
+  "$option6")
+    exit 0;
+esac

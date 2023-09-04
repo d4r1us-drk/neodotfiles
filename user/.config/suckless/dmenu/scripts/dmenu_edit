@@ -2,9 +2,11 @@
 
 # ***This script was made by Clay Gomera (Drake)***
 #  - Description: A simple script for file editing in dmenu
-#  - Dependencies: dmenu (Everything else can be changed)
+#  - Dependencies: dmenu, fd
 
-# Show list of options
+##########
+## main ##
+##########
 cd "$HOME" || exit 0
 file=1
 while [ "$file" ]; do
@@ -15,7 +17,7 @@ while [ "$file" ]; do
             cd "$file" || exit 0
         else [ -f "$file" ]
             if [ "$file" ]; then
-                $VISUAL "$owd/$file" &
+                $VISUAL "$owd/$file" & # $VISUAL reffers to a global variable set in .xinitrc/.bash_profile
                 exit 0
             else
                 exit 0

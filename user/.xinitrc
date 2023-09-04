@@ -46,10 +46,10 @@ export GNUPGHOME="$HOME/.local/share/gnupg"
 export LESSHISTFILE="-"
 
 # default apps
-export EDITOR="emacsclient -t -a ''"
-export VISUAL="emacsclient -c -a 'emacs'"
-export BROWSER="librewolf"
+export EDITOR="~/.local/bin/lvim"
+export VISUAL="neovide --neovim-bin ~/.local/bin/lvim"
+export BROWSER="firefox"
 export VIEWER="zathura"
 
 # start window manager / desktop environment
-dbus-launch --exit-with-session dwm
+exec dwm

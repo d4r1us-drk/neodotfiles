@@ -1,5 +1,10 @@
-#!/bin/bash
-# Loop through all attached batteries and format the info
+#!/usr/bin/env bash
+
+# ***This script was made by Clay Gomera (Drake)***
+#  - Description: A dwmblocks script to print the current power profile and battery status
+#  - Dependencies: dwm, dwmblocks, power-profiles-daemon
+
+# this variable will store the current power profile
 currntpwr=$(powerprofilesctl get)
 if [ "${currntpwr}" = "performance" ]; then
 	pwr=" | 󰓅 Performance "
@@ -9,94 +14,78 @@ elif [ "${currntpwr}" = "power-saver" ]; then
 	pwr=" | 󰾆 PowerSaver "
 fi
 
+# loop through all the available batteries and get it's current capacity
 for battery in /sys/class/power_supply/BAT?*; do
-	# If non-first battery, print a space separator.
+	# if non-first battery, print a space separator.
 	[ -n "${capacity+x}" ] && printf " "
 
-	# Sets up the status and capacity
+	# sets up the status and capacity
 	case "$(cat "$battery/status" 2>&1)" in
 		"Full") 
 			status=" 󰁹" 
 			;;
 		"Discharging") 
-			# Calculates the percentage of remaining charge
+			# this variable will store the percentage of remaining charge
 			percentage="$(cat "$battery/capacity" 2>&1)"
-			# Updates the status icon based on the battery percentage
-			if [ "$percentage" -le 20 ]
-			then
+			# updates the status icon based on the battery percentage
+			if [ "$percentage" -le 20 ]; then
 				status=" 󰁻"
-			elif [ "$percentage" -le 30 ]
-			then
+			elif [ "$percentage" -le 30 ]; then
 				status=" 󰁼"
-			elif [ "$percentage" -le 40 ]
-			then
+			elif [ "$percentage" -le 40 ]; then
 				status=" 󰁽"
-			elif [ "$percentage" -le 50 ]
-			then
+			elif [ "$percentage" -le 50 ]; then
 				status=" 󰁾"
-			elif [ "$percentage" -le 60 ]
-			then
+			elif [ "$percentage" -le 60 ]; then
 				status=" 󰁿"
-			elif [ "$percentage" -le 70 ]
-			then
+			elif [ "$percentage" -le 70 ]; then
 				status=" 󰂀"
-			elif [ "$percentage" -le 80 ]
-			then
+			elif [ "$percentage" -le 80 ]; then
 				status=" 󰂁"
-			elif [ "$percentage" -le 90 ]
-			then
+			elif [ "$percentage" -le 90 ]; then
 				status=" 󰂂"
-      else
-        status=" 󰁹"
+			else
+				status=" 󰁹"
 			fi
 			;;
-		"Charging") 
-			# Calculates the percentage of remaining charge
+		"Charging")
+			# this variable will store the percentage of remaining charge
 			percentage="$(cat "$battery/capacity" 2>&1)"
-			# Updates the status icon based on the battery percentage while charging
-			if [ "$percentage" -le 10 ]
-			then
+			# updates the status icon based on the battery percentage while charging
+			if [ "$percentage" -le 10 ]; then
 				status=" 󰢜"
-			elif [ "$percentage" -le 20 ]
-			then
+			elif [ "$percentage" -le 20 ]; then
 				status=" 󰂆"
-			elif [ "$percentage" -le 30 ]
-			then
+			elif [ "$percentage" -le 30 ]; then
 				status=" 󰂇"
-			elif [ "$percentage" -le 40 ]
-			then
+			elif [ "$percentage" -le 40 ]; then
 				status=" 󰂈"
-			elif [ "$percentage" -le 50 ]
-			then
+			elif [ "$percentage" -le 50 ]; then
 				status=" 󰢝"
-			elif [ "$percentage" -le 60 ]
-			then
+			elif [ "$percentage" -le 60 ]; then
 				status=" 󰂉"
-			elif [ "$percentage" -le 70 ]
-			then
+			elif [ "$percentage" -le 70 ]; then
 				status=" 󰢞"
-			elif [ "$percentage" -le 80 ]
-			then
+			elif [ "$percentage" -le 80 ]; then
 				status=" 󰂊"
-			elif [ "$percentage" -le 90 ]
-			then
+			elif [ "$percentage" -le 90 ]; then
 				status=" 󰂋"
 			else
 				status=" 󰂅"
 			fi
 			;;
 		"Not charging") 
-			echo " 󰂃 " && exit 0 
+			echo " 󰂃 " && exit 0 # just in case
 			;;
 		"Unknown") 
-			echo " 󰂃 " && exit 0 
+			echo " 󰂃 " && exit 0 # just in case
 			;;
-		*) exit 1 ;;
+		*) exit 1 ;; # just exit if there isn't a battery on the system
 	esac
 
-	# Will make a warn variable if discharging and low
+	# will make a warning variable if discharging and low
 	[ "$status" = " 󰁺" ] && [ "$percentage" -le 10 ] && warn="󱈸"
 
-	# Prints the info
+	# print everything
 	printf "%s%s%d%%%s" "$status" "$warn " "$percentage" "$pwr"; unset warn
 done && printf "\\n"

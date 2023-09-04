@@ -19,9 +19,6 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# use emasc for vim if present.
-[ -x "$(command -v emacs)" ] && alias vim="emacsclient -t -a ''"
-
 ### SET VI MODE ###
 # Comment this line out to enable default emacs-like bindings
 set -o vi
@@ -125,8 +122,8 @@ alias \
 # bat as cat
 [ -x "$(command -v bat)" ] && alias cat="bat"
 
-# pfetch as neofetch
-[ -x "$(command -v pfetch)" ] && alias neofetch="pfetch"
+# use emasc for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim"
 
 # Changing "ls" to "exa"
 alias \

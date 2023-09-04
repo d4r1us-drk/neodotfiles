@@ -3,5 +3,6 @@
 # ***This script was made by Clay Gomera (Drake)***
 #  - Description: A simple desktop dmenu script
 #  - Dependencies: dmenu, j4-dmenu-desktop
-#
-j4-dmenu-desktop --dmenu "dmenu -i -l 10 -p launch:" --no-generic
+
+# uses j4-dmenu-desktop to launch programs by it's desktop entry
+j4-dmenu-desktop --dmenu "dmenu -i -l 10 -p '󱓞 Launch:'" --no-generic

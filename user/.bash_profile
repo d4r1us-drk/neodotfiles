@@ -1,4 +1,4 @@
-	#!/bin/bash
+#!/bin/bash
 ##       ____             __
 ##      / __ \_________ _/ /_____
 ##     / / / / ___/ __ `/ //_/ _ \
@@ -14,8 +14,8 @@ then
 fi
 
 # environment variables
-export EDITOR="emacsclient -t -a ''"
-export VISUAL="emacsclient -c -a 'emacs'"
+export EDITOR="~/.local/bin/lvim"
+export VISUAL="neovide --neovim-bin ~/.local/bin/lvim"
 export MEDIA_DIR="$HOME/Media"
 export TEMP_DIR="$HOME/Temporal"
 
