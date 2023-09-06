@@ -28,8 +28,8 @@ vim.g.transparency = 0.9
 vim.g.neovide_background_color = "#1d2021" .. alpha()
 
 -- nvim options
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
 vim.opt.relativenumber = true
 vim.cmd('autocmd FileType markdown setlocal nospell')
 vim.opt.wrap = true -- wrap lines
@@ -39,7 +39,7 @@ vim.o.autochdir = true
 vim.cmd('autocmd BufEnter * lcd %:p:h')
 
 -- general
-lvim.use_icons = false
+lvim.use_icons = true
 lvim.log.level = "info"
 lvim.format_on_save = {
   enabled = true,

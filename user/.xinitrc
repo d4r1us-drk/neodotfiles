@@ -48,7 +48,7 @@ export LESSHISTFILE="-"
 # default apps
 export EDITOR="~/.local/bin/lvim"
 export VISUAL="neovide --neovim-bin ~/.local/bin/lvim"
-export BROWSER="firefox"
+export BROWSER="qutebrowser"
 export VIEWER="zathura"
 
 # start window manager / desktop environment

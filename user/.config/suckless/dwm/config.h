@@ -89,7 +89,7 @@ static const Rule rules[] = {
 	{ "neovide",                          NULL,                 NULL,              1,       0,           -1 },
 	// test tag
 	{ "Virt-manager",                     NULL,                 NULL,         1 << 1,       0,           -1 },
-	{ "Gnome-boxes",                     NULL,                 NULL,         1 << 1,       0,           -1 },
+	{ "Gnome-boxes",                      NULL,                 NULL,         1 << 1,       0,           -1 },
 	// web tag
 	{ "LibreWolf",                        NULL,                 NULL,         1 << 2,       0,           -1 },
 	{ "librewolf-default",                NULL,                 NULL,         1 << 2,       0,           -1 },
@@ -198,7 +198,7 @@ static const Key keys[] = {
 	  // text editor
 	{ MODKEY,                       XK_e,                      spawn,          SHCMD("neovide --neovim-bin ~/.local/bin/lvim")},
 	  // web browser
-	{ MODKEY,                       XK_w,                      spawn,          SHCMD("firefox")},
+	{ MODKEY,                       XK_w,                      spawn,          SHCMD("qutebrowser")},
 	  // chat
 	{ MODKEY,                       XK_s,                      spawn,          SHCMD("signal-desktop")},
 
