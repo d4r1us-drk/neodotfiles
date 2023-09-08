@@ -35,9 +35,6 @@ fi
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
 fi
-if [ -d "$HOME/Applications" ] ;
-  then PATH="$HOME/Applications:$PATH"
-fi
 
 ### CHANGE TITLE OF TERMINALS ###
 case ${TERM} in
@@ -124,9 +121,6 @@ alias \
 
 # bat as cat
 [ -x "$(command -v bat)" ] && alias cat="bat"
-
-# pfetch as neofetch
-[ -x "$(command -v pfetch)" ] && alias neofetch="pfetch"
 
 # Changing "ls" to "exa"
 alias \

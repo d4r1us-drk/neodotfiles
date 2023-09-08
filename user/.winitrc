@@ -41,9 +41,14 @@ export GNUPGHOME="$HOME/.local/share/gnupg"
 export LESSHISTFILE=-
 
 # default apps
-export EDITOR="emacsclient -t -a ''"
-export VISUAL="emacsclient -c -a 'emacs'"
-export BROWSER="librewolf"
+export EDITOR="$HOME/.local/bin/lvim"
+export VISUAL="neovide --neovim-bim $HOME/.local/bin/lvim"
+export BROWSER="qutebrowser"
 export VIEWER="zathura"
+
+export MEDIA_DIR="$HOME/Media"
+export TEMP_DIR="$HOME/Temporal"
+export RUNNER="wofi --dmenu"
+export RUNNER_EX="wofi -p ' Run'"
 
 exec Hyprland

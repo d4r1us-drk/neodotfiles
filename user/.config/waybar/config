@@ -5,30 +5,40 @@
   "layer": "top",
 
   // Choose the order of the modules
-  "modules-left": ["wlr/workspaces"],
+  "modules-left": ["hyprland/workspaces"],
   //  "modules-center": ["clock"],
   "modules-right": ["idle_inhibitor", "hyprland/language", "pulseaudio", "backlight", "battery", "custom/powerprofiles", "network", "clock"],
 
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "on-click": "activate",
     "sort-by-number": true,
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
-      "format": "{icon}",
+    "format": "{icon}",
     "format-icons": {
-       "1": "\uf269",
-       "2": "\uf07b",
-       "3": "\ue632",
-       "4": "\uf075",
-       "5": "\uf001",
-       "6": "\uf03d",
-       "7": "\ue22b",
-       "8": "\uf15c",
-       "9": "\udb80\ude96",
-       "10": "\ue20f",
-       "urgent": "\uf12a",
-       "focused": "\uf192",
-       "default": "\uf10c"
+        "1": "\ue7c5",
+        "2": "\uf188",
+        "3": "\uf07c",
+        "4": "\uf0ac",
+        "5": "\udb82\udf79",
+        "6": "\uf01c",
+        "7": "\udb84\udc02",
+        "8": "\udb82\uded1",
+        "9": "\udb81\udf5a",
+        "10": "\uf03d",
+        "11": "\udb80\udfd8",
+        "12": "\udb80\ude19",
+        "13": "\uf02d",
+        "14": "\udb80\ude96",
+        "15": "\udb80\udf0b",
+        "16": "\udb86\udc6b",
+        "17": "\udb81\ude91",
+        "18": "\ue638",
+        "19": "\udb80\ude9a",
+        "20": "\udb84\udc64",
+        "urgent": "\uf12a",
+        "focused": "\uf192",
+        "default": "\uf444"
     }
   },
 

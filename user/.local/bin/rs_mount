@@ -2,8 +2,8 @@
 # List of available drives
 devices=$(lsblk -lpo "name,size,type,mountpoint" --noheadings | grep -v -e "disk" -e "lvm" -e "nvme" | awk '{if ($4=="") {print $1, "(" $2 ")", "[unmounted]"} else {print $1, "(" $2 ")", "[" $4 "]"}}')
 
-# Rofi menu
-selected_device=$(echo -e "${devices}" | rofi -dmenu -i -p "Drive manager" | awk '{print $1}')
+# menu
+selected_device=$(echo -e "${devices}" | $RUNNER -i -p "Drive manager" | awk '{print $1}')
 
 # Verify if the drive is mounted
 if [ -n "$selected_device" ]; then
@@ -24,7 +24,7 @@ if [ -n "$selected_device" ]; then
       # If it's not mounted, check if it's an encrypted drive
       if [ "$(lsblk -n -o FSTYPE "${selected_device}")" == "crypto_LUKS" ]; then
           # If it's an encrypted drive, prompt for the passphrase and mount it
-          passphrase=$(rofi -dmenu -p "Enter passphrase for ${selected_device}" -password)
+          passphrase=$($RUNNER -p "Enter passphrase for ${selected_device}" --password)
           if [ -n "$passphrase" ]; then
               echo "$passphrase" | pkexec cryptsetup open "${selected_device}" encrypted_"${selected_device##*/}"
               udisksctl mount -b /dev/mapper/encrypted_"${selected_device##*/}"

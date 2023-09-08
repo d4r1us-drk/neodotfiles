@@ -9,13 +9,13 @@
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive and fish becomes very slow.
 set -e fish_user_paths
-set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.config/emacs/bin $HOME/Applications /var/lib/flatpak/exports/bin/ $fish_user_paths
+set -U fish_user_paths $HOME/.bin  $HOME/.local/bin /var/lib/flatpak/exports/bin/ $fish_user_paths
 
 ### EXPORT ###
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
-set EDITOR "emacsclient -t -a ''"
-set VISUAL "emacsclient -c -a 'emacs'"
+set EDITOR "~/.local/bin/lvim"
+set VISUAL "neovide --neovim-bin ~/.local/bin/lvim"
 
 ### SET BAT AS MANPAGER
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -126,13 +126,10 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # emacs as vim
-alias vim="emacsclient -t -a ''"
+alias vim="~/.local/bin/lvim"
 
 # bat as cat
 alias cat='bat'
-
-# pfetch as neofetch
-alias neofetch='pfetch'
 
 # Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
@@ -218,12 +215,6 @@ alias yt='ytfzf -ftsl'
 alias youtube='ytfzf -ftsl'
 alias ytm='ytfzf -mtsl'
 alias youtube-music='ytfzf -mtsl'
-
-# the terminal rickroll
-alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-
-# Mocp must be launched with bash instead of Fish!
-alias mocp="bash -c mocp"
 
 # network and bluetooth
 alias netstats='nmcli dev'

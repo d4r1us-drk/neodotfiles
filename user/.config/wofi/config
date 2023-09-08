@@ -1,0 +1,9 @@
+style=/home/drk/.config/wofi/style.css
+show=drun
+width=960
+height=320
+always_parse_args=true
+show_all=true
+print_command=true
+layer=overlay
+prompt=
