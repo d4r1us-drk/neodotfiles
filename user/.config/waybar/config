@@ -7,7 +7,7 @@
   // Choose the order of the modules
   "modules-left": ["hyprland/workspaces"],
   //  "modules-center": ["clock"],
-  "modules-right": ["idle_inhibitor", "hyprland/language", "pulseaudio", "backlight", "battery", "custom/powerprofiles", "network", "clock"],
+  "modules-right": ["hyprland/language", "pulseaudio", "backlight", "battery", "custom/powerprofiles", "network", "clock"],
 
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -46,14 +46,6 @@
     "format": "{} \udb80\udf0c",
     "format-en": "US",
     "format-es": "ES",
-  },
-
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "\udb83\udf62",
-      "deactivated": "\udb83\udf64"
-    }
   },
 
   "clock": {

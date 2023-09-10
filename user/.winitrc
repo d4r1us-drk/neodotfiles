@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd ~
+cd "$HOME" || exit 1
 
 # Log WLR errors and logs to the hyprland log. Recommended
 export HYPRLAND_LOG_WLR=1
@@ -46,6 +46,7 @@ export VISUAL="neovide --neovim-bim $HOME/.local/bin/lvim"
 export BROWSER="qutebrowser"
 export VIEWER="zathura"
 
+# user defined global variables
 export MEDIA_DIR="$HOME/Media"
 export TEMP_DIR="$HOME/Temporal"
 export RUNNER="wofi --dmenu"

@@ -6,7 +6,7 @@
 ##   /_____/_/   \__,_/_/|_|\___/   My custom bash_profile config
 ##
 
-### STARTING XSESSION
+# starting hyprland
 if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]
 then
   sh "$HOME/.winitrc"
@@ -27,10 +27,11 @@ export WGETRC="$HOME/.config/wget/wgetrc"
 export INPUTRC="$HOME/.config/inputrc"
 export LESSHISTFILE=-
 
+# user defined global variables
 export MEDIA_DIR="$HOME/Media"
 export TEMP_DIR="$HOME/Temporal"
 export RUNNER="wofi --dmenu"
 export RUNNER_EX="wofi -p ' Run'"
 
-### BASHRC
-source "$HOME"/.bashrc                                           # Load the bashrc
+# bashrc
+source "$HOME"/.bashrc

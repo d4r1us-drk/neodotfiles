@@ -20,9 +20,8 @@ options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6"
 ## information about the wireless
 ## interface
 #####
-wlan=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f1 | head -1)
-constate=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f3 | head -1)
-currentwfi=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f4 | head -1)
+wifi_info=$(nmcli dev | awk '/wifi/ {print $1,$3; exit}')
+read -r wlan constate <<< "$wifi_info"
 
 #####
 ## This function uses nmcli to turn
@@ -78,7 +77,9 @@ disconnect() {
 #####
 connect() {
     notify-send "Scannig networks..." && nmcli dev wifi rescan;
-    bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | $RUNNER -i -p "  Select a Wifi Network" | cut -d' ' -f1);
+    wifinet=$(nmcli -f BSSID,SSID,BARS,SECURITY dev wifi list | sed -n '1!p' | $RUNNER -i -p "  Select a Wifi Network");
+    bssid=$(echo "$wifinet" | cut -d' ' -f1)
+    ssid=$(echo "$wifinet" | cut -d' ' -f3)
 }
 
 #####
@@ -89,11 +90,18 @@ connect() {
 ## return: string
 #####
 password() {
-    # TODO Create a condition to check if the chosen network is open or not, that
-    # way this will be skipped of it's open
-    # TODO What if the network is already saved? The user doesn't need to type the
-    # password again
-    pass=$($RUNNER -i -W 250 -L 1 -p "Enter Password " --password);
+    if nmcli connection show | grep -q "$ssid"; then # check if the network is already saved
+        return 0; # no password is required
+    elif nmcli -f BSSID,SECURITY dev wifi list | sed -n '1!p' | grep "$bssid" | awk '{print $2}' | grep -q -- "--"; then # check if the network is open
+        return 0; # no password is required
+    else
+        pass=$($RUNNER -i -W 250 -L 1 -p "Enter Password " --password);
+        if [ -n "$pass" ]; then # if the user gave a password
+            return 0;
+        else
+            exit 1; # if not, exit the script
+        fi
+    fi
 }
 
 #####
@@ -105,23 +113,10 @@ password() {
 ## return: void
 #####
 action() {
-    nmcli device wifi connect "$bssid" password "$pass" || nmcli device wifi connect "$bssid";
-}
-
-#####
-## This function will check if the
-## connection works
-#####
-## param: none
-## return: void
-#####
-check() {
-    notify-send "Checking if connection was successful";
-    sleep 1;
-    if ping -q -c 2 -W 2 google.com >/dev/null; then
-        notify-send "You are now connected to $currentwfi and internet is working properly";
-    else
-        notify-send "Your internet is not working :(";
+    if [ -n "$pass" ]; then # we need to check again if the $pass variable exists
+        nmcli dev wifi connect "$bssid" password "$pass"
+    else # if not, that means that the password() function ended in one of the first two conditions, the network is saved or open
+        nmcli dev wifi connect "$bssid";
     fi
 }
 
@@ -140,20 +135,9 @@ case "$cases" in
         disconnect;
         ;;
     "$option4")
-        connect;
-        if [ -n "$bssid" ]; then # if the user chooses a network
-            password;
-            if [ -n "$pass" ]; then # if the user typed a password
-                action;
-                if [ "$constate" = "connected" ]; then # if the connection was successful
-                    check;
-                else
-                    notify-send "Connection error"; # if not, connection error
-                    exit 1;
-                fi
-            else
-                exit 1; # if not, exit the script
-            fi
+        if connect; then # if the user chooses a network
+            password; # this function will exit the script if the user didn't put a password
+            action;
         else
             exit 1; # if not, exit the script
         fi

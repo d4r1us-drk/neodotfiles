@@ -77,8 +77,7 @@ button:hover {
 #network,
 #pulseaudio,
 #language,
-#mode,
-#idle_inhibitor {
+#mode {
   font-family: Symbols Nerd Font Mono, mononoki Nerd Font;
   font-size: 16px;
   padding: 0 8px;
@@ -150,14 +149,6 @@ label:focus {
 
 #pulseaudio.muted {
     background-color: #076678;
-}
-
-#idle_inhibitor {
-    background-color: #af3a03;
-}
-
-#idle_inhibitor.activated {
-    background-color: #d55d09;
 }
 
 #language {

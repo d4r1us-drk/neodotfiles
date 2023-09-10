@@ -7,8 +7,8 @@
 ###########################
 ## Screenshots Directory ##
 ###########################
-SHOTDIR="$MEDIA_DIR/Pictures/Screenshots" # $MEDIA_DIR reffers to a global variable in .xinitrc/.bash_profile
-VCAPDIR="$MEDIA_DIR/Videos/Screencasts" # $MEDIA_DIR reffers to a global variable in .xinitrc/.bash_profile
+SHOTDIR="$MEDIA_DIR/Pictures/Screenshots" # $MEDIA_DIR reffers to a global variable in .winitrc/.bash_profile
+VCAPDIR="$MEDIA_DIR/Videos/Screencasts" # $MEDIA_DIR reffers to a global variable in .winitrc/.bash_profile
 [ ! -d "$SHOTDIR" ] && [ ! -d "$VCAPDIR" ] && mkdir -p "$SHOTDIR" "$VCAPDIR" || echo
 
 #####
@@ -83,16 +83,6 @@ fsschos() {
 #####
 fdel() {
     del=$(echo -e "$dels" | $RUNNER -L 5 -i -p " Select Delay")
-}
-
-# countdown function
-countdown() {
-  notify-send "Screenshot" "Executing in 3 seconds" -t 1000
-  sleep 1
-  notify-send "Screenshot" "Executing in 2 seconds" -t 1000
-  sleep 1
-  notify-send "Screenshot" "Executing in 1 seconds" -t 1000
-  sleep 2
 }
 
 #####

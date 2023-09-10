@@ -1,6 +1,6 @@
 style=/home/drk/.config/wofi/style.css
 show=drun
-width=960
+width=750
 height=320
 always_parse_args=true
 show_all=true
