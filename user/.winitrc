@@ -2,7 +2,7 @@
 
 cd "$HOME" || exit 1
 
-# Log WLR errors and logs to the hyprland log. Recommended
+# Log WLR errors and logs to the hyprland log
 export HYPRLAND_LOG_WLR=1
 
 # GTK shit
@@ -14,20 +14,21 @@ export XCURSOR_THEME=Simp1e-Gruvbox-Dark
 export XCURSOR_SIZE=16
 
 # session settings
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
-export XDG_CURRENT_DESKTOP=Hyprland
-export XDG_SESSION_TYPE=wayland
 export QT_STYLE_OVERRIDE=kvantum
-export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM=wayland
 export GDK_BACKEND=wayland
-export WM=Hyprland
 export SDL_VIDEODRIVER=wayland
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export XKB_DEFAULT_LAYOUT="us"
+export MOZ_ENABLE_WAYLAND=1
 
 # clean home
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -37,19 +38,17 @@ export W3M_DIR="$XDG_DATA_HOME/w3m"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export WGETRC="$HOME/.config/wget/wgetrc"
 export INPUTRC="$HOME/.config/inputrc"
-export GNUPGHOME="$HOME/.local/share/gnupg"
 export LESSHISTFILE=-
 
-# default apps
-export EDITOR="$HOME/.local/bin/lvim"
-export VISUAL="neovide --neovim-bim $HOME/.local/bin/lvim"
-export BROWSER="qutebrowser"
-export VIEWER="zathura"
-
-# user defined global variables
+# user defined enviroment variables
+export WM=Hyprland
 export MEDIA_DIR="$HOME/Media"
 export TEMP_DIR="$HOME/Temporal"
 export RUNNER="wofi --dmenu"
 export RUNNER_EX="wofi -p ' Run'"
+export EDITOR="$HOME/.local/bin/lvim"
+export VISUAL="neovide --neovim-bim $HOME/.local/bin/lvim"
+export BROWSER="firefox"
+export VIEWER="zathura"
 
 exec Hyprland

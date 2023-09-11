@@ -2,7 +2,7 @@ window {
 margin: 5px;
 border: 2px solid #cc241d;
 /* border-radius: 15px; */
-background-color: #282828;
+background-color: #1d2021;
 font-family: mononoki Nerd Font;
 font-size: 16px;
 }
@@ -23,13 +23,13 @@ background-color: #3c3836;
 margin: 15px;
 margin-top: 15px;
 border: none;
-background-color: #282828;
+background-color: #1d2021;
 }
 
 #outer-box {
 margin: 10px;
 border: none;
-background-color: #282828;
+background-color: #1d2021;
 }
 
 #scroll {

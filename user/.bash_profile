@@ -13,10 +13,6 @@ then
   logout
 fi
 
-# environment variables
-export EDITOR="$HOME/.local/bin/lvim"
-export VISUAL="neovide --neovim-bin $HOME/.local/bin/lvim"
-
 # clean home
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -27,11 +23,16 @@ export WGETRC="$HOME/.config/wget/wgetrc"
 export INPUTRC="$HOME/.config/inputrc"
 export LESSHISTFILE=-
 
-# user defined global variables
+# user defined environment variables
+export WM=Hyprland
 export MEDIA_DIR="$HOME/Media"
 export TEMP_DIR="$HOME/Temporal"
 export RUNNER="wofi --dmenu"
 export RUNNER_EX="wofi -p ' Run'"
+export EDITOR="$HOME/.local/bin/lvim"
+export VISUAL="neovide --neovim-bim $HOME/.local/bin/lvim"
+export BROWSER="firefox"
+export VIEWER="zathura"
 
 # bashrc
 source "$HOME"/.bashrc
