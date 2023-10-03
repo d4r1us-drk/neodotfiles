@@ -5,7 +5,7 @@ libxft
 libxinerama
 
 # extra dependencies
-xbacklight        # brightness control
+brightnessctl     # brightness control
 pamixer           # volume control
 arandr            # display config
 st                # terminal
@@ -13,10 +13,10 @@ dmenu             # run launcher
 dwmblocks         # status bar scripts
 slock             # lockscreen
 herbe             # notifications
-emacs             # text editor
+lunarvim          # text editor
 
 # scratchpads
-musikcube         # music player
+cmus              # music player
 ani-cli           # watch anime
 flix-cli          # watch movies
 ytfzf             # watch/listen to youtube
@@ -24,3 +24,4 @@ vifm              # file manager
 btop              # process viewer
 pulsemixer        # audio mixer 1
 alsamixer         # audio mixer 2
+tut               # mastodon client

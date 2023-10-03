@@ -165,7 +165,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # Directory to save downloads to. If unset, a sensible OS-specific
 # default is used.
 # Type: Directory
-c.downloads.location.directory = '~/Temporal/Downloads'
+c.downloads.location.directory = '~/var/downloads'
 
 # When to show the tab bar.
 # Type: String

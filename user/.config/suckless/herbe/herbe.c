@@ -115,8 +115,28 @@ int main(int argc, char *argv[])
 	sigaction(SIGUSR1, &act_ignore, 0);
 	sigaction(SIGUSR2, &act_ignore, 0);
 
+    int opt;
+    while ((opt = getopt(argc, argv, "d:")) != -1)
+    {
+        switch (opt)
+        {
+        case 'd':
+            duration = atoi(optarg); // Parse the duration from the command line
+            break;
+        default:
+            die("Usage: %s [-d duration] body", argv[0]);
+        }
+    }
+
+    if (optind >= argc)
+    {
+        die("Usage: %s [-d duration] body", argv[0]);
+    }
+
 	if (!(display = XOpenDisplay(0)))
-		die("Cannot open display");
+    {
+        die("Cannot open display");
+    }
 
 	int screen = DefaultScreen(display);
 	Visual *visual = DefaultVisual(display, screen);
@@ -142,7 +162,7 @@ int main(int argc, char *argv[])
 
 	XftFont *font = XftFontOpenName(display, screen, font_pattern);
 
-	for (int i = 1; i < argc; i++)
+	for (int i = optind; i < argc; i++)
 	{
 		for (unsigned int eol = get_max_len(argv[i], font, max_text_width); eol; argv[i] += eol, num_of_lines++, eol = get_max_len(argv[i], font, max_text_width))
 		{
@@ -191,8 +211,10 @@ int main(int argc, char *argv[])
 	sigaction(SIGUSR1, &act_expire, 0);
 	sigaction(SIGUSR2, &act_expire, 0);
 
-	if (duration != 0)
-		alarm(duration);
+	if (duration > 0)
+    {
+        alarm(duration);
+    }
 
 	for (;;)
 	{
