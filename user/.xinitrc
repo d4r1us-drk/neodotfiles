@@ -28,16 +28,26 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
+if xinput --list | grep -q "Elan TrackPoint"; then
+    xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" 1
+fi
+
 # environment variables
 export MOZ_USE_XINPUT2=1
 export QT_STYLE_OVERRIDE=kvantum
-export MEDIA_DIR="$HOME/Media"
-export TEMP_DIR="$HOME/Temporal"
 
 # clean home
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DESKTOP_DIR="$HOME/var/desktop"
+export XDG_DOWNLOAD_DIR="$HOME/var/downloads"
+export XDG_TEMPLATES_DIR="$HOME/media/documents/templates"
+export XDG_PUBLICSHARE_DIR="$HOME/var/public"
+export XDG_DOCUMENTS_DIR="$HOME/media/documents"
+export XDG_MUSIC_DIR="$HOME/media/music"
+export XDG_PICTURES_DIR="$HOME/media/pictures"
+export XDG_VIDEOS_DIR="$HOME/media/videos"
 export W3M_DIR="$XDG_DATA_HOME/w3m"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export WGETRC="$HOME/.config/wget/wgetrc"
@@ -52,4 +62,4 @@ export BROWSER="qutebrowser"
 export VIEWER="zathura"
 
 # start window manager / desktop environment
-exec dwm
+dbus-launch dwm

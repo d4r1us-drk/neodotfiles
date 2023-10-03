@@ -7,15 +7,23 @@
 ###########################
 ## Screenshots Directory ##
 ###########################
-SHOTDIR="$MEDIA_DIR/Pictures/Screenshots" # $MEDIA_DIR reffers to a global variable in .xinitrc/.bash_profile
+SHOTDIR="$XDG_PICTURES_DIR/screenshots"
 mkdir -p "$SHOTDIR"
+
+###########################
+## Screencasts Directory ##
+###########################
+CASTDIR="$XDG_VIDEOS_DIR/screencasts"
+mkdir -p "$CASTDIR"
 
 #######################
 ## Main menu choices ##
 #######################
-mcho1="󰹑 Take an screenshot"
-mcho2="󰻃 Record the screen"
-mchos="$mcho1\n$mcho2"
+mcho1="󰹑 Take a screenshot"
+mcho2="󰐍 Record the screen"
+mcho3="󰙧 Stop recording"
+mcho4="󱎘 Exit"
+mchos="$mcho1\n$mcho2\n$mcho3\n$mcho4"
 
 #############################
 ## Screenshot menu choices ##
@@ -31,7 +39,7 @@ schos="$scho1\n$scho2\n$scho3\n$scho4\n$scho5"
 ## Screenshot submenu ##
 ########################
 sscho1="󰆏 Copy to clipboard"
-sscho2="󰠘 Save to ~/Media/Pictures/Screenshots"
+sscho2="󰠘 Save to $SHOTDIR"
 sschos="$sscho1\n$sscho2"
 
 #################################
@@ -43,38 +51,25 @@ del3="󱑇 10 sec delay"
 dels="$del1\n$del2\n$del3"
 
 #####
-## This function uses the sschos variable
-## to ask the user what to do with the
+## This function uses the sschos variable to ask the user what to do with the
 ## screenshot
-#####
-## param: none
-## return: string
 #####
 fsschos() {
   sschoice=$(echo -e "$sschos" | dmenu -i -l 2 -p "  What do you want to do with this screenshot?")
 }
 
 #####
-## This function uses the dels variable
-## to ask the user which delay option to
+## This function uses the dels variable to ask the user which delay option to
 ## choose
-#####
-## param: none
-## return: string
 #####
 fdel() {
   del=$(echo -e "$dels" | dmenu -i -p " Select Delay")
 }
 
 #####
-## This function does a full screen
-## screenshot without delay, depending on
-## what the user chooses on the fsschos
-## function, the screenshot will be saved
-## to the clipboard or to $SHOTDIR
-#####
-## param: none
-## return: void
+## This function does a full screen screenshot without delay, depending on what
+## the user chooses on the fsschos function, the screenshot will be saved to the
+## clipboard or to $SHOTDIR
 #####
 shot_screen() {
   fsschos
@@ -88,17 +83,10 @@ shot_screen() {
 }
 
 #####
-## This function does a full screen
-## screenshot with delay, depending on
-## what the user chooses on the fsschos
-## function, the screenshot will be saved
-## to the clipboard or to $SHOTDIR. And
-## depending on what the user chooses on
-## the fdel function, the delay will be
-## between 3 and 10 seconds
-#####
-## param: none
-## return: void
+## This function does a full screen screenshot with delay, depending on what the
+## user chooses on the fsschos function, the screenshot will be saved to the
+## clipboard or to $SHOTDIR. And depending on what the user chooses on the fdel
+## function, the delay will be between 3 and 10 seconds
 #####
 shot_screen_delay() {
   fsschos;
@@ -118,13 +106,13 @@ shot_screen_delay() {
     fdel;
     case $del in
       "$del1")
-        sleep 3 && maim -f jpg "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to ~/Media/Pictures/Screenshots/";
+        sleep 3 && maim -f jpg "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to $SHOTDIR";
         ;;
       "$del2")
-        sleep 5 && maim -f jpg "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to ~/Media/Pictures/Screenshots/";
+        sleep 5 && maim -f jpg "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to $SHOTDIR";
         ;;
       "$del3")
-        sleep 10 && maim -f jpg "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to ~/Media/Pictures/Screenshots/";
+        sleep 10 && maim -f jpg "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to $SHOTDIR";
     esac
   else
     exit 0
@@ -132,55 +120,75 @@ shot_screen_delay() {
 }
 
 #####
-## This function allows the user to select
-## the area on screen to screenshot
-## depending on what the user chooses on
-## the fsschos function, the screenshot
-## will be saved to the clipboard or to
-## $SHOTDIR
-#####
-## param: none
-## return: void
+## This function allows the user to select the area on the screen to screenshot
+## depending on what the user chooses on the fsschos function, the screenshot will
+## be saved to the clipboard or to $SHOTDIR
 #####
 shot_area() {
   fsschos;
   if [ "$sschoice" = "$sscho1" ]; then
     maim -s | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard";
   elif [ "$sschoice" = "$sscho2" ]; then
-    maim -s -f jpg "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to ~/Media/Pictures/Screenshots/";
+    maim -s -f jpg "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to $SHOTDIR";
   else
     exit 0
   fi
 }
 
 #####
-## This function does an screnshot of the
-## currently active window, depending on
-## what the user chooses on the fsschos
-## function, the screenshot will be saved
-## to the clipboard or to $SHOTDIR
-#####
-## param: none
-## return: void
+## This function does a screenshot of the currently active window, depending
+## on what the user chooses on the fsschos function, the screenshot will be
+## saved to the clipboard or to $SHOTDIR
 #####
 shot_window() {
   fsschos;
   if [ "$sschoice" = "$sscho1" ]; then
     maim -i "$(xdotool getactivewindow)" | xclip -selection clipboard -t image/png && notify-send "Screenshot saved to clipboard";
   elif [ "$sschoice" = "$sscho2" ]; then
-    maim -i "$(xdotool getactivewindow)" -f jpg "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to ~/Media/Pictures/Screenshots/";
+    maim -i "$(xdotool getactivewindow)" -f jpg "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to $SHOTDIR";
   else
     exit 0
+  fi
+}
+
+#####
+## This function uses ffmpeg to record the screen, It will check if ffmpeg is
+## already running (already recording), to prevent the user from executing
+## another ffmpeg instance, if it's not running, it will grab the screen
+## resolution with xdpyinfo and use it to record the screen with ffmpeg.
+#####
+start_recording() {
+  if pgrep -x "ffmpeg" > /dev/null; then
+    notify-send "A screen recording is already in progress."
+  else
+    filename="$CASTDIR/$(date +%s).mp4"
+    resolution="$(xdpyinfo | grep dimensions | awk '{print $2}')"
+    ffmpeg -f x11grab -s "$resolution" -i :0.0 -c:v libx264 -preset ultrafast -qp 0 "$filename" &
+    notify-send "Screen recording started."
+  fi
+}
+
+#####
+## This function stops screen recording, it first checks if ffmpeg is already
+## running (already recording), to only stop a recording if there's an ffmpeg
+## instance running
+#####
+stop_recording() {
+  if pgrep -x "ffmpeg" > /dev/null; then
+    pkill -f "ffmpeg -f x11grab"
+    notify-send "Screen recording stopped. Video saved to $CASTDIR"
+  else
+    notify-send "You aren't recording anything at the moment"
   fi
 }
 
 ##########
 ## main ##
 ##########
-mchoice=$(echo -e "$mchos" | dmenu -i -l 2 -p "  Screen Capture Menu") # main menu prompt
+mchoice=$(echo -e "$mchos" | dmenu -i -l 4 -p "  Screen Capture Menu") # main menu prompt
 case $mchoice in
   "$mcho1")
-    schoice=$(echo -e "$schos" | dmenu -i -l 9 -p "  Sreenshot Menu") # screenshot menu prompt
+    schoice=$(echo -e "$schos" | dmenu -i -l 9 -p "  Screenshot Menu") # screenshot menu prompt
     case $schoice in
       "$scho1")
         shot_screen;
@@ -199,8 +207,12 @@ case $mchoice in
     esac
     ;;
   "$mcho2")
-    # TODO Implement screencast functionality with ffmpeg
-    notify-send "Bro you need to implement screen recording with ffmpeg"
-    exit 0
+    start_recording;
+    ;;
+  "$mcho3")
+    stop_recording;
+    ;;
+  "$mcho4")
+    exit 0;
     ;;
 esac

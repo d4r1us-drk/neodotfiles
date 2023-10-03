@@ -7,7 +7,7 @@
 ##########################
 ## Wallpapers Directory ##
 ##########################
-walldir="$MEDIA_DIR/Pictures/Wallpapers" # $MEDIA_DIR reffers to a global variable in .xinitrc/.bash_profile
+walldir="$XDG_PICTURES_DIR/wallpapers"
 cd "$walldir" || exit # we cd into $walldir in order to get only the file name on the main prompt
 
 #######################

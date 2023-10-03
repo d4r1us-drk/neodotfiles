@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+neovide --neovim-bin "$HOME/.local/bin/lvim"
