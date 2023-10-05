@@ -143,7 +143,7 @@ case "$cases" in
         fi
         ;;
     "$option5")
-        io.elementary.capnet-assist;
+        "$BROWSER" http://networkcheck.kde.org;
         ;;
     "$option6")
         exit 0;

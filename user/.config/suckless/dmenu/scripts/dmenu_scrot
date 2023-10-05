@@ -43,9 +43,9 @@ svcho1="󰆏 Copy to clipboard"
 svcho2="󰠘 Save to $SHOTDIR"
 svchos="$svcho1\n$svcho2"
 
-#################################
-## Screenshot delay subsubmenu ##
-#################################
+######################
+## Delay subsubmenu ##
+######################
 del1="󱑀 3 sec delay"
 del2="󱑂 5 sec delay"
 del3="󱑇 10 sec delay"

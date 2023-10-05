@@ -28,10 +28,6 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-if xinput --list | grep -q "Elan TrackPoint"; then
-    xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" 1
-fi
-
 # environment variables
 export MOZ_USE_XINPUT2=1
 export QT_STYLE_OVERRIDE=kvantum
@@ -57,7 +53,7 @@ export LESSHISTFILE="-"
 
 # default apps
 export EDITOR="~/.local/bin/lvim"
-export VISUAL="neovide --neovim-bin ~/.local/bin/lvim"
+export VISUAL="neovide --neovim-bin $EDITOR"
 export BROWSER="qutebrowser"
 export VIEWER="zathura"
 
