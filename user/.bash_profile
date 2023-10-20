@@ -15,7 +15,7 @@ fi
 
 # environment variables
 export EDITOR="~/.local/bin/lvim"
-export VISUAL="neovide --neovim-bin $EDITOR"
+export VISUAL="~/.local/bin/neovide.AppImage --neovim-bin $EDITOR"
 export BROWSER="qutebrowser"
 export VIEWER="zathura"
 

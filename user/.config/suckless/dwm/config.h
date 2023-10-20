@@ -47,8 +47,6 @@ const char *spcmd8[]  = {"st", "-n", "spmsc", "-g", "140x35", "-e", "cmus", NULL
 const char *spcmd9[]  = {"st", "-n", "spflm", "-g", "140x35", "-e", ".config/vifm/scripts/vifmrun", NULL};
 const char *spcmd10[] = {"st", "-n", "spytm", "-g", "140x35", "-e", "ytfzf", "-mlst", NULL};
 const char *spcmd11[] = {"st", "-n", "sprss", "-g", "140x35", "-e", "newsboat", NULL};
-const char *spcmd12[] = {"st", "-n", "spgkk", "-g", "140x35", "-e", "geek-life", NULL};
-const char *spcmd13[] = {"st", "-n", "sptut", "-g", "140x35", "-e", "tut", NULL};
 
 static Sp scratchpads[] = {
 	// NAME          CMD
@@ -63,8 +61,6 @@ static Sp scratchpads[] = {
 	{"spflm",      spcmd9},
 	{"spytm",      spcmd10},
 	{"sprss",      spcmd11},
-	{"spgkk",      spcmd12},
-	{"sptut",      spcmd13},
 };
 
 // Tags
@@ -158,8 +154,6 @@ static const Rule rules[] = {
 	{NULL,                        "spflm",              NULL,         SPTAG(8),     1,           -1},
 	{NULL,                        "spytm",              NULL,         SPTAG(9),     1,           -1},
 	{NULL,                        "sprss",              NULL,         SPTAG(10),    1,           -1},
-	{NULL,                        "spgkk",              NULL,         SPTAG(11),    1,           -1},
-	{NULL,                        "sptut",              NULL,         SPTAG(12),    1,           -1},
 };
 
 // Layout(s)
@@ -199,11 +193,11 @@ static const Key keys[] = {
 	    // terminal
 	{MODKEY,                       XK_Return,                 spawn,          {.v = termcmd}},
 	    // text editor
-	{MODKEY,                       XK_e,                      spawn,          SHCMD("neovide --neovim-bin ~/.local/bin/lvim")},
+	{MODKEY,                       XK_e,                      spawn,          SHCMD("~/.local/bin/neovide.AppImage --neovim-bin ~/.local/bin/lvim")},
 	    // web browser
-	{MODKEY,                       XK_w,                      spawn,          SHCMD("qutebrowser")},
+	{MODKEY,                       XK_w,                      spawn,          SHCMD("firefox")},
 	    // chat
-	{MODKEY,                       XK_s,                      spawn,          SHCMD("org.signal.Signal")},
+	{MODKEY,                       XK_s,                      spawn,          SHCMD("flatpak run org.signal.Signal")},
 
     // keyboard layout
 	    // set keyboard layout to es
@@ -321,8 +315,6 @@ static const Key keys[] = {
 	{MODKEY|Mod1Mask,              XK_v,      togglescratch,  {.ui = 8 }},
 	{MODKEY|Mod1Mask,              XK_n,      togglescratch,  {.ui = 9 }},
 	{MODKEY|Mod1Mask,              XK_r,      togglescratch,  {.ui = 10 }},
-	{MODKEY|Mod1Mask,              XK_g,      togglescratch,  {.ui = 11 }},
-	{MODKEY|Mod1Mask,              XK_t,      togglescratch,  {.ui = 12 }},
 
 	// misc
         // logout

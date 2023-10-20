@@ -36,14 +36,14 @@ export QT_STYLE_OVERRIDE=kvantum
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DESKTOP_DIR="$HOME/var/desktop"
-export XDG_DOWNLOAD_DIR="$HOME/var/downloads"
-export XDG_TEMPLATES_DIR="$HOME/media/documents/templates"
-export XDG_PUBLICSHARE_DIR="$HOME/var/public"
-export XDG_DOCUMENTS_DIR="$HOME/media/documents"
-export XDG_MUSIC_DIR="$HOME/media/music"
-export XDG_PICTURES_DIR="$HOME/media/pictures"
-export XDG_VIDEOS_DIR="$HOME/media/videos"
+export XDG_DESKTOP_DIR="$HOME/Desktop"
+export XDG_DOWNLOAD_DIR="$HOME/Downloads"
+export XDG_TEMPLATES_DIR="$HOME/Templates"
+export XDG_PUBLICSHARE_DIR="$HOME/Public"
+export XDG_DOCUMENTS_DIR="$HOME/Documents"
+export XDG_MUSIC_DIR="$HOME/Music"
+export XDG_PICTURES_DIR="$HOME/Pictures"
+export XDG_VIDEOS_DIR="$HOME/Videos"
 export W3M_DIR="$XDG_DATA_HOME/w3m"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export WGETRC="$HOME/.config/wget/wgetrc"
@@ -53,9 +53,12 @@ export LESSHISTFILE="-"
 
 # default apps
 export EDITOR="~/.local/bin/lvim"
-export VISUAL="neovide --neovim-bin $EDITOR"
+export VISUAL="~/.local/bin/neovide.AppImage --neovim-bin $EDITOR"
 export BROWSER="qutebrowser"
 export VIEWER="zathura"
 
 # start window manager / desktop environment
+pipewire &
+pipewire-pulse &
+wireplumber &
 dbus-launch dwm

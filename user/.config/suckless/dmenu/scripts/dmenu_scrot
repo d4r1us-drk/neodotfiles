@@ -7,8 +7,8 @@
 #######################################
 ## Screenshot & Screencast Directory ##
 #######################################
-SHOTDIR="$XDG_PICTURES_DIR/screenshots"
-CASTDIR="$XDG_VIDEOS_DIR/screencasts"
+SHOTDIR="$XDG_PICTURES_DIR/Screenshots"
+CASTDIR="$XDG_VIDEOS_DIR/Screencasts"
 [ ! -d "$SHOTDIR" ] && [ ! -d "$CASTDIR" ] && mkdir -p "$SHOTDIR" "$CASTDIR" || echo
 
 ######################

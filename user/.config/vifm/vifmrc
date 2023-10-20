@@ -173,11 +173,14 @@ command! reload :write | restart
 " program.
 
 " Pdf
-filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
+filextype *.pdf zathura %c %i &
 fileviewer *.pdf
         \ vifmimg pdf %px %py %pw %ph %c
         \ %pc
         \ vifmimg clear
+
+" cbz
+filextype *.cbz zathura %c %i &
 
 " PostScript
 filextype *.ps,*.eps,*.ps.gz
@@ -218,10 +221,6 @@ filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
         \*.as[fx]
         \ {View using mpv}
         \ mpv %f,
-        \ {View using ffplay}
-        \ ffplay -fs -autoexit %f,
-        \ {View using Dragon}
-        \ dragon %f:p,
 fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
         \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
         \*.as[fx]
@@ -232,6 +231,8 @@ fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
 
 " Web
 filextype *.html,*.htm
+        \ {Open with lunarvim}
+        \ ~/.local/bin/lvim %c &,
         \ {Open with emacs}
         \ emacsclient -c %c &,
         \ {Open with vim}
@@ -255,6 +256,8 @@ fileviewer *.[1-8] man ./%c | col -b
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in sxiv}
         \ sxiv -ia %f &,
+        \ {View in nsxiv}
+        \ nsxiv -ia %f &,
         \ {View in imv}
         \ imv -b 1D2330 -d %d &,
         \ {View in feh}
