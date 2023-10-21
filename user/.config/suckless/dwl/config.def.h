@@ -46,7 +46,6 @@ static const Rule rules[] = {
 	{ "^Chromium$",                     NULL,       1 << 2,     0,          -1,     0 },
 	{ "^org.qutebrowser.qutebrowser$",  NULL,       1 << 2,     0,          -1,     0 },
 	{ "^Brave-browser$",                NULL,       1 << 2,     0,          -1,     0 },
-	{ "^Bitwarden$",                    NULL,       1 << 2,     0,          -1,     0 },
 	{ "^org.qbittorrent.qBittorrent$",  NULL,       1 << 2,     0,          -1,     0 },
 	{ "^gomuks$",                       NULL,       1 << 3,     0,          -1,     0 },
 	{ "^Signal$",                       NULL,       1 << 3,     0,          -1,     0 },
@@ -71,7 +70,8 @@ static const Rule rules[] = {
 	{ "^com.obsproject.Studio$",        NULL,       1 << 5,     0,          -1,     0 },
 	{ "^fr.handbrake.ghb$",             NULL,       1 << 5,     0,          -1,     0 },
 	{ "^org.inkscape.Inkscape$",        NULL,       1 << 6,     0,          -1,     0 },
-	{ "^Gimp-2.10$",                    NULL,       1 << 6,     0,          -1,     0 }, { "^xournalpp$",                    NULL,       1 << 6,     0,          -1,     0 },
+	{ "^Gimp-2.10$",                    NULL,       1 << 6,     0,          -1,     0 },
+    { "^xournalpp$",                    NULL,       1 << 6,     0,          -1,     0 },
 	{ "^krita$",                        NULL,       1 << 6,     0,          -1,     0 },
 	{ "^darktable$",                    NULL,       1 << 6,     0,          -1,     0 },
 	{ "^org.kde.digikam$",              NULL,       1 << 6,     0,          -1,     0 },
@@ -101,6 +101,7 @@ static const Rule rules[] = {
 	{ "^spanic$",                       NULL,       0,          1,          -1,   'a' },
 	{ "^spytfz$",                       NULL,       0,          1,          -1,   'y' },
 	{ "^spytfm$",                       NULL,       0,          1,          -1,   'n' },
+	{ "^Bitwarden$",                    NULL,       0,          1,          -1,   'k' },
 };
 
 /* layout(s) */
@@ -211,8 +212,9 @@ static const char *sprang[] = { "v", "wezterm", "start", "--class", "sprang", "r
 static const char *spnews[] = { "r", "wezterm", "start", "--class", "spnews", "newsboat", NULL };
 static const char *spflix[] = { "f", "wezterm", "start", "--class", "spflix", "flix-cli", NULL };
 static const char *spanic[] = { "a", "wezterm", "start", "--class", "spanic", "ani-cli", NULL };
-static const char *spytfz[] = { "y", "wezterm", "start", "--class", "spytfz", "ytfzf", "-flst", NULL };
-static const char *spytfm[] = { "n", "wezterm", "start", "--class", "spytfm", "ytfzf", "-mlst", NULL };
+static const char *spytfz[] = { "y", "wezterm", "start", "--class", "spytfz", "ytfzf", "-flstT", "chafa", NULL };
+static const char *spytfm[] = { "n", "wezterm", "start", "--class", "spytfm", "ytfzf", "-mlstT", "chafa", NULL };
+static const char *spbitw[] = { "k", "flatpak", "run", "com.bitwarden.desktop", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
@@ -253,7 +255,6 @@ static const Key keys[] = {
 	{ MODKEY,                           Key_s,                      spawn,              SHCMD("flatpak run org.signal.Signal") },
 	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_r,                      spawn,              {.v = menucmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_d,                      spawn,              {.v = dmenucmd} },
-	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_d,                      spawn,              SHCMD("pkill wofi || $HOME/.config/wofi/scripts/rs_drun") },
 	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_i,                      spawn,              SHCMD("pkill wofi || $HOME/.config/wofi/scripts/rs_wifi") },
 	{ MODKEY,                           Key_Print,                  spawn,              SHCMD("pkill wofi || $HOME/.config/wofi/scripts/rs_scrot") },
 	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_w,                      spawn,              SHCMD("pkill wofi || $HOME/.config/wofi/scripts/rs_wall") },
@@ -284,6 +285,7 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_ALT,          Key_a,                      togglescratch,      {.v = spanic } },
 	{ MODKEY|WLR_MODIFIER_ALT,          Key_y,                      togglescratch,      {.v = spytfz } },
 	{ MODKEY|WLR_MODIFIER_ALT,          Key_n,                      togglescratch,      {.v = spytfm } },
+	{ MODKEY|WLR_MODIFIER_ALT,          Key_k,                      togglescratch,      {.v = spbitw } },
 	TAGKEYS( Key_1,  0 ),
 	TAGKEYS( Key_2,  1 ),
 	TAGKEYS( Key_3,  2 ),

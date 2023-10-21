@@ -22,7 +22,9 @@ pipewire-pulse &
 wireplumber &
 
 # Desktop portals and authentication agents
+/usr/libexec/xdg-desktop-portal &
 /usr/libexec/xdg-desktop-portal-wlr &
+/usr/libexec/xdg-desktop-portal-gtk &
 /usr/libexec/polkit-gnome-authentication-agent-1 &
 
 # Clipboard manager
