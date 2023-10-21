@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# ***This script was made by Clay Gomera (Drake)***
+#  - Description: A dwmblocks script to print the volume level
+#  - Dependencies: dwm, dwmblocks, pamixer
+
+# if the volume is muted, just print 󰖁 and exit
+[ "$(pamixer --get-mute)" = true ] && echo "󰖁" && exit
+vol="$(pamixer --get-volume)" # if not, this variable will store the current volume level
+if [ "$vol" -gt "50" ]; then
+    icon="󰕾"
+elif [ "$vol" -gt "10" ]; then
+    icon="󰖀"
+elif [ "$vol" -gt "0" ]; then
+    icon="󰕿"
+else
+    echo "󰖁" && exit # just in case if pamixer or the audio isn't available
+fi
+echo -e "$icon $vol%" # print the volume icon and level

@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# ***This script was made by Clay Gomera (Drake)***
+#  - Description: A dwmblocks script to print the wifi status
+#  - Dependencies: dwm, dwmblocks, nmcli
+
+#####
+## This function gets the wifi
+## signal strength from nmcli and
+## then converts it from dBm to
+## values from 1 to 4
+#####
+## param: none
+## return: string
+#####
+get_wifi_strength() {
+    # Retrieves the wifi signal strength in dBm
+    strength=$(nmcli -t -f active,ssid,signal dev wifi | grep yes | cut -d ":" -f3)
+    # Converts dBm to percentage (0% to 100%)
+    if [ "$strength" -le 30 ]; then
+        echo "1"
+    elif [ "$strength" -le 60 ]; then
+        echo "2"
+    elif [ "$strength" -le 90 ]; then
+        echo "3"
+    else
+        echo "4"
+    fi
+}
+
+# this variable will store the current state of the connection (connected or disconnected)
+constate=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f3 | head -1)
+
+# this variable will store the name of the wifi network that the computer is currently connected to
+currentwfi=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f4 | head -1)
+
+if [ "$constate" = "disconnected" ]; then # if the computer is disconnected
+    echo " 󰤮 "
+elif [ "$constate" = "connected" ]; then # if it's connected
+    strength=$(get_wifi_strength)
+    case "$strength" in
+        "1") icon="󰤟 " ;;
+        "2") icon="󰤢 " ;;
+        "3") icon="󰤥 " ;;
+        "4") icon="󰤨 " ;;
+    esac
+    echo "$icon$currentwfi"
+else
+    echo "󰤮 " # just in case if nmcli isn't available or something weird is happening
+fi

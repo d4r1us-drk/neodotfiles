@@ -1,0 +1,71 @@
+From 09492d38f2726d4f4e77e50a8e9b507d2240e38f Mon Sep 17 00:00:00 2001
+From: wochap <gean.marroquin@gmail.com>
+Date: Mon, 11 Sep 2023 20:40:01 -0500
+Subject: [PATCH]  implement keybinding to center focused windows
+
+---
+ config.def.h |  2 ++
+ dwl.c        | 23 +++++++++++++++++++++++
+ 2 files changed, 25 insertions(+)
+
+diff --git a/config.def.h b/config.def.h
+index 1677f6f12..23cb65e0f 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -6,6 +6,7 @@ static const float bordercolor[]           = {0.5, 0.5, 0.5, 1.0};
+ static const float focuscolor[]            = {1.0, 0.0, 0.0, 1.0};
+ /* To conform the xdg-protocol, set the alpha to zero to restore the old behavior */
+ static const float fullscreen_bg[]         = {0.1, 0.1, 0.1, 1.0};
++static const int center_relative_to_monitor = 0;  /* 0 means center floating relative to the window area  */
+ 
+ /* tagging - tagcount must be no greater than 31 */
+ #define TAGCOUNT (9)
+@@ -127,6 +128,7 @@ static const Key keys[] = {
+ 	{ MODKEY,                    XKB_KEY_space,      setlayout,      {0} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_space,      togglefloating, {0} },
+ 	{ MODKEY,                    XKB_KEY_e,         togglefullscreen, {0} },
++	{ MODKEY,                    XKB_KEY_x,          movecenter,     {0} },
+ 	{ MODKEY,                    XKB_KEY_0,          view,           {.ui = ~0} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_parenright, tag,            {.ui = ~0} },
+ 	{ MODKEY,                    XKB_KEY_comma,      focusmon,       {.i = WLR_DIRECTION_LEFT} },
+diff --git a/dwl.c b/dwl.c
+index 4ff5c37f7..b145f8477 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -304,6 +304,7 @@ static void tagmon(const Arg *arg);
+ static void tile(Monitor *m);
+ static void togglefloating(const Arg *arg);
+ static void togglefullscreen(const Arg *arg);
++static void movecenter(const Arg *arg);
+ static void toggletag(const Arg *arg);
+ static void toggleview(const Arg *arg);
+ static void unlocksession(struct wl_listener *listener, void *data);
+@@ -2402,6 +2403,28 @@ togglefullscreen(const Arg *arg)
+ 		setfullscreen(sel, !sel->isfullscreen);
+ }
+ 
++void
++movecenter(const Arg *arg)
++{
++	Client *c = focustop(selmon);
++	Monitor *m = selmon;
++
++	if (!m) {
++		return;
++	}
++
++	if (c) {
++		// const int center_relative_to_monitor = arg->i;
++		struct wlr_box b = center_relative_to_monitor ? m->m : m->w; 
++		resize(c, (struct wlr_box){
++			.x = (b.width - c->geom.width) / 2 + b.x,
++			.y = (b.height - c->geom.height) / 2 + b.y,
++			.width = c->geom.width,
++			.height = c->geom.height,
++		}, 1);
++	}
++}
++
+ void
+ toggletag(const Arg *arg)
+ {

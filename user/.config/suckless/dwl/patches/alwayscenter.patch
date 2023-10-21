@@ -1,0 +1,33 @@
+From 21c79e306889d1d318f8d8e9cf835c1d234faccf Mon Sep 17 00:00:00 2001
+From: mortezadadgar <mortezadadgar97@gmail.com>
+Date: Sat, 2 Sep 2023 12:33:00 +0330
+Subject: [PATCH] Always center client window
+
+Apply to parent windows as well.
+---
+ dwl.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/dwl.c b/dwl.c
+index 4ff5c37f7..24697d5d4 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -1536,7 +1536,7 @@ mapnotify(struct wl_listener *listener, void *data)
+ {
+ 	/* Called when the surface is mapped, or ready to display on-screen. */
+ 	Client *p, *w, *c = wl_container_of(listener, c, map);
+-	Monitor *m;
++	Monitor *m = selmon;
+ 	int i;
+ 
+ 	/* Create scene tree for this client and its border */
+@@ -1582,6 +1582,9 @@ mapnotify(struct wl_listener *listener, void *data)
+ 	wl_list_insert(&clients, &c->link);
+ 	wl_list_insert(&fstack, &c->flink);
+ 
++	c->geom.x = (m->w.width - c->geom.width) / 2 + m->m.x;
++	c->geom.y = (m->w.height - c->geom.height) / 2 + m->m.y;
++
+ 	/* Set initial monitor, tags, floating status, and focus:
+ 	 * we always consider floating, clients that have parent and thus
+ 	 * we set the same tags and monitor than its parent, if not

@@ -1,0 +1,138 @@
+From 68c6138afe15c3834260a0655eeee89f8103481a Mon Sep 17 00:00:00 2001
+From: Abanoub <abanoubsameh@protonmail.com>
+Date: Wed, 21 Jun 2023 17:55:00 +0300
+Subject: [PATCH] bottomstack
+
+---
+ config.def.h |  4 +++
+ dwl.c        | 84 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 88 insertions(+)
+
+diff --git a/config.def.h b/config.def.h
+index 447ba0051..0651a7e3a 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -24,6 +24,8 @@ static const Layout layouts[] = {
+ 	{ "[]=",      tile },
+ 	{ "><>",      NULL },    /* no layout function means floating behavior */
+ 	{ "[M]",      monocle },
++	{ "TTT",      bstack },
++	{ "===",      bstackhoriz },
+ };
+ 
+ /* monitors */
+@@ -123,6 +125,8 @@ static const Key keys[] = {
+ 	{ MODKEY,                    XKB_KEY_t,          setlayout,      {.v = &layouts[0]} },
+ 	{ MODKEY,                    XKB_KEY_f,          setlayout,      {.v = &layouts[1]} },
+ 	{ MODKEY,                    XKB_KEY_m,          setlayout,      {.v = &layouts[2]} },
++	{ MODKEY,                    XKB_KEY_u,          setlayout,      {.v = &layouts[3]} },
++	{ MODKEY,                    XKB_KEY_o,          setlayout,      {.v = &layouts[4]} },
+ 	{ MODKEY,                    XKB_KEY_space,      setlayout,      {0} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_space,      togglefloating, {0} },
+ 	{ MODKEY,                    XKB_KEY_e,         togglefullscreen, {0} },
+diff --git a/dwl.c b/dwl.c
+index da3a51613..285c74477 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -50,6 +50,7 @@
+ #include <wlr/types/wlr_xdg_decoration_v1.h>
+ #include <wlr/types/wlr_xdg_output_v1.h>
+ #include <wlr/types/wlr_xdg_shell.h>
++#include <wlr/util/box.h>
+ #include <wlr/util/log.h>
+ #include <xkbcommon/xkbcommon.h>
+ #ifdef XWAYLAND
+@@ -319,6 +320,8 @@ static Monitor *xytomon(double x, double y);
+ static struct wlr_scene_node *xytonode(double x, double y, struct wlr_surface **psurface,
+ 		Client **pc, LayerSurface **pl, double *nx, double *ny);
+ static void zoom(const Arg *arg);
++static void bstack(Monitor *m);
++static void bstackhoriz(Monitor *m);
+ 
+ /* variables */
+ static const char broken[] = "broken";
+@@ -2841,3 +2844,84 @@ main(int argc, char *argv[])
+ usage:
+ 	die("Usage: %s [-v] [-s startup command]", argv[0]);
+ }
++
++static void
++bstack(Monitor *m) 
++{
++	int w, h, mh, mx, tx, ty, tw;
++	unsigned int i, n = 0;
++	Client *c;
++
++	wl_list_for_each(c, &clients, link)
++		if (VISIBLEON(c, m) && !c->isfloating)
++			n++;
++	if (n == 0)
++		return;
++
++	if (n > m->nmaster) {
++		mh = m->nmaster ? m->mfact * m->w.height : 0;
++		tw = m->w.width / (n - m->nmaster);
++		ty = m->w.y + mh;
++	} else {
++		mh = m->w.height;
++		tw = m->w.width;
++		ty = m->w.y;
++	}
++
++	i = mx = 0;
++	tx = m-> w.x;
++	wl_list_for_each(c, &clients, link) {
++		if (!VISIBLEON(c, m) || c->isfloating)
++			continue;
++		if (i < m->nmaster) {
++			w = (m->w.width - mx) / (MIN(n, m->nmaster) - i);
++			resize(c, (struct wlr_box) { .x = m->w.x + mx, .y = m->w.y, .width = w - (2 * c->bw), .height = mh - (2 * c->bw) }, 0);
++			mx += c->geom.width;
++		} else {
++			h = m->w.height - mh;
++			resize(c, (struct wlr_box) { .x = tx, .y = ty, .width = tw - (2 * c->bw), .height = h - (2 * c->bw) }, 0);
++			if (tw != m->w.width)
++				tx += c->geom.width;
++		}
++		i++;
++	}
++}
++
++static void
++bstackhoriz(Monitor *m) {
++	int w, mh, mx, tx, ty, th;
++	unsigned int i, n = 0;
++	Client *c;
++
++	wl_list_for_each(c, &clients, link)
++		if (VISIBLEON(c, m) && !c->isfloating)
++			n ++;
++	if (n == 0)
++		return;
++
++	if (n > m->nmaster) {
++		mh = m->nmaster ? m->mfact * m->w.height : 0;
++		th = (m->w.height - mh) / (n - m->nmaster);
++		ty = m->w.y + mh;
++	} else {
++		th = mh = m->w.height;
++		ty = m->w.y;
++	}
++
++	i = mx = 0;
++	tx = m-> w.x;
++	wl_list_for_each(c, &clients, link) {
++		if (!VISIBLEON(c,m) || c->isfloating)
++			continue;
++		if (i < m->nmaster) {
++			w = (m->w.width - mx) / (MIN(n, m->nmaster) - i);
++			resize(c, (struct wlr_box) { .x = m->w.x + mx, .y = m->w.y, .width = w - (2 * c->bw), .height = mh - (2 * c->bw) }, 0);
++			mx += c->geom.width;
++		} else {
++			resize(c, (struct wlr_box) { .x = tx, .y = ty, .width = m->w.width - (2 * c->bw), .height = th - (2 * c->bw) }, 0);
++			if (th != m->w.height)
++				ty += c->geom.height;
++		}
++		i++;
++	}
++}

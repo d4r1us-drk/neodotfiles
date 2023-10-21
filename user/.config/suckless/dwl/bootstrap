@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# GTK Environment Variables
+export GTK_THEME=gruvbox-dark-gtk
+export GTK_ICON_THEME=gruvbox-dark-icons-gtk
+export GTK_CURSOR_THEME=Simp1e-Gruvbox-Dark
+export XCURSOR_THEME=Simp1e-Gruvbox-Dark
+export XCURSOR_PATH="$HOME/.icons"
+export XCURSOR_SIZE=16
+
+# Activate dbus environment
+dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+
+# Kill any running pipewire processes
+pkill pipewire
+pkill pipewire-pulse
+pkill wireplumber
+
+# Run pipewire
+pipewire &
+pipewire-pulse &
+wireplumber &
+
+# Desktop portals and authentication agents
+/usr/libexec/xdg-desktop-portal-wlr &
+/usr/libexec/polkit-gnome-authentication-agent-1 &
+
+# Clipboard manager
+wl-paste --type text --watch cliphist store &
+wl-paste --type image --watch cliphist store &
+
+# Notification daemon
+dunst --config "$HOME/.config/dunst/dunstrc" &
+
+# GTK Settings
+gsettings set org.gnome.desktop.interface gtk-theme 'gruvbox-dark-gtk'
+gsettings set org.gnome.desktop.interface icon-theme 'gruvbox-dark-icons-gtk'
+gsettings set org.gnome.desktop.interface cursor-theme 'Simp1e-Gruvbox-Dark'
+gsettings set org.gnome.desktop.interface font-name 'Cantarell 10'
+
+# Set Wallpaper
+sh -c "$HOME/.wall"
+
+# Bar
+sleep 1
+dwl-bar <&- &
+sleep 0.1
+someblocks -s "$XDG_RUNTIME_DIR/dwl-bar-0" <&- 
