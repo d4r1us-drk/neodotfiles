@@ -24,8 +24,8 @@ static const char *terminal[] = { "wezterm", NULL };
  */
 static const int cyan[4]  = { 204,   36,  29, 255 };
 static const int grey1[4] = { 29,  32,  33,  255 };
-static const int grey2[4] = { 235, 219, 178, 255 };
-static const int grey3[4] = { 251, 241, 199, 255 };
+static const int grey2[4] = { 213, 196, 161, 255 };
+static const int grey3[4] = { 235, 219, 178, 255 };
 
 static const int *schemes[3][2] = {
     /* Scheme Type       fg,    bg */

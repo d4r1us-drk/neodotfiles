@@ -41,7 +41,7 @@ static const Rule rules[] = {
 	{ "^neovim$",                       NULL,       1 << 0,     0,          -1,     0 },
 	{ "^virt-manager$",                 NULL,       1 << 1,     0,          -1,     0 },
 	{ "^gnome-boxes$",                  NULL,       1 << 1,     0,          -1,     0 },
-	{ "^Firefox$",                      NULL,       1 << 2,     0,          -1,     0 },
+	{ "^firefox$",                      NULL,       1 << 2,     0,          -1,     0 },
 	{ "^Librewolf$",                    NULL,       1 << 2,     0,          -1,     0 },
 	{ "^Chromium$",                     NULL,       1 << 2,     0,          -1,     0 },
 	{ "^org.qutebrowser.qutebrowser$",  NULL,       1 << 2,     0,          -1,     0 },
@@ -200,8 +200,8 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[] = { "wezterm", NULL };
-static const char *menucmd[] = { "wofi", "--show", "run", "-p", " Run", NULL };
-static const char *dmenucmd[] = { "wofi", "--show", "drun", "-p", "󰀻 Apps", NULL };
+static const char *menucmd[] = { "bemenu-run", "-p", " Run", NULL };
+static const char *dmenucmd[] = { "$HOME/.local/bin/rs_drun", NULL };
 
 /* named scratchpads - First arg only serves to match against key in rules*/
 static const char *spterm[] = { "t", "wezterm", "start", "--class", "spterm", NULL };
@@ -250,18 +250,19 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_minus,                  tagmon,             {.i = WLR_DIRECTION_LEFT} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_equal,                  tagmon,             {.i = WLR_DIRECTION_RIGHT} },
 	{ MODKEY|WLR_MODIFIER_CTRL,         Key_x,    	 	            togglekblayout,     {0} },
-	{ MODKEY,                           Key_e,                      spawn,              SHCMD("$HOME/.local/bin/neovide.AppImage --neovim-bin $HOME/.local/bin/lvim") },
-	{ MODKEY,                           Key_w,                      spawn,              SHCMD("firefox") },
+	{ MODKEY,                           Key_e,                      spawn,              SHCMD("wezterm start --class neovim $HOME/.local/bin/lvim") },
+	{ MODKEY,                           Key_w,                      spawn,              SHCMD("flatpak run org.mozilla.firefox") },
 	{ MODKEY,                           Key_s,                      spawn,              SHCMD("flatpak run org.signal.Signal") },
 	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_r,                      spawn,              {.v = menucmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_d,                      spawn,              {.v = dmenucmd} },
-	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_i,                      spawn,              SHCMD("pkill wofi || $HOME/.config/wofi/scripts/rs_wifi") },
-	{ MODKEY,                           Key_Print,                  spawn,              SHCMD("pkill wofi || $HOME/.config/wofi/scripts/rs_scrot") },
-	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_w,                      spawn,              SHCMD("pkill wofi || $HOME/.config/wofi/scripts/rs_wall") },
-	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_e,                      spawn,              SHCMD("pkill wofi || $HOME/.config/wofi/scripts/rs_emoji") },
-	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_b,                      spawn,              SHCMD("pkill wofi || $HOME/.config/wofi/scripts/rs_blue") },
-	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_q,                      spawn,              SHCMD("pkill wofi || $HOME/.config/wofi/scripts/rs_power") },
-	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_c,                      spawn,              SHCMD("pkill wofi || cliphist list | wofi --dmenu -p '  Clipboard' | cliphist decode | wl-copy") },
+	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_d,                      spawn,              SHCMD("$HOME/.local/bin/rs_drun") },
+	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_i,                      spawn,              SHCMD("pkill bemenu || $HOME/.local/bin/rs_wifi") },
+	{ MODKEY,                           Key_Print,                  spawn,              SHCMD("pkill bemenu || $HOME/.local/bin/rs_scrot") },
+	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_w,                      spawn,              SHCMD("pkill bemenu || $HOME/.local/bin/rs_wall") },
+	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_e,                      spawn,              SHCMD("pkill bemenu || $HOME/.local/bin/rs_emoji") },
+	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_b,                      spawn,              SHCMD("pkill bemenu || $HOME/.local/bin/rs_blue") },
+	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_q,                      spawn,              SHCMD("pkill bemenu || $HOME/.local/bin/rs_power") },
+	{ MODKEY|WLR_MODIFIER_SHIFT,        Key_c,                      spawn,              SHCMD("pkill bemenu || cliphist list | bemenu -l 10 -p '  Clipboard' | cliphist decode | wl-copy") },
 	{ 0,                                Key_XF86AudioRaiseVolume,   spawn,              SHCMD("pamixer -i 5 && pkill -RTMIN+10 someblocks") },
 	{ 0,                                Key_XF86AudioLowerVolume,   spawn,              SHCMD("pamixer -d 5 && pkill -RTMIN+10 someblocks") },
 	{ 0,                                Key_XF86AudioMute,          spawn,              SHCMD("pamixer -t && pkill -RTMIN+10 someblocks") },

@@ -5,7 +5,7 @@ export GTK_THEME=gruvbox-dark-gtk
 export GTK_ICON_THEME=gruvbox-dark-icons-gtk
 export GTK_CURSOR_THEME=Simp1e-Gruvbox-Dark
 export XCURSOR_THEME=Simp1e-Gruvbox-Dark
-export XCURSOR_PATH="$HOME/.icons"
+export XCURSOR_PATH="$HOME/.local/share/icons"
 export XCURSOR_SIZE=16
 
 # Activate dbus environment
@@ -41,7 +41,7 @@ gsettings set org.gnome.desktop.interface cursor-theme 'Simp1e-Gruvbox-Dark'
 gsettings set org.gnome.desktop.interface font-name 'Cantarell 10'
 
 # Set Wallpaper
-sh -c "$HOME/.wall"
+sh -c "$HOME/.config/suckless/wall"
 
 # Bar
 sleep 1

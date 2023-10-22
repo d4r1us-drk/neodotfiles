@@ -9,12 +9,12 @@ walldir="$XDG_PICTURES_DIR/Wallpapers" # wallpapers folder, change it to yours
 
 ## SELECT PICTURE ##
 cd "$walldir" || exit 1
-wallpaper=$(fd -p "$walldir" | wofi --dmenu -p "󰋩 Wallpaper Selector")
+wallpaper=$(fd -p "$walldir" | "$RUNNER" -l 5 -i -p "󰋩 Wallpaper Selector")
 if [ -n "$wallpaper" ]; then
     pkill wbg
     wbg "$wallpaper" &
-    echo -e "#!/bin/sh\npkill wbg\nwbg $walldir/$wallpaper &" > "$HOME/.wall"
-    chmod +x "$HOME/.wall"
+    echo -e "#!/bin/sh\npkill wbg\nwbg $walldir/$wallpaper &" > "$HOME/.config/suckless/wall"
+    chmod +x "$HOME/.config/suckless/wall"
 else
     exit 0
 fi

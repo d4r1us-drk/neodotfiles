@@ -33,18 +33,14 @@ fi
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
-export LOGDIR="$XDG_CACHE_HOME/dwl"
-export XDG_DESKTOP_DIR="$HOME/Desktop"
-export XDG_DOWNLOAD_DIR="$HOME/Downloads"
-export XDG_TEMPLATES_DIR="$HOME/Templates"
-export XDG_PUBLICSHARE_DIR="$HOME/Public"
-export XDG_DOCUMENTS_DIR="$HOME/Documents"
-export XDG_MUSIC_DIR="$HOME/Music"
-export XDG_PICTURES_DIR="$HOME/Pictures"
-export XDG_VIDEOS_DIR="$HOME/Videos"
-if [ ! -d "$LOGDIR" ]; then
-    mkdir -p "$LOGDIR"
-fi
+export XDG_DESKTOP_DIR="$HOME/var/desktop"
+export XDG_DOWNLOAD_DIR="$HOME/var/downloads"
+export XDG_TEMPLATES_DIR="$HOME/media/templates"
+export XDG_PUBLICSHARE_DIR="$HOME/var/public"
+export XDG_DOCUMENTS_DIR="$HOME/media/documents"
+export XDG_MUSIC_DIR="$HOME/media/music"
+export XDG_PICTURES_DIR="$HOME/media/pictures"
+export XDG_VIDEOS_DIR="$HOME/media/videos"
 
 # user defined enviroment variables
 export WM=dwl
@@ -52,6 +48,8 @@ export EDITOR="$HOME/.local/bin/lvim"
 export VISUAL="$HOME/.local/bin/lvim"
 export BROWSER="firefox"
 export VIEWER="zathura"
+export BEMENU_OPTS="--fn 'mononoki Nerd Font 12' --tb '#CC241D' --tf '#EBDBB2' --fb '#ID2021' --ff '#EBDBB2' --nb '#1D2021' --nf '#EBDBB2' --sb '#CC241D' --sf '#EBDBB2' --ab '#1D2021' --af '#EBDBB2' --fbb '#CC241D' --fbf '#EBDBB2' --hb '#CC241D' --hf '#EBDBB2' --bdr '#CC241D' --binding vim --vim-esc-exits"
+export RUNNER="bemenu"
 
 # start dwl
-dbus-launch dwl | tee "$LOGDIR"/dwl.log
+dbus-launch dwl

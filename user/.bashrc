@@ -124,7 +124,7 @@ alias \
 [ -x "$(command -v bat)" ] && alias cat="bat"
 
 # use lunarvim for vim if present.
-[ -x "$(command -v ~/.local/bin/lvim)" ] && alias vim="~/.local/bin/lvim"
+[ -x "$(command -v $HOME/.local/bin/lvim)" ] && alias vim="$HOME/.local/bin/lvim"
 
 # Changing "ls" to "eza"
 alias \
@@ -178,22 +178,20 @@ alias \
 # audio
 alias \
   mx="pulsemixer" \
-  amx="alsamixer" \
   mk="cmus" \
   ms="cmus" \
   music="cmus"
 
 # power management
 alias \
-  po="systemctl poweroff" \
-  sp="systemctl suspend" \
-  rb="systemctl reboot"
+  po="loginctl poweroff" \
+  sp="loginctl suspend" \
+  rb="loginctl reboot"
 
 # file management
 alias \
-  fm="vifm" \
-  file="vifm" \
-  flm="vifm" \
+  fm="ranger" \
+  flm="ranger" \
   rm="rm -vI" \
   mv="mv -iv" \
   cp="cp -iv" \

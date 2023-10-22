@@ -44,7 +44,7 @@ ACTIVE_SESSION=$(loginctl list | grep -E "$USER.*tty1" | awk '{print $1}')
 ##########
 ## main ##
 ##########
-action=$(echo -e "$options" | wofi --dmenu -i -L 9 -p "  Power Options") # main menu prompt
+action=$(echo -e "$options" | $RUNNER -i -l 7 -p "  Power Options") # main menu prompt
 case "$action" in
     "$option1")
         loginctl kill-session "$ACTIVE_SESSION"
@@ -74,7 +74,7 @@ case "$action" in
         elif [ "$currentpwr" = "power-saver" ]; then
             currentpwr="$pwr3"
         fi
-        pwraction=$(echo -e "$pwrs" | wofi --dmenu -L 6 -i -p "  Power Profile Menu - Currently set to: $currentpwr")
+        pwraction=$(echo -e "$pwrs" | $RUNNER -l 3 -i -p "  Power Profile Menu - Currently set to: $currentpwr")
         case "$pwraction" in
             "$pwr1")
                 if [ "$currentpwr" = "$pwr1" ]; then

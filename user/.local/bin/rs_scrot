@@ -21,7 +21,7 @@ countdown() {
 }
 
 # run
-choice=$(echo -e "$options" | wofi -L 5 --dmenu -p "󰄀 Screenshot" )
+choice=$(echo -e "$options" | $RUNNER -l 3 -p "󰄀 Screenshot" )
 case $choice in
   $option1)
     countdown

@@ -9,7 +9,7 @@
 # starting xsession
 if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]
 then
-  sh "$HOME/.winitrc"
+  sh "$HOME/.config/suckless/winitrc" &>/dev/null
   logout
 fi
 

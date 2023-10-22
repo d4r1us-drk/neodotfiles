@@ -5,7 +5,7 @@ libinput, wayland, wlroots, xkbcommon, wayland-protocols, pkg-config, libxcb, li
 pango, cairo, wayland, wayland-protocols
 
 # environment:
-power-profiles-daemon, pipewire, pamixer, brightnessct, playerctl, wofi, wbg, dunst, xdg-desktop-portal-wlr, wezterm, wdisplays, gsettings-desktop-schemas, wl-clipboard, cliphist, grim, slurp
+power-profiles-daemon, pipewire, pamixer, brightnessct, playerctl, bemenu, wbg, dunst, xdg-desktop-portal-wlr, wezterm, wdisplays, gsettings-desktop-schemas, wl-clipboard, cliphist, grim, slurp
 
 # other:
 imv, ranger, cmus, btop, htop, pulsemixer
