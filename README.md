@@ -7,3 +7,5 @@ binaries that they made or modify.
 
 This is a rice made specifically for Void Linux and it uses the dwl wayland
 compositor.
+
+![Screenshot](./screenshot.png)
