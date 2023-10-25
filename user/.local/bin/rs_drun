@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-# ***This script was made by Clay Gomera (Drake)***
-#  - Description: A simple desktop dmenu script
-#  - Dependencies: dmenu, j4-dmenu-desktop
-
-# uses j4-dmenu-desktop to launch programs by it's desktop entry
-j4-dmenu-desktop --dmenu "$RUNNER -i -l 10 -p '󰀻 Apps'" --no-generic

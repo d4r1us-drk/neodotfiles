@@ -9,13 +9,20 @@ walldir="$XDG_PICTURES_DIR/Wallpapers" # wallpapers folder, change it to yours
 
 ## SELECT PICTURE ##
 cd "$walldir" || exit 1
-wallpaper=$(fd -p "$walldir" | "$RUNNER" -l 5 -i -p "󰋩 Wallpaper Selector")
+wallpaper=$(fd -p "$walldir" | $RUNNER -l 5 -i -p "󰋩 Wallpaper Selector ")
 if [ -n "$wallpaper" ]; then
-    pkill wbg
-    wbg "$wallpaper" &
-    echo -e "#!/bin/sh\npkill wbg\nwbg $walldir/$wallpaper &" > "$HOME/.config/suckless/wall"
-    chmod +x "$HOME/.config/suckless/wall"
+    if [[ "$wallpaper" == *.jpg ]]; then
+        rm -f "$HOME/.config/sway/wallpaper/"*
+        cp "$wallpaper" "$HOME/.config/sway/wallpaper/background.jpg"
+        cp "$wallpaper" "$HOME/.config/sway/wallpaper/locked.jpg"
+        swaymsg output \* bg "$HOME/.config/sway/wallpaper/background.jpg" fill
+    elif [[ "$wallpaper" == *.png ]]; then
+        rm -f "$HOME/.config/sway/wallpaper/"*
+        cp "$wallpaper" "$HOME/.config/sway/wallpaper/background.png"
+        cp "$wallpaper" "$HOME/.config/sway/wallpaper/locked.png"
+        swaymsg output \* bg "$HOME/.config/sway/wallpaper/background.png" fill
+    fi
 else
-    exit 0
+    exit 1
 fi
 exit 0

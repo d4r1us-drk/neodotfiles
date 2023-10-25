@@ -1,0 +1,109 @@
+# Set the variables
+set {
+	$ii inhibit_idle focus
+	$game inhibit_idle focus; floating enable; border none; fullscreen enable; shadows disable
+	$popup floating enable; border pixel 1; sticky enable; shadows enable
+	$float floating enable; border pixel 1; shadows enable
+	$video inhibit_idle fullscreen; border none; max_render_time off
+	$important inhibit_idle open; floating enable; border pixel 1
+	$max inhibit_idle visible; floating enable; sticky enable; border pixel 1
+}
+
+for_window {
+#ii - inhibit_idle focus
+	[class="Cemu"] $ii
+	[instance="cemu"] $ii
+	[app_id="cemu"] $ii
+	[app_id="rpcs3"] $ii
+	[app_id="yuzu"] $ii
+	[class="yuzu"] $ii
+	[app_id="snes9x-gtk"] $ii
+
+#game - inhibit_idle focus; floating enable; border none; fullscreen enable
+	[instance="origin.exe"] $game
+	[instance="gamescope"] $game
+	[class="dolphin-emu" title="Dolphin (.*) \| (.*) \| (.*) \| (.*)"] $game
+	[class="sm64ex"] $game
+	[class="gamescope"] $game
+	[class="steam_app.*"] $game
+	[instance="steam_app.*"] $game
+	[class="LLBlaze.x86_64"] $game
+	[app_id="clonehero"] $game
+	[app_id="CombatMaster.x86_64"] $game; saturation set 2
+
+#popup - floating enable; sticky enable
+	[app_id="firefox" title="^Picture-in-Picture$"] $popup
+	[app_id="stoken-gui"] $popup
+	[app_id="org.twosheds.iwgtk"] $popup
+	[app_id="iwgtk"] $popup
+	[app_id="ksysguard"] $popup
+	[app_id="galculator"] $popup
+	[title="(?:Open|Save) (?:File|Folder|As)" app_id="dolphin|org.kde.ark|pcmanfm|pcmanfm-qt"] $popup
+	[title="^(File|Folder)\s*Already Exists\s*—\s*" app_id="dolphin|org.kde.ark|pcmanfm|pcmanfm-qt"] $popup
+	[title="Confirm to replace files" app_id="dolphin|org.kde.ark|pcmanfm|pcmanfm-qt"] $popup
+	[app_id="pavucontrol"] $popup
+	[app_id="qtalarm"] $popup
+	[app_id="deluge" title="Add Torrents*"] $popup
+
+#float - floating enable; border pixel 1
+	[app_id="org.telegram.desktop"] $float; blur off; shadows disable; inhibit_idle open
+	[app_id="com.github.weclaw1.ImageRoll"] $float
+	[app_id="teams-for-linux"] $float
+	[app_id="viewnior"] $float
+	[instance="viewnior"] $float
+	[instance="yakyak"] $float
+	[class="Microsoft Teams - Preview"] $float
+	[class="teams-for-linux"] $float
+	[class="Microsoft Teams - Insiders"] $float
+	[app_id="Alacritty_floating"] $float
+	[title="^Information\s*—\s*Dolphin" app_id="dolphin"] $float
+	[title="^Loading archive" app_id="org.kde.ark"] $float
+	[instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] $float
+	[title="Preferences" app_id="pcmanfm-qt"] $float
+	[title="File Properties" app_id="pcmanfm-qt"] $float
+	[app_id="anki"] $float
+	[window_role="pop-up,task_dialog,About"] $float; shadows enable
+	[window_type="dialog"] $float; shadows enable
+	[window_type="utility"] $float; shadows enable
+	[window_type="toolbar"] $float; shadows enable
+	[window_type="splash"] $float; shadows enable
+	[window_type="menu"] $float; shadows enable
+	[window_type="dropdown_menu"] $float; shadows enable
+	[window_type="popup_menu"] $float; shadows enable
+	[window_type="tooltip"] $float; shadows enable
+	[window_type="notification"] $float; shadows enable
+
+#video - inhibit_idle fullscreen; border none; max_render_time off
+	[instance="chromium"] $video
+	[app_id="mpv"] $video
+	[app_id="vlc"] $video
+	[class="firefox"] $video
+	[app_id="firefox"] $video
+	[class="Nightly"] $video
+
+#important - inhibit_idle open; floating enable; border pixel 1
+	[title="Move files" app_id="dolphin|org.kde.ark|pcmanfm|pcmanfm-qt"] $important
+	[title="^(Copying|Moving)\s*—\s*Dolphin" app_id="dolphin|org.kde.ark|pcmanfm|pcmanfm-qt"] $important
+	[title="^Extracting\s" app_id="(dolphin|org.kde.ark)"] $important
+	[title="Copy Files" app_id="dolphin|org.kde.ark|pcmanfm|pcmanfm-qt"] $important
+	[title="Delete Files" app_id="dolphin|org.kde.ark|pcmanfm|pcmanfm-qt"] $important
+	[title="Removable medium is inserted" app_id="pcmanfm|pcmanfm-qt"] $important
+	[title="Compressing (.*) — Ark" app_id="org.kde.ark"] $important; resize set width 18 ppt
+
+#max - inhibit_idle visible; floating enable; sticky enable; border pixel 1
+	[title="MAX - Chromium" instance="chromium"] $max
+	[title="MAX - Chromium" app_id="chromium"] $max
+	[title="MAX - Chromium" app_id="chromium" urgent=recent] $max; focus; move position center
+	[title="https:\/\/max.niceincontact.com\/index.html - Chromium" instance="chromium"] $max
+	[title="https:\/\/max.niceincontact.com\/index.html - Chromium" app_id="chromium"] $max
+	[title="https:\/\/max.niceincontact.com\/index.html - Chromium" app_id="chromium" urgent="latest"] $max; focus; move position center
+
+#misc
+	[class="steam"] floating enable; max_render_time off; blur disabled
+	[app_id="org.telegram.desktop" title="Telegram"] floating disable; inhibit_idle none
+	[urgent=latest] focus
+	[floating] shadows enable
+	[app_id="alacritty"] saturation set 2; blur enable
+	[app_id="firefox" title="Firefox — Sharing Indicator"] floating enable; kill
+	[title="Wine System Tray"] floating enable; kill
+}

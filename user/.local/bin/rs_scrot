@@ -12,28 +12,28 @@ options="$option1\n$option2\n$option3"
 
 # countdown
 countdown() {
-  notify-send "Screenshot" "Executing in 3 seconds" -t 1000
-  sleep 1
-  notify-send "Screenshot" "Executing in 2 seconds" -t 1000
-  sleep 1
-  notify-send "Screenshot" "Executing in 1 seconds" -t 1000
-  sleep 2
+    notify-send "Screenshot" "Executing in 3 seconds" -t 1000
+    sleep 1
+    notify-send "Screenshot" "Executing in 2 seconds" -t 1000
+    sleep 1
+    notify-send "Screenshot" "Executing in 1 seconds" -t 1000
+    sleep 2
 }
 
 # run
-choice=$(echo -e "$options" | $RUNNER -l 3 -p "󰄀 Screenshot" )
+choice=$(echo -e "$options" | $RUNNER -l 3 -p "󰄀 Screenshot " )
 case $choice in
-  $option1)
-    countdown
-    grim - | wl-copy -t image/jpg
-    notify-send "Screenshot" "Screenshot saved to clipboard"
-    ;;
-  $option2)
-    notify-send "Screenshot" "Select a region to capture"
-    grim -g "$(slurp)" - | wl-copy -t image/jpg
-    notify-send "Screenshot" "Region saved to clipboard"
-    ;;
-  $option3)
-    exit 0
-    ;;
+    $option1)
+        countdown
+        grim - | wl-copy -t image/jpg
+        notify-send "Screenshot" "Screenshot saved to clipboard"
+        ;;
+    $option2)
+        notify-send "Screenshot" "Select a region to capture"
+        grim -g "$(slurp)" - | wl-copy -t image/jpg
+        notify-send "Screenshot" "Region saved to clipboard"
+        ;;
+    $option3)
+        exit 0
+        ;;
 esac

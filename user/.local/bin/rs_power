@@ -29,7 +29,7 @@ pwrs="$pwr1\n$pwr2\n$pwr3\n$pwr4"
 ##### 
 ## This variable will store the current wallpaper
 #####
-currwall=$(cat "$HOME/.wall" | grep wbg | tail -1 | awk '{print $2}')
+currwall="$HOME/.config/sway/wallpaper/locked.*"
 
 ##### 
 ## This variable will store the current power profile
@@ -44,7 +44,7 @@ ACTIVE_SESSION=$(loginctl list | grep -E "$USER.*tty1" | awk '{print $1}')
 ##########
 ## main ##
 ##########
-action=$(echo -e "$options" | $RUNNER -i -l 7 -p "  Power Options") # main menu prompt
+action=$(echo -e "$options" | $RUNNER -l 7 -p "  Power Options ") # main menu prompt
 case "$action" in
     "$option1")
         loginctl kill-session "$ACTIVE_SESSION"
@@ -74,7 +74,7 @@ case "$action" in
         elif [ "$currentpwr" = "power-saver" ]; then
             currentpwr="$pwr3"
         fi
-        pwraction=$(echo -e "$pwrs" | $RUNNER -l 3 -i -p "  Power Profile Menu - Currently set to: $currentpwr")
+        pwraction=$(echo -e "$pwrs" | $RUNNER -l 3 -p "  Power Profile Menu - Currently set to: $currentpwr ")
         case "$pwraction" in
             "$pwr1")
                 if [ "$currentpwr" = "$pwr1" ]; then

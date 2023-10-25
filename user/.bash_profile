@@ -9,7 +9,7 @@
 # starting xsession
 if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]
 then
-  sh "$HOME/.config/suckless/winitrc" &>/dev/null
+  sh "$HOME/.config/sway/winitrc" &>/dev/null
   logout
 fi
 
@@ -18,7 +18,7 @@ export EDITOR="$HOME/.local/bin/lvim"
 export VISUAL="$HOME/.local/bin/lvim"
 export BROWSER="firefox"
 export VIEWER="zathura"
-export WM=dwl
+export WM=sway
 
 # home folders
 export XDG_DESKTOP_DIR="$HOME/Desktop"

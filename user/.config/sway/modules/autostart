@@ -1,0 +1,22 @@
+exec {
+    /usr/libexec/polkit-gnome-authentication-agent-1
+    echo 25 > $SWAYSOCK.wob
+    hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+    bash -c ~/.config/sway/initpipe
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-gtk
+    mako -c ~/.config/mako/config
+    swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f --image ~/.config/sway/wallpaper/locked.*'
+    wl-paste --type text --watch cliphist store
+    wl-paste --type image --watch cliphist store
+}
+
+bar swaybar_command waybar
+
+exec_always {
+    kanshi
+}
