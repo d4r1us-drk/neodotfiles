@@ -10,5 +10,5 @@ compositor.
 
 ### Dependencies
 ``` sh
-sudo xbps-install sway swaybg swayidle swaylock foot mako fuzzel Waybar wl-clipboard wf-recorder cliphist pamixer brightnessctl playerctl xdg-desktop-portal-wlr xdg-desktop-portal-gtk wdisplays grim slurp gsettings-desktop-schemas
+sudo xbps-install sway swaybg swayidle swaylock wezterm mako fuzzel Waybar wl-clipboard cliphist pamixer light playerctl xdg-desktop-portal-wlr xdg-desktop-portal-gtk wdisplays grim slurp gsettings-desktop-schemas
 ```
