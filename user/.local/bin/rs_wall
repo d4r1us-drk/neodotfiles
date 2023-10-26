@@ -9,7 +9,7 @@ walldir="$XDG_PICTURES_DIR/Wallpapers" # wallpapers folder, change it to yours
 
 ## SELECT PICTURE ##
 cd "$walldir" || exit 1
-wallpaper=$(fd -p "$walldir" | $RUNNER -l 5 -i -p "󰋩 Wallpaper Selector ")
+wallpaper=$(fd -p "$walldir" | $RUNNER -l 5 -i -p "[󰋩 Wallpaper Selector]  ")
 if [ -n "$wallpaper" ]; then
     if [[ "$wallpaper" == *.jpg ]]; then
         rm -f "$HOME/.config/sway/wallpaper/"*

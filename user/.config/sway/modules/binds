@@ -31,7 +31,7 @@ set $menu-emoji ~/.local/bin/rs_emoji | xargs swaymsg exec --
 set $menu-wall ~/.local/bin/rs_wall | xargs swaymsg exec --
 set $menu-scrot ~/.local/bin/rs_scrot | xargs swaymsg exec --
 set $menu-blue ~/.local/bin/rs_blue | xargs swaymsg exec --
-set $menu-clip cliphist list | $RUNNER -l 10 -p "[  Clipboard]  " | cliphist decode | wl-copy | xargs swaymsg exec --
+set $menu-clip ~/.local/bin/rs_clip | xargs swaymsg exec --
 
 # Start a terminal
 bindsym $mod+Return exec $term

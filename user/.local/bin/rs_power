@@ -35,6 +35,17 @@ currwall="$HOME/.config/sway/wallpaper/locked.*"
 ## This variable will store the current power profile
 #####
 currentpwr=$(powerprofilesctl get)
+if [ "$currentpwr" = "performance" ]; then
+    currentpwr="$pwr1"
+elif [ "$currentpwr" = "balanced" ]; then
+    currentpwr="$pwr2"
+elif [ "$currentpwr" = "power-saver" ]; then
+    currentpwr="$pwr3"
+fi
+
+# prompts
+prompt1="[  Power Options]  "
+prompt2="[  Power Profiles - Currently set to: $currentpwr]  "
 
 #####
 ## This variable will store the currently active session in tty1
@@ -44,7 +55,7 @@ ACTIVE_SESSION=$(loginctl list | grep -E "$USER.*tty1" | awk '{print $1}')
 ##########
 ## main ##
 ##########
-action=$(echo -e "$options" | $RUNNER -l 7 -p "  Power Options ") # main menu prompt
+action=$(echo -e "$options" | $RUNNER -l 7 -p "$prompt1") # main menu prompt
 case "$action" in
     "$option1")
         loginctl kill-session "$ACTIVE_SESSION"
@@ -67,14 +78,7 @@ case "$action" in
         #####
         ## These conditions will be used for the prompt
         #####
-        if [ "$currentpwr" = "performance" ]; then
-            currentpwr="$pwr1"
-        elif [ "$currentpwr" = "balanced" ]; then
-            currentpwr="$pwr2"
-        elif [ "$currentpwr" = "power-saver" ]; then
-            currentpwr="$pwr3"
-        fi
-        pwraction=$(echo -e "$pwrs" | $RUNNER -l 3 -p "  Power Profile Menu - Currently set to: $currentpwr ")
+        pwraction=$(echo -e "$pwrs" | $RUNNER -l 3 -p "$prompt2")
         case "$pwraction" in
             "$pwr1")
                 if [ "$currentpwr" = "$pwr1" ]; then

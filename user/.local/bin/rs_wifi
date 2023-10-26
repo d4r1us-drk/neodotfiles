@@ -77,7 +77,7 @@ disconnect() {
 #####
 connect() {
     notify-send "Scannig networks..." && nmcli dev wifi rescan;
-    wifinet=$(nmcli -f BSSID,SSID,BARS,SECURITY dev wifi list | sed -n '1!p' | $RUNNER -i -l 10 -p "  Select a Wifi Network");
+    wifinet=$(nmcli -f BSSID,SSID,BARS,SECURITY dev wifi list | sed -n '1!p' | $RUNNER -i -l 10 -p "[  Select a Wifi Network]  ");
     bssid=$(echo "$wifinet" | cut -d' ' -f1)
     ssid=$(echo "$wifinet" | cut -d' ' -f3)
 }
@@ -95,7 +95,7 @@ password() {
     elif nmcli -f BSSID,SECURITY dev wifi list | sed -n '1!p' | grep "$bssid" | awk '{print $2}' | grep -q -- "--"; then # check if the network is open
         return 0; # no password is required
     else
-        pass=$($RUNNER -i -x 1 -p "Enter Password " --password);
+        pass=$($RUNNER -l 0 --password -p "[Enter Password ]  " );
         if [ -n "$pass" ]; then # if the user gave a password
             return 0;
         else
@@ -123,7 +123,7 @@ action() {
 ##########
 ## main ##
 ##########
-cases=$(echo -e "$options" | $RUNNER -i -l 6 -p "  Wifi Settings " ) # main menu prompt
+cases=$(echo -e "$options" | $RUNNER -i -l 6 -p "[  Wifi Settings]  " ) # main menu prompt
 case "$cases" in
     "$option1")
         turnon;
