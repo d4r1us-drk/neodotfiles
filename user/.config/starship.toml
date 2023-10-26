@@ -11,8 +11,8 @@ add_newline = false
 disabled = true
 
 [character]
-error_symbol = "[](bold red) "
-success_symbol = "[](bold green)"
+error_symbol = "[ ](bold red) "
+success_symbol = "[ ](bold green)"
 
 [directory]
 truncation_length = 5
