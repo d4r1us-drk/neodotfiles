@@ -19,8 +19,8 @@ client.urgent             $color_bright_yellow   $color_bright_yellow   $color_n
 client.placeholder        $color_unused          $color_unused          $color_unused          $color_unused        $color_unused
 
 # Window borders
-default_border normal 2
-default_floating_border normal 2
+default_border pixel 2
+default_floating_border pixel 2
 
 # gsettings
 exec gsettings set org.gnome.desktop.interface {

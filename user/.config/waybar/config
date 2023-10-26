@@ -1,6 +1,6 @@
 {
     "position": "top",
-    "height": 30,
+    "height": 44,
     "spacing": 3,
     "layer": "top",
 
@@ -28,8 +28,6 @@
 
     "sway/language": {
         "format": "{} \udb80\udf0c",
-        "format-us": "US",
-        "format-es": "ES",
     },
 
     "sway/mode": {
@@ -39,7 +37,7 @@
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
-        "format-icons": ["", ""],
+        "format-icons": ["", "\uf2d2"],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
@@ -66,13 +64,15 @@
         "format-alt": "{time} {icon}",
         "format-critical": "{capacity}% {icon}\udb84\ude38",
         "format-warning": "{capacity}% {icon}\udb84\ude38",
-        "format-icons": ["\udb80\udc7a", "\udb80\udc7c", "\udb80\udc7e", "\udb80\udc80", "\udb80\udc79"]
+        "format-icons": ["\udb80\udc7a", "\udb80\udc7c", "\udb80\udc7e", "\udb80\udc80", "\udb80\udc79"],
+        "on-click": "$HOME/.local/bin/rs_power"
     },
 
     "custom/powerprofiles": {
         "exec": "bash $HOME/.config/waybar/power-profiles",
         "restart-interval": 5,
         "format": "{}",
+        "on-click": "$HOME/.local/bin/rs_power"
     },
 
     "pulseaudio": {
@@ -100,6 +100,7 @@
         "format-wifi": "{essid} \udb81\udda9",
         "format-ethernet": "{ipaddr}/{cidr} \udb80\ude00",
         "format-disconnected": "Disconnected \udb81\uddaa",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "$HOME/.local/bin/rs_wifi"
     },
 }

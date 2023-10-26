@@ -1,0 +1,9 @@
+#!/bin/sh
+
+pkill pipewire
+pkill pipewire-pulse
+pkill wireplumber
+
+pipewire &
+pipewire-pulse &
+wireplumber &

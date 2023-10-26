@@ -11,7 +11,8 @@ set $right l
 set $term wezterm
 set $chat signal-desktop
 set $browser qutebrowser
-set $file wezterm start --class file_manager ranger
+set $file wezterm start --class file_manager vifm
+set $editor $HOME/.local/bin/neovide
 set $music wezterm start --class music_player cmus
 set $ani-cli wezterm start --class ani-cli ani-cli
 set $ytfzf wezterm start --class ytfzf ytfzf -flstT chafa
@@ -30,7 +31,7 @@ set $menu-emoji ~/.local/bin/rs_emoji | xargs swaymsg exec --
 set $menu-wall ~/.local/bin/rs_wall | xargs swaymsg exec --
 set $menu-scrot ~/.local/bin/rs_scrot | xargs swaymsg exec --
 set $menu-blue ~/.local/bin/rs_blue | xargs swaymsg exec --
-set $menu-clip cliphist list | wofi --dmenu -L 10 -p "  Clipboard" | cliphist decode | wl-copy | xargs swaymsg exec --
+set $menu-clip cliphist list | $RUNNER -l 10 -p "[  Clipboard]  " | cliphist decode | wl-copy | xargs swaymsg exec --
 
 # Start a terminal
 bindsym $mod+Return exec $term
@@ -48,17 +49,20 @@ bindsym $mod+Shift+b exec $menu-blue
 bindsym $mod+Shift+c exec $menu-clip
 bindsym $mod+Shift+i exec $menu-wifi
 
-# Start apps
-bindsym $mod+Mod1+v exec $file
-bindsym $mod+Mod1+w exec $browser
-bindsym $mod+Mod1+c exec $chat
-bindsym $mod+Mod1+m exec $music
-bindsym $mod+Mod1+b exec $monitor
-bindsym $mod+Mod1+p exec $audiomixer
-bindsym $mod+Mod1+n exec $ytfzf-music
-bindsym $mod+Mod1+a exec $ani-cli
-bindsym $mod+Mod1+y exec $ytfzf
-bindsym $mod+Mod1+f exec $flix-cli
+# XF86 Keys
+bindsym XF86AudioRaiseVolume        exec pamixer -i 5
+bindsym XF86AudioLowerVolume        exec pamixer -d 5
+bindsym XF86AudioMute               exec pamixer -t
+bindsym XF86AudioMicMute            exec pamixer --default-source -t
+bindsym XF86AudioPause              exec playerctl play-pause
+bindsym XF86AudioPlay               exec playerctl play-pause
+bindsym XF86AudioNext               exec playerctl next
+bindsym XF86AudioPrev               exec playerctl previous
+bindsym XF86AudioStop               exec playerctl stop
+bindsym XF86News                    exec wezterm start --class newsboat newsboat
+bindsym XF86MonBrightnessUp         exec brightnessctl s 5%+
+bindsym XF86MonBrightnessDown       exec brightnessctl s 5%-
+bindsym XF86Display                 exec wdisplays
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -144,7 +148,7 @@ bindsym $mod+Ctrl+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Move focus to the parent container
-bindsym $mod+a focus parent
+bindsym $mod+Shift+Return focus parent
 
 ### Scratchpad:
 # Sway has a "scratchpad", which is a bag of holding for windows.
@@ -179,3 +183,22 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+### Mode for launching apps
+mode "apps" {
+    # Start apps
+    bindsym v exec $file; mode "default"
+    bindsym e exec $editor; mode "default"
+    bindsym w exec $browser; mode "default"
+    bindsym c exec $chat; mode "default"
+    bindsym m exec $music; mode "default"
+    bindsym b exec $monitor; mode "default"
+    bindsym p exec $audiomixer; mode "default"
+    bindsym n exec $ytfzf-music; mode "default"
+    bindsym a exec $ani-cli; mode "default"
+    bindsym y exec $ytfzf; mode "default"
+    bindsym f exec $flix-cli; mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+a mode "apps"

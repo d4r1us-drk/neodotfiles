@@ -40,7 +40,7 @@ button:hover {
 
 #workspaces {
     font-family: Symbols Nerd Font Mono;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 #workspaces button {
@@ -78,7 +78,7 @@ button:hover {
 #language,
 #mode {
   font-family: Symbols Nerd Font Mono, mononoki Nerd Font;
-  font-size: 14px;
+  font-size: 16px;
   padding: 0 8px;
   color: #ebdbb2;
 }

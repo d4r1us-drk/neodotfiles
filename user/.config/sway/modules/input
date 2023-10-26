@@ -12,6 +12,11 @@ input {
         dwtp disabled
         pointer_accel 0.5
     }
+
+    type:keyboard {
+        xkb_layout us,es
+        xkb_options grp:shift_caps_toggle
+    }
 }
 
 # Cursor settings

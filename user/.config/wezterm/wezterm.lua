@@ -8,9 +8,9 @@ return {
         weight = 'Medium'
     },
     color_scheme = 'Gruvbox dark, hard (base16)',
-    default_prog = { '/usr/bin/bash' },
+    default_prog = { '/usr/bin/fish' },
     default_cursor_style = "BlinkingUnderline",
-    font_size = 12,
+    font_size = 14,
     check_for_updates = false,
     use_dead_keys = false,
     warn_about_missing_glyphs = false,
@@ -29,5 +29,5 @@ return {
     exit_behavior = "Close",
     window_close_confirmation = 'NeverPrompt',
     tab_bar_at_bottom = false,
-    window_background_opacity = 0.9,
+    window_background_opacity = 0.98,
 }

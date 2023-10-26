@@ -2,10 +2,7 @@ exec {
     /usr/libexec/polkit-gnome-authentication-agent-1
     echo 25 > $SWAYSOCK.wob
     hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-    bash -c ~/.config/sway/initpipe
-    xdg-desktop-portal
-    xdg-desktop-portal-wlr
-    xdg-desktop-portal-gtk
+    bash -c ~/.config/sway/pipeinit
     mako -c ~/.config/mako/config
     swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
