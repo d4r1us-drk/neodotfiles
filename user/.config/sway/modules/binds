@@ -20,6 +20,7 @@ set $ytfzf-music wezterm start --class ytfzf-music ytfzf -mlstT chafa
 set $flix-cli wezterm start --class flix-cli flix-cli
 set $audiomixer wezterm start --class audiomixer pulsemixer
 set $monitor wezterm start --class monitor btop
+set $newsboat wezterm start --class newsboat newsboat
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -198,6 +199,7 @@ mode "apps" {
     bindsym a exec $ani-cli; mode "default"
     bindsym y exec $ytfzf; mode "default"
     bindsym f exec $flix-cli; mode "default"
+    bindsym r exec $newsboat; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }

@@ -126,7 +126,7 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # emacs as vim
-alias vim="~/.local/bin/lvim"
+alias vim="$HOME/.local/bin/lvim"
 
 # bat as cat
 alias cat='bat'
@@ -139,12 +139,12 @@ alias lt='eza -aT --color=always --group-directories-first' # tree listing
 alias l.='eza -a | egrep "^\."'
 
 # package management
-alias pac-up='paru -Syu'
-alias pac-get='paru -S'
-alias pac-rmv='paru -Rcns'
-alias pac-rmv-sec='paru -R'
-alias pac-qry='paru -Ss'
-alias pac-cln='paru -Scc && paru -Rns (pacman -Qtdq)'
+alias xb-up='sudo xbps-install -Su && xcheckrestart'
+alias xb-get='sudo xbps-install -S'
+alias xb-rmv='sudo xbps-remove -R'
+alias xb-rmv-sec='sudo xbps-remove'
+alias xb-qry='sudo xbps-query -Rs'
+alias xb-cln='sudo xbps-remove -Oo'
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'

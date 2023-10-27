@@ -1,12 +1,33 @@
 {
     "position": "top",
-    "height": 44,
-    "spacing": 3,
+    "height": 26,
+    "spacing": 0,
     "layer": "top",
 
-    // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
-    "modules-right": ["sway/language", "pulseaudio", "backlight", "battery", "custom/powerprofiles", "network", "clock"],
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "sway/scratchpad"
+    ],
+
+    "modules-right": [
+        "custom/arrow1",
+        "sway/language",
+        "custom/arrow2",
+        "pulseaudio",
+        "custom/arrow3",
+        "backlight",
+        "custom/arrow4",
+        "battery",
+        "custom/arrow5",
+        "custom/powerprofiles",
+        "custom/arrow6",
+        "network",
+        "custom/arrow7",
+        "clock"
+    ],
+    
+    // Modules
 
     "sway/workspaces": {
         "on-click": "activate",
@@ -28,6 +49,8 @@
 
     "sway/language": {
         "format": "{} \udb80\udf0c",
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+        "tooltip": false,
     },
 
     "sway/mode": {
@@ -50,7 +73,17 @@
 
     "backlight": {
         "format": "{percent}% {icon}",
-        "format-icons": ["\udb86\ude4e", "\udb86\ude4f", "\udb86\ude50", "\udb86\ude51", "\udb86\ude52", "\udb86\ude53", "\udb86\ude54", "\udb86\ude55", "\udb81\udee8"]
+        "format-icons": [
+            "\udb86\ude4e", // 10%
+            "\udb86\ude4f", // 20%
+            "\udb86\ude50", // 30%
+            "\udb86\ude51", // 40%
+            "\udb86\ude52", // 50%
+            "\udb86\ude53", // 60%
+            "\udb86\ude54", // 70%
+            "\udb86\ude55", // 80%
+            "\udb81\udee8"  // 90+%
+        ]
     },
 
     "battery": {
@@ -64,15 +97,19 @@
         "format-alt": "{time} {icon}",
         "format-critical": "{capacity}% {icon}\udb84\ude38",
         "format-warning": "{capacity}% {icon}\udb84\ude38",
-        "format-icons": ["\udb80\udc7a", "\udb80\udc7c", "\udb80\udc7e", "\udb80\udc80", "\udb80\udc79"],
-        "on-click": "$HOME/.local/bin/rs_power"
+        "format-icons": [
+            "\udb80\udc7a",
+            "\udb80\udc7c",
+            "\udb80\udc7e",
+            "\udb80\udc80",
+            "\udb80\udc79"
+        ],
     },
 
     "custom/powerprofiles": {
         "exec": "bash $HOME/.config/waybar/power-profiles",
         "restart-interval": 5,
         "format": "{}",
-        "on-click": "$HOME/.local/bin/rs_power"
     },
 
     "pulseaudio": {
@@ -103,4 +140,39 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "on-click": "$HOME/.local/bin/rs_wifi"
     },
+
+	"custom/arrow1": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow2": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow3": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow4": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow5": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow6": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow7": {
+		"format": "",
+		"tooltip": false
+	},
 }
