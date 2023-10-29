@@ -9,8 +9,9 @@ set $right l
 
 # Apps
 set $term wezterm
-set $chat signal-desktop
-set $browser qutebrowser
+set $chat flatpak run org.signal.Signal
+set $office flatpak run org.libreoffice.LibreOffice
+set $browser flatpak run org.mozilla.firefox
 set $file wezterm start --class file_manager vifm
 set $editor $HOME/.local/bin/neovide
 set $music wezterm start --class music_player cmus
@@ -192,6 +193,7 @@ mode "apps" {
     bindsym e exec $editor; mode "default"
     bindsym w exec $browser; mode "default"
     bindsym c exec $chat; mode "default"
+    bindsym o exec $office; mode "default"
     bindsym m exec $music; mode "default"
     bindsym b exec $monitor; mode "default"
     bindsym p exec $audiomixer; mode "default"

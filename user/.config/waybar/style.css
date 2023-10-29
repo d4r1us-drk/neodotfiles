@@ -85,13 +85,13 @@ button:hover {
     padding-left: 2pt;
     padding-right: 2pt;
     color: @white;
-    background: @unfocused;
+    background: @black;
 }
 
 /* Inactive (on unfocused output) */
 #workspaces button.visible {
     color: @white;
-    background: @inactive;
+    background: @black;
 }
 
 /* Active (on focused output) */

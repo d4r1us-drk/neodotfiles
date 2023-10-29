@@ -10,7 +10,6 @@ export TERM="xterm-256color"                      # getting proper colors
 export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
 
 ### "bat" as manpager
-#export MANPAGER="sh -c 'col -bx | bat -p -l man'"
 export PAGER="bat -p"
 
 # use bash-completion, if available

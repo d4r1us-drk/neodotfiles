@@ -138,7 +138,6 @@
         "format-ethernet": "{ipaddr}/{cidr} \udb80\ude00",
         "format-disconnected": "Disconnected \udb81\uddaa",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "on-click": "$HOME/.local/bin/rs_wifi"
     },
 
 	"custom/arrow1": {
