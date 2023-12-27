@@ -6,7 +6,9 @@ Feel free to explore the configuration files and adapt them to your
 preferences. If you have any questions or suggestions, please open an issue in
 this repository.
 
-### Dependencies
+THIS SETUP IS WIP.
+
+## Dependencies
 
 ### Dependencies to build awesome
 ``` sh
