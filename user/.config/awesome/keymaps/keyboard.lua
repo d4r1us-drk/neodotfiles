@@ -557,23 +557,23 @@ awful.keyboard.append_global_keybindings({
                     if event == "release" then
                         return
                     end
-                    if key == "1" then
+                    if key == "e" then
                         awful.util.spawn(apps.editor)      -- TAG 1
-                    elseif key == "2" then
+                    elseif key == "f" then
                         awful.util.spawn(apps.file)        -- TAG 2
-                    elseif key == "3" then
+                    elseif key == "w" then
                         awful.util.spawn(apps.browser)     -- TAG 3
-                    elseif key == "4" then
+                    elseif key == "c" then
                         awful.util.spawn(apps.chat)        -- TAG 4
-                    elseif key == "5" then
+                    elseif key == "m" then
                         awful.util.spawn(apps.music)       -- TAG 5
-                    elseif key == "6" then
+                    elseif key == "v" then
                         awful.util.spawn(apps.videoeditor) -- TAG 5
-                    elseif key == "7" then
+                    elseif key == "i" then
                         awful.util.spawn(apps.imageeditor) -- TAG 5
-                    elseif key == "8" then
+                    elseif key == "o" then
                         awful.util.spawn(apps.office)      -- TAG 8
-                    elseif key == "9" then
+                    elseif key == "g" then
                         awful.util.spawn(apps.game)        -- TAG 9
                     end
                     awful.keygrabber.stop(grabber)

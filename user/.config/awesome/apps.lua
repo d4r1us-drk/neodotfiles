@@ -22,9 +22,9 @@ local apps = {
     pulsemixer   = "wezterm start --class pulsemixer -- pulsemixer",          -- pulsemixer
     alsamixer    = "wezterm start --class alsamixer -- alsamixer",            -- alsamixer
     -- default apps per tag
-    editor       = "wezterm start --class editor -- .local/bin/lvim",               -- TAG 1
+    editor       = "neovide --neovim-bin .local/bin/lvim",                          -- TAG 1
     file         = "wezterm start --class vifm -- .config/vifm/scripts/vifmrun",    -- TAG 2
-    browser      = "qutebrowser",                                                   -- TAG 3
+    browser      = "flatpak run org.mozilla.firefox",                               -- TAG 3
     chat         = "flatpak run org.signal.Signal",                                 -- TAG 4
     music        = "wezterm start --class cmus -- cmus",                            -- TAG 5
     videoeditor  = "flatpak run org.kde.kdenlive",                                  -- TAG 6

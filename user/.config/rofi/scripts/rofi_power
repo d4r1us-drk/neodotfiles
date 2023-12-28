@@ -50,12 +50,12 @@ case "$action" in
         systemctl poweroff
         ;;
     "$option4")
-        betterlockscreen -l -q
+        betterlockscreen -l -q &
         sleep 1
         systemctl suspend
         ;;
     "$option5")
-        betterlockscreen -l -q
+        betterlockscreen -l -q &
         ;;
     "$option6")
         #####

@@ -119,7 +119,8 @@ ruled.client.connect_signal(
                     "Carla2",
                     "Carla2-Control",
                     "alsamixer",
-                    "pulsemixer"
+                    "pulsemixer",
+                    "qpwgraph",
                 }
             },
             properties = { tag = "󰲹" }
@@ -150,7 +151,6 @@ ruled.client.connect_signal(
                 class = {
                     "Qjackctl",
                     "lsp-plugins",
-                    "qpwgraph",
                     "Gimp-2.10",
                     "krita",
                     "Inkscape",

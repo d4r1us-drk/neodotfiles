@@ -63,8 +63,8 @@ fi
 # Default apps
 export TERMINAL="wezterm"
 export EDITOR="$HOME/.local/bin/lvim"
-export VISUAL="$TERMINAL -c editor -n editor -e $EDITOR"
-export BROWSER="qutebrowser"
+export VISUAL="neovide --neovim-bin $EDITOR"
+export BROWSER=org.mozilla.firefox
 export VIEWER="zathura"
 
 # start window manager / desktop environment

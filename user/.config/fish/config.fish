@@ -15,7 +15,7 @@ set -U fish_user_paths $HOME/.local/bin /var/lib/flatpak/exports/bin/ $fish_user
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
 set EDITOR "$HOME/.local/bin/lvim"
-set VISUAL "wezterm start --class editor -- $EDITOR"
+set VISUAL neovide --neovim-bin $EDITOR
 
 ### SET BAT AS MANPAGER
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"

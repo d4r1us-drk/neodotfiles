@@ -304,7 +304,7 @@ case $mchoice in
         esac
         ;;
     "$mcho2")
-        mschoice=$(echo -e "$mschos" | dmenu -i -l 9 -p "  Screencast Menu") # screenshot menu prompt
+        mschoice=$(echo -e "$mschos" | rofi -dmenu -i -p "   Screencast Menu ") # screenshot menu prompt
         case $mschoice in
             "$mscho1")
                 rec_screen;
