@@ -1,23 +1,25 @@
 local wibox = require("wibox")
 local awful = require("awful")
+local gears = require("gears")
 
 -- Create a textbox widget
-local layout_text = wibox.widget.textbox()
+local keyboard_layout_widget = wibox.widget.textbox()
 
 -- Function to update the layout value
-local function update_layout()
-  awful.spawn.easy_async_with_shell("setxkbmap -query | grep -oP 'layout:\\s*\\K\\w+'", function(stdout)
-    local layout = stdout:gsub("\n", "")
-    layout_text:set_markup("󰌌 " .. layout:upper())
-  end)
+local function update_keyboard_layout_widget()
+    awful.spawn.easy_async_with_shell("setxkbmap -query | grep -oP 'layout:\\s*\\K\\w+'", function(stdout)
+        local layout = stdout:gsub("\n", "")
+        keyboard_layout_widget:set_markup("󰌌 " .. layout:upper())
+    end)
 end
 
--- Update the layout initially
-update_layout()
+-- Update the widget initially
+update_keyboard_layout_widget()
 
--- Refresh the layout every 5 seconds
-awful.widget.watch("bash -c 'setxkbmap -query | grep -oP \"layout:\\\\s*\\\\K\\\\w+\"'", 10, function(widget, stdout)
-  update_layout()
+-- Refresh the widget every 10 seconds
+local timer = gears.timer.start_new(10, function()
+    update_keyboard_layout_widget()
+    return true
 end)
 
-return layout_text
+return keyboard_layout_widget

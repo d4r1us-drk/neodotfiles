@@ -28,25 +28,44 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# environment variables
+# Environment variables
 export MOZ_USE_XINPUT2=1
 export QT_STYLE_OVERRIDE=kvantum
+export XDG_SESSION_TYPE=X11
 
-# clean home
+# Home folders
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
+
+# GTK & cursor stuff
+export XCURSOR_PATH="$XDG_DATA_HOME/icons/"
+export XCURSOR_THEME="Simp1e-Gruvbox-Dark"
+export GTK_THEME="gruvbox-dark-gtk"
+export GTK_ICON_THEME="gruvbox-dark-icons-gtk"
+
+# Sanely export XDG Base dir variables
+eval "$(sed 's/^[^#].*/export &/g;t;d' ~/.config/user-dirs.dirs)"
+
+# Clean home
 export W3M_DIR="$XDG_DATA_HOME/w3m"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export WGETRC="$HOME/.config/wget/wgetrc"
 export INPUTRC="$HOME/.config/inputrc"
 export GNUPGHOME="$HOME/.local/share/gnupg"
+export LESSHISTFILE="-"
 
-# default apps
-export EDITOR="emacsclient -t -a ''"
-export VISUAL="emacsclient -c -a 'emacs'"
-export BROWSER="firefox"
+# Create GNUPG & WGETRC directories if they don't exist
+if [ ! -d "$HOME/.config/wget/" ] && [ ! -d "$GNUPGHOME" ]; then
+    mkdir -p "$HOME/.config/wget/" "$GNUPGHOME"
+fi
+
+# Default apps
+export TERMINAL="wezterm"
+export EDITOR="$HOME/.local/bin/lvim"
+export VISUAL="$TERMINAL -c editor -n editor -e $EDITOR"
+export BROWSER="qutebrowser"
 export VIEWER="zathura"
 
 # start window manager / desktop environment
-exec awesome
+dbus-launch awesome

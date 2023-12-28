@@ -9,13 +9,13 @@
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive and fish becomes very slow.
 set -e fish_user_paths
-set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.config/emacs/bin $HOME/Applications /var/lib/flatpak/exports/bin/ $fish_user_paths
+set -U fish_user_paths $HOME/.local/bin /var/lib/flatpak/exports/bin/ $fish_user_paths
 
 ### EXPORT ###
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
-set EDITOR "emacsclient -t -a ''"
-set VISUAL "emacsclient -c -a 'emacs'"
+set EDITOR "$HOME/.local/bin/lvim"
+set VISUAL "wezterm start --class editor -- $EDITOR"
 
 ### SET BAT AS MANPAGER
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -33,7 +33,6 @@ set fish_color_autosuggestion '#504945'
 set fish_color_command brcyan
 set fish_color_error '#fb4934'
 set fish_color_param brcyan
-
 
 ### FUNCTIONS ###
 # Functions needed for !! and !$
@@ -126,23 +125,17 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # emacs as vim
-alias vim="emacsclient -t -a ''"
-
-# newsboat
-alias newsboat='newsboat -u ~/.config/newsboat/urls'
+alias vim="$EDITOR"
 
 # bat as cat
 alias cat='bat'
 
-# pfetch as neofetch
-alias neofetch='pfetch'
-
-# Changing "ls" to "exa"
-alias ls='exa -al --color=always --group-directories-first' # my preferred listing
-alias la='exa -a --color=always --group-directories-first'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first'  # long format
-alias lt='exa -aT --color=always --group-directories-first' # tree listing
-alias l.='exa -a | egrep "^\."'
+# Changing "ls" to "eza"
+alias ls='eza -al --color=always --group-directories-first' # my preferred listing
+alias la='eza -a --color=always --group-directories-first'  # all files and dirs
+alias ll='eza -l --color=always --group-directories-first'  # long format
+alias lt='eza -aT --color=always --group-directories-first' # tree listing
+alias l.='eza -a | egrep "^\."'
 
 # package management
 alias pac-up='paru -Syu'
@@ -158,9 +151,9 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # file management
-alias fm="vifm"
-alias file="vifm"
-alias flm="vifm"
+alias fm="$HOME/.config/vifm/scripts/vifmrun"
+alias flm="$HOME/.config/vifm/scripts/vifmrun"
+alias vifm="$HOME/.config/vifm/scripts/vifmrun"
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -vI'
@@ -221,12 +214,6 @@ alias yt='ytfzf -ftsl'
 alias youtube='ytfzf -ftsl'
 alias ytm='ytfzf -mtsl'
 alias youtube-music='ytfzf -mtsl'
-
-# the terminal rickroll
-alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-
-# Mocp must be launched with bash instead of Fish!
-alias mocp="bash -c mocp"
 
 # network and bluetooth
 alias netstats='nmcli dev'

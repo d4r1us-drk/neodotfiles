@@ -9,23 +9,22 @@ this repository.
 THIS SETUP IS WIP.
 
 ## Dependencies
+These commands are for setting up a new arch install with my dotfiles. These
+include all the things I personally use, so I don't recommend just copying and
+pasting these into your current install, just take a look at the configs and
+grab what you'll absolutely need.
 
-### Dependencies to build awesome
+### Main dependencies
 ``` sh
-sudo xbps-install -S xorg-server xorg-input-drivers libX11 libX11-devel libXinerama libXinerama-devel libXft libXft-devel libXrandr libXrandr-devel imlib2 imlib2-devel harfbuzz harfbuzz-devel freetype freetype-devel gd gd-devel gdk-pixbuf gdk-pixbuf-devel xcb-util-cursor xcb-util-cursor-devel xcb-util-keysyms xcb-util-keysyms-devel xcb-util-image xcb-util-image-devel xcb-util-xrm xcb-util-xrm-devel xcb-util-wm xcb-util-wm-devel libxkbcommon libxkbcommon-devel libxkbcommon-x11 startup-notification startup-notification-devel libxdg-basedir libxdg-basedir-devel lua54 lua52 lua54-lgi lua54-devel lua52-devel lua52-lgi
-```
-
-### Supplemental dependencies
-``` sh
-sudo xbps-install -S brightnessctl picom pamixer pulsemixer fd ripgrep jq fzf eza bat arandr playerctl nerd-fonts noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-cjk noto-fonts-emoji cantarell-fonts newsboat vifm cmus cmus-ffmpeg kvantum gtk-engine-murrine zathura zathura-pdf-poppler j4-dmenu-desktop maim slop feh nsxiv chafa xdpyinfo xdotool
+paru -S awesome-git rofi betterlockscreen-git ueberzugpp unclutter-xfixes-git polkit-gnome acpi power-profiles-daemon python-gobject xorg-server xorg-xev xorg-xprop xorg-setxkbmap xorg-xinit xorg-xkill xorg-xrandr xclip xf86-input-evdev xf86-input-libinput xf86-input-wacom bluez bluez-tools bluez-utils neovim udisks2 pipewire pipewire-pulse pipewire-jack pipewire-alsa pipewire-audio pipewire-v4l2 wireplumber brightnessctl xorg-xdpyinfo xdotool maim slop jq fd eza bat starship playerctl ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono ttf-mononoki-nerd cantarell-fonts picom mpv pamixer vifm ffmpegthumbnailer epub-thumbnailer-git ripgrep fzf eza bat arandr pulsemixer noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-cjk noto-fonts-emoji newsboat cmus kvantum gtk-engine-murrine zathura zathura-pdf-poppler nsxiv chafa qutebrowser
 ```
 
 ### Dev dependencies
 ``` sh
-sudo xbps-install -S base-devel cmake clang llvm rust cargo nodejs vala
+paru -S --needed base-devel cmake clang llvm rust cargo nodejs vala
 ```
 
 ### VMs & Containers dependencies
 ``` sh
-sudo xbps-install -S libvirt virt-manager qemu iptables-nft dnsmasq openbsd-netcat dmidecode podman
+paru -S --needed libvirt virt-manager qemu-full iptables-nft dnsmasq openbsd-netcat dmidecode podman podman-compose
 ```
