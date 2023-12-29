@@ -2,7 +2,7 @@ local naughty = require("naughty")
 local ruled = require("ruled")
 local beautiful = require("beautiful")
 
--- {{{ Error handling
+-- Error handling
 naughty.connect_signal(
     "request::display_error",
     function(message, startup)
@@ -13,9 +13,8 @@ naughty.connect_signal(
         }
     end
 )
--- }}}
 
--- {{{ Signals
+-- Signals
 -- no borders when rearranging only 1 non-floating or maximized client
 screen.connect_signal(
     "arrange",
@@ -32,4 +31,8 @@ screen.connect_signal(
         end
     end
 )
--- }}}
+
+-- enable sloppy focus, so that focus follows mouse.
+client.connect_signal("mouse::enter", function(c)
+    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+end)

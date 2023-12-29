@@ -12,8 +12,7 @@ naughty.config.defaults.border_width = 0
 naughty.config.defaults.position = "top_right"
 naughty.config.defaults.title = "Notification"
 
-ruled.notification.connect_signal(
-    "request::rules",
+ruled.notification.connect_signal("request::rules",
     function()
         -- Critical
         ruled.notification.append_rule {
@@ -51,8 +50,7 @@ ruled.notification.connect_signal(
     end
 )
 
-naughty.connect_signal(
-    "request::display",
+naughty.connect_signal("request::display",
     function(n)
         naughty.layout.box {
             notification = n,

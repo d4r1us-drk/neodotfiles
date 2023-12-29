@@ -1,7 +1,8 @@
--- Apps config, see keymaps/keyboard.lua to see how this is handled in keybindings
+-- Apps selection, see config/keys.lua to see how this is handled in keybindings
 local apps = {
     terminal     = "wezterm",                                                 -- terminal emulator
-    -- rofi settings
+
+    -- rofi
     drunner      = "rofi -show drun -show-icons",                             -- desktop runner
     runner       = "rofi -show run",                                          -- normal runner
     runner_power = "$HOME/.config/rofi/scripts/rofi_power",                   -- power manager
@@ -11,16 +12,16 @@ local apps = {
     runner_scrot = "$HOME/.config/rofi/scripts/rofi_scrot",                   -- screenshots manager
     runner_emoji = "$HOME/.config/rofi/scripts/rofi_emoji",                   -- emojis manager
     runner_wall  = "$HOME/.config/rofi/scripts/rofi_wall",                    -- wallpapers manager
+
     -- terminal scripts
-    vidytfzf     = "wezterm start --class vidytfzf -- ytfzf -flstT ueberzug", -- youtube
-    musytfzf     = "wezterm start --class musytfzf -- ytfzf -mlstT ueberzug", -- youtube music
+    ytfzfv       = "wezterm start --class vidytfzf -- ytfzf -flstT ueberzug", -- youtube
+    ytfzfm       = "wezterm start --class musytfzf -- ytfzf -mlstT ueberzug", -- youtube music
     ani_cli      = "wezterm start --class ani-cli -- ani-cli",                -- anime
     flix_cli     = "wezterm start --class flix-cli -- flix-cli",              -- movies
     newsboat     = "wezterm start --class newsboat -- newsboat",              -- newsboat
     btop         = "wezterm start --class btop -- btop",                      -- btop
-    htop         = "wezterm start --class htop -- htop",                      -- htop
     pulsemixer   = "wezterm start --class pulsemixer -- pulsemixer",          -- pulsemixer
-    alsamixer    = "wezterm start --class alsamixer -- alsamixer",            -- alsamixer
+
     -- default apps per tag
     editor       = "neovide --neovim-bin .local/bin/lvim",                          -- TAG 1
     file         = "wezterm start --class vifm -- .config/vifm/scripts/vifmrun",    -- TAG 2

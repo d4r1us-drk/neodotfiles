@@ -9,8 +9,7 @@ modkey = "Mod4"
 conkey = "Control"
 shikey = "Shift"
 
---[[ Main keybinds ]]
---
+-- Main keybinds
 awful.keyboard.append_global_keybindings({
         -- Show the help menu
         awful.key(
@@ -18,10 +17,11 @@ awful.keyboard.append_global_keybindings({
             "s",
             hotkeys_popup.show_help,
             {
-                description = "Show Help Menu",
+                description = "Show this help Menu",
                 group = "Main keybinds"
             }
         ),
+
         -- Reload awesome
         awful.key(
             { modkey, conkey },
@@ -32,6 +32,7 @@ awful.keyboard.append_global_keybindings({
                 group = "Main keybinds"
             }
         ),
+
         -- Open a terminal
         awful.key(
             { modkey },
@@ -45,11 +46,8 @@ awful.keyboard.append_global_keybindings({
             }
         ),
 })
---[[ ]]
---
 
---[[ Tags related keybindings ]]
---
+-- Tags keybindings
 awful.keyboard.append_global_keybindings({
     -- Switch to previous tag
     awful.key(
@@ -61,6 +59,7 @@ awful.keyboard.append_global_keybindings({
             group = "Tag keybinds"
         }
     ),
+
     -- Switch to next tag
     awful.key(
         { modkey },
@@ -71,6 +70,7 @@ awful.keyboard.append_global_keybindings({
             group = "Tag keybinds"
         }
     ),
+
     -- Switch back to the previous tag
     awful.key(
         { modkey },
@@ -81,6 +81,7 @@ awful.keyboard.append_global_keybindings({
             group = "Tag keybinds"
         }
     ),
+
     -- Switch tags by numbers 1-9
     awful.key {
         modifiers   = { modkey },
@@ -95,6 +96,7 @@ awful.keyboard.append_global_keybindings({
             end
         end,
     },
+
     -- Toggle tags by numbers 1-9
     awful.key {
         modifiers   = { modkey, conkey },
@@ -109,6 +111,7 @@ awful.keyboard.append_global_keybindings({
             end
         end,
     },
+
     -- Move focused window to tag by numbers 1-9
     awful.key {
         modifiers   = { modkey, shikey },
@@ -124,6 +127,7 @@ awful.keyboard.append_global_keybindings({
             end
         end,
     },
+
     -- Toggle focused window on tag by numbers 1-9
     awful.key {
         modifiers   = { modkey, conkey, shikey },
@@ -140,11 +144,8 @@ awful.keyboard.append_global_keybindings({
         end,
     },
 })
---[[ ]]
---
 
---[[ Focus related keybindings ]]
---
+-- Focus keybindings
 awful.keyboard.append_global_keybindings({
     -- Focus next window by index
     awful.key(
@@ -158,6 +159,7 @@ awful.keyboard.append_global_keybindings({
             group = "Focus keybinds"
         }
     ),
+
     -- Focus previous window by index
     awful.key(
         { modkey },
@@ -170,6 +172,7 @@ awful.keyboard.append_global_keybindings({
             group = "Focus keybinds"
         }
     ),
+
     -- Focus last focused window
     awful.key(
         { modkey },
@@ -185,6 +188,7 @@ awful.keyboard.append_global_keybindings({
             group = "Focus keybinds"
         }
     ),
+
     -- Focus next screen
     awful.key(
         { modkey, conkey },
@@ -197,6 +201,7 @@ awful.keyboard.append_global_keybindings({
             group = "Focus keybinds"
         }
     ),
+
     -- Focus previous screen
     awful.key(
         { modkey, conkey },
@@ -210,11 +215,8 @@ awful.keyboard.append_global_keybindings({
         }
     ),
 })
---[[ ]]
---
 
---[[ Layout keybinds ]]
---
+-- Layout keybinds
 awful.keyboard.append_global_keybindings({
     -- Swap with next window by index
     awful.key(
@@ -228,6 +230,7 @@ awful.keyboard.append_global_keybindings({
             group = "Layout keybinds"
         }
     ),
+
     -- Swap with previous window by index
     awful.key(
         { modkey, shikey },
@@ -240,6 +243,7 @@ awful.keyboard.append_global_keybindings({
             group = "Layout keybinds"
         }
     ),
+
     -- Increase master width
     awful.key(
         { modkey },
@@ -252,6 +256,7 @@ awful.keyboard.append_global_keybindings({
             group = "Layout keybinds"
         }
     ),
+
     -- Decrease master width
     awful.key(
         { modkey },
@@ -264,6 +269,7 @@ awful.keyboard.append_global_keybindings({
             group = "Layout keybinds"
         }
     ),
+
     -- Increase the number of master window
     awful.key(
         { modkey, shikey },
@@ -276,6 +282,7 @@ awful.keyboard.append_global_keybindings({
             group = "Layout keybinds"
         }
     ),
+
     -- Decrease the number of master windows
     awful.key(
         { modkey, shikey },
@@ -288,6 +295,7 @@ awful.keyboard.append_global_keybindings({
             group = "Layout keybinds"
         }
     ),
+
     -- Increase the number of columns
     awful.key(
         { modkey, conkey },
@@ -300,6 +308,7 @@ awful.keyboard.append_global_keybindings({
             group = "Layout keybinds"
         }
     ),
+
     -- Decrease the number of columns
     awful.key(
         { modkey, conkey },
@@ -312,6 +321,7 @@ awful.keyboard.append_global_keybindings({
             group = "Layout keybinds"
         }
     ),
+
     -- Switch to next layout
     awful.key(
         { modkey },
@@ -324,6 +334,7 @@ awful.keyboard.append_global_keybindings({
             group = "Layout keybinds"
         }
     ),
+
     -- Switch to previous layout
     awful.key(
         { modkey, shikey },
@@ -336,6 +347,7 @@ awful.keyboard.append_global_keybindings({
             group = "Layout keybinds"
         }
     ),
+
     -- Select layouts directly
     awful.key {
         modifiers   = { modkey },
@@ -349,6 +361,7 @@ awful.keyboard.append_global_keybindings({
             end
         end,
     },
+
     -- Show/Hide Wibox
     awful.key(
         { modkey },
@@ -370,10 +383,8 @@ awful.keyboard.append_global_keybindings({
 --[[ ]]
 --
 
---[[ Window keybinds ]]
---
-client.connect_signal(
-    "request::default_keybindings",
+-- Window keybinds
+client.connect_signal("request::default_keybindings",
     function()
         awful.keyboard.append_client_keybindings({
             -- Set focused window to fullscreen
@@ -462,10 +473,8 @@ client.connect_signal(
         })
     end
 )
---[[ ]]
---
 
---[[ Quick keybinds ]]
+-- Media Keys
 awful.keyboard.append_global_keybindings({
     -- Volume
     awful.key(
@@ -476,7 +485,7 @@ awful.keyboard.append_global_keybindings({
         end,
         {
             description = "Increase volume by +5%",
-            group = "Quick keybinds"
+            group = "Media keys"
         }
     ),
     awful.key(
@@ -487,7 +496,7 @@ awful.keyboard.append_global_keybindings({
         end,
         {
             description = "Decrease volume by +5%",
-            group = "Quick keybinds"
+            group = "Media keys"
         }
     ),
     awful.key(
@@ -498,7 +507,7 @@ awful.keyboard.append_global_keybindings({
         end,
         {
             description = "Mute volume",
-            group = "Quick keybinds"
+            group = "Media keys"
         }
     ),
     awful.key(
@@ -509,9 +518,10 @@ awful.keyboard.append_global_keybindings({
         end,
         {
             description = "Mute microphone",
-            group = "Quick keybinds"
+            group = "Media keys"
         }
     ),
+
     -- Brightness
     awful.key(
         {},
@@ -521,7 +531,7 @@ awful.keyboard.append_global_keybindings({
         end,
         {
             description = "Increase brightness by +5%",
-            group = "Quick keybinds"
+            group = "Media keys"
         }
     ),
     awful.key(
@@ -532,9 +542,10 @@ awful.keyboard.append_global_keybindings({
         end,
         {
             description = "Decrease brightness by -5%",
-            group = "Quick keybinds"
+            group = "Media keys"
         }
     ),
+
     -- Display configuration
     awful.key(
         {},
@@ -544,9 +555,11 @@ awful.keyboard.append_global_keybindings({
         end,
         {
             description = "Configure the display using arandr",
-            group = "Quick keybinds"
+            group = "Media keys"
         }
     ),
+
+-- Keychords
     -- Apps (Super + a followed by KEY)
     awful.key(
         { modkey },
@@ -557,23 +570,23 @@ awful.keyboard.append_global_keybindings({
                     if event == "release" then
                         return
                     end
-                    if key == "e" then
+                    if key == "1" then
                         awful.util.spawn(apps.editor)      -- TAG 1
-                    elseif key == "f" then
+                    elseif key == "2" then
                         awful.util.spawn(apps.file)        -- TAG 2
-                    elseif key == "w" then
+                    elseif key == "3" then
                         awful.util.spawn(apps.browser)     -- TAG 3
-                    elseif key == "c" then
+                    elseif key == "4" then
                         awful.util.spawn(apps.chat)        -- TAG 4
-                    elseif key == "m" then
+                    elseif key == "5" then
                         awful.util.spawn(apps.music)       -- TAG 5
-                    elseif key == "v" then
+                    elseif key == "6" then
                         awful.util.spawn(apps.videoeditor) -- TAG 5
-                    elseif key == "i" then
+                    elseif key == "7" then
                         awful.util.spawn(apps.imageeditor) -- TAG 5
-                    elseif key == "o" then
+                    elseif key == "8" then
                         awful.util.spawn(apps.office)      -- TAG 8
-                    elseif key == "g" then
+                    elseif key == "9" then
                         awful.util.spawn(apps.game)        -- TAG 9
                     end
                     awful.keygrabber.stop(grabber)
@@ -582,9 +595,10 @@ awful.keyboard.append_global_keybindings({
         end,
         {
             description = "Launch apps with {Super + a} keychord and then numbers from {1 to 9}",
-            group = "Quick keybinds"
+            group = "Keychords"
         }
     ),
+
     -- Keyboard layouts (Super + x followed by KEY)
     awful.key(
         { modkey },
@@ -606,9 +620,10 @@ awful.keyboard.append_global_keybindings({
         end,
         {
             description = "Change keyboard layout with {Super + x} keychord and then {e} for spanish and {u} for english",
-            group = "Quick keybinds"
+            group = "Keychords"
         }
     ),
+
     -- Runners (Super + p followed by KEY)
     awful.key(
         { modkey },
@@ -643,11 +658,12 @@ awful.keyboard.append_global_keybindings({
             )
         end,
         {
-            description = "Launch quick action menus with {Super + p} keychord and then {d, r, e, q, i, b, s, z, w}",
-            group = "Quick keybinds"
+            description = "Launch quick action menus with {Super + p} keychord and then {d, r, q, i, b, w, s, m, e}",
+            group = "Keychords"
         }
     ),
-    -- Multimedia scripts (Super + t followed by KEY)
+
+    -- Terminal scripts (Super + t followed by KEY)
     awful.key(
         { modkey },
         "t",
@@ -658,9 +674,9 @@ awful.keyboard.append_global_keybindings({
                         return
                     end
                     if key == "y" then
-                        awful.util.spawn(apps.vidytfzf)
+                        awful.util.spawn(apps.ytfzfv)
                     elseif key == "m" then
-                        awful.util.spawn(apps.musytfzf)
+                        awful.util.spawn(apps.ytfzfm)
                     elseif key == "a" then
                         awful.util.spawn(apps.ani_cli)
                     elseif key == "f" then
@@ -669,21 +685,62 @@ awful.keyboard.append_global_keybindings({
                         awful.util.spawn(apps.newsboat)
                     elseif key == "b" then
                         awful.util.spawn(apps.btop)
-                    elseif key == "h" then
-                        awful.util.spawn(apps.htop)
                     elseif key == "p" then
                         awful.util.spawn(apps.pulsemixer)
-                    elseif key == "o" then
-                        awful.util.spawn(apps.alsamixer)
                     end
                     awful.keygrabber.stop(grabber)
                 end
             )
         end,
         {
-            description = "Launch multimedia terminal scripts with {Super + t} and then {m, y, a, f}",
-            group = "Quick keybinds"
+            description = "Launch terminal scripts with {Super + t} and then {y, m, a, f, r, b, p}",
+            group = "Keychords"
         }
     ),
 })
+
+-- Window related mouse bindings
+client.connect_signal(
+    "request::default_mousebindings",
+    function()
+        awful.mouse.append_client_mousebindings({
+            awful.button(
+                { },
+                1,
+                function(c)
+                    c:activate {context = "mouse_click"}
+                end
+            ),
+            awful.button(
+                { modkey },
+                1,
+                function(c)
+                    c:activate {context = "mouse_click", action = "mouse_move"}
+                end
+            ),
+            awful.button(
+                { modkey },
+                3,
+                function(c)
+                    c:activate {context = "mouse_click", action = "mouse_resize"}
+                end
+            )
+        })
+    end
+)
+
+-- Mouse bindings on desktop
+awful.mouse.append_global_mousebindings({
+    awful.button(
+        { },
+        4,
+        awful.tag.viewprev
+    ),
+    awful.button(
+        { },
+        5,
+        awful.tag.viewnext
+    )
+})
+
 --[[ ]]

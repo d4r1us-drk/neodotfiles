@@ -4,7 +4,7 @@ local dpi                      = require("beautiful.xresources").apply_dpi
 local beautiful                = require("beautiful")
 -- }}}
 
-local themes_path              = string.format("%s/.config/awesome/ui/", os.getenv("HOME"))
+local themes_path              = string.format("%s/.config/awesome/theme/", os.getenv("HOME"))
 
 -- {{{ Main
 local theme                    = {}

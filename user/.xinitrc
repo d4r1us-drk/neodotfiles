@@ -28,15 +28,15 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# Environment variables
-export MOZ_USE_XINPUT2=1
-export QT_STYLE_OVERRIDE=kvantum
-export XDG_SESSION_TYPE=X11
-
 # Home folders
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
+
+# X11 Stuff
+export MOZ_USE_XINPUT2=1
+export QT_STYLE_OVERRIDE=kvantum
+export XDG_SESSION_TYPE=X11
 
 # GTK & cursor stuff
 export XCURSOR_PATH="$XDG_DATA_HOME/icons/"
