@@ -18,7 +18,7 @@ set EDITOR "$HOME/.local/bin/lvim"
 set VISUAL neovide --neovim-bin $EDITOR
 
 ### SET BAT AS MANPAGER
-set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+#set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 ### SET EITHER DEFAULT EMACS MODE OR VI MODE ###
 function fish_user_key_bindings
