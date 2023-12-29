@@ -35,7 +35,7 @@ theme.bg_urgent                = "#a89984"
 -- {{{ Borders
 beautiful.gap_single_client    = false
 theme.useless_gap              = dpi(4)
-theme.border_width             = dpi(1.5)
+theme.border_width             = dpi(2)
 theme.border_normal            = "#504945"
 theme.border_focus             = "#cc241d"
 theme.border_marked            = "#cc241d"
