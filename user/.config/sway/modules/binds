@@ -12,9 +12,9 @@ set $term wezterm
 set $chat flatpak run org.signal.Signal
 set $office flatpak run org.libreoffice.LibreOffice
 set $browser flatpak run org.mozilla.firefox
-set $file wezterm start --class file_manager vifm
+set $file thunar
 set $editor $HOME/.local/bin/neovide
-set $music wezterm start --class music_player cmus
+set $music lollypop
 set $ani-cli wezterm start --class ani-cli ani-cli
 set $ytfzf wezterm start --class ytfzf ytfzf -flstT chafa
 set $ytfzf-music wezterm start --class ytfzf-music ytfzf -mlstT chafa

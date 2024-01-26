@@ -139,12 +139,11 @@ alias lt='eza -aT --color=always --group-directories-first' # tree listing
 alias l.='eza -a | egrep "^\."'
 
 # package management
-alias xb-up='sudo xbps-install -Su && xcheckrestart'
-alias xb-get='sudo xbps-install -S'
-alias xb-rmv='sudo xbps-remove -R'
-alias xb-rmv-sec='sudo xbps-remove'
-alias xb-qry='sudo xbps-query -Rs'
-alias xb-cln='sudo xbps-remove -Oo'
+alias pkg-update='sudo xbps-install -Suv && xcheckrestart'
+alias pkg-install='sudo xbps-install -S'
+alias pkg-remove='sudo xbps-remove -R'
+alias pkg-search='sudo xbps-query -R'
+alias pkg-clean='sudo xbps-remove -Oo'
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
@@ -153,7 +152,6 @@ alias fgrep='fgrep --color=auto'
 
 # file management
 alias fm="vifm"
-alias file="vifm"
 alias flm="vifm"
 alias cp='cp -iv'
 alias mv='mv -iv'
@@ -197,9 +195,9 @@ alias tag='git tag'
 alias newtag='git tag -a'
 
 # power management
-alias po='systemctl poweroff'
-alias sp='systemctl suspend'
-alias rb='systemctl reboot'
+alias po='loginctl poweroff'
+alias sp='loginctl suspend'
+alias rb='loginctl reboot'
 
 # youtube-
 alias yta-aac="yt-dlp --extract-audio --audio-format aac "

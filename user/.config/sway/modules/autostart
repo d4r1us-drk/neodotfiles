@@ -13,7 +13,3 @@ exec {
 }
 
 bar swaybar_command waybar
-
-exec_always {
-    kanshi
-}

@@ -17,39 +17,15 @@ export MOZ_ENABLE_WAYLAND=1
 export MOZ_WAYLAND_USE_VAAPI=1
 export MOZ_DISABLE_RDD_SANDBOX=1 
 
-# Clean home
-export W3M_DIR="$XDG_DATA_HOME/w3m"
-export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
-export WGETRC="$HOME/.config/wget/wgetrc"
-export INPUTRC="$HOME/.config/inputrc"
-export GNUPGHOME="$HOME/.local/share/gnupg"
-export LESSHISTFILE=-
-if [ ! -d "$HOME/.config/wget/" ] && [ ! -d "$GNUPGHOME" ]; then
-    mkdir -p "$HOME/.config/wget/" "$GNUPGHOME"
-fi
-
-# Home folders
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_CONFIG_HOME="$HOME/.config"
-
-# Sanely export XDG Base dir variables
-eval "$(sed 's/^[^#].*/export &/g;t;d' ~/.config/user-dirs.dirs)"
-
-# Theme settings
-export GTK_THEME=gruvbox-dark-gtk
-export GTK_ICON_THEME=gruvbox-dark-icons-gtk
-export GTK_CURSOR_THEME=Simp1e-Gruvbox-Dark
-export XCURSOR_THEME=Simp1e-Gruvbox-Dark
-export XCURSOR_PATH="$HOME/.icons"
+# GTK & cursor stuff
+export XCURSOR_PATH="$XDG_DATA_HOME/icons/"
+export XCURSOR_THEME="Simp1e-Gruvbox-Dark"
+export GTK_THEME="gruvbox-dark-gtk"
+export GTK_ICON_THEME="gruvbox-dark-icons-gtk"
+export GTK_CURSOR_THEME="Simp1e-Gruvbox-Dark"
 
 # User defined enviroment variables
-export EDITOR="$HOME/.local/bin/lvim"
-export VISUAL="$HOME/.local/bin/neovide"
-export BROWSER=qutebrowser
-export VIEWER=zathura
 export RUNNER="fuzzel --dmenu"
-export TERM=wezterm
 export WM=sway
 
 # Start compositor
