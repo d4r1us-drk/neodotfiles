@@ -5,25 +5,15 @@
 ##    / /_/ / /  / /_/ / ,< /  __/  Clay Gomera (Drake)
 ##   /_____/_/   \__,_/_/|_|\___/   My custom bash_profile config
 ##
-
-# starting xsession
-if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]
-then
-  sh "$HOME/.config/sway/winitrc" &>/dev/null
-  logout
-fi
-
-# User defined enviroment variables
-export EDITOR="$HOME/.local/bin/lvim"
-export VISUAL="$HOME/.local/bin/neovide"
-export BROWSER=qutebrowser
-export VIEWER=zathura
-export TERM=wezterm
+#
 
 # Home folders
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
+
+export X11CFGDIR="$XDG_CONFIG_HOME/X11"
+export XINITRC="$X11CFGDIR/xinitrc"
 
 # Sanely export XDG Base dir variables
 eval "$(sed 's/^[^#].*/export &/g;t;d' ~/.config/user-dirs.dirs)"
@@ -31,13 +21,30 @@ eval "$(sed 's/^[^#].*/export &/g;t;d' ~/.config/user-dirs.dirs)"
 # Clean home
 export W3M_DIR="$XDG_DATA_HOME/w3m"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
-export WGETRC="$HOME/.config/wget/wgetrc"
-export INPUTRC="$HOME/.config/inputrc"
+export WGETDIR="$XDG_CONFIG_HOME/wget"
+export WGETRC="$WGETDIR/wgetrc"
+export INPUTRC="$HOME/.config/X11/inputrc"
 export GNUPGHOME="$HOME/.local/share/gnupg"
-export LESSHISTFILE=-
-if [ ! -d "$HOME/.config/wget/" ] && [ ! -d "$GNUPGHOME" ]; then
-    mkdir -p "$HOME/.config/wget/" "$GNUPGHOME"
+export LESSHISTFILE="-"
+export BASHRC="$HOME/.bashrc"
+
+# Default apps
+export TERM="wezterm"
+export EDITOR="$HOME/.local/bin/lvim"
+export VISUAL="$HOME/.local/bin/neovide"
+export BROWSER="flatpak run org.mozilla.firefox"
+export VIEWER="zathura"
+
+# Bashrc
+source "$BASHRC"
+
+# Create config directories if they don't exist
+if [ ! -d "$WGETDIR" ] || [ ! -d "$GNUPGHOME" ]; then
+    mkdir -p "$WGETDIR" "$GNUPGHOME"
 fi
 
-# bashrc
-source "$HOME"/.bashrc
+# starting xsession
+if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+  sh "$HOME/.config/sway/winitrc" &>/dev/null
+  logout
+fi
