@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+
+# ***This script was made by Clay Gomera (Drake)***
+#  - Description: A simple power menu script for rofi/dmenu/wofi
+#  - Dependencies: {rofi||dmenu||wofi}, power-profiles-daemon, swaylock
+#
+
+#######################
+## Main manu options ##
+#######################
+option1="  Logout"
+option2="  Reboot"
+option3="  Power off"
+option4="󰒲  Suspend"
+option5="  Lock"
+option6="  Change power profile"
+option7="  Exit"
+options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6\n$option7"
+
+####################################
+## Power profiles submenu options ##
+####################################
+pwr1="󰓅 Performance"
+pwr2="󰾅 Balanced"
+pwr3="󰾆 Power Saver"
+pwr4=" Cancel"
+pwrs="$pwr1\n$pwr2\n$pwr3\n$pwr4"
+
+##### 
+## This variable will store the current power profile
+#####
+currentpwr=$(powerprofilesctl get)
+
+##########
+## main ##
+##########
+action=$(echo -e "$options" | $RUNNER -i -l 7 -p "[  Power Options] ") # main menu prompt
+case "$action" in
+    "$option1")
+        pkill Hyprland;
+        ;;
+    "$option2")
+        systemctl reboot;
+        ;;
+    "$option3")
+        systemctl poweroff;
+        ;;
+    "$option4")
+        systemctl suspend;
+        ;;
+    "$option5")
+        "$HOME/.config/hypr/scripts/lock";
+        ;;
+    "$option6")
+        #####
+        ## These conditions will be used for the prompt
+        #####
+        if [ "$currentpwr" = "performance" ]; then
+            currentpwr="$pwr1";
+        elif [ "$currentpwr" = "balanced" ]; then
+            currentpwr="$pwr2";
+        elif [ "$currentpwr" = "power-saver" ]; then
+            currentpwr="$pwr3";
+        fi
+        pwraction=$(echo -e "$pwrs" | $RUNNER -l 6 -i -p "[  Power Profile Menu - Currently set to: $currentpwr] ") # power profiles submenu prompt
+        case "$pwraction" in
+            "$pwr1")
+                if [ "$currentpwr" = "$pwr1" ]; then # if the power profile is already set to performance
+                    notify-send "The power profile is already set to performance";
+                    exit 1;
+                else
+                    powerprofilesctl set performance && notify-send "Power profile switched to performance"; # if not, set the powerprofile to performance
+                fi
+                ;;
+            "$pwr2")
+                if [ "$currentpwr" = "$pwr2" ]; then # if the power profile is already set to balanced
+                    notify-send "The power profile is already set to balanced";
+                    exit 1;
+                else
+                    powerprofilesctl set balanced && notify-send "Power profile switched to balanced"; # if not, set the powerprofile to balanced
+                fi
+                ;;
+            "$pwr3")
+                if [ "$currentpwr" = "$pwr3" ]; then # if the power profile is already set to power saver
+                    notify-send "The power profile is already set to power saver";
+                    exit 1;
+                else
+                    powerprofilesctl set power-saver && notify-send "Power profile switched to power saver"; # if not, set the powerprofile to power saver
+                fi
+                ;;
+            "$pwr4")
+                exit 0;
+        esac;;
+    "$option7")
+        exit 0;
+esac

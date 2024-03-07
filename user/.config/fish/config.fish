@@ -15,7 +15,7 @@ set -U fish_user_paths $HOME/.bin  $HOME/.local/bin /var/lib/flatpak/exports/bin
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
 set EDITOR "~/.local/bin/lvim"
-set VISUAL "neovide --neovim-bin ~/.local/bin/lvim"
+set VISUAL "alacritty --class editor -e ~/.local/bin/lvim"
 
 ### SET BAT AS MANPAGER
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -125,26 +125,30 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# emacs as vim
-alias vim="~/.local/bin/lvim"
+# use lunarvim or neovim for vim if present.
+if test -x "$HOME/.local/bin/lvim"
+    alias vim "$HOME/.local/bin/lvim"
+else if test -x (command -v nvim)
+    alias vim "nvim"
+end
 
 # bat as cat
-alias cat='bat'
+if test -x (command -v bat)
+    alias cat "bat"
+end
 
-# Changing "ls" to "exa"
-alias ls='exa -al --color=always --group-directories-first' # my preferred listing
-alias la='exa -a --color=always --group-directories-first'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first'  # long format
-alias lt='exa -aT --color=always --group-directories-first' # tree listing
-alias l.='exa -a | egrep "^\."'
+# Changing "ls" to "eza"
+alias ls='eza -al --color=always --group-directories-first' # my preferred listing
+alias la='eza -a --color=always --group-directories-first'  # all files and dirs
+alias ll='eza -l --color=always --group-directories-first'  # long format
+alias lt='eza -aT --color=always --group-directories-first' # tree listing
+alias l.='eza -a | egrep "^\."'
 
 # package management
-alias pac-up='paru -Syu'
-alias pac-get='paru -S'
-alias pac-rmv='paru -Rcns'
-alias pac-rmv-sec='paru -R'
-alias pac-qry='paru -Ss'
-alias pac-cln='paru -Scc && paru -Rns (pacman -Qtdq)'
+alias pkg-update="sudo dnf update"
+alias pkg-install="sudo dnf install"
+alias pkg-remove="sudo dnf remove"
+alias pkg-search="sudo dnf search"
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
@@ -153,7 +157,6 @@ alias fgrep='fgrep --color=auto'
 
 # file management
 alias fm="vifm"
-alias file="vifm"
 alias flm="vifm"
 alias cp='cp -iv'
 alias mv='mv -iv'
@@ -184,17 +187,18 @@ alias psmem='ps auxf | sort -nr -k 4'
 alias pscpu='ps auxf | sort -nr -k 3'
 
 # git
-alias addup='git add -u'
-alias addall='git add .'
-alias branch='git branch'
-alias checkout='git checkout'
-alias clone='git clone'
-alias commit='git commit -m'
-alias fetch='git fetch'
-alias pull='git pull origin'
-alias push='git push origin'
-alias tag='git tag'
-alias newtag='git tag -a'
+alias git-adu='git add -u'
+alias git-adl='git add .'
+alias git-brn='git branch'
+alias git-chk='git checkout'
+alias git-cln='git clone'
+alias git-cmt='git commit -m'
+alias git-fth='git fetch'
+alias git-pll='git pull origin'
+alias git-psh='git push origin'
+alias git-sts='git status'
+alias git-tag='git tag'
+alias git-ntg='git tag -a'
 
 # power management
 alias po='systemctl poweroff'
