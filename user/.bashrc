@@ -32,6 +32,9 @@ fi
 if [ -d "$HOME/.local/bin" ] ;
     then PATH="$HOME/.local/bin:$PATH"
 fi
+if [ -d "$HOME/.cargo/bin" ] ;
+    then PATH="$HOME/.cargo/bin:$PATH"
+fi
 if [ -d "$HOME/Applications" ] ;
     then PATH="$HOME/Applications:$PATH"
 fi
@@ -287,3 +290,19 @@ function parse_git_dirty {
 }
 
 export PS1="[\[\e[31m\]\u\[\e[m\]\[\e[35m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]] [\[\e[33m\]\W\[\e[m\]\[\e[34m\]\`parse_git_branch\`\[\e[m\]] 󱞪 "
+
+export GOOGLE_AI_KEY='AIzaSyDpCP3jEM5Q08OEIcGdIBr8XxwIhaK5TGw'
+
+export GOOGLE_AI_KEY='AIzaSyDpCP3jEM5Q08OEIcGdIBr8XxwIhaK5TGw'
+
+export GOOGLE_AI_KEY='[1;34md[33mr[31mw[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m@    [1;90m-[0m [1;33mdrk[0m [34m 7 Mar 10:51[0m [1;34m.cache[0m'
+
+export GOOGLE_AI_KEY='[1;34md[33mr[31mw[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m@    [1;90m-[0m [1;33mdrk[0m [34m 7 Mar 10:51[0m [1;34m.cache[0m'
+
+export GOOGLE_AI_KEY='AIzaSyDpCP3jEM5Q08OEIcGdIBr8XxwIhaK5TGw'
+
+export GOOGLE_AI_KEY='AIzaSyDpCP3jEM5Q08OEIcGdIBr8XxwIhaK5TGw'
+
+export GOOGLE_AI_KEY='AIzaSyDpCP3jEM5Q08OEIcGdIBr8XxwIhaK5TGw'
+
+export GOOGLE_AI_KEY='AIzaSyDpCP3jEM5Q08OEIcGdIBr8XxwIhaK5TGw'

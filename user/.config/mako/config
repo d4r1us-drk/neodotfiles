@@ -25,7 +25,7 @@ history=1
 text-alignment=left
 default-timeout=15000
 layer=top
-anchor=top-right
+anchor=bottom-left
 
 [category=CHANGE_LAYOUT]
 font=Mononoki Nerd Font 26
