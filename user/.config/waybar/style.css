@@ -10,7 +10,6 @@ window#waybar {
     color: #ebdbb2;
     transition-property: background-color;
     transition-duration: .5s;
-    border-right: 2px solid #665c54;
 }
 
 window#waybar.hidden {
@@ -41,23 +40,29 @@ button:hover {
 
 #workspaces {
     font-family: Symbols Nerd Font Mono;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 #workspaces button {
+    padding: 0 3px;
+    background-color: transparent;
     color: #ebdbb2;
+    border-radius: 5px;
 }
 
 #workspaces button.active {
     color: #8ec07c;
+    border-radius: 5px;
 }
 
 #workspaces button:hover {
     color: #fb4934;
+    border-radius: 5px;
 }
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
+    border-radius: 5px;
 }
 
 #mode {
@@ -75,7 +80,7 @@ button:hover {
 #mode {
   font-family: Symbols Nerd Font Mono, mononoki Nerd Font;
   font-size: 16px;
-  padding: 8 1px;
+  padding: 0 8px;
   color: #ebdbb2;
 }
 

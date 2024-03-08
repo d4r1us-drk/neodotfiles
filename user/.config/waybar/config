@@ -1,5 +1,7 @@
 {
-  "position": "left",
+  "position": "top",
+  "height": 41,
+  "spacing": 3,
   "layer": "top",
 
   // Choose the order of the modules
@@ -31,22 +33,20 @@
   },
 
   "hyprland/language": {
-    "format": "{}",
+    "format": "{} \udb80\udf0c",
     "format-en": "US",
     "format-es": "ES",
-    "on-click": "~/.config/hypr/scripts/switchlayout"
   },
 
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "{:%H\n--\n%M}",
-    "format-alt": "{:%y\n--\n%m\n--\n%d}",
+    "format": "\udb82\udd54 {:%H:%M}",
+    "format-alt": "\udb80\udcf5 {:%Y-%m-%d}"
   },
 
   "backlight": {
-    "format": "{icon}",
-    "format-icons": ["\udb86\ude4e", "\udb86\ude4f", "\udb86\ude50", "\udb86\ude51", "\udb86\ude52", "\udb86\ude53", "\udb86\ude54", "\udb86\ude55", "\udb81\udee8"],
-    "tooltip-format": "{percent}%"
+    "format": "{percent}% {icon}",
+    "format-icons": ["\udb86\ude4e", "\udb86\ude4f", "\udb86\ude50", "\udb86\ude51", "\udb86\ude52", "\udb86\ude53", "\udb86\ude54", "\udb86\ude55", "\udb81\udee8"]
   },
 
   "battery": {
@@ -54,13 +54,12 @@
       "warning": 30,
       "critical": 15
     },
-    "tooltip-format": "{capacity}% - {timeTo}",
-    "format": "{icon}",
-    "format-charging": "{icon}\n\n\udb81\udea5",
-    "format-plugged": "{icon}\n\n\udb81\udea5",
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% {icon}\udb81\udea5",
+    "format-plugged": "{capacity}% {icon}\udb81\udea5",
     "format-alt": "{time} {icon}",
-    "format-critical": "{icon}\n\n\udb84\ude38",
-    "format-warning": "{icon}\n\n\udb84\ude38",
+    "format-critical": "{capacity}% {icon}\udb84\ude38",
+    "format-warning": "{capacity}% {icon}\udb84\ude38",
     "format-icons": ["\udb80\udc7a", "\udb80\udc7c", "\udb80\udc7e", "\udb80\udc80", "\udb80\udc79"]
   },
 
@@ -71,12 +70,12 @@
   },
 
   "pulseaudio": {
-    "scroll-step": 5, // %, can be a float
-    "format": "{icon}\n\n{format_source}",
-    "format-bluetooth": "{icon}\n\n\udb80\udcaf\n\n{format_source}",
-    "format-bluetooth-muted": "\udb81\udd81\n\n{icon}\udb80\udcaf\n\n{format_source}",
-    "format-muted": "\udb81\udd81\n\n{format_source}",
-    "format-source": "\udb80\udf6c",
+    "scroll-step": 1, // %, can be a float
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon}\udb80\udcaf {format_source}",
+    "format-bluetooth-muted": "\udb81\udd81 {icon}\udb80\udcaf {format_source}",
+    "format-muted": "\udb81\udd81 {format_source}",
+    "format-source": "{volume}% \udb80\udf6c",
     "format-source-muted": "\udb80\udf6d",
     "format-icons": {
       "headphone": "\udb80\udecb",
@@ -87,17 +86,15 @@
       "car": "\udb80\udd0b",
       "default": ["\udb81\udd7f", "\udb81\udd80", "\udb81\udd7e"]
     },
-    "tooltip-format": "{desc} - {volume}%",
-    "on-click": "alacritty --class pulsemixer -e pulsemixer"
+    "on-click": "wezterm start --class pulsemixer -- pulsemixer"
   },
 
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "\udb81\udda9",
+    "format-wifi": "{essid} \udb81\udda9",
     "format-ethernet": "{ipaddr}/{cidr} \udb80\ude00",
     "format-disconnected": "Disconnected \udb81\uddaa",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    "tooltip-format": "{essid}"
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
 }
 
