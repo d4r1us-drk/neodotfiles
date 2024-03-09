@@ -83,6 +83,7 @@
         "exec": "bash $HOME/.config/waybar/power-profiles",
         "restart-interval": 5,
         "format": "{}",
+        "tooltip": false
     },
 
     "pulseaudio": {
