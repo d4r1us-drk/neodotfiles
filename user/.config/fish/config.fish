@@ -231,3 +231,4 @@ alias blt='bluetoothctl'
 
 ### SETTING THE STARSHIP PROMPT ###
 starship init fish | source
+zoxide init fish | source

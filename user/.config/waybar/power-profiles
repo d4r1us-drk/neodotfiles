@@ -1,10 +1,10 @@
 #!/bin/bash
 currntpwr=$(powerprofilesctl get)
 if [ "${currntpwr}" = "performance" ]; then
-  pwr="Performance 󰓅"
+  pwr="󰓅"
 elif [ "${currntpwr}" = "balanced" ]; then
-  pwr="Balanced 󰾅"
+  pwr="󰾅"
 elif [ "${currntpwr}" = "power-saver" ]; then
-  pwr="PowerSaver 󰾆"
+  pwr="󰾆"
 fi
 echo "$pwr"

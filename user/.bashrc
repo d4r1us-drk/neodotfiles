@@ -1,10 +1,3 @@
-##       ____             __
-##      / __ \_________ _/ /_____
-##     / / / / ___/ __ `/ //_/ _ \
-##    / /_/ / /  / /_/ / ,< /  __/  Clay Gomera (Drake)
-##   /_____/_/   \__,_/_/|_|\___/   My custom bash config
-##
-
 ### EXPORT ###
 export TERM="xterm-256color"                      # getting proper colors
 export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
@@ -232,77 +225,5 @@ alias \
     wfi-off="nmcli radio wifi off" \
     blt="bluetoothctl"
 
-# get current branch in git repo
-function parse_git_branch() {
-    BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
-        if [ ! "${BRANCH}" == "" ]; then
-            STAT=$(parse_git_dirty)
-            echo "[${BRANCH}${STAT}]"
-	    else
-            echo ""
-        fi
-}
-
-# get current branch in git repo
-function parse_git_branch() {
-    BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
-        if [ ! "${BRANCH}" == "" ]; then
-            STAT=$(parse_git_dirty)
-            echo "[${BRANCH}${STAT}]"
-        else
-            echo ""
-        fi
-}
-
-# get current status of git repo
-function parse_git_dirty {
-    status=$(git status 2>&1 | tee)
-    dirty=$(echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?")
-    untracked=$(echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?")
-    ahead=$(echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?")
-    newfile=$(echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?")
-    renamed=$(echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?")
-    deleted=$(echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?")
-    bits=''
-	if [ "${renamed}" == "0" ]; then
-	    bits=">${bits}"
-	fi
-	if [ "${ahead}" == "0" ]; then
-	    bits="*${bits}"
-	fi
-	if [ "${newfile}" == "0" ]; then
-	    bits="+${bits}"
-	fi
-	if [ "${untracked}" == "0" ]; then
-	    bits="?${bits}"
-	fi
-	if [ "${deleted}" == "0" ]; then
-	    bits="x${bits}"
-	fi
-	if [ "${dirty}" == "0" ]; then
-	    bits="!${bits}"
-	fi
-	if [ ! "${bits}" == "" ]; then
-	    echo " ${bits}"
-	else
-	    echo ""
-	fi
-}
-
-export PS1="[\[\e[31m\]\u\[\e[m\]\[\e[35m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]] [\[\e[33m\]\W\[\e[m\]\[\e[34m\]\`parse_git_branch\`\[\e[m\]] 󱞪 "
-
-export GOOGLE_AI_KEY='AIzaSyDpCP3jEM5Q08OEIcGdIBr8XxwIhaK5TGw'
-
-export GOOGLE_AI_KEY='AIzaSyDpCP3jEM5Q08OEIcGdIBr8XxwIhaK5TGw'
-
-export GOOGLE_AI_KEY='[1;34md[33mr[31mw[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m@    [1;90m-[0m [1;33mdrk[0m [34m 7 Mar 10:51[0m [1;34m.cache[0m'
-
-export GOOGLE_AI_KEY='[1;34md[33mr[31mw[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m@    [1;90m-[0m [1;33mdrk[0m [34m 7 Mar 10:51[0m [1;34m.cache[0m'
-
-export GOOGLE_AI_KEY='AIzaSyDpCP3jEM5Q08OEIcGdIBr8XxwIhaK5TGw'
-
-export GOOGLE_AI_KEY='AIzaSyDpCP3jEM5Q08OEIcGdIBr8XxwIhaK5TGw'
-
-export GOOGLE_AI_KEY='AIzaSyDpCP3jEM5Q08OEIcGdIBr8XxwIhaK5TGw'
-
-export GOOGLE_AI_KEY='AIzaSyDpCP3jEM5Q08OEIcGdIBr8XxwIhaK5TGw'
+# starship prompt
+eval "$(starship init bash)"

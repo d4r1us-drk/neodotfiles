@@ -1,6 +1,6 @@
-gtk-theme-name="gruvbox-dark-gtk"
-gtk-icon-theme-name="gruvbox-dark-icons-gtk"
-gtk-font-name="Cantarell 10"
+gtk-theme-name="Gruvbox-Dark-BL"
+gtk-icon-theme-name="Papirus-Dark"
+gtk-font-name="Mononoki Nerd Font 12"
 gtk-cursor-theme-name="Simp1e-Gruvbox-Dark"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
