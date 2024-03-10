@@ -149,7 +149,7 @@ shot_area() {
     if [ "$sschoice" = "$sscho1" ]; then
         sleep 0.5 && wayshot -s "$(slurp)" --stdout | wl-copy && notify-send "Screenshot saved to clipboard";
     elif [ "$sschoice" = "$sscho2" ]; then
-        sleep 0.5 && wayshot -f "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to $SHOTDIR";
+        sleep 0.5 && wayshot -s "$(slurp)" -f "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to $SHOTDIR";
     else
         exit 0
     fi
