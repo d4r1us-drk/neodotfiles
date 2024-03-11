@@ -1,13 +1,13 @@
 * {
     margin-top: 3px;
     margin-bottom: 3px;
-    margin-right: 3px;
-    margin-left: 3px;
 }
 
 window#waybar {
     background-color: rgb(29, 32, 33);
-    border-right: 3px solid #3c3836;
+    border-right: 5px solid #3c3836;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
     color: #ebdbb2;
     transition-property: background-color;
     transition-duration: .5s;
@@ -42,22 +42,23 @@ button:hover {
 #workspaces {
     font-family: Symbols Nerd Font Mono;
     font-size: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 #workspaces button {
     padding: 0 3px;
     background-color: transparent;
     color: #ebdbb2;
-    border-radius: 5px;
 }
 
 #workspaces button.active {
-    color: #8ec07c;
+    color: #fb4934;
     border-radius: 5px;
 }
 
 #workspaces button:hover {
-    color: #fb4934;
+    color: #8ec07c;
     border-radius: 5px;
 }
 
@@ -81,8 +82,11 @@ button:hover {
 #mode {
   font-family: Symbols Nerd Font Mono, mononoki Nerd Font;
   font-size: 16px;
-  padding: 10 8px;
+  padding: 13 8px;
   color: #ebdbb2;
+  border-radius: 18px;
+  margin-left: 8px;
+  margin-right: 14px;
 }
 
 #window,

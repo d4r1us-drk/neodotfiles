@@ -13,7 +13,7 @@
 " Since emacs is a GUI app and not a terminal app like vim, append the command
 " with an ampersand (&).
 
-set vicmd=~/.local/bin/lvim
+set vicmd=nvim
 
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
@@ -246,10 +246,10 @@ filetype *.[1-8] man ./%c
 fileviewer *.[1-8] man ./%c | col -b
 
 " Images
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.webp
         \ {View in imv}
         \ imv %f &,
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm,*.gif
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm,*.gif,*.webp
         \ vifmimg draw %px %py %pw %ph %c
         \ %pc
         \ vifmimg clear
@@ -296,8 +296,11 @@ filetype *.asc
        \ !!gpg --verify %c,
 
 " Torrent
-filetype *.torrent ktorrent %f &
+filetype *.torrent qbittorrent %f &
 fileviewer *.torrent dumptorrent -v %c
+
+" Rnote
+filetype *.rnote flatpak run com.github.flxzt.rnote %f &
 
 " FuseZipMount
 filetype *.zip,*.jar,*.war,*.ear,*.oxt,*.apkg

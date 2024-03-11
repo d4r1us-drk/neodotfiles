@@ -105,9 +105,9 @@
 (use-package emojify
   :hook (after-init . global-emojify-mode))
 
-(setq doom-font (font-spec :family "mononoki Nerd Font" :size 15)
-      doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 15)
-      doom-big-font (font-spec :family "mononoki Nerd Font" :size 20))
+(setq doom-font (font-spec :family "mononoki Nerd Font" :size 18)
+      doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 18)
+      doom-big-font (font-spec :family "mononoki Nerd Font" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -298,3 +298,6 @@
 (map! :leader
       :desc "Zap to char" "z" #'zap-to-char
       :desc "Zap up to char" "Z" #'zap-up-to-char)
+
+(set-frame-parameter nil 'alpha-background 90) ; For current frame
+(add-to-list 'default-frame-alist '(alpha-background . 90)) ; For all new frames henceforth

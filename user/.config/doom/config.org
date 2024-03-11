@@ -38,6 +38,7 @@
 - [[#splits][SPLITS]]
 - [[#winner-mode][WINNER MODE]]
 - [[#zap-to-char][ZAP TO CHAR]]
+- [[#transparent][TRANSPARENT]]
 
 * ABOUT THIS CONFIG
 This is my personal Doom Emacs config.  Doom Emacs is a distribution of Emacs that uses the "evil" keybindings (Vim keybindings) and includes a number of nice extensions and a bit of configuration out of the box.  I am maintaining this config not just for myself, but also for those that want to explore some of what is possible with Emacs.  I will add a lot of examples of plugins and settings, some of them I may not even use personally.  I do this because many people following me on YouTube look at my configs as "documentation". This config is based on DistroTube's config.
@@ -254,9 +255,9 @@ Settings related to fonts within Doom Emacs:
 + 'font-lock-keyword-face' -- for keywords with special significanclike 'setq' in elisp.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "mononoki Nerd Font" :size 15)
-      doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 15)
-      doom-big-font (font-spec :family "mononoki Nerd Font" :size 20))
+(setq doom-font (font-spec :family "mononoki Nerd Font" :size 18)
+      doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 18)
+      doom-big-font (font-spec :family "mononoki Nerd Font" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -597,4 +598,13 @@ Emacs provides a 'zap-to-char' command that kills from the current point to a ch
 (map! :leader
       :desc "Zap to char" "z" #'zap-to-char
       :desc "Zap up to char" "Z" #'zap-up-to-char)
+#+END_SRC
+
+
+* TRANSPARENT
+Transparent window
+
+#+BEGIN_SRC emacs-lisp
+(set-frame-parameter nil 'alpha-background 90) ; For current frame
+(add-to-list 'default-frame-alist '(alpha-background . 90)) ; For all new frames henceforth
 #+END_SRC

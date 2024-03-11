@@ -2,7 +2,7 @@
 
 # ***This script was made by Clay Gomera (Drake)***
 #  - Description: A simple screenshot menu script for rofi/dmenu/wofi
-#  - Dependencies: {rofi||dmenu||wofi}, wayshot, slurp, wf-recorder
+#  - Dependencies: {rofi||dmenu||wofi}, grim, slurp
 
 ###########################
 ## Screenshots Directory ##
@@ -74,9 +74,9 @@ fdel() {
 shot_screen() {
     fsschos
     if [ "$sschoice" = "$sscho1" ]; then
-        sleep 0.5 && wayshot --stdout | wl-copy && notify-send "Screenshot copied to clipboard"
+        sleep 0.5 && grim - | wl-copy && notify-send "Screenshot copied to clipboard"
     elif [ "$sschoice" = "$sscho2" ]; then
-        sleep 0.5 && wayshot -f "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to $SHOTDIR"
+        sleep 0.5 && grim "$SHOTDIR/$(date +%s).png" && notify-send "Screenshot saved to $SHOTDIR"
     else
         exit 0
     fi
@@ -101,13 +101,13 @@ shot_screen_delay() {
         fdel;
         case $del in
             "$del1")
-                sleep 3 && wayshot --stdout | wl-copy && notify-send "Screenshot saved to clipboard";
+                sleep 3 && grim - | wl-copy && notify-send "Screenshot saved to clipboard";
                 ;;
             "$del2")
-                sleep 5 && wayshot --stdout | wl-copy && notify-send "Screenshot saved to clipboard";
+                sleep 5 && grim - | wl-copy && notify-send "Screenshot saved to clipboard";
                 ;;
             "$del3")
-                sleep 10 && wayshot --stdout | wl-copy && notify-send "Screenshot saved to clipboard";
+                sleep 10 && grim - | wl-copy && notify-send "Screenshot saved to clipboard";
                 ;;
             "$del4")
                 exit 0;
@@ -116,13 +116,13 @@ shot_screen_delay() {
         fdel;
         case $del in
             "$del1")
-                sleep 3 && wayshot -f "$SHOTDIR/$(date +%s)" && notify-send "Screenshot saved to $SHOTDIR";
+                sleep 3 && grim "$SHOTDIR/$(date +%s).png" && notify-send "Screenshot saved to $SHOTDIR";
                 ;;
             "$del2")
-                sleep 5 && wayshot -f "$SHOTDIR/$(date +%s)" && notify-send "Screenshot saved to $SHOTDIR";
+                sleep 5 && grim "$SHOTDIR/$(date +%s).png" && notify-send "Screenshot saved to $SHOTDIR";
                 ;;
             "$del3")
-                sleep 10 && wayshot -f "$SHOTDIR/$(date +%s)" && notify-send "Screenshot saved to $SHOTDIR";
+                sleep 10 && grim "$SHOTDIR/$(date +%s).png" && notify-send "Screenshot saved to $SHOTDIR";
                 ;;
             "$del4")
                 exit 0;
@@ -147,9 +147,9 @@ shot_screen_delay() {
 shot_area() {
     fsschos;
     if [ "$sschoice" = "$sscho1" ]; then
-        sleep 0.5 && wayshot -s "$(slurp)" --stdout | wl-copy && notify-send "Screenshot saved to clipboard";
+        sleep 0.5 && grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot saved to clipboard";
     elif [ "$sschoice" = "$sscho2" ]; then
-        sleep 0.5 && wayshot -s "$(slurp)" -f "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to $SHOTDIR";
+        sleep 0.5 && grim -g "$(slurp)" "$SHOTDIR/$(date +%s).png" && notify-send "Screenshot saved to $SHOTDIR";
     else
         exit 0
     fi
@@ -167,10 +167,12 @@ shot_area() {
 #####
 shot_window() {
     fsschos;
+    local focused=$(hyprctl activewindow -j)
+    local geom=$(echo "$focused" | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')
     if [ "$sschoice" = "$sscho1" ]; then
-        wayshot -s "$(hyprctl activewindow -j | jq -c -r '.at,.size | .[]' | tr '\n' ' ')" --stdout | wl-copy && notify-send "Screenshot saved to clipboard";
+        sleep 0.5 && grim -g "$geom" - | wl-copy && notify-send "Screenshot saved to clipboard";
     elif [ "$sschoice" = "$sscho2" ]; then
-        wayshot -s "$(hyprctl activewindow -j | jq -c -r '.at,.size | .[]' | tr '\n' ' ')" --stdout -f "$SHOTDIR/$(date +%s).jpg" && notify-send "Screenshot saved to $SHOTDIR";
+        sleep 0.5 && grim -g "$geom" "$SHOTDIR/$(date +%s).png" && notify-send "Screenshot saved to $SHOTDIR";
     else
         exit 0
     fi
@@ -178,7 +180,7 @@ shot_window() {
 
 # show the help output with --help or -h arguments 
 if [ "$1" == '--help' ] || [ "$1" = '-h' ]; then
-    echo "rs-scrot"
+    echo "fuzz_scrot"
     echo "USAGE: rs-scrot [OPTION]"
     echo -e "(no option)\tshow the screenshot menu"
     echo -e "-h, --help\tthis screen"
