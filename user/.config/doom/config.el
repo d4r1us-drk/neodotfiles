@@ -167,7 +167,7 @@
        :desc "Toggle truncate lines" "t" #'toggle-truncate-lines))
 
 (custom-set-faces
- '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :family "variable-pitch"))))
+ '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :family "Mononoki Nerd Font"))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.7))))
  '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.6))))
  '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.5))))

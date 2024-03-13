@@ -76,14 +76,16 @@
             "\udb80\udc80",
             "\udb80\udc79"
         ],
-        "tooltip-format": "{capacity}% - {timeTo}"
+        "tooltip-format": "{capacity}% - {timeTo}",
+        "on-click": "$HOME/.config/fuzzel/scripts/fuzz_power"
     },
 
     "custom/powerprofiles": {
         "exec": "bash $HOME/.config/waybar/power-profiles",
         "restart-interval": 5,
         "format": "{}",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "$HOME/.config/fuzzel/scripts/fuzz_power"
     },
 
     "pulseaudio": {
@@ -111,7 +113,8 @@
         "format-wifi": "\udb81\udda9",
         "format-ethernet": "\udb80\ude00",
         "format-disconnected": "\udb81\uddaa",
-        "tooltip-format": "{signalStrength}% - {essid}"
+        "tooltip-format": "{signalStrength}% - {essid}",
+        "on-click": "$HOME/.config/fuzzel/scripts/fuzz_wifi"
     },
 }
 
