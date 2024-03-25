@@ -49,7 +49,7 @@ case "$action" in
         systemctl suspend;
         ;;
     "$option5")
-        "$HOME/.config/hypr/scripts/lock";
+        hyprlock;
         ;;
     "$option6")
         #####

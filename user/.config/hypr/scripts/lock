@@ -1,5 +1,0 @@
-#!/bin/bash
-
-currwall=$(swww query | awk '{print $8}')
-
-swaylock -f -i "$currwall"

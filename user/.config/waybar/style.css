@@ -5,9 +5,7 @@
 
 window#waybar {
     background-color: rgb(29, 32, 33);
-    border-right: 3px solid #cc241d;
-    border-top-right-radius: 28px;
-    border-bottom-right-radius: 28px;
+    border-right: 3px solid #504945;
     color: #ebdbb2;
     transition-property: background-color;
     transition-duration: .5s;
@@ -82,9 +80,9 @@ button:hover {
 #mode {
   font-family: Symbols Nerd Font Mono, mononoki Nerd Font;
   font-size: 18px;
-  padding: 6px 6px;
+  padding: 8px 8px;
   color: #ebdbb2;
-  border-radius: 18px;
+  border-radius: 4px;
   margin-left: 10px;
   margin-right: 12px;
 }

@@ -9,13 +9,14 @@
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive and fish becomes very slow.
 set -e fish_user_paths
-set -U fish_user_paths $HOME/.bin  $HOME/.local/bin /var/lib/flatpak/exports/bin/ $fish_user_paths
+set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/go/bin $HOME/Applications /var/lib/flatpak/exports/bin/ $fish_user_paths
 
 ### EXPORT ###
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
-set EDITOR "~/.local/bin/lvim"
-set VISUAL "alacritty --class editor -e ~/.local/bin/lvim"
+set EDITOR "emacsclient -t -a ''"
+set VISUAL "emacsclient -c -a emacs"
+set GOPATH "~/go"
 
 ### SET BAT AS MANPAGER
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -156,8 +157,8 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # file management
-alias fm="vifm"
-alias flm="vifm"
+alias fm="~/.config/vifm/scripts/vifmrun"
+alias flm="~/.config/vifm/scripts/vifmrun"
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -vI'

@@ -299,5 +299,5 @@
       :desc "Zap to char" "z" #'zap-to-char
       :desc "Zap up to char" "Z" #'zap-up-to-char)
 
-(set-frame-parameter nil 'alpha-background 90) ; For current frame
-(add-to-list 'default-frame-alist '(alpha-background . 90)) ; For all new frames henceforth
+(set-frame-parameter nil 'alpha-background 85) ; For current frame
+(add-to-list 'default-frame-alist '(alpha-background . 85)) ; For all new frames henceforth
