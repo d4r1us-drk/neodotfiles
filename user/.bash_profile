@@ -1,11 +1,4 @@
 #!/bin/bash
-##       ____             __
-##      / __ \_________ _/ /_____
-##     / / / / ___/ __ `/ //_/ _ \
-##    / /_/ / /  / /_/ / ,< /  __/  Clay Gomera (Drake)
-##   /_____/_/   \__,_/_/|_|\___/   My custom bash_profile config
-##
-#
 
 # Home folders
 export XDG_DATA_HOME="$HOME/.local/share"

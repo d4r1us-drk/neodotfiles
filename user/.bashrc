@@ -1,6 +1,7 @@
 ### EXPORT ###
 export TERM="xterm-256color"                      # getting proper colors
 export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
+export GOPATH="$HOME/go"
 
 ### "bat" as manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -30,6 +31,9 @@ if [ -d "$HOME/.cargo/bin" ] ;
 fi
 if [ -d "$HOME/Applications" ] ;
     then PATH="$HOME/Applications:$PATH"
+fi
+if [ -d "$HOME/go/bin" ] ;
+    then PATH="$HOME/go/bin:$PATH"
 fi
 
 ### CHANGE TITLE OF TERMINALS ###
