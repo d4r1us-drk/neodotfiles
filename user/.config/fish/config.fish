@@ -14,8 +14,8 @@ set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/go/bin $HOME/Applicati
 ### EXPORT ###
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
-set EDITOR "emacsclient -t -a ''"
-set VISUAL "emacsclient -c -a emacs"
+set EDITOR "lvim"
+set VISUAL "kitty --class editor lvim"
 set GOPATH "~/go"
 
 ### SET BAT AS MANPAGER
@@ -232,4 +232,3 @@ alias blt='bluetoothctl'
 
 ### SETTING THE STARSHIP PROMPT ###
 starship init fish | source
-zoxide init fish | source

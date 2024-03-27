@@ -1,12 +1,36 @@
 {
-    "position": "left",
-    "spacing": 3,
+    "position": "top",
+    "height": 28,
     "layer": "top",
 
-    // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces"],
-    //  "modules-center": ["clock"],
-    "modules-right": ["hyprland/language", "pulseaudio", "backlight", "battery", "custom/powerprofiles", "network", "clock"],
+    // Modules order
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    // "modules-center": [
+    //     "hyprland/window"
+    // ],
+
+    "modules-right": [
+        "custom/arrow1",
+        "hyprland/language",
+        "custom/arrow2",
+        "pulseaudio",
+        "custom/arrow3",
+        "backlight",
+        "custom/arrow4",
+        "idle_inhibitor",
+        "custom/powerprofiles",
+        "battery",
+        "custom/arrow5",
+        "network",
+        "custom/arrow6",
+        "clock"
+    ],
+
+    // Modules
 
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -15,32 +39,41 @@
         "on-scroll-down": "hyprctl dispatch workspace e-1",
         "format": "{icon}",
         "format-icons": {
-            "1": "\udb80\udd69",
-            "2": "\udb82\uddad",
-            "3": "\udb80\ude56",
-            "4": "\udb81\udd9f",
-            "5": "\udb80\udf6a",
-            "6": "\udb83\udcb8",
-            "7": "\udb82\udfdc",
-            "8": "\udb82\udd76",
-            "9": "\udb82\uddee",
-            "10": "\udb83\ude3f",
+            "1": "\udb80\udd69 cde",
+            "2": "\udb82\uddad tbx",
+            "3": "\udb80\ude56 fle",
+            "4": "\udb81\udd9f web",
+            "5": "\udb80\udf6a cht",
+            "6": "\udb83\udcb8 aud",
+            "7": "\udb82\udfdc vid",
+            "8": "\udb82\udd76 img",
+            "9": "\udb82\uddee doc",
+            "10": "\udb83\ude3f gme",
             "urgent": "\uf12a",
             "focused": "\uf192",
             "default": "\uf444"
         }
     },
 
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "\uea71",
+            "deactivated": "\ueabc"
+        }
+    },
+
     "hyprland/language": {
-        "format": "{}",
+        "format": "\udb80\udf0c {}",
         "format-en": "US",
         "format-es": "ES",
+        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
     },
 
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%H\n--\n%M}",
-        "format-alt": "{:%y\n--\n%m\n--\n%d}"
+        "format": "\udb82\udd54 {:%H:%M}",
+        "format-alt": "\udb80\udcf5 {:%Y-%m-%d}"
     },
 
     "backlight": {
@@ -65,10 +98,10 @@
             "critical": 15
         },
         "format": "{icon}",
-        "format-charging": "{icon}\n\n\udb81\udea5",
-        "format-plugged": "{icon}\n\n\udb81\udea5",
-        "format-critical": "{icon}\n\n\udb84\ude38",
-        "format-warning": "{icon}\n\n\udb84\ude38",
+        "format-charging": "{icon} \udb81\udea5",
+        "format-plugged": "{icon} \udb81\udea5",
+        "format-critical": "{icon} \udb84\ude38",
+        "format-warning": "{icon} \udb84\ude38",
         "format-icons": [
             "\udb80\udc7a",
             "\udb80\udc7c",
@@ -89,11 +122,12 @@
     },
 
     "pulseaudio": {
-        "scroll-step": 5, // %, can be a float
-        "format": "{icon}\n\n{format_source}",
-        "format-bluetooth": "{icon}\n\n\udb80\udcaf\n\n{format_source}",
-        "format-bluetooth-muted": "\udb81\udd81\n\n{icon}\n\n\udb80\udcaf\n\n{format_source}",
-        "format-muted": "\udb81\udd81\n\n{format_source}",
+        "scroll-step": 1, // %, can be a float
+        "tooltip-format": "{volume}% - {desc}",
+        "format": "{icon} {format_source}",
+        "format-bluetooth": "{icon}\udb80\udcaf {format_source}",
+        "format-bluetooth-muted": "\udb81\udd81 {icon}\udb80\udcaf {format_source}",
+        "format-muted": "\udb81\udd81 {format_source}",
         "format-source": "\udb80\udf6c",
         "format-source-muted": "\udb80\udf6d",
         "format-icons": {
@@ -105,16 +139,44 @@
             "car": "\udb80\udd0b",
             "default": ["\udb81\udd7f", "\udb81\udd80", "\udb81\udd7e"]
         },
-        "tooltip-format": "{volume}% - {desc}",
-        "on-click": "pavucontrol"
+        "on-click": "kitty --class pulsemixer pulsemixer"
     },
 
     "network": {
-        "format-wifi": "\udb81\udda9",
+        "format-wifi": "\udb81\udda9 {essid}",
         "format-ethernet": "\udb80\ude00",
-        "format-disconnected": "\udb81\uddaa",
-        "tooltip-format": "{signalStrength}% - {essid}",
+        "format-disconnected": "\udb81\uddaa Disconnected",
+        "tooltip-format": "{signalStrength}% - {ifname}: {ipaddr}/{cidr}",
         "on-click": "$HOME/.config/fuzzel/scripts/fuzz_wifi"
     },
-}
 
+    "custom/arrow1": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/arrow2": {
+        "format": "",
+		"tooltip": false
+    },
+
+    "custom/arrow3": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/arrow4": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/arrow5": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/arrow6": {
+        "format": "",
+        "tooltip": false
+    },
+}

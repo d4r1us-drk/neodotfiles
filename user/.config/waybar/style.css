@@ -1,33 +1,69 @@
+/* Styles */
+
+/* Colors (gruvbox) */
+@define-color black     #1d2021;
+@define-color red       #cc241d;
+@define-color green     #98971a;
+@define-color yellow    #d79921;
+@define-color orange    #fe8019;
+@define-color blue      #458588;
+@define-color purple    #b16286;
+@define-color aqua      #689d6a;
+@define-color gray      #a89984;
+/* Brighter variants */
+@define-color brgray    #928374;
+@define-color brred     #fb4934;
+@define-color brgreen   #b8bb26;
+@define-color bryellow  #fabd2f;
+@define-color brblue    #83a598;
+@define-color brpurple  #d3869b;
+@define-color braqua    #8ec07c;
+@define-color white     #ebdbb2;
+@define-color bg2       #504945;
+/* Darker variants */
+@define-color drred     #9d0006;
+@define-color drgreen   #79740e;
+@define-color drpurple  #8f3f71;
+@define-color drorange  #af3a03;
+@define-color drgray    #3c3836;
+@define-color drblue    #076678;
+@define-color draqua    #427b58;
+@define-color dryellow  #b57614;
+
+/* Color definitions for modules */
+@define-color critical              @brred;
+@define-color unfocused             @braqua;
+@define-color focused               @brred;
+@define-color inactive              @drgray;
+@define-color idle                  @drgreen;
+@define-color backlight             @dryellow;
+@define-color pulseaudio            @drblue;
+@define-color powerprofile          @drgreen;
+@define-color network               @drred;
+@define-color language              @drpurple;
+@define-color battery               @drgreen;
+@define-color clock                 @draqua;
+@define-color wbackground           rgba(29, 32, 33, 0.95);
+
+/* Keyframes */
+@keyframes blink {
+    to {
+        color: @critical;
+    }
+}
+
+/* Reset all styles */
 * {
-    margin-top: 3px;
-    margin-bottom: 3px;
-}
-
-window#waybar {
-    background-color: rgb(29, 32, 33);
-    border-right: 3px solid #504945;
-    color: #ebdbb2;
-    transition-property: background-color;
-    transition-duration: .5s;
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	padding: 0;
+	box-shadow: none;
+	text-shadow: none;
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
     border: none;
     border-radius: 0;
 }
@@ -37,92 +73,65 @@ button:hover {
     background: inherit;
 }
 
-#workspaces {
-    font-family: Symbols Nerd Font Mono;
-    font-size: 24px;
-    margin-right: 5px;
-    margin-left: 5px;
+/* The whole bar */
+window#waybar {
+    background-color: @wbackground;
+    font-family: Symbols Nerd Font Mono, Mononoki Nerd Font;
+    font-size: 16px;
 }
 
+/* Workspaces */
+
 #workspaces button {
-    padding: 0 3px;
-    background-color: transparent;
-    color: #ebdbb2;
+    border-top: 2px solid @inactive;
+    padding: 0 8px;
+    color: @white;
 }
 
 #workspaces button.active {
-    color: #fb4934;
-    border-radius: 5px;
+    background-color: @inactive;
+    border-top: 2px solid @focused;
+    color: @focused;
+    transition-property: color;
+    transition-duration: .5s;
 }
 
 #workspaces button:hover {
-    color: #8ec07c;
-    border-radius: 5px;
+    color: @unfocused;
+    transition-property: color;
+    transition-duration: .5s;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
-    border-radius: 5px;
+    background-color: @inactive;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 3;
+    animation-direction: alternate;
 }
 
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
-}
-
+/* All modules */
 #clock,
 #custom-powerprofiles,
 #battery,
 #backlight,
 #network,
 #pulseaudio,
-#language,
-#mode {
-  font-family: Symbols Nerd Font Mono, mononoki Nerd Font;
-  font-size: 18px;
-  padding: 8px 8px;
-  color: #ebdbb2;
-  border-radius: 4px;
-  margin-left: 10px;
-  margin-right: 12px;
+#idle_inhibitor,
+#language {
+    padding-right: 1px;
+    padding-left: 4px;
 }
 
-#window,
-#workspaces {
-    margin: 0 4px;
-}
+/* Individual modules */
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#clock {
-    background-color: #504945;
-}
-
-#battery {
-    background-color: #79740e;
-}
-
-#battery.charging, #battery.plugged {
-    background-color: #98971a;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+#battery, #battery.charging, #battery.plugged {
+    background-color: @battery;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #9d0006;
+    color: @white;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -131,33 +140,77 @@ button:hover {
 }
 
 label:focus {
-    background-color: #ebdbb2;
+    background-color: @white;
 }
 
 #backlight {
-    background-color: #b57614;
+    background-color: @backlight;
 }
 
-#network {
-    background-color: #9d0006;
+#network, #network.disconnected {
+    background-color: @network;
 }
 
-#network.disconnected {
-    background-color: #9d0006;
-}
-
-#pulseaudio {
-    background-color: #076678;
-}
-
-#pulseaudio.muted {
-    background-color: #076678;
+#pulseaudio, #pulseaudio.muted {
+    background-color: @pulseaudio;
 }
 
 #language {
-    background-color: #8f3f71;
+    background-color: @language;
 }
 
 #custom-powerprofiles {
-    background-color: #427b58;
+    background-color: @powerprofile;
 }
+
+#clock {
+    background-color: @clock;
+    padding-right: 10px;
+}
+
+#idle_inhibitor {
+    background-color: @battery;
+}
+
+/* All Modeline arrows */
+#custom-arrow1,
+#custom-arrow2,
+#custom-arrow3,
+#custom-arrow4,
+#custom-arrow5,
+#custom-arrow6 {
+	font-size: 20pt;
+}
+
+/* Individual Modeline arrows */
+
+#custom-arrow1 {
+	background: transparent;
+	color: @language;
+}
+
+#custom-arrow2 {
+	background: @language;
+	color: @pulseaudio;
+}
+
+#custom-arrow3 {
+	background: @pulseaudio;
+	color: @backlight;
+}
+
+#custom-arrow4 {
+	background: @backlight;
+	color: @battery;
+}
+
+#custom-arrow5 {
+	background: @battery;
+	color: @network;
+}
+
+#custom-arrow6 {
+	background: @network;
+	color: @clock;
+}
+
