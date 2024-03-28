@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="logo.png" alt="dotfiles" width="300">
+  <img src="logo.png" alt="neodotfiles" width="300">
 </h1>
 
 <h4 align="center">My custom suckless based desktop focused on absolute productivity and workflow control.</h4>
@@ -66,7 +66,7 @@ gcc
 vala
 ```
 
-* **Runtime dependencies**
+* **Runtime dependencies** (required for dmenu scripts)
 
 ```
 fd
@@ -103,7 +103,7 @@ This repository is not a tutorial on how to modify or configure dwm or any of th
 
 To configure my build, the only file you really need to modify is the `config.h` file in each tool, which has everything commented and explained. Of course this being *my* build, it is already configured for my needs.
 
-## Patch list for dwm
+## dwm patch list
 
 These are the patches I applied to this dwm build (some of them I modified):
 
