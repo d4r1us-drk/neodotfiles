@@ -35,11 +35,31 @@
         - *Tag 9:* Gaming
 
 ### Other suckless utilities included
- - *dmenu:* the best run launcher. This build includes some very useful scripts for things like wifi, bluetooth and wallpaper configuration, drive mounting, etc.
- - *herbe & tiramisu:* a minimal and fast notification daemon (tiramisu is the daemon, herbe is the notification window).
- - *st:* the fastest terminal emulator ever, [siduck's build](https://github.com/siduck/st).
- - *slock:* simple and efficient lock screen with fingerprint reader support.
- - *dwbmlocks:* what enables you to customize dwm's status area in the bar. This build includes some cool & customizable status scripts.
+ * *dmenu:* the best run launcher. This build includes some very useful scripts for things like wifi, bluetooth and wallpaper configuration, drive mounting, etc.
+ * *herbe & tiramisu:* a minimal and fast notification daemon (tiramisu is the daemon, herbe is the notification window).
+ * *st:* the fastest terminal emulator ever, [siduck's build](https://github.com/siduck/st).
+ * *slock:* simple and efficient lock screen with fingerprint reader support.
+ * *dwbmlocks:* what enables you to customize dwm's status area in the bar. This build includes some cool & customizable status scripts.
+
+### Config files
+
+Other configuration files included in this project are available at the config folder. These are:
+
+* `.bash_profile & .bashrc`: Bash configuration files, the profile is neccesary to start up dwm on tty login.
+* `.config/btop`: btop system monitoring utility, accesible from dwm via a scratchpad, more info [here](https://github.com/aristocratos/btop).
+* `.config/gtk-2.0 & .config/gtk-3.0`: GTK theeming files, I use the Cantarell font and the [Gruvbox-Dark-BL](https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme) theme.
+* `.config/Kvantum`: Qt theeming via Kvantum, Gruvbox theme is included here too.
+* `.config/lvim`: [Lunarvim](https://www.lunarvim.org/) configuration files, this is a neovim distribution and my text editor of choice.
+* `.config/mpv`: Mpv config files, mainly just for vim-like keybindings.
+* `.config/musikcube`: The best terminal music player. Also accesible from dwm via a scratchpad. Just like mpv, this is only for vim-like keybindings. You can learn more about musikcube [here](https://github.com/clangen/musikcube).
+* `.config/neofetch`: Make neofetch look cooler.
+* `.config/newsboat`: [Newsboat](https://github.com/newsboat/newsboat) is an awesome RSS/Atom feeds reader for the terminal. Also accesible from dwm via a scratchpad. The config file is for vim-like keybindings and also my collection of RSS & YouTube subscriptions feeds (you can open any video in mpv hitting first comma and then v).
+* `.config/picom`: The only working X compositor that exists, responsible of transparency and some animations.
+* `.config/pipewire`: Just to make pipewire behave a little better with Pro audio equipment (support for multiple sample rates).
+* `.config/tut`: [tut](https://github.com/RasmusLindroth/tut) is an amazing Mastodon client for the terminal. Also accesible from dwm via a scratchpad.
+* `.config/X11`: This is where I put the xinitrc file, responsible of starting up dwm properly.
+* `.config/yazi`: [yazi](https://github.com/sxyazi/yazi) is the best terminal file manager with everything you will and may need, with vim-like keybindings and image previews.
+* `.config/zathura`: [zathura](https://git.pwmt.org/pwmt/zathura) is my document viewer of choice, also with vim-like keybindings.
 
 ## Installation & How To Modify
 
@@ -66,7 +86,7 @@ gcc
 vala
 ```
 
-* **Runtime dependencies** (required for dmenu scripts)
+* **Runtime dependencies** (required for dmenu scripts & dwm)
 
 ```
 fd
@@ -81,6 +101,10 @@ bluez-utils
 j4-dmenu-desktop
 NetworkManager
 power-profiles-daemon
+polkit-kde
+unclutter-xfixes
+gnome-keyring
+picom
 ```
 
 After installing them with your package manager of choice, you can do the following to get the source code and start to modify it to your liking.
