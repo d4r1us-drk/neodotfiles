@@ -70,6 +70,7 @@ vala
 fd
 feh
 xdpyinfo
+xdotool
 ffmpeg
 maim
 slop
