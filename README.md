@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="assets/logo.png" alt="neodotfiles" width="300">
+  <img src="assets/logo.png" alt="neodotfiles" width="415">
 </h1>
 
 <h4 align="center">My custom suckless based desktop focused on absolute productivity and workflow control.</h4>
