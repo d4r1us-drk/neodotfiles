@@ -47,7 +47,7 @@ Other configuration files included in this project are available at the config f
 
 * `.bash_profile & .bashrc`: Bash configuration files, the profile is neccesary to start up dwm on tty login.
 * `.config/btop`: [btop](https://github.com/aristocratos/btop) is a system monitoring utility, cooler than htop. Accesible from dwm via a scratchpad.
-* `.config/gtk-2.0 & .config/gtk-3.0`: GTK theeming files, I use the Cantarell font and the [Gruvbox-Dark-BL](https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme) theme.
+* `.config/gtk-2.0 & .config/gtk-3.0`: GTK theeming files, I use the Cantarell font, the [Gruvbox-Dark-BL](https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme) theme and the [Simp1e-Gruvbox-Dark](https://gitlab.com/cursors/simp1e) cursor theme.
 * `.config/Kvantum`: Qt theeming via Kvantum, Gruvbox theme is included here too.
 * `.config/lvim`: [Lunarvim](https://www.lunarvim.org/) configuration files, this is a neovim distribution and my text editor of choice.
 * `.config/mpv`: Mpv config files, mainly just for vim-like keybindings.
