@@ -1,13 +1,14 @@
 <h1 align="center">
-  <img src="logo.png" alt="dwm" width="300">
+  <img src="logo.png" alt="dotfiles" width="300">
 </h1>
 
-<h4 align="center">My custom build of the blazing fast and amazing <a href="https://dwm.suckles.org" target="_blank">dwm</a> tiling window manager, made for absolute productivity and workflow control.</h4>
+<h4 align="center">My custom suckless based desktop focused on absolute productivity and workflow control.</h4>
 
 ![screenshot](./screenshot.png)
 
 ## Key Features
 
+### dwm features
 * **A bunch of extra layouts**
     - *Default ones:*
         - master & stack.
@@ -32,12 +33,13 @@
         - *Tag 7:* Graphic tools
         - *Tag 8:* Office & Document tools
         - *Tag 9:* Gaming
-* **Other suckless utilities included**
-    - *dmenu:* the best run launcher. This build includes some very useful scripts for things like wifi, bluetooth and wallpaper configuration, drive mounting, etc.
-    - *herbe & tiramisu:* a minimal and fast notification daemon (tiramisu is the daemon, herbe is the notification window).
-    - *st:* the fastest terminal emulator ever, [siduck's build](https://github.com/siduck/st).
-    - *slock:* simple and efficient lock screen with fingerprint reader support.
-    - *dwbmlocks:* what enables you to customize dwm's status area in the bar. This build includes some cool & customizable status scripts.
+
+### Other suckless utilities included
+ - *dmenu:* the best run launcher. This build includes some very useful scripts for things like wifi, bluetooth and wallpaper configuration, drive mounting, etc.
+ - *herbe & tiramisu:* a minimal and fast notification daemon (tiramisu is the daemon, herbe is the notification window).
+ - *st:* the fastest terminal emulator ever, [siduck's build](https://github.com/siduck/st).
+ - *slock:* simple and efficient lock screen with fingerprint reader support.
+ - *dwbmlocks:* what enables you to customize dwm's status area in the bar. This build includes some cool & customizable status scripts.
 
 ## Installation & How To Modify
 
@@ -85,13 +87,13 @@ After installing them with your package manager of choice, you can do the follow
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/d4r1us-drk/dwm.git
+$ git clone https://github.com/d4r1us-drk/neodotfiles.git
 
 # Go into the repository
-$ cd dwm/
+$ cd neodotfiles
 
 # Select which project to compile & install (dwm in this case)
-$ cd dwm
+$ cd source/dwm
 
 # To install
 $ sudo make install && make clean
