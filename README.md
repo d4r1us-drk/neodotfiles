@@ -1,9 +1,5 @@
 <h1 align="center">
-  <br>
   <img src="dwm.png" alt="dwm" width="200">
-  <br>
-  dwm
-  <br>
 </h1>
 
 <h4 align="center">My custom build of the blazing fast and amazing <a href="https://dwm.suckles.org" target="_blank">dwm</a> tiling window manager, made for absolute productivity and workflow control.</h4>
