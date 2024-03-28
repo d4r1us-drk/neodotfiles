@@ -1,10 +1,10 @@
 <h1 align="center">
-  <img src="logo.png" alt="neodotfiles" width="300">
+  <img src="assets/logo.png" alt="neodotfiles" width="300">
 </h1>
 
 <h4 align="center">My custom suckless based desktop focused on absolute productivity and workflow control.</h4>
 
-![screenshot](./screenshot.png)
+![screenshot](./assets/screenshot.png)
 
 ## Key Features
 
