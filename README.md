@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a <img src="./dwm.png" alt="dwm" width="200"></a>
+  <a <img src="dwm.png" alt="dwm" width="200"></a>
   <br>
   dwm
   <br>
@@ -38,7 +38,7 @@
         - *Tag 7:* Graphic tools
         - *Tag 8:* Office & Document tools
         - *Tag 9:* Gaming
-* And much more ()
+* And much more...
 
 ## Installation & How To Modify
 
