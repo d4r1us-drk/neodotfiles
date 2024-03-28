@@ -138,6 +138,7 @@ These are the patches I applied to this dwm build (some of them I modified):
 - dwm and the suckless tools available here are made by the suckless guys at [https://suckless.org](https://suckless.org).
 - herbe is made by dudik and available [here](https://github.com/dudik/herbe).
 - tiramisu is made by Sweets and available [here](https://github.com/Sweets/tiramisu).
+- dwmblocks is made by torrinfail and available [here](https://github.com/torrinfail/dwmblocks)
 
 ## License
 
