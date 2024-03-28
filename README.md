@@ -46,15 +46,15 @@
 Other configuration files included in this project are available at the config folder. These are:
 
 * `.bash_profile & .bashrc`: Bash configuration files, the profile is neccesary to start up dwm on tty login.
-* `.config/btop`: btop system monitoring utility, accesible from dwm via a scratchpad, more info [here](https://github.com/aristocratos/btop).
+* `.config/btop`: [btop](https://github.com/aristocratos/btop) is a system monitoring utility, cooler than htop. Accesible from dwm via a scratchpad.
 * `.config/gtk-2.0 & .config/gtk-3.0`: GTK theeming files, I use the Cantarell font and the [Gruvbox-Dark-BL](https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme) theme.
 * `.config/Kvantum`: Qt theeming via Kvantum, Gruvbox theme is included here too.
 * `.config/lvim`: [Lunarvim](https://www.lunarvim.org/) configuration files, this is a neovim distribution and my text editor of choice.
 * `.config/mpv`: Mpv config files, mainly just for vim-like keybindings.
-* `.config/musikcube`: The best terminal music player. Also accesible from dwm via a scratchpad. Just like mpv, this is only for vim-like keybindings. You can learn more about musikcube [here](https://github.com/clangen/musikcube).
+* `.config/musikcube`: [musikcube](https://github.com/clangen/musikcube) is basically the best terminal music player. Also accesible from dwm via a scratchpad. Just like mpv, this is only for vim-like keybindings.
 * `.config/neofetch`: Make neofetch look cooler.
 * `.config/newsboat`: [Newsboat](https://github.com/newsboat/newsboat) is an awesome RSS/Atom feeds reader for the terminal. Also accesible from dwm via a scratchpad. The config file is for vim-like keybindings and also my collection of RSS & YouTube subscriptions feeds (you can open any video in mpv hitting first comma and then v).
-* `.config/picom`: The only working X compositor that exists, responsible of transparency and some animations.
+* `.config/picom`: The only X compositor that actually works, responsible of transparency and some animations.
 * `.config/pipewire`: Just to make pipewire behave a little better with Pro audio equipment (support for multiple sample rates).
 * `.config/tut`: [tut](https://github.com/RasmusLindroth/tut) is an amazing Mastodon client for the terminal. Also accesible from dwm via a scratchpad.
 * `.config/X11`: This is where I put the xinitrc file, responsible of starting up dwm properly.
