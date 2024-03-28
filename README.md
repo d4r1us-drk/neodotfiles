@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a <img src="dwm.png" alt="dwm" width="200"></a>
+  <img src="dwm.png" alt="dwm" width="200">
   <br>
   dwm
   <br>
