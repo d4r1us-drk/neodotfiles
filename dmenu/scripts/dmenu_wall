@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+# ***This script was made by Clay Gomera (Drake)***
+#  - Description: A simple dmenu script to set the wallpaper on X
+#  - Dependencies: dmenu, fd, feh
+
+##########################
+## Wallpapers Directory ##
+##########################
+walldir="$XDG_PICTURES_DIR/Wallpapers"
+cd "$walldir" || exit # we cd into $walldir in order to get only the file name on the main prompt
+
+#######################
+## Wallpaper options ##
+#######################
+option1="Fill"
+option2="Center"
+option3="Tile"
+option4="Max"
+option5="Scale"
+options="$option1\n$option2\n$option3\n$option4\n$option5"
+
+##########
+## main ##
+##########
+wallpaper=$(fd -p ./ | dmenu -i -p " 󰋩 Select a wallpaper ") # main prompt
+if [ "$wallpaper" ]; then # if the user made a choice
+  chosenwall=$wallpaper # reassign $wallpaper to $chosenwall
+else
+  exit 0
+fi
+action=$(echo -e "$options" | dmenu -i -p "  Chose the format ") # options prompt
+case "$action" in
+  $option1*)
+    feh --bg-fill "$chosenwall";
+    ;;
+  $option2*)
+    feh --bg-center "$chosenwall";
+    ;;
+  $option3*)
+    feh --bg-tile "$chosenwall";
+    ;;
+  $option4*)
+    feh --bg-max "$chosenwall";
+    ;;
+  $option5*)
+    feh --bg-scale "$chosenwall";
+    ;;
+esac
