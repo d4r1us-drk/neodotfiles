@@ -99,6 +99,7 @@ static const Rule rules[] = {
     {"xtightvncviewer",                 NULL,        NULL,           0,     1,   -1},
     /* 1 - Code Tag */
     {"editor",                          NULL,        NULL,           1,     0,   -1},
+    {"gnome-builder",                   NULL,        NULL,           1,     0,   -1},
     {"lvim",                            NULL,        NULL,           1,     0,   -1},
     {"Emacs",                           NULL,        NULL,           1,     0,   -1},
     {"Godot",                           NULL,        NULL,           1,     0,   -1},
