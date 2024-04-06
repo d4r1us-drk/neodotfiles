@@ -4,7 +4,7 @@ export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
 export GOPATH="$HOME/go"
 
 ### "bat" as manpager
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="bat -p"
 
 # use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
@@ -110,6 +110,11 @@ function up () {
     fi
 }
 
+# unlock ssh keys
+function unlock() {
+    ssh-add "$HOME/.ssh/$1"
+}
+
 # cd
 alias \
     ..="cd .." \
@@ -178,9 +183,9 @@ alias \
 # audio
 alias \
     mx="pulsemixer" \
-    mk="cmus" \
-    ms="cmus" \
-    music="cmus"
+    mk="musikcube" \
+    ms="musikcube" \
+    music="musikcube"
 
 # power management
 alias \
@@ -229,6 +234,7 @@ alias \
     wfi-off="nmcli radio wifi off" \
     blt="bluetoothctl"
 
+### PROMPT
 # get current branch in git repo
 function parse_git_branch() {
     BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
@@ -295,3 +301,4 @@ fi
 if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
+

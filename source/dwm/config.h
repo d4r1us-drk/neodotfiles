@@ -46,10 +46,11 @@ const char *spcmd5[]  = {"st", "-n", "spani", "-c", "spani", "-g", "140x35", "-e
 const char *spcmd6[]  = {"st", "-n", "spytf", "-c", "spytf", "-g", "140x35", "-e", "ytfzf", "-flst", NULL};
 const char *spcmd7[]  = {"st", "-n", "spytm", "-c", "spytm", "-g", "140x35", "-e", "ytfzf", "-mlst", NULL};
 const char *spcmd8[]  = {"st", "-n", "spmsc", "-c", "spmsc", "-g", "140x35", "-e", "musikcube", NULL};
-const char *spcmd9[]  = {"st", "-n", "spflm", "-c", "spflm", "-g", "140x35", "-e", "yazi", NULL};
+const char *spcmd9[]  = {"st", "-n", "spflm", "-c", "spflm", "-g", "140x35", "-e", ".config/vifm/scripts/vifmrun", NULL};
 const char *spcmd10[]  = {"st", "-n", "sprss", "-c", "sprss", "-g", "140x35", "-e", "newsboat", NULL};
 const char *spcmd11[]  = {"st", "-n", "sptut", "-c", "sptut", "-g", "140x35", "-e", "tut", NULL};
 const char *spcmd12[]  = {"flatpak", "run", "com.bitwarden.desktop", NULL};
+const char *spcmd13[]  = {"flatpak", "run", "io.github.Qalculate", NULL};
 
 static Sp scratchpads[] = {
     /* NAME         CMD */
@@ -65,6 +66,7 @@ static Sp scratchpads[] = {
     {"sprss",      spcmd10},
     {"sptut",      spcmd11},
     {"spbit",      spcmd12},
+    {"spqal",      spcmd13},
 };
 
 /* Tag Definitions */
@@ -89,7 +91,6 @@ static const Rule rules[] = {
     /* CLASS - INSTANCE - TITLE - TAGS MASK - ISFLOATING - MONITOR */
     /* 0 - No Tag */
     {"Galculator",                      NULL,        NULL,           0,     1,   -1},
-    {"Qalculate-gtk",                   NULL,        NULL,           0,     1,   -1},
     {"Blueman-manager",                 NULL,        NULL,           0,     1,   -1},
     {"Gpick",                           NULL,        NULL,           0,     1,   -1},
     {"Kruler",                          NULL,        NULL,           0,     1,   -1},
@@ -185,8 +186,9 @@ static const Rule rules[] = {
     {NULL,                              "spmsc",     NULL,      SPTAG(7),   1,   -1},
     {NULL,                              "spflm",     NULL,      SPTAG(8),   1,   -1},
     {NULL,                              "sprss",     NULL,      SPTAG(9),   1,   -1},
-    {NULL,                              "sptut",     NULL,      SPTAG(10),   1,   -1},
-    {"Bitwarden",                       NULL,        NULL,      SPTAG(11),   1,   -1},
+    {NULL,                              "sptut",     NULL,      SPTAG(10),  1,   -1},
+    {"Bitwarden",                       NULL,        NULL,      SPTAG(11),  1,   -1},
+    {"Qalculate-gtk",                   NULL,        NULL,      SPTAG(12),  1,   -1},
 };
 
 /* Layout(s) */
@@ -328,10 +330,11 @@ static Keychord *keychords[] = {
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_y}},  	        togglescratch,  {.ui = 5 } }),  /* Toggle ytfzf scratchpad */
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_n}},  	        togglescratch,  {.ui = 6 } }),  /* Toggle ytfzf (music) scratchpad */
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_m}},  	        togglescratch,  {.ui = 7 } }),  /* Toggle musikcube scratchpad */
-    &((Keychord){2, {{MODKEY, XK_s}, {0, XK_v}},  	        togglescratch,  {.ui = 8 } }),  /* Toggle yazi scratchpad */
+    &((Keychord){2, {{MODKEY, XK_s}, {0, XK_v}},  	        togglescratch,  {.ui = 8 } }),  /* Toggle vifm scratchpad */
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_r}},  	        togglescratch,  {.ui = 9 } }),  /* Toggle newsboat scratchpad */
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_t}},  	        togglescratch,  {.ui = 10 } }), /* Toggle tut scratchpad */
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_k}},  	        togglescratch,  {.ui = 11 } }), /* Toggle Bitwarden scratchpad */
+    &((Keychord){2, {{MODKEY, XK_s}, {0, XK_c}},  	        togglescratch,  {.ui = 12 } }), /* Toggle Qalculate scratchpad */
 
     /* Session Management */
     &((Keychord){1, {{MODKEY|ControlMask|ShiftMask, XK_q}}, quit,           {0} }), 
