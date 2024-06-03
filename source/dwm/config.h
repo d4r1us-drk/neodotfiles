@@ -51,6 +51,7 @@ const char *spcmd10[]  = {"st", "-n", "sprss", "-c", "sprss", "-g", "140x35", "-
 const char *spcmd11[]  = {"st", "-n", "sptut", "-c", "sptut", "-g", "140x35", "-e", "tut", NULL};
 const char *spcmd12[]  = {"flatpak", "run", "com.bitwarden.desktop", NULL};
 const char *spcmd13[]  = {"flatpak", "run", "io.github.Qalculate", NULL};
+const char *spcmd14[]  = {"arandr", NULL};
 
 static Sp scratchpads[] = {
     /* NAME         CMD */
@@ -67,6 +68,7 @@ static Sp scratchpads[] = {
     {"sptut",      spcmd11},
     {"spbit",      spcmd12},
     {"spqal",      spcmd13},
+    {"spdsp",      spcmd14},
 };
 
 /* Tag Definitions */
@@ -108,7 +110,7 @@ static const Rule rules[] = {
     {"neovide",                         NULL,        NULL,           1,     0,   -1},
     /* 2 - Test Tag */
     {"Virt-manager",                    NULL,        NULL,      1 << 1,     0,   -1},
-    {"Gnome-boxes",                     NULL,        NULL,      1 << 1,     0,   -1},
+    {"Org.gnome.Boxes",                 NULL,        NULL,      1 << 1,     0,   -1},
     /* 3 - Web Tag */
     {"LibreWolf",                       NULL,        NULL,      1 << 2,     0,   -1},
     {"libreWolf",                       NULL,        NULL,      1 << 2,     0,   -1},
@@ -134,6 +136,7 @@ static const Rule rules[] = {
     {"qpwgraph",                        NULL,        NULL,      1 << 4,     0,   -1},
     {"Cadence",                         NULL,        NULL,      1 << 4,     0,   -1},
     {"easyeffects",                     NULL,        NULL,      1 << 4,     0,   -1},
+    {"kid3",                            NULL,        NULL,      1 << 4,     0,   -1},
     /* 6 - Video Tag */
     {"kdenlive",                        NULL,        NULL,      1 << 5,     0,   -1},
     {"Pitivi",                          NULL,        NULL,      1 << 5,     0,   -1},
@@ -163,7 +166,6 @@ static const Rule rules[] = {
     {"Notesnook",                       NULL,        NULL,      1 << 7,     0,   -1},
     {"com.github.johnfactotum.Foliate", NULL,        NULL,      1 << 7,     0,   -1},
     /* 9 - Games Tag */
-    {"retroarch",                       NULL,        NULL,      1 << 8,     0,   -1},
     {"steam",                           NULL,        NULL,      1 << 8,     0,   -1},
     {"airshipper",                      NULL,        NULL,      1 << 8,     0,   -1},
     {"pyrogenesis",                     NULL,        NULL,      1 << 8,     0,   -1},
@@ -175,6 +177,13 @@ static const Rule rules[] = {
     {"openttd",                         NULL,        NULL,      1 << 8,     0,   -1},
     {"warzone2100",                     NULL,        NULL,      1 << 8,     0,   -1},
     {"wesnoth",                         NULL,        NULL,      1 << 8,     0,   -1},
+    {"retroarch",                       NULL,        NULL,      1 << 8,     0,   -1},
+    {"pcsx2-qt",                        NULL,        NULL,      1 << 8,     0,   -1},
+    {"duckstation-qt",                  NULL,        NULL,      1 << 8,     0,   -1},
+    {"Cemu",                            NULL,        NULL,      1 << 8,     0,   -1},
+    {"xemu",                            NULL,        NULL,      1 << 8,     0,   -1},
+    {"org.ppsspp.PPSSPP",               NULL,        NULL,      1 << 8,     0,   -1},
+    {"dolphin-emu",                     NULL,        NULL,      1 << 8,     0,   -1},
     /* Scratchpads */
     {NULL,                              "sptrm",     NULL,      SPTAG(0),   1,   -1},
     {NULL,                              "sptop",     NULL,      SPTAG(1),   1,   -1},
@@ -189,6 +198,7 @@ static const Rule rules[] = {
     {NULL,                              "sptut",     NULL,      SPTAG(10),  1,   -1},
     {"Bitwarden",                       NULL,        NULL,      SPTAG(11),  1,   -1},
     {"Qalculate-gtk",                   NULL,        NULL,      SPTAG(12),  1,   -1},
+    {"Arandr",                          NULL,        NULL,      SPTAG(13),  1,   -1},
 };
 
 /* Layout(s) */
@@ -226,7 +236,7 @@ static const char *termcmd[]       = { "st", NULL };
 static const char *editor[]        = { "st", "-n", "editor", "-c", "editor", "-e", ".local/bin/lvim", NULL};
 static const char *browser[]       = { "flatpak", "run", "org.mozilla.firefox", NULL };
 static const char *chat[]          = { "flatpak", "run", "org.signal.Signal", NULL };
-static const char *vm[]            = { "virt-manager", NULL };
+static const char *vm[]            = { "flatpak", "run", "org.gnome.Boxes", NULL };
 static const char *office[]        = { "flatpak", "run", "org.libreoffice.LibreOffice", NULL };
 static const char *videoeditor[]   = { "flatpak", "run", "org.kde.kdenlive", NULL };
 static const char *imgeditor[]     = { "flatpak", "run", "org.gimp.GIMP", NULL };
@@ -270,10 +280,7 @@ static Keychord *keychords[] = {
 
     /* Brightness Control */
     &((Keychord){1, {{0, XF86XK_MonBrightnessUp}},          spawn,          SHCMD("brightnessctl s 5%+ && pkill -RTMIN+10 dwmblocks") }),   /* Increase brightness by 5%+ */
-    &((Keychord){1, {{0, XF86XK_MonBrightnessDown}},        spawn,          SHCMD("brightnessctl s 5%- && pkill -RTMIN+10 dwmblocks") }),   /* Decrease brightness by 5%- *,
-
-    /* Display Control */
-    &((Keychord){1, {{0, XF86XK_Display}},                  spawn,          SHCMD("arandr") }), /* Launch display configuration tool */
+    &((Keychord){1, {{0, XF86XK_MonBrightnessDown}},        spawn,          SHCMD("brightnessctl s 5%- && pkill -RTMIN+10 dwmblocks") }),   /* Decrease brightness by 5%- */
 
     /* Media Control */
     &((Keychord){1, {{0, XF86XK_AudioPause}},               spawn,          SHCMD("playerctl play-pause") }),   /* Pause playback */
@@ -335,6 +342,7 @@ static Keychord *keychords[] = {
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_t}},  	        togglescratch,  {.ui = 10 } }), /* Toggle tut scratchpad */
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_k}},  	        togglescratch,  {.ui = 11 } }), /* Toggle Bitwarden scratchpad */
     &((Keychord){2, {{MODKEY, XK_s}, {0, XK_c}},  	        togglescratch,  {.ui = 12 } }), /* Toggle Qalculate scratchpad */
+    &((Keychord){2, {{MODKEY, XK_s}, {0, XK_d}},  	        togglescratch,  {.ui = 13 } }), /* Toggle Arandr scratchpad */
 
     /* Session Management */
     &((Keychord){1, {{MODKEY|ControlMask|ShiftMask, XK_q}}, quit,           {0} }), 

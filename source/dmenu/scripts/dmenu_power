@@ -44,57 +44,58 @@ case "$action" in
         killall -u "$(whoami)"
         ;;
     "$option2")
-        systemctl reboot;
+        systemctl reboot
         ;;
     "$option3")
-        systemctl poweroff;
+        systemctl poweroff
         ;;
     "$option4")
-        slock -b "$currentwall" systemctl suspend;
+        slock -b "$currentwall" systemctl suspend
         ;;
     "$option5")
-        slock -b "$currentwall";
+        slock -b "$currentwall"
         ;;
     "$option6")
         #####
         ## These conditions will be used for the prompt
         #####
         if [ "$currentpwr" = "performance" ]; then
-            currentpwr="$pwr1";
+            currentpwr="$pwr1"
         elif [ "$currentpwr" = "balanced" ]; then
-            currentpwr="$pwr2";
+            currentpwr="$pwr2"
         elif [ "$currentpwr" = "power-saver" ]; then
-            currentpwr="$pwr3";
+            currentpwr="$pwr3"
         fi
-        pwraction=$(echo -e "$pwrs" | dmenu -l 6 -i -p "  Power Profile Menu - Currently set to: $currentpwr") # power profiles submenu prompt
+        pwraction=$(echo -e "$pwrs" | dmenu -i -p "  Power Profile Menu - Currently set to: $currentpwr") # power profiles submenu prompt
         case "$pwraction" in
             "$pwr1")
                 if [ "$currentpwr" = "$pwr1" ]; then # if the power profile is already set to performance
-                    notify-send "The power profile is already set to performance";
-                    exit 1;
+                    notify-send "The power profile is already set to performance"
+                    exit 1
                 else
-                    powerprofilesctl set performance && notify-send "Power profile switched to performance"; # if not, set the powerprofile to performance
+                    powerprofilesctl set performance && notify-send "Power profile switched to performance" # if not, set the powerprofile to performance
                 fi
                 ;;
             "$pwr2")
                 if [ "$currentpwr" = "$pwr2" ]; then # if the power profile is already set to balanced
-                    notify-send "The power profile is already set to balanced";
-                    exit 1;
+                    notify-send "The power profile is already set to balanced"
+                    exit 1
                 else
-                    powerprofilesctl set balanced && notify-send "Power profile switched to balanced"; # if not, set the powerprofile to balanced
+                    powerprofilesctl set balanced && notify-send "Power profile switched to balanced" # if not, set the powerprofile to balanced
                 fi
                 ;;
             "$pwr3")
                 if [ "$currentpwr" = "$pwr3" ]; then # if the power profile is already set to power saver
-                    notify-send "The power profile is already set to power saver";
-                    exit 1;
+                    notify-send "The power profile is already set to power saver"
+                    exit 1
                 else
-                    powerprofilesctl set power-saver && notify-send "Power profile switched to power saver"; # if not, set the powerprofile to power saver
+                    powerprofilesctl set power-saver && notify-send "Power profile switched to power saver" # if not, set the powerprofile to power saver
                 fi
                 ;;
             "$pwr4")
-                exit 0;
+                exit 0
         esac;;
     "$option7")
-        exit 0;
+        exit 0
+        ;;
 esac

@@ -1,7 +1,7 @@
 ### EXPORT ###
 export TERM="xterm-256color"                      # getting proper colors
 export HISTCONTROL=ignoredups:erasedups           # no duplicate entries
-export GOPATH="$HOME/go"
+export GOPATH="$HOME/.go"
 
 ### "bat" as manpager
 export MANPAGER="bat -p"
@@ -32,9 +32,13 @@ fi
 if [ -d "$HOME/Applications" ] ;
     then PATH="$HOME/Applications:$PATH"
 fi
-if [ -d "$HOME/go/bin" ] ;
-    then PATH="$HOME/go/bin:$PATH"
+if [ -d "$HOME/.go/bin" ] ;
+    then PATH="$HOME/.go/bin:$PATH"
 fi
+if [ -d $XDG_DATA_HOME/JetBrains/Toolbox/scripts ];
+    then PATH="$XDG_DATA_HOME/JetBrains/Toolbox/scripts:$PATH"
+fi
+
 
 ### CHANGE TITLE OF TERMINALS ###
 case ${TERM} in

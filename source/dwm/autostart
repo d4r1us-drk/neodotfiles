@@ -5,12 +5,12 @@
 ##    / /_/ / /  / /_/ / ,< /  __/  Clay Gomera (Drake)    ##
 ##   /_____/_/   \__,_/_/|_|\___/   My custom dwm build    ##
 
-/usr/libexec/kf5/polkit-kde-authentication-agent-1 &
+/usr/libexec/polkit-gnome-authentication-agent-1 &
 dwmblocks &
 sh "$HOME"/.fehbg &
 unclutter --hide-on-touch &
 herbed &
-picom --config "$HOME/.config/picom/picom.conf" &
+picom &
 
 /usr/bin/gnome-keyring-daemon --start &
 export SSH_AUTH_SOCK
