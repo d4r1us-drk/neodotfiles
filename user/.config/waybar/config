@@ -22,7 +22,7 @@
         "backlight",
         "custom/arrow4",
         "idle_inhibitor",
-        "custom/powerprofiles",
+        "power-profiles-daemon",
         "battery",
         "custom/arrow5",
         "network",
@@ -55,70 +55,11 @@
         }
     },
 
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "\uea71",
-            "deactivated": "\ueabc"
-        }
-    },
-
     "hyprland/language": {
         "format": "\udb80\udf0c {}",
         "format-en": "US",
         "format-es": "ES",
         "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
-    },
-
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "\udb82\udd54 {:%H:%M}",
-        "format-alt": "\udb80\udcf5 {:%Y-%m-%d}"
-    },
-
-    "backlight": {
-        "format": "{icon}",
-        "format-icons": [
-            "\udb86\ude4e",
-            "\udb86\ude4f",
-            "\udb86\ude50",
-            "\udb86\ude51",
-            "\udb86\ude52",
-            "\udb86\ude53",
-            "\udb86\ude54",
-            "\udb86\ude55",
-            "\udb81\udee8"
-        ],
-        "tooltip-format": "{percent}%"
-    },
-
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon}",
-        "format-charging": "{icon} \udb81\udea5",
-        "format-plugged": "{icon} \udb81\udea5",
-        "format-critical": "{icon} \udb84\ude38",
-        "format-warning": "{icon} \udb84\ude38",
-        "format-icons": [
-            "\udb80\udc7a",
-            "\udb80\udc7c",
-            "\udb80\udc7e",
-            "\udb80\udc80",
-            "\udb80\udc79"
-        ],
-        "tooltip-format": "{capacity}% - {timeTo}",
-        "on-click": "$HOME/.config/fuzzel/scripts/fuzz_power"
-    },
-
-    "custom/powerprofiles": {
-        "exec": "bash $HOME/.config/waybar/power-profiles",
-        "restart-interval": 5,
-        "format": "{}",
-        "tooltip": false,
-        "on-click": "$HOME/.config/fuzzel/scripts/fuzz_power"
     },
 
     "pulseaudio": {
@@ -142,12 +83,75 @@
         "on-click": "kitty --class pulsemixer pulsemixer"
     },
 
+    "backlight": {
+        "format": "{icon}",
+        "format-icons": [
+            "\udb86\ude4e",
+            "\udb86\ude4f",
+            "\udb86\ude50",
+            "\udb86\ude51",
+            "\udb86\ude52",
+            "\udb86\ude53",
+            "\udb86\ude54",
+            "\udb86\ude55",
+            "\udb81\udee8"
+        ],
+        "tooltip-format": "{percent}%"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "\uea71",
+            "deactivated": "\ueabc"
+        }
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "󰾅",
+            "performance": "󰓅",
+            "balanced": "󰾅",
+            "power-saver": "󰾆"
+        }
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "format-charging": "{icon} \udb81\udea5",
+        "format-plugged": "{icon} \udb81\udea5",
+        "format-critical": "{icon} \udb84\ude38",
+        "format-warning": "{icon} \udb84\ude38",
+        "format-icons": [
+            "\udb80\udc7a",
+            "\udb80\udc7c",
+            "\udb80\udc7e",
+            "\udb80\udc80",
+            "\udb80\udc79"
+        ],
+        "tooltip-format": "{capacity}% - {timeTo}",
+        "on-click": "$HOME/.config/fuzzel/scripts/fuzz_power"
+    },
+
     "network": {
         "format-wifi": "\udb81\udda9 {essid}",
         "format-ethernet": "\udb80\ude00",
         "format-disconnected": "\udb81\uddaa Disconnected",
         "tooltip-format": "{signalStrength}% - {ifname}: {ipaddr}/{cidr}",
         "on-click": "$HOME/.config/fuzzel/scripts/fuzz_wifi"
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "\udb82\udd54 {:%H:%M}",
+        "format-alt": "\udb80\udcf5 {:%Y-%m-%d}"
     },
 
     "custom/arrow1": {

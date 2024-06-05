@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # ***This script was made by Clay Gomera (Drake)***
-#  - Description: A simple wifi script for rofi/dmenu/wofi
-#  - Dependencies: {rofi||dmenu||wofi}, NetworkManager, io.elementary.capnet-assist
+#  - Description: A simple wifi script for fuzzel
+#  - Dependencies: fuzzel, NetworkManager
 
 #######################
 ## Main manu options ##
@@ -32,7 +32,12 @@ read -r wlan constate <<< "$wifi_info"
 ## return: void
 #####
 turnoff() {
-    nmcli radio wifi off && notify-send "WiFi has been turned off";
+    nmcli radio wifi off
+    if [ $? -eq 0 ]; then
+        notify-send "WiFi has been turned off"
+    else
+        notify-send "Failed to turn off WiFi"
+    fi
 }
 
 #####
@@ -44,7 +49,12 @@ turnoff() {
 ## return: void
 #####
 turnon() {
-    nmcli radio wifi on && notify-send "WiFi has been turned on";
+    nmcli radio wifi on
+    if [ $? -eq 0 ]; then
+        notify-send "WiFi has been turned on"
+    else
+        notify-send "Failed to turn on WiFi"
+    fi
 }
 
 #####
@@ -58,11 +68,16 @@ turnon() {
 #####
 disconnect() {
     if [ "$constate" = "disconnected" ]; then
-        notify-send "WiFi is already disconnected";
+        notify-send "WiFi is already disconnected"
     elif [ "$constate" = "connected" ]; then
-        nmcli device disconnect "$wlan" && notify-send "Wifi has been disconnected";
+        nmcli device disconnect "$wlan"
+        if [ $? -eq 0 ]; then
+            notify-send "WiFi has been disconnected"
+        else
+            notify-send "Failed to disconnect WiFi"
+        fi
     else
-        exit 1;
+        notify-send "Unknown WiFi state"
     fi
 }
 
@@ -76,10 +91,14 @@ disconnect() {
 ## return: string
 #####
 connect() {
-    notify-send "Scannig networks..." && nmcli dev wifi rescan;
-    wifinet=$(nmcli -f BSSID,SSID,BARS,SECURITY dev wifi list | sed -n '1!p' | $RUNNER -i -l 10 -p "[  Select a Wifi Network]  ");
-    bssid=$(echo "$wifinet" | cut -d' ' -f1)
-    ssid=$(echo "$wifinet" | cut -d' ' -f3)
+    notify-send -t 5000 "Scanning networks..."
+    nmcli dev wifi rescan
+    wifinet=$(nmcli -f BSSID,SSID,BARS,SECURITY dev wifi list | sed -n '1!p' | $RUNNER -i -l 10 -p "[  Select a Wifi Network]  ")
+    if [ -z "$wifinet" ]; then
+        exit 0
+    fi
+    bssid=$(echo "$wifinet" | awk '{print $1}')
+    ssid=$(echo "$wifinet" | awk '{print $2}')
 }
 
 #####
@@ -90,16 +109,14 @@ connect() {
 ## return: string
 #####
 password() {
-    if nmcli connection show | grep -q "$ssid"; then # check if the network is already saved
-        return 0; # no password is required
-    elif nmcli -f BSSID,SECURITY dev wifi list | sed -n '1!p' | grep "$bssid" | awk '{print $2}' | grep -q -- "--"; then # check if the network is open
-        return 0; # no password is required
+    if nmcli connection show | awk -v ssid="$ssid" '$1 == ssid {found=1} END {exit !found}'; then
+        pass=""
+    elif nmcli -f BSSID,SECURITY dev wifi list | grep -w "$bssid" | awk '{print $2}' | grep -q -- "--"; then
+        pass=""
     else
         pass=$($RUNNER -l 0 --password -p "[Enter Password ]  " );
-        if [ -n "$pass" ]; then # if the user gave a password
-            return 0;
-        else
-            exit 1; # if not, exit the script
+        if [ -z "$pass" ]; then
+            exit 0
         fi
     fi
 }
@@ -113,10 +130,15 @@ password() {
 ## return: void
 #####
 action() {
-    if [ -n "$pass" ]; then # we need to check again if the $pass variable exists
+    if [ -n "$pass" ]; then
         nmcli dev wifi connect "$bssid" password "$pass"
-    else # if not, that means that the password() function ended in one of the first two conditions, the network is saved or open
-        nmcli dev wifi connect "$bssid";
+    else
+        nmcli dev wifi connect "$bssid"
+    fi
+    if [ $? -eq 0 ]; then
+        notify-send "Connected to $ssid"
+    else
+        notify-send "Failed to connect to $ssid"
     fi
 }
 
@@ -124,27 +146,31 @@ action() {
 ## main ##
 ##########
 cases=$(echo -e "$options" | $RUNNER -i -l 6 -p "[  Wifi Settings]  " ) # main menu prompt
+if [ -z "$cases" ]; then
+    exit 0
+fi
+
 case "$cases" in
     "$option1")
-        turnon;
+        turnon
         ;;
     "$option2")
-        turnoff;
+        turnoff
         ;;
     "$option3")
-        disconnect;
+        disconnect
         ;;
     "$option4")
-        if connect; then # if the user chooses a network
-            password; # this function will exit the script if the user didn't put a password
-            action;
-        else
-            exit 1; # if not, exit the script
+        if connect; then
+            if password; then
+                action
+            fi
         fi
         ;;
     "$option5")
-        io.elementary.capnet-assist;
+        ${BROWSER:-xdg-open} http://networkcheck.kde.org
         ;;
     "$option6")
-        exit 0;
+        exit 0
+        ;;
 esac

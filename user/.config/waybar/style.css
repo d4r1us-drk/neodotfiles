@@ -113,7 +113,7 @@ window#waybar {
 
 /* All modules */
 #clock,
-#custom-powerprofiles,
+#power-profiles-daemon,
 #battery,
 #backlight,
 #network,
@@ -159,7 +159,7 @@ label:focus {
     background-color: @language;
 }
 
-#custom-powerprofiles {
+#power-profiles-daemon {
     background-color: @powerprofile;
 }
 

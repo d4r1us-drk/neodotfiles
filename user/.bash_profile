@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Home folders
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -28,3 +28,10 @@ if [ ! -d "$WGETDIR" ] || [ ! -d "$GNUPGHOME" ]; then
     mkdir -p "$WGETDIR" "$GNUPGHOME"
     touch "$WGETDIR"/wgetrc
 fi
+
+# Starting xsession
+if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+    exec Hyprland
+    logout
+fi
+
