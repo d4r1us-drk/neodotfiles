@@ -9,17 +9,17 @@
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive and fish becomes very slow.
 set -e fish_user_paths
-set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/go/bin $HOME/Applications /var/lib/flatpak/exports/bin/ $fish_user_paths
+set -U fish_user_paths $HOME/.bin  $HOME/.local/bin $HOME/.go/bin $HOME/Applications /var/lib/flatpak/exports/bin/ $fish_user_paths
 
 ### EXPORT ###
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
 set EDITOR "lvim"
 set VISUAL "kitty --class editor lvim"
-set GOPATH "~/go"
+set GOPATH "$HOME/.go"
 
 ### SET BAT AS MANPAGER
-set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+#set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 ### SET EITHER DEFAULT EMACS MODE OR VI MODE ###
 function fish_user_key_bindings
@@ -116,6 +116,12 @@ end
 function take --argument number
     head -$number
 end
+
+# unlock ssh keys
+function unlock
+    ssh-add "$HOME/.ssh/$argv[1]"
+end
+
 ### END OF FUNCTIONS ###
 
 ### ALIASES ###
@@ -157,8 +163,8 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # file management
-alias fm="~/.config/vifm/scripts/vifmrun"
-alias flm="~/.config/vifm/scripts/vifmrun"
+alias fm="yazi"
+alias flm="yazi"
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -vI'
@@ -168,9 +174,9 @@ alias mkdir='mkdir -pv'
 # audio
 alias mx='pulsemixer'
 alias amx='alsamixer'
-alias mk='cmus'
-alias ms='cmus'
-alias music='cmus'
+alias mk='musikcube'
+alias ms='musikcube'
+alias music='musikcube'
 
 # multimedia scripts
 alias fli='flix-cli'
@@ -216,10 +222,10 @@ alias yta-opus="yt-dlp --extract-audio --audio-format opus "
 alias yta-vorbis="yt-dlp --extract-audio --audio-format vorbis "
 alias yta-wav="yt-dlp --extract-audio --audio-format wav "
 alias ytv-best="yt-dlp -f bestvideo+bestaudio "
-alias yt='ytfzf -ftsl'
-alias youtube='ytfzf -ftsl'
-alias ytm='ytfzf -mtsl'
-alias youtube-music='ytfzf -mtsl'
+alias yt='ytfzf -ftslT kitty'
+alias youtube='ytfzf -ftslT kitty'
+alias ytm='ytfzf -mtslT kitty'
+alias youtube-music='ytfzf -mtslT kitty'
 
 # network and bluetooth
 alias netstats='nmcli dev'

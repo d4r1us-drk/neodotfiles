@@ -198,9 +198,8 @@ alias \
 
 # file management
 alias \
-    fm="$HOME/.config/vifm/scripts/vifmrun" \
-    flm="$HOME/.config/vifm/scripts/vifmrun" \
-    vifm="$HOME/.config/vifm/scripts/vifmrun" \
+    fm="yazi" \
+    flm="yazi" \
     rm="rm -vI" \
     mv="mv -iv" \
     cp="cp -iv" \
@@ -224,8 +223,8 @@ alias \
     yta-vorbis="yt-dlp --extract-audio --audio-format vorbis" \
     yta-wav="yt-dlp --extract-audio --audio-format wav" \
     ytv-best="yt-dlp -f bestvideo+bestaudio" \
-    yt="ytfzf -ftsl" \
-    ytm="ytfzf -mtsl"
+    yt="ytfzf -ftslT kitty" \
+    ytm="ytfzf -mtslT kitty"
 
 # network and bluetooth
 alias \

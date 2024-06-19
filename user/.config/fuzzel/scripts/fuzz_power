@@ -3,7 +3,6 @@
 # ***This script was made by Clay Gomera (Drake)***
 #  - Description: A simple power menu script for rofi/dmenu/wofi
 #  - Dependencies: {rofi||dmenu||wofi}, power-profiles-daemon, swaylock
-#
 
 #######################
 ## Main manu options ##
@@ -26,9 +25,7 @@ pwr3="󰾆 Power Saver"
 pwr4=" Cancel"
 pwrs="$pwr1\n$pwr2\n$pwr3\n$pwr4"
 
-##### 
 ## This variable will store the current power profile
-#####
 currentpwr=$(powerprofilesctl get)
 
 ##########
@@ -52,9 +49,7 @@ case "$action" in
         hyprlock;
         ;;
     "$option6")
-        #####
         ## These conditions will be used for the prompt
-        #####
         if [ "$currentpwr" = "performance" ]; then
             currentpwr="$pwr1";
         elif [ "$currentpwr" = "balanced" ]; then
@@ -63,6 +58,7 @@ case "$action" in
             currentpwr="$pwr3";
         fi
         pwraction=$(echo -e "$pwrs" | $RUNNER -l 6 -i -p "[  Power Profile Menu - Currently set to: $currentpwr] ") # power profiles submenu prompt
+
         case "$pwraction" in
             "$pwr1")
                 if [ "$currentpwr" = "$pwr1" ]; then # if the power profile is already set to performance
