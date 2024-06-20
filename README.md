@@ -6,3 +6,14 @@ people's dotfiles (Distrotube for example), and it may contain scripts or
 binaries that they made or modify.
 
 ![screenshot](./screenshot.jpg)
+
+
+# Dependencies
+- hyprland
+- hyprpaper
+- hypridle
+- hyprlock
+- waybar
+- fuzzel
+- dunst
+- vimiv
