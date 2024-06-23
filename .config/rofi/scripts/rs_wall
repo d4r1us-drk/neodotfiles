@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 
-# rs_clip - A simple clipboard menu script for rofi/dmenu/wofi
+# rs_wall - A simple screenshot menu script for rofi/dmenu/wofi
 # Author: Clay Gomera (Drake)
-# Dependencies: {rofi || dmenu || wofi}, cliphist, wl-clipboard (wl-copy)
+# Dependencies: {rofi || dmenu || wofi}, swww
+
+############################
+# Configuration Parameters #
+############################
+walldir="$XDG_PICTURES_DIR/Wallpapers" # wallpapers folder, change it to yours
 
 ########################
 # Function Definitions #
 ########################
 
 # Check for missing dependencies
-check_dependencies() {
+CheckDependencies() {
     local run_launcher_found=false
     for launcher in rofi dmenu wofi; do
         if command -v "$launcher" &> /dev/null; then
@@ -24,7 +29,7 @@ check_dependencies() {
     fi
 
     local missing_deps=()
-    for dep in cliphist wl-copy; do
+    for dep in swww; do
         if ! command -v "$dep" &> /dev/null; then
             missing_deps+=("$dep")
         fi
@@ -41,7 +46,13 @@ check_dependencies() {
 ####################
 
 # Check for dependencies
-check_dependencies
+CheckDependencies
 
-# Pass clipboard data into the menu
-cliphist list | $RUNNER -p "󱉧  Clipboard  " | cliphist decode | wl-copy
+cd "$walldir" || exit 1
+wallpaper=$(fd -p "$walldir" | $RUNNER -i -p "󰋩 Wallpaper Selector")
+if [ -n "$wallpaper" ]; then
+    swww img "$wallpaper"
+else
+    exit 0
+fi
+exit 0

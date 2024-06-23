@@ -238,3 +238,4 @@ alias \
 
 # starship prompt
 eval "$(starship init bash)"
+eval "$(zoxide init bash)"

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# rs-scrot - A simple screenshot menu script for rofi/dmenu/wofi
+# rs_scrot - A simple screenshot menu script for rofi/dmenu/wofi
 # Author: Clay Gomera (Drake)
 # Dependencies: {rofi || dmenu || wofi}, grim, slurp, jq, wf-recorder, wl-clipboard (wl-copy), libnotify (notify-send)
 
@@ -248,8 +248,8 @@ VidStopRecording() {
 
 # Show help information
 if [ "$1" == '--help' ] || [ "$1" = '-h' ]; then
-    echo "rs-scrot"
-    echo "USAGE: rs-scrot [OPTION]"
+    echo "rs_scrot"
+    echo "USAGE: rs_scrot [OPTION]"
     echo -e "(no option)\tshow the screenshot menu"
     echo -e "-s, --stop\tstop recording"
     echo -e "-h, --help\tthis screen"

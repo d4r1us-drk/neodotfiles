@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# rs-emoji - A simple emoji picker menu script for rofi/dmenu/wofi
+# rs_emoji - A simple emoji picker menu script for rofi/dmenu/wofi
 # Author: Clay Gomera (Drake)
 # Dependencies: {rofi || dmenu || wofi}, wl-clipboard (wl-copy)
 

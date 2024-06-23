@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# rs-power - A simple power options menu script for rofi/dmenu/wofi
+# rs_power - A simple power options menu script for rofi/dmenu/wofi
 # Author: Clay Gomera (Drake)
 # Dependencies: {rofi || dmenu || wofi}, power-profiles-daemon (powerprofilesctl), loginctl, libnotify (notify-send)
 
@@ -30,9 +30,6 @@ currentpwr=$(powerprofilesctl get)
 
 ## This variable will store your current session at tty1
 currentsession=$(loginctl list-sessions | awk '$5 == "tty1" {print $1}')
-
-## Modify this variable to set your desired lockscreen program
-lockscreen="hyprlock"
 
 ########################
 # Function Definitions #
@@ -104,7 +101,7 @@ case "$action" in
         systemctl suspend
         ;;
     "$option5")
-        $lockscreen
+        loginctl lock-session "$currentsession"
         ;;
     "$option6")
         ## Get current power profile for display
