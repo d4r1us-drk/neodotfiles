@@ -28,6 +28,7 @@
 - [[#markdown][MARKDOWN]]
 - [[#modeline][MODELINE]]
 - [[#mouse-support][MOUSE SUPPORT]]
+- [[#neotree][NEOTREE]]
 - [[#open-specific-files][OPEN SPECIFIC FILES]]
 - [[#org-mode][ORG MODE]]
   - [[#org-publish][Org-publish]]
@@ -102,6 +103,7 @@ Revert on non-file buffers, which is especially useful for 'dired' buffers.
 #+end_src
 
 ** Keybindings within ibuffer mode
+
 | COMMAND                           | DESCRIPTION                            | KEYBINDING |
 |-----------------------------------+----------------------------------------+------------|
 | ibuffer-mark-forward              | Mark the buffer                        | m          |
@@ -218,11 +220,12 @@ describe-variable respectively).
 Dired is the file manager within Emacs.
 
 #+begin_src emacs-lisp
-;; With dired-open plugin, you can launch external programs for certain extensions
-;; For example, I set all .png files to open in 'sxiv' and all .mp4 files to open in 'mpv'
-(setq dired-open-extensions '(("gif" . "sxiv")
-                              ("jpg" . "sxiv")
-                              ("png" . "sxiv")
+;; With dired-open plugin, you can launch external programs for certain
+;; extensions For example, I set all .png files to open in 'vimiv' and all .mp4
+;; files to open in 'mpv'
+(setq dired-open-extensions '(("gif" . "vimiv")
+                              ("jpg" . "vimiv")
+                              ("png" . "vimiv")
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
 #+end_src
@@ -255,13 +258,11 @@ Setting the theme to doom-one.  To try out new themes, I set a keybinding for
 counsel-load-theme with 'SPC h t'.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'catppuccin)
 (map! :leader
-      :desc "Load new theme" "h t" #'counsel-load-theme)
+      :desc "Load new theme" "h t" #'load-theme)
+(setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
 #+END_SRC
-
-#+RESULTS:
-: counsel-load-theme
 
 * EMOJIS
 Emojify is an Emacs extension to display emojis. It can display github style
@@ -281,9 +282,9 @@ Settings related to fonts within Doom Emacs:
 + 'font-lock-keyword-face' -- for keywords with special significanclike 'setq' in elisp.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "mononoki Nerd Font" :size 18)
-      doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 18)
-      doom-big-font (font-spec :family "mononoki Nerd Font" :size 24))
+(setq doom-font (font-spec :family "Mononoki Nerd Font" :size 18)
+      doom-variable-pitch-font (font-spec :family "Mononoki Nerd Font" :size 18)
+      doom-big-font (font-spec :family "Mononoki Nerd Font" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -301,12 +302,12 @@ Doom Emacs (C-u in standard GNU Emacs).  The function 'insert-any-date' only
 outputs to one format, which is the same format as 'insert-todays-date' without
 a prefix.
 
-| COMMAND               | EXAMPLE OUTPUT            | KEYBINDING            |
-|-----------------------+---------------------------+-----------------------|
+| COMMAND                | EXAMPLE OUTPUT            | KEYBINDING            |
+|------------------------+---------------------------+-----------------------|
 | drk/insert-todays-date | Friday, November 19, 2021 | SPC i d t             |
 | drk/insert-todays-date | 11-19-2021                | SPC u SPC i d t       |
 | drk/insert-todays-date | 2021-11-19                | SPC u SPC u SPC i d t |
-| drk/insert-any-date   | Friday, November 19, 2021 | SPC i d a             |
+| drk/insert-any-date    | Friday, November 19, 2021 | SPC i d a             |
 
 #+begin_src emacs-lisp
 (defun drk/insert-todays-date (prefix)
@@ -430,7 +431,7 @@ information on what is available to configure in the Doom modeline, check out:
 https://github.com/seagle0128/doom-modeline
 
 #+begin_src emacs-lisp
-(set-face-attribute 'mode-line nil :font "mononoki Nerd Font-13")
+(set-face-attribute 'mode-line nil :font "Mononoki Nerd Font-14")
 (setq doom-modeline-height 30     ;; sets modeline height
       doom-modeline-bar-width 5   ;; sets right bar width
       doom-modeline-persp-name t  ;; adds perspective name to modeline
@@ -442,6 +443,20 @@ Adding mouse support in the terminal version of Emacs.
 
 #+begin_src emacs-lisp
 (xterm-mouse-mode 1)
+#+end_src
+
+* NEOTREE
+1. SPC + e to toggle neotree
+2. Make neotree prettier
+3. Every time when the neotree window is opened, let it find current file and jump to node.
+4. When running ‘projectile-switch-project’ (SPC p p), ‘neotree’ will change root automatically.
+
+#+begin_src emacs-lisp
+(map! :leader
+      :desc "Toggle neotree" "e" #'neotree-toggle)
+(setq neo-theme 'nerd)
+(setq neo-smart-open t)
+(setq projectile-switch-project-action 'neotree-projectile-action)
 #+end_src
 
 * OPEN SPECIFIC FILES
@@ -691,6 +706,6 @@ the second occurrence of 'e'.
 Transparent window
 
 #+BEGIN_SRC emacs-lisp
-(set-frame-parameter nil 'alpha-background 85) ; For current frame
-(add-to-list 'default-frame-alist '(alpha-background . 85)) ; For all new frames henceforth
+(set-frame-parameter nil 'alpha-background 90) ; For current frame
+(add-to-list 'default-frame-alist '(alpha-background . 90)) ; For all new frames henceforth
 #+END_SRC

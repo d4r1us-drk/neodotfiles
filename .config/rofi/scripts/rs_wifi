@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
-# ***This script was made by Clay Gomera (Drake)***
-#  - Description: A simple wifi script for fuzzel
-#  - Dependencies: fuzzel, NetworkManager
+# rs-wifi - A simple WiFi menu script for rofi/dmenu/wofi
+# Author: Clay Gomera (Drake)
+# Dependencies: {rofi || dmenu || wofi}, NetworkManager, libnotify (notify-send)
 
-#######################
-## Main manu options ##
-#######################
+############################
+# Configuration Parameters #
+############################
+
+# Main menu options
 option1="  Turn on WiFi"
 option2="  Turn off WiFi"
 option3="󱛅  Disconnect WiFi"
@@ -15,11 +17,43 @@ option5="󱛆  Setup captive portal"
 option6="  Exit"
 options="$option1\n$option2\n$option3\n$option4\n$option5\n$option6"
 
-## These variables will store specific information about the wireless interface
+# WiFi interface information
 wifi_info=$(nmcli dev | awk '/wifi/ {print $1,$3; exit}')
 read -r wlan constate <<< "$wifi_info"
 
-## This function uses nmcli to turn off wifi and then sends a notification
+########################
+# Function Definitions #
+########################
+
+# Check for missing dependencies
+check_dependencies() {
+    local run_launcher_found=false
+    for launcher in rofi dmenu wofi; do
+        if command -v "$launcher" &> /dev/null; then
+            run_launcher_found=true
+            break
+        fi
+    done
+
+    if [ "$run_launcher_found" = false ]; then
+        echo "Missing dependency: one of rofi, dmenu, or wofi is required."
+        exit 1
+    fi
+
+    local missing_deps=()
+    for dep in nmcli notify-send; do
+        if ! command -v "$dep" &> /dev/null; then
+            missing_deps+=("$dep")
+        fi
+    done
+
+    if [ ${#missing_deps[@]} -ne 0 ]; then
+        echo "Missing dependencies: ${missing_deps[*]}"
+        exit 1
+    fi
+}
+
+# Turn off WiFi
 turnoff() {
     nmcli radio wifi off
     if [ $? -eq 0 ]; then
@@ -29,7 +63,7 @@ turnoff() {
     fi
 }
 
-## This function uses nmcli to turn on wifi and then sends a notification
+# Turn on WiFi
 turnon() {
     nmcli radio wifi on
     if [ $? -eq 0 ]; then
@@ -39,7 +73,7 @@ turnon() {
     fi
 }
 
-## This function uses nmcli and the $wlan and $constate variables to disconnect from the wifi network and then sends a notification
+# Disconnect from WiFi
 disconnect() {
     if [ "$constate" = "disconnected" ]; then
         notify-send "WiFi is already disconnected"
@@ -55,11 +89,11 @@ disconnect() {
     fi
 }
 
-## This function uses nmcli to first scan for available networks and then the $bssid variable will store the SSID of the network that the user chooses
+# Connect to a WiFi network
 connect() {
     notify-send -t 5000 "Scanning networks..."
     nmcli dev wifi rescan
-    wifinet=$(nmcli -f BSSID,SSID,BARS,SECURITY dev wifi list | sed -n '1!p' | $RUNNER -i -l 10 -p "[  Select a Wifi Network]  ")
+    wifinet=$(nmcli -f BSSID,SSID,BARS dev wifi list | sed -n '1!p' | $RUNNER -i -p "  Select a Wifi Network  ")
     if [ -z "$wifinet" ]; then
         exit 0
     fi
@@ -67,21 +101,21 @@ connect() {
     ssid=$(echo "$wifinet" | awk '{print $2}')
 }
 
-## This function will store the WiFi password in the $pass variable
+# Prompt for WiFi password
 password() {
     if nmcli connection show | awk -v ssid="$ssid" '$1 == ssid {found=1} END {exit !found}'; then
         pass=""
     elif nmcli -f BSSID,SECURITY dev wifi list | grep -w "$bssid" | awk '{print $2}' | grep -q -- "--"; then
         pass=""
     else
-        pass=$($RUNNER -l 0 --password -p "[Enter Password  ]  " );
+        pass=$($RUNNER -password -p "Enter Password    ")
         if [ -z "$pass" ]; then
             exit 0
         fi
     fi
 }
 
-## This function will actually connect to the chosen WiFi network using the $bssid and $pass variables
+# Execute WiFi connection
 action() {
     if [ -n "$pass" ]; then
         nmcli dev wifi connect "$bssid" password "$pass"
@@ -95,10 +129,15 @@ action() {
     fi
 }
 
-##########
-## main ##
-##########
-cases=$(echo -e "$options" | $RUNNER -i -l 6 -p "[  Wifi Settings]  " ) # main menu prompt
+####################
+# Main Script Flow #
+####################
+
+# Check for dependencies
+check_dependencies
+
+# Display main menu and execute selected option
+cases=$(echo -e "$options" | $RUNNER -i -p "  Wifi Settings  ")
 if [ -z "$cases" ]; then
     exit 0
 fi

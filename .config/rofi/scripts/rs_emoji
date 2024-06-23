@@ -1,5 +1,55 @@
-#!/bin/bash
-sed '1,/^### DATA ###$/d' $0 | $RUNNER -l 10 -i -p "[󰙃 Select Emoji]  " | cut -d ' ' -f 1 | tr -d '\n' | wl-copy
+#!/usr/bin/env bash
+
+# rs-emoji - A simple emoji picker menu script for rofi/dmenu/wofi
+# Author: Clay Gomera (Drake)
+# Dependencies: {rofi || dmenu || wofi}, wl-clipboard (wl-copy)
+
+########################
+# Function Definitions #
+########################
+
+# Check for missing dependencies
+check_dependencies() {
+    local run_launcher_found=false
+    for launcher in rofi dmenu wofi; do
+        if command -v "$launcher" &> /dev/null; then
+            run_launcher_found=true
+            break
+        fi
+    done
+
+    if [ "$run_launcher_found" = false ]; then
+        echo "Missing dependency: one of rofi, dmenu, or wofi is required."
+        exit 1
+    fi
+
+    local missing_deps=()
+    for dep in wl-copy; do
+        if ! command -v "$dep" &> /dev/null; then
+            missing_deps+=("$dep")
+        fi
+    done
+
+    if [ ${#missing_deps[@]} -ne 0 ]; then
+        echo "Missing dependencies: ${missing_deps[*]}"
+        exit 1
+    fi
+}
+
+####################
+# Main Script Flow #
+####################
+
+# Check for dependencies
+check_dependencies
+
+# Pass emoji data into the menu
+sed '1,/^### DATA ###$/d' $0 | $RUNNER -i -p "󰙃 Select Emoji  " | cut -d ' ' -f 1 | tr -d '\n' | wl-copy
+
+##############
+# Emoji Data #
+##############
+
 ### DATA ###
 😀 grinning face face smile happy joy :D grin
 😃 grinning face with big eyes face happy joy haha :D :) smile funny

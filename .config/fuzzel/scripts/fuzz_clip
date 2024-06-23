@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# clipboard script
-
-cliphist list | $RUNNER -l 10 -p "[󱉧  Clipboard]  " | cliphist decode | wl-copy

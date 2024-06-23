@@ -1,24 +1,25 @@
 [Default Applications]
-image/=imv.desktop
+image/=vimiv.desktop
 video/=mpv.desktop
 audio/=mpv.desktop
 text/=emacsclient.desktop
-image/jpeg=imv.desktop
-image/png=imv.desktop
-image/gif=imv.desktop
+image/jpeg=vimiv.desktop
+image/png=vimiv.desktop
+image/gif=vimiv.desktop
 application/vnd.comicbook+zip=org.pwmt.zathura-cb.desktop
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop
 image/svg+xml=org.inkscape.Inkscape.desktop
 video/x-matroska=mpv.desktop
 video/mp4=mpv.desktop
-image/webp=imv.desktop
+image/webp=vimiv.desktop
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 
 [Added Associations]
-image/jpeg=imv.desktop;
-image/png=imv.desktop;
-image/gif=imv.desktop;
+image/jpeg=vimiv.desktop;
+image/png=vimiv.desktop;
+image/gif=vimiv.desktop;
 application/vnd.comicbook+zip=org.pwmt.zathura-cb.desktop;
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop;
 image/svg+xml=org.inkscape.Inkscape.desktop;
 video/x-matroska=mpv.desktop;
-image/webp=imv.desktop;
+image/webp=vimiv.desktop;

@@ -82,11 +82,12 @@
        :desc "Clippy describes function under point" "f" #'clippy-describe-function
        :desc "Clippy describes variable under point" "v" #'clippy-describe-variable))
 
-;; With dired-open plugin, you can launch external programs for certain extensions
-;; For example, I set all .png files to open in 'sxiv' and all .mp4 files to open in 'mpv'
-(setq dired-open-extensions '(("gif" . "sxiv")
-                              ("jpg" . "sxiv")
-                              ("png" . "sxiv")
+;; With dired-open plugin, you can launch external programs for certain
+;; extensions For example, I set all .png files to open in 'vimiv' and all .mp4
+;; files to open in 'mpv'
+(setq dired-open-extensions '(("gif" . "vimiv")
+                              ("jpg" . "vimiv")
+                              ("png" . "vimiv")
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
 
@@ -98,16 +99,17 @@
 (setq delete-by-moving-to-trash t
       trash-directory "~/.local/share/Trash/files/")
 
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'catppuccin)
 (map! :leader
-      :desc "Load new theme" "h t" #'counsel-load-theme)
+      :desc "Load new theme" "h t" #'load-theme)
+(setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
 
 (use-package emojify
   :hook (after-init . global-emojify-mode))
 
-(setq doom-font (font-spec :family "mononoki Nerd Font" :size 18)
-      doom-variable-pitch-font (font-spec :family "mononoki Nerd Font" :size 18)
-      doom-big-font (font-spec :family "mononoki Nerd Font" :size 24))
+(setq doom-font (font-spec :family "Mononoki Nerd Font" :size 18)
+      doom-variable-pitch-font (font-spec :family "Mononoki Nerd Font" :size 18)
+      doom-big-font (font-spec :family "Mononoki Nerd Font" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -175,13 +177,19 @@
  '(markdown-header-face-5 ((t (:inherit markdown-header-face :height 1.3))))
  '(markdown-header-face-6 ((t (:inherit markdown-header-face :height 1.2)))))
 
-(set-face-attribute 'mode-line nil :font "mononoki Nerd Font-13")
+(set-face-attribute 'mode-line nil :font "Mononoki Nerd Font-14")
 (setq doom-modeline-height 30     ;; sets modeline height
       doom-modeline-bar-width 5   ;; sets right bar width
       doom-modeline-persp-name t  ;; adds perspective name to modeline
       doom-modeline-persp-icon t) ;; adds folder icon next to persp name
 
 (xterm-mouse-mode 1)
+
+(map! :leader
+      :desc "Toggle neotree" "e" #'neotree-toggle)
+(setq neo-theme 'nerd)
+(setq neo-smart-open t)
+(setq projectile-switch-project-action 'neotree-projectile-action)
 
 (map! :leader
       (:prefix ("=" . "open file")
@@ -299,5 +307,5 @@
       :desc "Zap to char" "z" #'zap-to-char
       :desc "Zap up to char" "Z" #'zap-up-to-char)
 
-(set-frame-parameter nil 'alpha-background 85) ; For current frame
-(add-to-list 'default-frame-alist '(alpha-background . 85)) ; For all new frames henceforth
+(set-frame-parameter nil 'alpha-background 90) ; For current frame
+(add-to-list 'default-frame-alist '(alpha-background . 90)) ; For all new frames henceforth

@@ -1,6 +1,6 @@
 {
     "position": "top",
-    "height": 28,
+    "height": 35,
     "layer": "top",
 
     // Modules order
@@ -9,9 +9,9 @@
         "hyprland/workspaces"
     ],
 
-    // "modules-center": [
-    //     "hyprland/window"
-    // ],
+    "modules-center": [
+        "hyprland/window"
+    ],
 
     "modules-right": [
         "custom/arrow1",
@@ -53,6 +53,13 @@
             "focused": "\uf192",
             "default": "\uf444"
         }
+    },
+
+    "hyprland/window": {
+        "format": "{initialTitle}",
+        "icon": true,
+        "icon-size": 24,
+        "separate-outputs": true
     },
 
     "hyprland/language": {

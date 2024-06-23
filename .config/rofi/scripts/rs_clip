@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+# rs-clip - A simple clipboard menu script for rofi/dmenu/wofi
+# Author: Clay Gomera (Drake)
+# Dependencies: {rofi || dmenu || wofi}, cliphist, wl-clipboard (wl-copy)
+
+########################
+# Function Definitions #
+########################
+
+# Check for missing dependencies
+check_dependencies() {
+    local run_launcher_found=false
+    for launcher in rofi dmenu wofi; do
+        if command -v "$launcher" &> /dev/null; then
+            run_launcher_found=true
+            break
+        fi
+    done
+
+    if [ "$run_launcher_found" = false ]; then
+        echo "Missing dependency: one of rofi, dmenu, or wofi is required."
+        exit 1
+    fi
+
+    local missing_deps=()
+    for dep in cliphist wl-copy; do
+        if ! command -v "$dep" &> /dev/null; then
+            missing_deps+=("$dep")
+        fi
+    done
+
+    if [ ${#missing_deps[@]} -ne 0 ]; then
+        echo "Missing dependencies: ${missing_deps[*]}"
+        exit 1
+    fi
+}
+
+####################
+# Main Script Flow #
+####################
+
+# Check for dependencies
+check_dependencies
+
+# Pass clipboard data into the menu
+cliphist list | $RUNNER -p "󱉧  Clipboard  " | cliphist decode | wl-copy

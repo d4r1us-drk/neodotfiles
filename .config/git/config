@@ -2,3 +2,5 @@
 	mail = maverick.xero@proton.me
 	name = Clay Gomera
 	email = maverick.xero@proton.me
+[core]
+	autocrlf = input

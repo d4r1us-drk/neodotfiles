@@ -1,0 +1,321 @@
+#!/usr/bin/env bash
+
+# rs-scrot - A simple screenshot menu script for rofi/dmenu/wofi
+# Author: Clay Gomera (Drake)
+# Dependencies: {rofi || dmenu || wofi}, grim, slurp, jq, wf-recorder, wl-clipboard (wl-copy), libnotify (notify-send)
+
+############################
+# Configuration Parameters #
+############################
+
+# Directory to save screenshots
+SHOTDIR="$XDG_PICTURES_DIR/Screenshots"
+VCAPDIR="$XDG_VIDEOS_DIR/Screencasts" # $MEDIA_DIR refers to a global variable in .xinitrc/.bash_profile
+[ ! -d "$SHOTDIR" ] && [ ! -d "$VCAPDIR" ] && mkdir -p "$SHOTDIR" "$VCAPDIR" || echo
+
+# Get audio devices and descriptions
+audioDevices=$(pactl list sources | grep "Name" | awk '{print $2}')
+audioDescriptions=$(pactl list sources | grep "Description" | cut -d' ' -f2-)
+
+# Create an associative array for mapping pretty names to actual names
+declare -A audioMap
+while IFS= read -r name && IFS= read -r desc <&3; do
+    audioMap["$desc"]="$name"
+done < <(echo "$audioDevices") 3< <(echo "$audioDescriptions")
+
+#####################
+# Main Menu Options #
+#####################
+mainChoice1="󰹑 Take an screenshot"
+mainChoice2="󰻃 Record the screen"
+mainChoice3=" Exit"
+mainChoices="$mainChoice1\n$mainChoice2\n$mainChoice3"
+
+#############################
+## Screenshot menu choices ##
+#############################
+shotChoice1="󱣴 Entire screen"
+shotChoice2="󱎫 Entire screen with delay"
+shotChoice3="󱕻 Select region"
+shotChoice4="󰖯 Active window"
+shotChoice5="󱎘 Exit"
+shotChoices="$shotChoice1\n$shotChoice2\n$shotChoice3\n$shotChoice4\n$shotChoice5"
+
+#############################
+## Screencast menu choices ##
+#############################
+vidChoice1="󰕧 Record the screen"
+vidChoice2="󰕩 Record region"
+vidChoice3="󰕧 Record the screen with audio"
+vidChoice4="󰕨 Stop recording"
+vidChoice5="󱎘 Exit"
+vidChoices="$vidChoice1\n$vidChoice2\n$vidChoice3\n$vidChoice4\n$vidChoice5"
+
+###################
+# Submenu Options #
+###################
+subShotChoice1="󰆏 Copy to clipboard"
+subShotChoice2="󰠘 Save to $XDG_PICTURES_DIR"
+subShotChoice3="󱎘 Exit"
+subShotChoices="$subShotChoice1\n$subShotChoice2\n$subShotChoice3"
+
+####################################
+# Screenshot Delay Submenu Options #
+####################################
+delayChoice1="󱑀 3 sec delay"
+delayChoice2="󱑂 5 sec delay"
+delayChoice3="󱑇 10 sec delay"
+delayChoice4="󱎘 Exit"
+delayChoices="$delayChoice1\n$delayChoice2\n$delayChoice3\n$delayChoice4"
+
+########################
+# Function Definitions #
+########################
+
+# Check for missing dependencies
+CheckDependencies() {
+    local run_launcher_found=false
+    for launcher in rofi dmenu wofi; do
+        if command -v "$launcher" &> /dev/null; then
+            run_launcher_found=true
+            break
+        fi
+    done
+
+    if [ "$run_launcher_found" = false ]; then
+        echo "Missing dependency: one of rofi, dmenu, or wofi is required."
+        exit 1
+    fi
+
+    local missing_deps=()
+    for dep in grim slurp jq wl-copy notify-send wf-recorder; do
+        if ! command -v "$dep" &> /dev/null; then
+            missing_deps+=("$dep")
+        fi
+    done
+
+    if [ ${#missing_deps[@]} -ne 0 ]; then
+        echo "Missing dependencies: ${missing_deps[*]}"
+        exit 1
+    fi
+}
+
+# Prompt user for screenshot action
+ShotActionPrompt() {
+    shotActionCases=$(echo -e "$subShotChoices" | $RUNNER -i -p "  What do you want to do with this screenshot?")
+}
+
+# Prompt user for screenshot delay
+DelayPrompt() {
+    delayActionsCases=$(echo -e "$delayChoices" | $RUNNER -i -p " Select Delay")
+}
+
+# Take a full screen screenshot without delay
+ShotScreen() {
+    ShotActionPrompt
+    case "$shotActionCases" in
+        "$subShotChoice1")
+            sleep 0.5 && grim - | wl-copy && notify-send "Screenshot copied to clipboard"
+            ;;
+        "$subShotChoice2")
+            sleep 0.5 && grim "$SHOTDIR/$(date +%s).png" && notify-send "Screenshot saved to $SHOTDIR"
+            ;;
+        *)
+            exit 0
+            ;;
+    esac
+}
+
+# Take a full screen screenshot with delay
+ShotScreenDelay() {
+    ShotActionPrompt
+    if [ "$shotActionCases" = "$subShotChoice1" ]; then
+        DelayPrompt
+        case $delayActionsCases in
+            "$delayChoice1")
+                sleep 3 && grim - | wl-copy && notify-send "Screenshot saved to clipboard"
+                ;;
+            "$delayChoice2")
+                sleep 5 && grim - | wl-copy && notify-send "Screenshot saved to clipboard"
+                ;;
+            "$delayChoice3")
+                sleep 10 && grim - | wl-copy && notify-send "Screenshot saved to clipboard"
+                ;;
+            "$delayChoice4")
+                exit 0
+                ;;
+        esac
+    elif [ "$shotActionCases" = "$subShotChoice2" ]; then
+        DelayPrompt
+        case $delayActionsCases in
+            "$delayChoice1")
+                sleep 3 && grim "$SHOTDIR/$(date +%s).png" && notify-send "Screenshot saved to $SHOTDIR"
+                ;;
+            "$delayChoice2")
+                sleep 5 && grim "$SHOTDIR/$(date +%s).png" && notify-send "Screenshot saved to $SHOTDIR"
+                ;;
+            "$delayChoice3")
+                sleep 10 && grim "$SHOTDIR/$(date +%s).png" && notify-send "Screenshot saved to $SHOTDIR"
+                ;;
+            "$delayChoice4")
+                exit 0
+                ;;
+        esac
+    else
+        exit 0
+    fi
+}
+
+# Take a screenshot of a selected area
+ShotArea() {
+    ShotActionPrompt
+    case "$shotActionCases" in
+        "$subShotChoice1")
+            sleep 0.5 && grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot saved to clipboard"
+            ;;
+        "$subShotChoice2")
+            sleep 0.5 && grim -g "$(slurp)" "$SHOTDIR/$(date +%s).png" && notify-send "Screenshot saved to $SHOTDIR"
+            ;;
+        *)
+            exit 0
+            ;;
+    esac
+}
+
+# Take a screenshot of the active window
+ShotWindow() {
+    ShotActionPrompt
+    local focused=$(hyprctl activewindow -j)
+    local geom=$(echo "$focused" | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')
+    case "$shotActionCases" in
+        "$subShotChoice1")
+            sleep 0.5 && grim -g "$geom" - | wl-copy && notify-send "Screenshot saved to clipboard"
+            ;;
+        "$subShotChoice2")
+            sleep 0.5 && grim -g "$geom" "$SHOTDIR/$(date +%s).png" && notify-send "Screenshot saved to $SHOTDIR"
+            ;;
+        *)
+            exit 0
+            ;;
+    esac
+}
+
+# Record the entire screen
+VidScreen() {
+    for ((i = 3; i >= 1; i--)); do
+        notify-send -t 1000 "Starting in $i seconds"
+        sleep 1
+    done
+    wf-recorder -f "$VCAPDIR/$(date +%s).mp4"
+    notify-send "Screenshot" "Recording saved to $VCAPDIR"
+}
+
+# Record a specific area of the screen
+VidArea() {
+    wf-recorder -g "$(slurp)" -f "$VCAPDIR/$(date +%s).mp4"
+    notify-send "Screenshot" "Recording saved to $VCAPDIR"
+}
+
+# Record the entire screen with audio
+VidScreenAudio() {
+    local chosenPrettyDevice=$(echo -e "$audioDescriptions" | $RUNNER -i -p "󰕾 Select audio input")
+    local chosenDevice="${audioMap["$chosenPrettyDevice"]}"
+    if [ -n "$chosenDevice" ]; then
+        for ((i = 3; i >= 1; i--)); do
+            notify-send -t 1000 "Starting in $i seconds"
+            sleep 1
+        done
+        wf-recorder --audio="$chosenDevice" -f "$VCAPDIR/$(date +%s).mp4"
+    else
+        exit 1
+    fi
+    notify-send "Screenshot" "Recording saved to $VCAPDIR"
+}
+
+# Stop the video recording
+VidStopRecording() {
+    if pidof wfrecorder; then
+        killall -s SIGINT wf-recorder
+    else
+        notify-send "You are not recording right now"
+        exit 1
+    fi
+}
+
+###################
+# Check arguments #
+###################
+
+# Show help information
+if [ "$1" == '--help' ] || [ "$1" = '-h' ]; then
+    echo "rs-scrot"
+    echo "USAGE: rs-scrot [OPTION]"
+    echo -e "(no option)\tshow the screenshot menu"
+    echo -e "-s, --stop\tstop recording"
+    echo -e "-h, --help\tthis screen"
+    exit 1
+fi
+
+# stop recording with -s or --stop arguments
+if [ "$1" = '--stop' ] || [ "$1" = '-s' ]; then
+    VidStopRecording
+    exit 1
+fi
+
+####################
+# Main Script Flow #
+####################
+
+# Check for dependencies
+CheckDependencies
+
+# Display main menu and execute selected option
+mainCase=$(echo -e "$mainChoices" | $RUNNER -i -p " Screenshot/Screencast Utility")
+if [ -z "$mainCase" ]; then
+    exit 0
+fi
+
+case $mainCase in
+    "$mainChoice1")
+        shotCases=$(echo -e "$shotChoices" | $RUNNER -i -p " Screenshot Menu") # screenshot menu prompt
+        case $shotCases in
+            "$shotChoice1")
+                ShotScreen
+                ;;
+            "$shotChoice2")
+                ShotScreenDelay
+                ;;
+            "$shotChoice3")
+                ShotArea
+                ;;
+            "$shotChoice4")
+                ShotWindow
+                ;;
+            "$shotChoice5")
+                exit 0
+                ;;
+        esac
+        ;;
+    "$mainChoice2")
+        vidCases=$(echo -e "$vidChoices" | $RUNNER -i -p "󰕧 Screencast Menu")
+        case $vidCases in
+            "$vidChoice1")
+                VidScreen
+                ;;
+            "$vidChoice2")
+                VidArea
+                ;;
+            "$vidChoice3")
+                VidScreenAudio
+                ;;
+            "$vidChoice4")
+                VidStopRecording
+                ;;
+            "$vidChoice5")
+                exit 0
+        esac
+        ;;
+    "$mainChoice3")
+        exit 0
+        ;;
+esac
